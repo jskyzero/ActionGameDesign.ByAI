@@ -16,6 +16,12 @@ const schema = z.object({
   section: z.string().optional(),
   status: z.enum(['done', 'wip']).default('done'),
   insight: z.string().optional(),
+  speaker: z.string().optional(),
+  role: z.string().optional(),
+  project: z.string().optional(),
+  event: z.string().optional(),
+  talkTitle: z.string().optional(),
+  video: z.string().optional(),
   references: z
     .array(
       z.object({

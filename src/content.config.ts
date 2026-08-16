@@ -16,6 +16,13 @@ export const collections = {
         status: z.enum(['done', 'wip']).default('done'),
         // 一句话总结 / 金句
         insight: z.string().optional(),
+        // 分享元信息（信息卡片用）
+        speaker: z.string().optional(),   // 分享人
+        role: z.string().optional(),      // 职位
+        project: z.string().optional(),   // 项目
+        event: z.string().optional(),     // 会议 / 活动
+        talkTitle: z.string().optional(), // 演讲标题（英文原名）
+        video: z.string().optional(),     // 源视频 URL
         // 相关参考：原分享 + 中译等
         references: z
           .array(

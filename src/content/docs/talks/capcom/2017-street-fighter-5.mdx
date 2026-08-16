@@ -5,11 +5,14 @@ section: Capcom
 year: 2017
 status: done
 insight: 在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
+speaker: 龟井敏征
+role: 美术总监（Art Director）
+project: 街霸 5（Street Fighter V）
+event: GDC 2017
+talkTitle: "The Art Direction of Street Fighter V: The Role of Art in Fighting Games"
+video: https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games
 tags: [街霸, 美术设计, 信息传达, NPR]
 references:
-  - label: 原分享
-    url: https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games
-    type: original
   - label: 中译（完整总结）
     url: https://seicing.com/html/study/%E3%80%8A%E8%A1%97%E9%9C%B85%E3%80%8B%E7%9A%84%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%88%86%E4%BA%AB.html
     type: translation
@@ -19,61 +22,45 @@ references:
 description: GDC 2017《The Art Direction of Street Fighter V》，美术总监龟井敏征讲解街霸 5 的美术设计思路。
 ---
 
-> 核心观点：在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
+| 项目 | 信息 |
+| --- | --- |
+| **分享人** | 龟井敏征 |
+| **职位** | 美术总监（Art Director，负责《街霸 4》《街霸 5》） |
+| **项目** | 街霸 5（Street Fighter V） |
+| **会议** | GDC 2017 |
+| **演讲标题** | The Art Direction of Street Fighter V: The Role of Art in Fighting Games |
+| **源视频** | [GDC Vault](https://gdcvault.com/play/1024506) · [Game Developer](https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games) |
+| **参考翻译** | [中译·完整总结](https://seicing.com/html/study/%E3%80%8A%E8%A1%97%E9%9C%B85%E3%80%8B%E7%9A%84%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%88%86%E4%BA%AB.html) · [中译·知乎](https://zhuanlan.zhihu.com/p/56750629) |
 
-来源：GDC 2017《The Art Direction of Street Fighter V: The Role of Art in Fighting Games》，演讲者龟井敏征（《街霸 4》《街霸 5》美术总监）。
+> 核心观点：在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
 
 ## 一、容易理解的美术设计（可读性优先）
 
-格斗游戏的信息循环极快（约 0.x 秒一次）：玩家接收画面信息 → 大脑处理 → 输入对应动作。因此画面必须**一目了然**，把「这拳揍过来很痛」「我的角色正在被攻击」等信息瞬间传达给玩家。
+格斗游戏是极快的信息【获取 → 处理 → 操作】循环，画面必须「一目了然」。画面设计两大特点：① 突出的肌肉线条 ② 夸张的画面表现。
 
-### 1. 角色线条绘制
+### 角色
 
-- 从 2D 点阵时代起，团队就在极少数像素里竭尽所能传达「握拳时肌肉线条」等信息。
-- 参考 Capcom 内部《あやしい美術解剖図》（安田朗监修）的人体绘制准则。
-- **刻意不符合真实肌肉比例**：初期试过贴近真实比例，但攻击动作变得难以认知、游玩痛苦，最终「把模型以不正确的方式制作才是正确的」。
+- **线条绘制**：制定人体各部位的绘制准则（参考 Capcom 内部《あやしい美術解剖図》）。刻意与现实不符——「不正确的方式制作才是正确的做法」，因为贴近真实比例反而让攻击动作难以认知。
+- **身高**：原始角色模型身高都一样，后期根据战斗画面应有的比例再调整（以隆为基准）。
 
-### 2. 角色身高
+### 动画
 
-- 官方设定身高 ≠ 游戏内表现；模型统一高度，后期按战斗画面观感调整（以隆为基准比对）。
+- **三要点**：功能性（满足策划 HitBox 要求）· 战斗风格（能被立刻认出）· 重心和节奏（正确的感觉 & 帅）。
+- **必杀技**：以简单的动作让玩家感觉印象深刻的演出（如 Mika 的「臀部夹击」、隆的「升龙拳」）。
 
-### 3. 角色动画
+### 场景
 
-- 动作设计主要考虑：格斗技种类、攻击性能、动作的重心与节奏。
-- 技巧：把所有角色身体角度**朝摄像机方向转约 5°**，让玩家看到更多背对相机一侧的动作细节（2D 平面格斗相机受限，不会显得不自然）。
+- **辨识度**：2D 时代用色调控制区别角色与背景（角色饱和、场景暗淡）；街霸 5 用 Unreal 的 Multi Color Grading 分区域调整背景色阶。
 
-### 4. 必杀技特写
+### 相机
 
-- 目标：让招式画面能用简单语言表达。如《街霸 2》里听到「Dog Pie」就知道本田头突、听到「Yoga」就知道喷火——易于用文字表达的招式，玩家才能与他人分享心情。
+- 常态下把角色身体角度**偏向摄像机**（约转 5°，让玩家看到更多动作细节，2D 平面格斗的相机受限所以不违和）。
+- 左右两端用 Fix Projection 修正投影，效果取 **0.5**，在「边缘与中间一致」和「保持立体感」之间取平衡。
 
-### 5. 背景
+## 二、独特的美术风格
 
-- 2D 时代用色调分离角色与背景（角色饱和、场景暗淡）。
-- 街霸 5 用 UE4 的 Multi Color Grading（MCG）按区域调色，甚至能把场景前后左右切成区块分别调整。
+风格 = **丰富光线 + 油彩笔触**（NPR，目标是把历代《街霸》形象插画在游戏中具现化）。
 
-### 6. 相机视野
-
-- 用 Fix Projection（修正投影）修正在画面边缘的角色变形；数值取 0.5，在「边缘与中间一致」和「保持立体感」之间取平衡。
-
-## 二、独特的美术风格（NPR 插画风）
-
-目标：把历代《街霸》形象插画在游戏中具现化。采用 Non-Photorealistic Rendering（NPR）。
-
-### 1. 笔触的表现
-
-- 用 Photoshop 插件 Snap Art 做油彩笔触；法线贴图从切线空间转模型空间 → 加笔触 → 转回，解决切线空间蓝紫色的限制。
-- 按「脸 > 身体 > 衣服」的注视优先级调整笔触疏密：脸最细腻、身体衣服较粗。
-
-### 2. 轮廓线的强化
-
-- 在 RGB 色差大的地方加轮廓线（UE4 post process），角色轮廓、阴影、背景边缘都加强，贴合插画风。
-
-### 3. 颜色与饱和度控制
-
-- 环境光 + 间接光；间接光用 Indirect Lighting Cache（烘焙缓存）+ Enlighten（实时渲染）调整。
-
-## 参考
-
-- [原分享（Game Developer 视频页）](https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games)
-- [中译·完整总结](https://seicing.com/html/study/%E3%80%8A%E8%A1%97%E9%9C%B85%E3%80%8B%E7%9A%84%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%88%86%E4%BA%AB.html)
-- [中译·知乎](https://zhuanlan.zhihu.com/p/56750629)
+- **细节比重**：按「脸 > 身体 > 衣服」的注视优先级调整笔触疏密，脸最细腻、身体衣服较粗。
+- **轮廓线**：在 RGB 色差大的地方加轮廓线（UE4 post process），角色轮廓、阴影、背景边缘都加强，贴合插画风。
+- **颜色与饱和度控制**：环境光 + 间接光；间接光用 Indirect Lighting Cache（烘焙缓存）+ Enlighten（实时渲染）调整。

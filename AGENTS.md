@@ -18,6 +18,12 @@
 | `section` | string | ✅ | 顶层分组（Capcom / PlatinumGames / Santa Monica Studio / FTG 相关 / 其他 / Nintendo / 非 GDC / 设计者笔记） |
 | `status` | `done` \| `wip` | ✅ | `wip` = 待施工（替代旧 🚧） |
 | `insight` | string | 推荐 | 一句话总结 / 金句 |
+| `speaker` | string | | 分享人 |
+| `role` | string | | 职位 |
+| `project` | string | | 项目 |
+| `event` | string | | 会议 / 活动（如 `GDC 2017`） |
+| `talkTitle` | string | | 演讲标题（英文原名，含冒号需加引号） |
+| `video` | string | | 源视频 URL |
 | `references` | array | | `[{ label, url, type }]`，`type` ∈ `original`/`translation`/`other` |
 | `tags` | string[] | 推荐 | 2~4 个标签，用于标签浏览与导图聚合 |
 | `image` | string | | 配图路径（迁移期用作内容占位，如 `/images/gdc/1.png`） |
@@ -28,6 +34,7 @@
 
 1. 一个条目一个文件，文件名用 `kebab-case`，放在对应厂商目录下。
 2. `insight` 用中文引号「」，不要用英文引号。
-3. `wip` 条目正文放 `:::note[待施工]` 提示 + 参考链接；`done` 条目正文放金句 + 详细笔记。
-4. 图片仅作附件，正文必须是纯文本（AI 可读）。
-5. 新增条目后跑 `npm run validate` 校验，再 `npm run build` 确认能构建。
+3. 正文开头放「**分享信息**」卡片表格：`分享人 / 职位 / 项目 / 会议 / 演讲标题 / 源视频 / 参考翻译`（参考部分提前到开头）。
+4. `wip` 条目正文放 `:::note[待施工]` 提示；`done` 条目正文放金句 + 详细笔记。
+5. 图片仅作附件，正文必须是纯文本（AI 可读）。
+6. 新增条目后跑 `npm run validate` 校验，再 `npm run build` 确认能构建。
