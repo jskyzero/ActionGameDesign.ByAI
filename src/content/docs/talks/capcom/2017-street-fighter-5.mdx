@@ -4,12 +4,76 @@ kind: talk
 section: Capcom
 year: 2017
 status: done
-insight: "在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。"
-tags: [格斗, 美术表现, 信息传达]
-image: /images/gdc/1.png
-
+insight: 在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
+tags: [街霸, 美术设计, 信息传达, NPR]
+references:
+  - label: 原分享
+    url: https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games
+    type: original
+  - label: 中译（完整总结）
+    url: https://seicing.com/html/study/%E3%80%8A%E8%A1%97%E9%9C%B85%E3%80%8B%E7%9A%84%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%88%86%E4%BA%AB.html
+    type: translation
+  - label: 中译（知乎）
+    url: https://zhuanlan.zhihu.com/p/56750629
+    type: translation
+description: GDC 2017《The Art Direction of Street Fighter V》，美术总监龟井敏征讲解街霸 5 的美术设计思路。
 ---
 
-> 在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
+> 核心观点：在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
 
-![2017 · 街霸 5](/images/gdc/1.png)
+来源：GDC 2017《The Art Direction of Street Fighter V: The Role of Art in Fighting Games》，演讲者龟井敏征（《街霸 4》《街霸 5》美术总监）。
+
+## 一、容易理解的美术设计（可读性优先）
+
+格斗游戏的信息循环极快（约 0.x 秒一次）：玩家接收画面信息 → 大脑处理 → 输入对应动作。因此画面必须**一目了然**，把「这拳揍过来很痛」「我的角色正在被攻击」等信息瞬间传达给玩家。
+
+### 1. 角色线条绘制
+
+- 从 2D 点阵时代起，团队就在极少数像素里竭尽所能传达「握拳时肌肉线条」等信息。
+- 参考 Capcom 内部《あやしい美術解剖図》（安田朗监修）的人体绘制准则。
+- **刻意不符合真实肌肉比例**：初期试过贴近真实比例，但攻击动作变得难以认知、游玩痛苦，最终「把模型以不正确的方式制作才是正确的」。
+
+### 2. 角色身高
+
+- 官方设定身高 ≠ 游戏内表现；模型统一高度，后期按战斗画面观感调整（以隆为基准比对）。
+
+### 3. 角色动画
+
+- 动作设计主要考虑：格斗技种类、攻击性能、动作的重心与节奏。
+- 技巧：把所有角色身体角度**朝摄像机方向转约 5°**，让玩家看到更多背对相机一侧的动作细节（2D 平面格斗相机受限，不会显得不自然）。
+
+### 4. 必杀技特写
+
+- 目标：让招式画面能用简单语言表达。如《街霸 2》里听到「Dog Pie」就知道本田头突、听到「Yoga」就知道喷火——易于用文字表达的招式，玩家才能与他人分享心情。
+
+### 5. 背景
+
+- 2D 时代用色调分离角色与背景（角色饱和、场景暗淡）。
+- 街霸 5 用 UE4 的 Multi Color Grading（MCG）按区域调色，甚至能把场景前后左右切成区块分别调整。
+
+### 6. 相机视野
+
+- 用 Fix Projection（修正投影）修正在画面边缘的角色变形；数值取 0.5，在「边缘与中间一致」和「保持立体感」之间取平衡。
+
+## 二、独特的美术风格（NPR 插画风）
+
+目标：把历代《街霸》形象插画在游戏中具现化。采用 Non-Photorealistic Rendering（NPR）。
+
+### 1. 笔触的表现
+
+- 用 Photoshop 插件 Snap Art 做油彩笔触；法线贴图从切线空间转模型空间 → 加笔触 → 转回，解决切线空间蓝紫色的限制。
+- 按「脸 > 身体 > 衣服」的注视优先级调整笔触疏密：脸最细腻、身体衣服较粗。
+
+### 2. 轮廓线的强化
+
+- 在 RGB 色差大的地方加轮廓线（UE4 post process），角色轮廓、阴影、背景边缘都加强，贴合插画风。
+
+### 3. 颜色与饱和度控制
+
+- 环境光 + 间接光；间接光用 Indirect Lighting Cache（烘焙缓存）+ Enlighten（实时渲染）调整。
+
+## 参考
+
+- [原分享（Game Developer 视频页）](https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games)
+- [中译·完整总结](https://seicing.com/html/study/%E3%80%8A%E8%A1%97%E9%9C%B85%E3%80%8B%E7%9A%84%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%88%86%E4%BA%AB.html)
+- [中译·知乎](https://zhuanlan.zhihu.com/p/56750629)

@@ -22,8 +22,6 @@ const sections = [...new Set(entries.map((e) => e.section))].sort((a, b) => {
   const ib = SECTION_ORDER.indexOf(b);
   return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
 });
-
-const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort((a, b) => a.localeCompare(b, 'zh'));
 ---
 
 <!doctype html>
@@ -31,7 +29,7 @@ const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort((a, b) => a.lo
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>目录浏览 · 动作游戏知识库</title>
+  <title>目录浏览 · 动作游戏分享精选</title>
   <style>
     :root { --accent: #1f2766; }
     * { box-sizing: border-box; }
@@ -44,12 +42,6 @@ const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort((a, b) => a.lo
     .wrap { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
     h1 { font-size: 24px; font-weight: 600; margin: 0 0 0.4rem; }
     .sub { color: #888; font-size: 14px; margin-bottom: 1.2rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 1.5rem; }
-    .chip {
-      border: 1px solid #ddd; background: #fff; color: #555;
-      font-size: 13px; padding: 5px 12px; border-radius: 999px; cursor: pointer; user-select: none;
-    }
-    .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
     .section { margin: 1.8rem 0 0; }
     .section-head {
       display: flex; align-items: baseline; gap: 10px;
@@ -81,29 +73,24 @@ const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort((a, b) => a.lo
       width: 100%; max-height: 150px; object-fit: cover; object-position: top;
       border-radius: 6px; border: 1px solid #efeff4; background: #fff;
     }
-    .empty { color: #aaa; font-size: 14px; padding: 2rem 0; text-align: center; }
     .back { display: inline-block; margin-bottom: 1.5rem; color: var(--accent); font-size: 14px; text-decoration: none; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="/">← 返回知识库</a>
+    <a class="back" href="/">← 返回首页</a>
     <h1>目录浏览</h1>
-    <p class="sub">共 {entries.length} 条 · 按章节分组（与原文结构一致）· 点击标签筛选</p>
-    <div class="chips" id="chips">
-      <button class="chip active" data-tag="">全部</button>
-      {allTags.map((t) => <button class="chip" data-tag={t}>{t}</button>)}
-    </div>
+    <p class="sub">共 {entries.length} 条 · 按章节分组</p>
 
     {sections.map((sec) => (
-      <section class="section" data-section={sec}>
+      <section class="section">
         <div class="section-head">
           <h2>{sec}</h2>
           <span class="count">{entries.filter((e) => e.section === sec).length} 条</span>
         </div>
         <div class="grid">
           {entries.filter((e) => e.section === sec).map((e) => (
-            <a class="card" href={e.href} data-tags={e.tags.join(',')}>
+            <a class="card" href={e.href}>
               {e.image && <img class="thumb" src={e.image} alt="" loading="lazy" />}
               <div class="card-top">
                 <span class="card-title">{e.title}</span>
@@ -117,39 +104,6 @@ const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort((a, b) => a.lo
         </div>
       </section>
     ))}
-    <div class="empty" id="empty" hidden>没有匹配的条目</div>
   </div>
-
-  <script is:inline>
-    const chips = document.querySelectorAll('#chips .chip');
-    const cards = document.querySelectorAll('.card');
-    const sections = document.querySelectorAll('.section');
-    const empty = document.getElementById('empty');
-
-    function filter(tag) {
-      let shown = 0;
-      cards.forEach((c) => {
-        const tags = (c.dataset.tags || '').split(',').filter(Boolean);
-        const match = !tag || tags.includes(tag);
-        c.style.display = match ? '' : 'none';
-        if (match) shown++;
-      });
-      // 隐藏空的分组
-      sections.forEach((sec) => {
-        const vis = sec.querySelectorAll('.card').length > 0 &&
-          [...sec.querySelectorAll('.card')].some((c) => c.style.display !== 'none');
-        sec.style.display = vis ? '' : 'none';
-      });
-      empty.hidden = shown > 0;
-    }
-
-    chips.forEach((chip) => {
-      chip.addEventListener('click', () => {
-        chips.forEach((c) => c.classList.remove('active'));
-        chip.classList.add('active');
-        filter(chip.dataset.tag);
-      });
-    });
-  </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
-# 动作游戏知识库
+# 动作游戏分享精选
 
-整理互联网上动作游戏设计的分享（GDC 演讲、视频分享等）与原创方法论，做成**结构化、可检索、AI 友好**的知识库网站。
+互联网上动作游戏设计分享（GDC 演讲、视频分享等）与原创方法论的**精选集合**，做成结构化、可检索、AI 友好的知识库网站。
 
 技术栈：**Astro + Starlight + zod**（沿用 `blog.jskyzero.com` 的框架约定）。
 
@@ -11,16 +11,16 @@ src/
 ├── content.config.ts          # 内容 schema（zod 校验契约）
 ├── content/docs/              # 唯一数据源（纯文本）
 │   ├── index.mdx              #   首页
-│   ├── talks/<厂商>/<slug>.mdx#   分享索引（一条目一文件）
-│   └── essays/<slug>.mdx      #   原创方法论文章
+│   ├── talks/<章节>/<slug>.mdx#   分享索引（一条目一文件）
+│   └── essays/<slug>.mdx      #   原创方法论（设计者笔记）
 ├── pages/
-│   ├── mindmap/index.astro    # 思维导图（多维度可切换）
-│   └── tags/index.astro       # 卡片 / 标签浏览
+│   └── tags/index.astro       # 目录浏览（按章节分组的卡片）
 └── styles/custom.css
 scripts/
 ├── validate.mjs               # frontmatter 校验
 ├── convert-xmind.mjs          # .xmind → Markdown 大纲
 └── convert-drawio.mjs         # .drawio → Markdown 大纲
+public/images/                 # 迁移期用作内容占位的原 XMind 截图
 AGENTS.md                      # AI 贡献约定
 PROMPTS.md                     # AI 整理条目的提示词模板
 ```
@@ -36,7 +36,9 @@ npm run validate     # 校验所有条目的 frontmatter
 
 ## 内容模型
 
-每条分享一个 `.mdx`，frontmatter 字段见 `AGENTS.md`（`title` / `kind` / `year` / `studio` / `status` / `insight` / `references` / `tags` 等），正文是纯文本笔记。
+每个条目一个 `.mdx`，frontmatter 字段见 `AGENTS.md`（`section` / `year` / `status` / `insight` / `references` / `tags` / `image` 等），正文是纯文本笔记。
+
+顶层章节（与原文一致，直接一级平铺）：Capcom / PlatinumGames / Santa Monica Studio / FTG 相关 / 其他 / Nintendo / 非 GDC / 设计者笔记。
 
 ## 迁移旧知识
 
@@ -51,7 +53,6 @@ node scripts/convert-drawio.mjs path/to/bar.drawio out.md
 
 ## 视图
 
-- **思维导图** `/mindmap` —— 按厂商 / 年份 / 标签 / 类型四维度可切换（markmap）
-- **标签浏览** `/tags` —— 卡片列表 + 标签筛选
-- **详情页** —— Starlight 文档页（侧边栏按厂商分组）
+- **目录浏览** `/tags` —— 按章节分组的卡片列表
+- **详情页** —— Starlight 文档页（侧边栏章节直接平铺）
 - **全站搜索** —— Starlight 内置 Pagefind

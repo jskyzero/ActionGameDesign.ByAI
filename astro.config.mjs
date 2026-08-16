@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 const siteUrl = 'https://act.jsky.wiki';
-const siteTitle = '动作游戏知识库';
+const siteTitle = '动作游戏分享精选';
 const repositoryUrl = 'https://github.com/jskyzero/GDC.ACT';
 
 export default defineConfig({
@@ -21,21 +21,15 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       social: [{ icon: 'github', label: 'GitHub', href: repositoryUrl }],
       sidebar: [
-        { label: '知识库', link: '' },
-        { label: '思维导图', link: '/mindmap' },
+        { label: '首页', link: '' },
         { label: '目录浏览', link: '/tags' },
-        {
-          label: '分享索引（GDC）',
-          items: [
-            { label: 'Capcom', autogenerate: { directory: 'talks/capcom' } },
-            { label: 'PlatinumGames', autogenerate: { directory: 'talks/platinumgames' } },
-            { label: 'Santa Monica Studio', autogenerate: { directory: 'talks/santa-monica' } },
-            { label: 'FTG 相关', autogenerate: { directory: 'talks/ftg' } },
-            { label: '其他', autogenerate: { directory: 'talks/other' } },
-            { label: 'Nintendo', autogenerate: { directory: 'talks/nintendo' } },
-            { label: '非 GDC', autogenerate: { directory: 'talks/non-gdc' } },
-          ],
-        },
+        { label: 'Capcom', autogenerate: { directory: 'talks/capcom' } },
+        { label: 'PlatinumGames', autogenerate: { directory: 'talks/platinumgames' } },
+        { label: 'Santa Monica Studio', autogenerate: { directory: 'talks/santa-monica' } },
+        { label: 'FTG 相关', autogenerate: { directory: 'talks/ftg' } },
+        { label: '其他', autogenerate: { directory: 'talks/other' } },
+        { label: 'Nintendo', autogenerate: { directory: 'talks/nintendo' } },
+        { label: '非 GDC', autogenerate: { directory: 'talks/non-gdc' } },
         { label: '设计者笔记', autogenerate: { directory: 'essays' } },
       ],
       lastUpdated: true,
