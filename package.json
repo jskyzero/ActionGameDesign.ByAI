@@ -10,8 +10,11 @@
     "validate": "node scripts/validate.mjs"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.34.3",
+    "@astrojs/mdx": "^4.3.14",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
     "astro": "^5.7.13",
+    "tailwindcss": "^4.3.3",
     "zod": "^3.25.76"
   }
 }

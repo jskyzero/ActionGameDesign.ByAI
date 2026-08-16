@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import './tokens.css';
+
+/* —— 基础 —— */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* —— 通用容器 —— */
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 44px 28px 96px;
+}
+
+/* —— 来源 hash 渐变的兜底（组件内会用 JS 内联覆盖） —— */
+.src-grad {
+  background: linear-gradient(140deg, var(--indigo) 0%, #3a3a72 100%);
+}

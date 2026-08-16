@@ -1,0 +1,411 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const SECTION_ORDER = ['Capcom', 'PlatinumGames', 'Santa Monica Studio', 'FTG 相关', '其他', 'Nintendo', '非 GDC', '设计者笔记'];
+
+const entries = (await getCollection('docs'))
+  .filter((e) => e.id !== 'index.mdx' && !e.id.endsWith('/index.mdx'))
+  .map((e) => ({
+    t: e.data.title,
+    h: e.data.insight ?? '',
+    s: e.data.section ?? '未分类',
+    y: e.data.year,
+    g: e.data.tags ?? [],
+    href: `/${e.slug}/`,
+  }));
+
+const sections = [...new Set(entries.map((e) => e.s))].sort(
+  (a, b) => (SECTION_ORDER.indexOf(a) === -1 ? 999 : SECTION_ORDER.indexOf(a)) - (SECTION_ORDER.indexOf(b) === -1 ? 999 : SECTION_ORDER.indexOf(b))
+);
+---
+
+<Base>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-row">
+        <div class="left"><h1>动作游戏设计知识库</h1></div>
+        <div class="right">
+          <p class="sub">收录 GDC 演讲与开发者分享，<br />沉淀动作游戏设计的<br />思考、方法与案例。</p>
+        </div>
+      </div>
+      <div class="search">
+        <span class="icon">🔍</span>
+        <input id="q" placeholder="搜索分享标题、观点、厂商…" />
+        <button class="sbtn">搜索</button>
+      </div>
+    </header>
+
+    <div class="srcbar" id="srcbar"></div>
+
+    <div class="layout">
+      <aside class="rail"><div class="line" id="rail"></div></aside>
+      <main id="content"></main>
+    </div>
+    <div class="empty" id="empty" hidden>没有匹配的内容</div>
+  </div>
+</Base>
+
+<script define:vars={{ entries, sections }}>
+  const DATA = entries;
+  const SECS = sections;
+
+  // 来源名 hash → 纯 hash 色相渐变
+  function hash(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+  function gradientFor(str) {
+    const hue = hash(str) % 360;
+    return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`;
+  }
+
+  let filter = { q: '', src: '' };
+
+  function visible() {
+    return DATA.filter(
+      (d) =>
+        (!filter.src || d.s === filter.src) &&
+        (!filter.q || (d.t + d.h + d.s + d.g.join('')).toLowerCase().includes(filter.q.toLowerCase()))
+    );
+  }
+  function grouped() {
+    const m = new Map();
+    for (const d of visible()) {
+      const k = d.y || '未标注';
+      if (!m.has(k)) m.set(k, []);
+      m.get(k).push(d);
+    }
+    const keys = [...m.keys()].sort((a, b) => (b === '未标注' ? -1 : a === '未标注' ? 1 : b - a));
+    return keys.map((k) => ({ year: k, items: m.get(k) }));
+  }
+
+  function artHtml(d) {
+    const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
+    return `<a class="art" href="${d.href}" style="background:${gradientFor(d.s)}">
+      <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+      <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
+    </a>`;
+  }
+
+  function renderSrcbar() {
+    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="" style="background:linear-gradient(140deg,#26264f,#3a3a72)">全部<span class="c">${DATA.length}</span></button>`;
+    const chips = SECS.map((s) => {
+      const n = DATA.filter((d) => d.s === s).length;
+      const active = filter.src === s ? ' active' : '';
+      const dim = filter.src && filter.src !== s ? ' dim' : '';
+      return `<button class="src-chip${active}${dim}" data-src="${s}" style="background:${gradientFor(s)}">${s}<span class="c">${n}</span></button>`;
+    }).join('');
+    document.getElementById('srcbar').innerHTML = all + chips;
+  }
+
+  let io;
+  function render() {
+    const groups = grouped();
+    document.getElementById('content').innerHTML = groups
+      .map(
+        (gr) => `<section class="year-sec" data-year="${gr.year}">
+          <h2>${gr.year}<span class="n">${gr.items.length} 篇</span></h2>
+          <div class="cards">${gr.items.map(artHtml).join('')}</div>
+        </section>`
+      )
+      .join('');
+    document.getElementById('rail').innerHTML = groups
+      .map((gr) => `<div class="tnode" data-year="${gr.year}"><span class="dot"></span>${gr.year}</div>`)
+      .join('');
+    document.getElementById('empty').hidden = visible().length > 0;
+
+    if (io) io.disconnect();
+    io = new IntersectionObserver(
+      (es) => {
+        es.forEach((en) => {
+          if (en.isIntersecting) {
+            const y = en.target.dataset.year;
+            document.querySelectorAll('.tnode').forEach((n) => n.classList.toggle('active', n.dataset.year === y));
+          }
+        });
+      },
+      { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+    );
+    document.querySelectorAll('.year-sec').forEach((s) => io.observe(s));
+  }
+
+  renderSrcbar();
+  render();
+
+  document.getElementById('srcbar').addEventListener('click', (e) => {
+    const b = e.target.closest('.src-chip');
+    if (!b) return;
+    filter.src = b.dataset.src;
+    renderSrcbar();
+    render();
+  });
+  document.getElementById('q').addEventListener('input', (e) => {
+    filter.q = e.target.value.trim();
+    render();
+  });
+  document.getElementById('rail').addEventListener('click', (e) => {
+    const n = e.target.closest('.tnode');
+    if (!n) return;
+    const sec = document.querySelector(`.year-sec[data-year="${n.dataset.year}"]`);
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style is:global>
+  .hero {
+    margin-bottom: 24px;
+  }
+  .hero-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 22px;
+    width: 100%;
+  }
+  .hero-row .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--line);
+    padding-right: 28px;
+  }
+  .hero-row .right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 28px;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .hero .sub {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+    text-align: left;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 6px 6px 6px 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-pill);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .search:focus-within {
+    border-color: var(--indigo);
+    box-shadow: 0 6px 24px rgba(38, 38, 79, 0.12);
+  }
+  .search input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    font-size: 15px;
+    background: transparent;
+    color: var(--ink);
+  }
+  .search .icon {
+    color: var(--muted);
+  }
+  .search .sbtn {
+    border: 0;
+    background: var(--indigo);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .search .sbtn:hover {
+    opacity: 0.88;
+  }
+
+  .srcbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 28px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .src-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: var(--r-pill);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  }
+  .src-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  }
+  .src-chip .c {
+    font-size: 11px;
+    opacity: 0.8;
+  }
+  .src-chip.dim {
+    opacity: 0.4;
+  }
+  .src-chip.active {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 28px;
+  }
+  .rail {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+  }
+  .rail .line {
+    position: relative;
+    padding-left: 26px;
+    border-left: 2px solid var(--line);
+  }
+  .tnode {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 34px;
+    cursor: pointer;
+    color: #b0b0ba;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .tnode .dot {
+    position: absolute;
+    left: -31px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #d8d5cc;
+    border: 2px solid var(--bg);
+    transition: all 0.2s;
+  }
+  .tnode.active {
+    color: var(--indigo);
+    font-weight: 700;
+  }
+  .tnode.active .dot {
+    background: var(--indigo);
+    transform: scale(1.35);
+  }
+
+  .year-sec {
+    margin-bottom: 34px;
+  }
+  .year-sec h2 {
+    font-size: 24px;
+    margin: 0 0 14px;
+    font-weight: 700;
+    color: var(--indigo);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .year-sec h2 .n {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+  }
+  .art {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 150px;
+    padding: 18px 18px 16px;
+    border-radius: var(--r-card);
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .art::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 120% at 100% 0%, rgba(255, 255, 255, 0.1), transparent 55%);
+    pointer-events: none;
+  }
+  .art:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .art .kick {
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    opacity: 0.68;
+    margin-bottom: 8px;
+  }
+  .art .title {
+    font-family: var(--font-serif);
+    font-size: 17.5px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .art .hook {
+    font-size: 12.5px;
+    opacity: 0.6;
+    line-height: 1.6;
+    margin-top: 8px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .art .chiprow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 12px;
+  }
+  .art .chip {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .empty {
+    color: #aaa;
+    text-align: center;
+    padding: 40px 0;
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  source?: string;
+  section?: string;
+  year?: number;
+  author?: string;
+  role?: string;
+  project?: string;
+}
+const { title, source, section, year, author, role, project } = Astro.props;
+const kicker = [source || section, year != null ? String(year) : ''].filter(Boolean).join(' · ');
+---
+
+<header class="cover">
+  {kicker && <div class="kicker">{kicker}</div>}
+  <h1>{title}</h1>
+  <div class="meta">
+    {author && <span class="chip">👤 {author}</span>}
+    {role && <span class="chip">🎨 {role}</span>}
+    {project && <span class="chip">🎮 {project}</span>}
+  </div>
+</header>
+
+<style>
+  .cover {
+    position: relative;
+    border-radius: var(--r-card);
+    overflow: hidden;
+    padding: 36px 34px 34px;
+    color: #fff;
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(255, 255, 255, 0.14), transparent 55%),
+      linear-gradient(135deg, #26264f 0%, #3a3a72 60%, #26264f 100%);
+    box-shadow: 0 18px 40px rgba(38, 38, 79, 0.25);
+  }
+  .kicker {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+    margin-bottom: 14px;
+  }
+  .cover h1 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 16px;
+    letter-spacing: 0.5px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游戏设计知识库';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description ?? '从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。'} />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+</head>
+<body>
+  <slot />
+
+  <footer class="site-footer">
+    <p>最近更新：2026年6月6日</p>
+    <p>© 2026 jskyzero</p>
+  </footer>
+</body>
+</html>
+
+<style>
+  .site-footer {
+    text-align: center;
+    padding: 44px 20px 48px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+  }
+  .site-footer p {
+    margin: 4px 0;
+  }
+</style>

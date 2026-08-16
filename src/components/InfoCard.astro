@@ -1,0 +1,65 @@
+---
+interface Props {
+  author?: string;
+  role?: string;
+  sourceTitle?: string;
+  link?: string;
+  references?: { label: string; url: string; type: string }[];
+}
+const { author, role, sourceTitle, link, references = [] } = Astro.props;
+---
+
+<div class="info">
+  {author && <div class="row"><span class="k">作者 / 分享人</span><span class="v">{author}</span></div>}
+  {role && <div class="row"><span class="k">职位</span><span class="v">{role}</span></div>}
+  {sourceTitle && <div class="row"><span class="k">原标题</span><span class="v">{sourceTitle}</span></div>}
+  {link && (
+    <div class="row"><span class="k">源链接</span><span class="v"><a href={link} target="_blank" rel="noopener">{link}</a></span></div>
+  )}
+  {references.length > 0 && (
+    <div class="row">
+      <span class="k">参考</span>
+      <span class="v">
+        {references.map((r, i) => (
+          <span>
+            {i > 0 && ' · '}
+            <a href={r.url} target="_blank" rel="noopener">{r.label}</a>
+          </span>
+        ))}
+      </span>
+    </div>
+  )}
+</div>
+
+<style>
+  .info {
+    margin: 18px 0;
+    background: var(--card);
+    border-radius: var(--r-card);
+    border: 1px solid var(--line);
+    padding: 6px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  }
+  .row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .row:last-child {
+    border-bottom: 0;
+  }
+  .k {
+    flex: 0 0 96px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .v {
+    flex: 1;
+    font-size: 14.5px;
+    word-break: break-all;
+  }
+  .v a {
+    color: var(--indigo);
+    border-bottom: 1px solid rgba(38, 38, 79, 0.25);
+  }
+</style>

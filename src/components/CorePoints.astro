@@ -1,0 +1,41 @@
+---
+interface Props {
+  points?: { icon?: string; title: string }[];
+}
+const { points = [] } = Astro.props;
+---
+
+{points.length > 0 && (
+  <div class="points">
+    {points.map((p) => (
+      <div class="point">
+        {p.icon && <span class="icon">{p.icon}</span>}
+        <span class="title">{p.title}</span>
+      </div>
+    ))}
+  </div>
+)}
+
+<style>
+  .points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0;
+  }
+  .point {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: var(--r-pill);
+    background: var(--card);
+    border: 1px solid var(--line);
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--indigo);
+  }
+  .icon {
+    font-size: 16px;
+  }
+</style>

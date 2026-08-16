@@ -1,0 +1,31 @@
+/* ==========================================================================
+   设计 Token —— 全站视觉的唯一事实来源
+   后期频繁调 CSS 时，优先改这里。
+   ========================================================================== */
+:root {
+  /* —— 颜色 —— */
+  --bg: #faf9f6;              /* 页面底色（暖纸） */
+  --card: #ffffff;            /* 卡片底色 */
+  --ink: #1d1d26;             /* 主文字 */
+  --muted: #83838d;           /* 次级文字 */
+  --line: #ece8df;            /* 分隔线 / 边框 */
+  --indigo: #26264f;          /* 主强调（深靛） */
+  --accent: #ff5a4e;          /* 点缀（珊瑚红） */
+
+  /* —— 圆角（苹果风格统一） —— */
+  --r-card: 18px;             /* 卡片 / 容器 */
+  --r-pill: 999px;            /* 胶囊（按钮 / 搜索 / 标签） */
+
+  /* —— 间距 —— */
+  --gap-s: 8px;
+  --gap: 14px;
+  --gap-l: 28px;
+
+  /* —— 字体 —— */
+  --font-serif: 'LXGW WenKai', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+
+  /* —— 阴影 —— */
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.16);
+  --shadow-card-hover: 0 18px 38px rgba(0, 0, 0, 0.24);
+}
