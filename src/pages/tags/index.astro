@@ -4,11 +4,11 @@ import { getCollection } from 'astro:content';
 const docs = await getCollection('docs');
 const SECTION_ORDER = ['Capcom', 'PlatinumGames', 'Santa Monica Studio', 'FTG 相关', '其他', 'Nintendo', '非 GDC', '设计者笔记'];
 
-const gameName = (t) => (t || '').split('·')[0].trim();
+const gameName = (p) => (p || '').split('（')[0].trim();
 const entries = docs
   .filter((d) => d.id !== 'index.mdx')
   .map((d) => ({
-    title: d.data.event ? `${d.data.event} · ${gameName(d.data.title)}` : d.data.title,
+    title: d.data.event && d.data.project ? `${d.data.event} · ${gameName(d.data.project)}` : d.data.title,
     section: d.data.section ?? '未分类',
     year: d.data.year,
     insight: d.data.insight ?? '',
