@@ -16,12 +16,13 @@ const schema = z.object({
   section: z.string().optional(),
   status: z.enum(['done', 'wip']).default('done'),
   insight: z.string().optional(),
-  speaker: z.string().optional(),
+  corePoints: z.array(z.object({ icon: z.string().optional(), title: z.string() })).default([]),
+  author: z.string().optional(),
   role: z.string().optional(),
   project: z.string().optional(),
-  event: z.string().optional(),
-  talkTitle: z.string().optional(),
-  video: z.string().optional(),
+  source: z.string().optional(),
+  sourceTitle: z.string().optional(),
+  link: z.string().optional(),
   references: z
     .array(
       z.object({

@@ -8,7 +8,7 @@ const gameName = (p) => (p || '').split('（')[0].trim();
 const entries = docs
   .filter((d) => d.id !== 'index.mdx')
   .map((d) => ({
-    title: d.data.event && d.data.project ? `${d.data.event} · ${gameName(d.data.project)}` : d.data.title,
+    title: d.data.source && d.data.project ? `${d.data.source} · ${gameName(d.data.project)}` : d.data.title,
     section: d.data.section ?? '未分类',
     year: d.data.year,
     insight: d.data.insight ?? '',

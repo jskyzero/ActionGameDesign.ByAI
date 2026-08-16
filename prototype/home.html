@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>交互原型 · 主页图片流</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+  <style>
+    :root {
+      --paper: #f5f3ee;
+      --card: #ffffff;
+      --ink: #23232b;
+      --muted: #8b8b96;
+      --line: #ece8e0;
+      --accent: #ff5a4e;
+      --indigo: #26264f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* 头部 */
+    .head h1 {
+      font-family: 'LXGW WenKai', 'PingFang SC', sans-serif;
+      font-size: 30px; margin: 0 0 8px; letter-spacing: 1px;
+    }
+    .head .sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+
+    /* 标签筛选 */
+    .chips {
+      position: sticky; top: 0; z-index: 5;
+      display: flex; gap: 8px; overflow-x: auto;
+      padding: 10px 0; margin: 0 -4px 22px;
+      background: var(--paper);
+      -webkit-overflow-scrolling: touch;
+    }
+    .chip {
+      flex-shrink: 0;
+      font-size: 13px; padding: 6px 14px; border-radius: 999px;
+      background: var(--card); border: 1px solid var(--line); color: #555;
+      cursor: pointer; user-select: none; transition: all .15s;
+    }
+    .chip.active { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+
+    /* 图片流（瀑布流） */
+    .grid { columns: 3 270px; column-gap: 16px; }
+    .card {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .18s, box-shadow .18s;
+      display: block; text-decoration: none; color: inherit;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,.08); }
+
+    .cover { position: relative; width: 100%; }
+    .cover img { width: 100%; display: block; object-fit: cover; object-position: top; }
+    .cover .fallback {
+      width: 100%; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      background:
+        radial-gradient(120% 130% at 100% 0%, rgba(255,90,78,.20), transparent 55%),
+        linear-gradient(135deg, #26264f, #3a3a72);
+      color: #fff; font-family: 'LXGW WenKai', sans-serif;
+      font-size: 17px; padding: 18px; text-align: center; line-height: 1.5;
+    }
+    .cover .year {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(0,0,0,.5); color: #fff;
+      font-size: 11.5px; padding: 3px 9px; border-radius: 999px;
+      backdrop-filter: blur(3px);
+    }
+    .card-body { padding: 12px 14px 14px; }
+    .card-title { font-size: 15px; font-weight: 600; margin: 0 0 6px; color: #1f1f2b; }
+    .card-hook { font-size: 12.5px; color: var(--muted); line-height: 1.65; margin: 0 0 10px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .t { font-size: 11px; color: #999; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; }
+    .empty { display: none; text-align: center; color: #aaa; padding: 40px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="head">
+      <h1>动作游戏设计知识库</h1>
+      <p class="sub">AI 驱动的动作游戏设计分享集合 · 点击标签筛选 · 点击卡片进入文章</p>
+    </header>
+
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">没有匹配的内容</div>
+  </div>
+
+  <script>
+    // 示例数据（正式版从 Astro 内容集合读取）
+    const DATA = [
+      { year: 2023, title: '动作游戏设计的 SSS 方法', hook: 'Situation-Solution-Stage，情形-解决-编排。', tags: ['方法论','SSS'], img: '../public/images/gdc/8.png' },
+      { year: 2023, title: '2023 · 战神 AI', hook: '战神 AI 从 Lua 转行为树的迭代与经验。', tags: ['战神','AI','行为树'], img: '' },
+      { year: 2019, title: '2019 · 鬼泣 5', hook: '核心乐趣：克服困难并调整的成就感。', tags: ['鬼泣','核心乐趣'], img: '../public/images/gdc/2.png' },
+      { year: 2019, title: '2019 · FTG 十年来的易玩性', hook: '如何为古老的 FTG 游戏扩充受众。', tags: ['格斗','易玩性'], img: '' },
+      { year: 2018, title: '2018 · 怪物猎人 世界', hook: '在实机原型中验证概念、制作技术与标准。', tags: ['怪物猎人','原型'], img: '../public/images/gdc/7.png' },
+      { year: 2018, title: '2018 · 尼尔', hook: '自由感是玩家突破限制的那一刻。', tags: ['尼尔','自由感'], img: '../public/images/gdc/6.png' },
+      { year: 2017, title: '2017 · 街霸 5', hook: '在满足「瞬间传达信息」的前提下，再考虑独特美术表现。', tags: ['街霸','美术设计','信息传达'], img: '../public/images/gdc/1.png' },
+      { year: 2017, title: '2017 · 仁王', hook: '如何通过玩家反馈来重塑游戏。', tags: ['仁王','玩家反馈'], img: '../public/images/gdc/9.png' },
+      { year: 2017, title: '2017 · 塞尔达 旷野之息', hook: '勇气三角革新玩法，智慧三角想法落地，力量三角美学统一。', tags: ['塞尔达','任天堂'], img: '' },
+      { year: 2016, title: '2016 · 无国界 ACT', hook: '动作游戏的本质是「被动游戏」：根据状况做出响应。', tags: ['白金工作室','被动游戏'], img: '../public/images/gdc/3.png' },
+      { year: 2015, title: '2015 · 罪恶装备 Xrd', hook: '在 3D 框架内重建经典 2D 格斗视觉。', tags: ['罪恶装备','渲染'], img: '' },
+      { year: 2015, title: '河森正治 · 原创性', hook: '跟不同次元的事物融合。', tags: ['原创性','融合'], img: '../public/images/gdc/4.png' },
+      { year: 0, title: '动作游戏的本质', hook: '通过奖惩设计，让玩家控制角色行动这件事更有乐趣。', tags: ['方法论','MDA'], img: '../public/images/act/xmind-0.png' },
+      { year: 0, title: '关卡设计术语', hook: '掌握常用关卡设计术语。', tags: ['关卡设计','术语'], img: '../public/images/gdc/5.png' },
+    ];
+
+    const allTags = [...new Set(DATA.flatMap(d => d.tags))].sort();
+
+    function renderChips() {
+      const chips = document.getElementById('chips');
+      chips.innerHTML = ['全部', ...allTags].map(t =>
+        `<button class="chip${t === '全部' ? ' active' : ''}" data-tag="${t}">${t}</button>`).join('');
+    }
+
+    function cardHtml(d) {
+      const cover = d.img
+        ? `<img src="${d.img}" alt="" loading="lazy" />`
+        : `<div class="fallback">${d.title}</div>`;
+      const yearBadge = d.year ? `<span class="year">${d.year}</span>` : '';
+      return `<a class="card" href="#" data-tags="${d.tags.join(',')}">
+        <div class="cover">${cover}${yearBadge}</div>
+        <div class="card-body">
+          <h3 class="card-title">${d.title}</h3>
+          <p class="card-hook">${d.hook}</p>
+          <div class="card-tags">${d.tags.map(t => `<span class="t">${t}</span>`).join('')}</div>
+        </div>
+      </a>`;
+    }
+
+    function render(tag) {
+      const grid = document.getElementById('grid');
+      const list = DATA.filter(d => !tag || tag === '全部' || d.tags.includes(tag))
+        .sort((a, b) => b.year - a.year || a.title.localeCompare(b.title, 'zh'));
+      grid.innerHTML = list.map(cardHtml).join('');
+      document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+    }
+
+    renderChips();
+    render('全部');
+    document.getElementById('chips').addEventListener('click', (e) => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render(btn.dataset.tag);
+    });
+  </script>
+</body>
+</html>
