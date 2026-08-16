@@ -1,0 +1,46 @@
+/* 全局样式：动作游戏知识库 */
+
+:root {
+  --accent: #1f2766;
+  --accent-soft: #4d86db;
+}
+
+/* 让 Starlight 主色调贴近 XMind 深蓝主题 */
+:root[data-theme='light'] {
+  --sl-color-accent: var(--accent);
+  --sl-color-accent-high: #141a45;
+}
+
+/* 首页 / 详情页的中文排版 */
+.sl-markdown-content {
+  line-height: 1.85;
+}
+
+/* 一句话金句引用块 */
+blockquote.insight {
+  border-inline-start: 3px solid var(--accent);
+  background: rgba(31, 39, 102, 0.04);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+/* 参考链接列表 */
+.references {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0.5rem 0;
+}
+.references a {
+  text-decoration: none;
+}
+.references .ref-type {
+  display: inline-block;
+  font-size: 0.72em;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 0.4em;
+  margin-inline-end: 0.4em;
+}

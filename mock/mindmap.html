@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>动作游戏知识库 · 导图视觉 mock</title>
+
+  <!-- 依赖加载顺序：d3 → katex → 手写字体 → markmap-lib → markmap-view -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.18.12/dist/browser/index.iife.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script>
+
+  <style>
+    :root {
+      --xmind-bg: #ffffff;
+      --xmind-root: #1f2766;
+      --xmind-text: #3a3a4a;
+    }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: var(--xmind-bg);
+      overflow: hidden;
+    }
+
+    /* 视框铺满（修复「预览视框很小」） */
+    svg#mindmap {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+
+    .markmap {
+      --markmap-font: 400 15px/1.6 'LXGW WenKai', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      --markmap-text-color: var(--xmind-text);
+      --markmap-circle-open-bg: #fff;
+      --markmap-max-width: 9999px;
+    }
+
+    /* 分支连线：等宽圆滑 + 手绘抖动滤镜（对应 line-tapered:none + handdrawn-solid）
+       只对曲线路径加滤镜；卡片内的水平短横线被卡片遮挡，无需滤镜（也避免水平线被裁） */
+    .markmap-link {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: url(#rough-line);
+      opacity: 0.9;
+    }
+    g.markmap-node > line {
+      fill: none;
+      stroke-linecap: round;
+      opacity: 0.9;
+    }
+
+    /* 收起/展开圆点：隐藏 */
+    .markmap-node > circle { display: none; }
+
+    .markmap-foreign { display: inline-block; }
+    .markmap-foreign p { margin: 0; }
+
+    /* ===== 每层节点都是圆角卡片 + 斜纹填充（对应 roundedRect + hachure-thin） ===== */
+    .mm-card {
+      display: inline-block;
+      box-sizing: border-box;
+      border-radius: 9px;
+      border: 1.5px solid #e7e7f0;
+      line-height: 1.5;
+      white-space: nowrap;
+      background-image: repeating-linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.055) 0,
+        rgba(0, 0, 0, 0.055) 1.2px,
+        transparent 1.2px,
+        transparent 6px
+      );
+    }
+
+    /* 中心主题：深蓝实底 + 白字 + 白色斜纹 */
+    .mm-root {
+      background-color: var(--xmind-root);
+      background-image: repeating-linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.10) 0,
+        rgba(255, 255, 255, 0.10) 1.2px,
+        transparent 1.2px,
+        transparent 6px
+      );
+      color: #fff;
+      font-weight: 600;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      border: 2px solid var(--xmind-root);
+      box-shadow: 0 3px 12px rgba(31, 39, 102, 0.22);
+    }
+
+    /* 一级分支：字色/边框/底色都随分支色（inline 设置 background-color/border-color/color） */
+    .mm-main {
+      font-weight: 600;
+      font-size: 16px;
+      padding: 8px 18px;
+    }
+
+    /* 二级节点 */
+    .mm-sub {
+      font-weight: 500;
+      font-size: 15px;
+      color: #23232f;
+      background-color: #fbfbfd;
+      border-color: #e7e7f0;
+      padding: 6px 16px;
+    }
+
+    /* 叶节点 */
+    .mm-note {
+      font-size: 14px;
+      color: #6a6a7a;
+      background-color: #ffffff;
+      border-color: #f0f0f6;
+      padding: 6px 16px;
+    }
+
+    .hint {
+      position: fixed;
+      left: 14px;
+      bottom: 12px;
+      font: 400 12px/1 'LXGW WenKai', sans-serif;
+      color: #b0b0bb;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <svg id="mindmap">
+    <!-- 手绘抖动滤镜：给线条加入细微随机偏移 -->
+    <defs>
+      <!-- 用 userSpaceOnUse + 固定大区域，避免水平线（包围盒高度为 0）被 objectBoundingBox 区域裁掉 -->
+      <filter id="rough-line" filterUnits="userSpaceOnUse" x="-1000" y="-1500" width="5000" height="3500">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="4" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+  <div class="hint">视觉 mock · 全层级圆角卡片 + 斜纹 + 手绘抖动线条 + 六彩配色（滚轮缩放 / 拖拽平移）</div>
+
+  <script type="text/markdown" id="source">
+# 动作游戏 GDC 分享
+
+- Capcom
+  - 2017 街霸 5
+    - 在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
+  - 2018 怪物猎人 世界
+    - 在实机原型中进行概念的尝试、制作技术和标准的验证与测试。
+  - 2019 鬼泣 5
+    - 核心乐趣：克服困难并调整的成就感，这是 30 多年未变的真理。
+- PlatinumGames
+  - 2016 无国界 ACT
+    - 动作游戏的本质是「被动游戏」：要求玩家根据不同的「状况」做出对应响应。
+  - 2018 尼尔
+    - 自由感是玩家突破限制的那一刻：「卧槽，还能这样！」
+- Santa Monica Studio
+  - 2019 战神 · 战斗系统
+    - 新视角下战斗系统的革新。
+  - 2019 战神 · 关卡
+    - 6 条新关卡设计规则 & 从概念到完成的最佳实践。
+  - 2023 战神 · AI
+    - AI 从 Lua 转行为树的迭代 & 经验之谈。
+- FTG 相关
+  - 2014 骷髅女孩
+    - 如何在 2D 游戏中获得最清晰、最流畅的动画，并使其与玩法配合。
+  - 2019 FTG 十年来的易玩性
+    - 如何为古老的 FTG 扩充受众。
+  </script>
+
+  <script>
+    (async function () {
+      const { Transformer, Markmap } = window.markmap;
+      if (!Transformer || !Markmap) {
+        document.body.innerHTML =
+          '<p style="font-family:sans-serif;padding:24px">依赖加载失败（需联网加载 CDN），请刷新或检查网络。</p>';
+        return;
+      }
+
+      const palette = ['#fa8155', '#ffad36', '#b7c82b', '#0098b9', '#7574bc', '#a165a8'];
+      const rootColor = '#1f2766';
+      const linkShape = d3.linkHorizontal();
+
+      const md = document.getElementById('source').textContent;
+      const { root } = new Transformer().transform(md);
+
+      function tint(hex, a) {
+        const n = parseInt(hex.slice(1), 16);
+        const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+        return `rgba(${r},${g},${b},${a})`;
+      }
+
+      // ---- 文字装饰：每一层套上对应卡片 ----
+      let branchSeq = 0;
+      function decorate(node, depth) {
+        if (depth === 0) {
+          node.content = `<div class="mm-card mm-root">${node.content}</div>`;
+        } else if (depth === 1) {
+          const idx = branchSeq++;
+          const c = palette[idx % palette.length];
+          node.content =
+            `<div class="mm-card mm-main" style="color:${c};border-color:${tint(c, 0.55)};background-color:${tint(c, 0.10)}">${node.content}</div>`;
+        } else if (depth === 2) {
+          node.content = `<div class="mm-card mm-sub">${node.content}</div>`;
+        } else {
+          node.content = `<div class="mm-card mm-note">${node.content}</div>`;
+        }
+        (node.children || []).forEach((c) => decorate(c, depth + 1));
+      }
+      decorate(root, 0);
+
+      // ---- 连线颜色：按「一级分支序号」冻结 ----
+      const branchOrd = new Map();
+      let nextOrd = 0;
+      function lineColor(d) {
+        const depth = d.state && d.state.depth;
+        if (!depth || depth <= 1) return rootColor;
+        const branchId = (d.state.path || '').split('.')[1];
+        if (!branchOrd.has(branchId)) branchOrd.set(branchId, nextOrd++);
+        return palette[branchOrd.get(branchId) % palette.length];
+      }
+
+      const mm = new Markmap('#mindmap', {
+        color: lineColor,
+        lineWidth: () => 2,        // 等宽线（对应 line-tapered: none）
+        autoFit: true,
+        fitRatio: 0.82,
+        initialExpandLevel: -1,
+        zoom: true,
+        pan: true,
+        duration: 0,
+        paddingX: 18,
+        spacingHorizontal: 88,
+        spacingVertical: 14,
+        nodeMinHeight: 34,
+      });
+
+      // ---- 把连线锚点从「节点底边」改到「垂直居中」 ----
+      function centerAnchors() {
+        const svg = document.getElementById('mindmap');
+        if (!svg) return;
+
+        svg.querySelectorAll('path.markmap-link').forEach((p) => {
+          const d = p.__data__;
+          if (!d || !d.source || !d.target) return;
+          const s = d.source.state && d.source.state.rect;
+          const t = d.target.state && d.target.state.rect;
+          if (!s || !t) return;
+          const dd = linkShape({
+            source: [s.x + s.width, s.y + s.height / 2],
+            target: [t.x, t.y + t.height / 2],
+          });
+          if (p.getAttribute('d') !== dd) p.setAttribute('d', dd);
+        });
+
+        svg.querySelectorAll('g.markmap-node').forEach((g) => {
+          const d = g.__data__;
+          if (!d || !d.state || !d.state.rect) return;
+          const h = d.state.rect.height;
+          const line = g.querySelector('line');
+          if (line) {
+            if (line.getAttribute('y1') !== String(h / 2)) line.setAttribute('y1', h / 2);
+            if (line.getAttribute('y2') !== String(h / 2)) line.setAttribute('y2', h / 2);
+          }
+          const c = g.querySelector('circle');
+          if (c && c.getAttribute('cy') !== String(h / 2)) c.setAttribute('cy', h / 2);
+        });
+      }
+
+      await mm.setData(root);
+      mm.fit();
+      centerAnchors();
+
+      // markmap 在窗口尺寸变化时会重新布局并把锚点重置回底边，这里侦听变化再修正回来
+      const svgNode = document.getElementById('mindmap');
+      const mo = new MutationObserver(() => requestAnimationFrame(centerAnchors));
+      mo.observe(svgNode, {
+        attributes: true,
+        subtree: true,
+        attributeFilter: ['d', 'y1', 'y2', 'cy'],
+      });
+    })();
+  </script>
+</body>
+</html>

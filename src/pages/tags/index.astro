@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+
+const docs = await getCollection('docs');
+const entries = docs
+  .filter((d) => d.id.startsWith('talks/'))
+  .map((d) => ({
+    id: d.id,
+    title: d.data.title,
+    year: d.data.year,
+    studio: d.data.studio ?? '',
+    insight: d.data.insight ?? '',
+    tags: d.data.tags ?? [],
+    status: d.data.status,
+    href: `/${d.slug}/`,
+  }))
+  .sort((a, b) => (a.year ?? 0) - (b.year ?? 0) || a.title.localeCompare(b.title, 'zh'));
+
+const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort((a, b) => a.localeCompare(b, 'zh'));
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>标签浏览 · 动作游戏知识库</title>
+  <style>
+    :root { --accent: #1f2766; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      color: #333;
+      background: #fafafa;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    h1 { font-size: 24px; font-weight: 600; margin: 0 0 0.4rem; }
+    .sub { color: #888; font-size: 14px; margin-bottom: 1.2rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 1.5rem; }
+    .chip {
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #555;
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+    .card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 16px 18px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); border-color: #d8d8e6; }
+    .card-top { display: flex; align-items: center; gap: 8px; }
+    .card-title { font-size: 16px; font-weight: 600; color: #1f1f2b; }
+    .badge {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid #e0e0ea;
+      color: #777;
+      flex-shrink: 0;
+    }
+    .badge.wip { color: #b7791f; border-color: #f0d9a8; background: #fff8e8; }
+    .badge.done { color: #2f855a; border-color: #c6e6d0; background: #eefbf2; }
+    .card-meta { font-size: 12.5px; color: #999; }
+    .card-insight { font-size: 13.5px; color: #555; line-height: 1.6; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag { font-size: 11px; color: #777; background: #f2f2f6; border-radius: 4px; padding: 2px 6px; }
+    .empty { color: #aaa; font-size: 14px; padding: 2rem 0; text-align: center; }
+    .back { display: inline-block; margin-bottom: 1.5rem; color: var(--accent); font-size: 14px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/">← 返回知识库</a>
+    <h1>标签浏览</h1>
+    <p class="sub">共 {entries.length} 条分享 · 点击标签筛选</p>
+    <div class="chips" id="chips">
+      <button class="chip active" data-tag="">全部</button>
+      {allTags.map((t) => <button class="chip" data-tag={t}>{t}</button>)}
+    </div>
+    <div class="grid" id="grid">
+      {entries.map((e) => (
+        <a class="card" href={e.href} data-tags={e.tags.join(',')}>
+          <div class="card-top">
+            <span class="card-title">{e.title}</span>
+            <span class={`badge ${e.status}`}>{e.status === 'done' ? '已整理' : '待施工'}</span>
+          </div>
+          <div class="card-meta">{e.studio}{e.year ? ` · ${e.year}` : ''}</div>
+          {e.insight && <div class="card-insight">{e.insight}</div>}
+          <div class="card-tags">{e.tags.map((t) => <span class="tag">{t}</span>)}</div>
+        </a>
+      ))}
+    </div>
+    <div class="empty" id="empty" hidden>没有匹配的条目</div>
+  </div>
+
+  <script is:inline>
+    const chips = document.querySelectorAll('#chips .chip');
+    const cards = document.querySelectorAll('#grid .card');
+    const empty = document.getElementById('empty');
+
+    function filter(tag) {
+      let shown = 0;
+      cards.forEach((c) => {
+        const tags = (c.dataset.tags || '').split(',').filter(Boolean);
+        const match = !tag || tags.includes(tag);
+        c.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      empty.hidden = shown > 0;
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.classList.remove('active'));
+        chip.classList.add('active');
+        filter(chip.dataset.tag);
+      });
+    });
+  </script>
+</body>
+</html>
