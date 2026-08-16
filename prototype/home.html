@@ -11,7 +11,7 @@
     body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif; -webkit-font-smoothing: antialiased; }
     .wrap { max-width: 1160px; margin: 0 auto; padding: 44px 28px 100px; }
 
-    .hero { margin-bottom: 34px; }
+    .hero { margin-bottom: 24px; }
     .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0 0 10px; letter-spacing: 1px; }
     .hero .sub { color: var(--muted); font-size: 15px; margin: 0 0 20px; }
     .search { display: flex; align-items: center; gap: 10px; max-width: 580px; padding: 13px 18px; background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.05); transition: box-shadow .2s, border-color .2s; }
@@ -19,33 +19,38 @@
     .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
     .search .icon { color: var(--muted); }
 
-    /* 时间轴布局 */
-    .layout { display: grid; grid-template-columns: 120px 1fr; gap: 28px; }
+    /* 来源筛选（颜色 = 卡片同款 hash 渐变） */
+    .srcbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; }
+    .src-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 0; cursor: pointer; color: #fff; font-family: inherit;
+      font-size: 13px; padding: 7px 14px; border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      transition: transform .15s, box-shadow .15s, opacity .15s;
+    }
+    .src-chip:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,.18); }
+    .src-chip .c { font-size: 11px; opacity: .8; }
+    .src-chip.dim { opacity: .4; }
+    .src-chip.active { outline: 2px solid #1d1d26; outline-offset: 2px; }
 
-    /* 左侧时间轴（吸顶，滚动高亮） */
+    .layout { display: grid; grid-template-columns: 120px 1fr; gap: 28px; }
     .rail { position: sticky; top: 40px; align-self: start; height: calc(100vh - 80px); overflow: hidden; }
     .rail .line { position: relative; padding-left: 26px; border-left: 2px solid var(--line); }
-    .tnode {
-      position: relative; display: flex; align-items: center; height: 34px; cursor: pointer;
-      color: #b0b0ba; font-size: 13px; transition: color .2s;
-    }
+    .tnode { position: relative; display: flex; align-items: center; height: 34px; cursor: pointer; color: #b0b0ba; font-size: 13px; transition: color .2s; }
     .tnode .dot { position: absolute; left: -31px; width: 9px; height: 9px; border-radius: 50%; background: #d8d5cc; border: 2px solid #faf9f6; transition: all .2s; }
     .tnode.active { color: var(--indigo); font-weight: 700; }
     .tnode.active .dot { background: var(--indigo); transform: scale(1.35); }
 
-    /* 右侧内容 */
     .year-sec { margin-bottom: 34px; }
-    .year-sec h2 { font-size: 24px; margin: 0 0 14px; font-weight: 700; color: var(--indigo); display: flex; align-items: baseline; gap: 10px; }
+    .year-sec h2 { font-size: 24px; margin: 0 0 14px; font-weight:700; color: var(--indigo); display: flex; align-items: baseline; gap: 10px; }
     .year-sec h2 .n { font-size: 13px; color: var(--muted); font-weight: 400; }
     .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
 
-    /* 文章卡片（hash 渐变背景） */
     .art {
       position: relative; display: flex; flex-direction: column; justify-content: space-between;
       min-height: 150px; padding: 18px 18px 16px; border-radius: 14px; overflow: hidden;
       text-decoration: none; color: #fff; cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,.16);
-      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,.16); transition: transform .2s ease, box-shadow .2s ease;
     }
     .art::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 120% at 100% 0%, rgba(255,255,255,.10), transparent 55%); pointer-events: none; }
     .art:hover { transform: translateY(-5px); box-shadow: 0 18px 38px rgba(0,0,0,.24); }
@@ -54,6 +59,7 @@
     .art .hook { font-size: 12.5px; opacity: .6; line-height: 1.6; margin-top: 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
     .art .chiprow { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
     .art .chip { font-size: 11px; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); }
+    .empty { display: none; color: #aaa; text-align: center; padding: 40px 0; }
   </style>
 </head>
 <body>
@@ -64,10 +70,13 @@
       <div class="search"><span class="icon">🔍</span><input id="q" placeholder="搜索分享标题、观点…" /></div>
     </header>
 
+    <div class="srcbar" id="srcbar"></div>
+
     <div class="layout">
       <aside class="rail"><div class="line" id="rail"></div></aside>
       <main id="content"></main>
     </div>
+    <div class="empty" id="empty">没有匹配的内容</div>
   </div>
 
   <script>
@@ -90,35 +99,42 @@
       { t: '动作游戏的本质', h: '通过奖惩设计，让玩家控制角色行动这件事更有乐趣。', s: '设计者笔记', y: 0, g: ['方法论'] },
     ];
 
-    // 来源名 hash → 渐变
     function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
-    function gradientFor(str) {
-      const hue = hash(str) % 360;
-      return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`;
-    }
+    function gradientFor(str) { const hue = hash(str) % 360; return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`; }
 
-    let filter = { q: '' };
+    const SRC_ORDER = ['Capcom','PlatinumGames','Santa Monica Studio','FTG 相关','其他','Nintendo','非 GDC','设计者笔记'];
+    const SRC_SET = [...new Set(DATA.map(d => d.s))].sort((a,b) => (SRC_ORDER.indexOf(a) - SRC_ORDER.indexOf(b)));
+
+    let filter = { q: '', src: '' };
     function visible() {
-      return DATA.filter(d => !filter.q || (d.t + d.h + d.s).toLowerCase().includes(filter.q.toLowerCase()));
+      return DATA.filter(d =>
+        (!filter.src || d.s === filter.src) &&
+        (!filter.q || (d.t + d.h + d.s).toLowerCase().includes(filter.q.toLowerCase()))
+      );
     }
-
-    // 按年份分组（未知年份归「未标注」）
     function grouped() {
       const m = new Map();
-      for (const d of visible()) {
-        const k = d.y || '未标注';
-        if (!m.has(k)) m.set(k, []);
-        m.get(k).push(d);
-      }
+      for (const d of visible()) { const k = d.y || '未标注'; if (!m.has(k)) m.set(k, []); m.get(k).push(d); }
       const keys = [...m.keys()].sort((a, b) => (b === '未标注' ? -1 : a === '未标注' ? 1 : b - a));
       return keys.map(k => ({ year: k, items: m.get(k) }));
     }
-
     function artHtml(d) {
       return `<a class="art" href="#" style="background:${gradientFor(d.s)}">
         <div><div class="kick">${d.s}${d.y ? ' · ' + d.y : ''}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
         <div class="chiprow">${d.g.map(g => `<span class="chip">${g}</span>`).join('')}</div>
       </a>`;
+    }
+
+    function renderSrcbar() {
+      document.getElementById('srcbar').innerHTML = [
+        `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="" style="background:linear-gradient(140deg,#26264f,#3a3a72)">全部<span class="c">${DATA.length}</span></button>`,
+        ...SRC_SET.map(s => {
+          const n = DATA.filter(d => d.s === s).length;
+          const active = filter.src === s ? ' active' : '';
+          const dim = (filter.src && filter.src !== s) ? ' dim' : '';
+          return `<button class="src-chip${active}${dim}" data-src="${s}" style="background:${gradientFor(s)}">${s}<span class="c">${n}</span></button>`;
+        })
+      ].join('');
     }
 
     function render() {
@@ -130,20 +146,24 @@
         </section>`).join('');
       document.getElementById('rail').innerHTML = groups.map(gr =>
         `<div class="tnode" data-year="${gr.year}"><span class="dot"></span>${gr.year}</div>`).join('');
+      document.getElementById('empty').style.display = visible().length ? 'none' : 'block';
 
-      // 滚动联动：高亮当前年份
       const io = new IntersectionObserver(entries => {
-        entries.forEach(en => {
-          if (en.isIntersecting) {
-            const y = en.target.dataset.year;
-            document.querySelectorAll('.tnode').forEach(n => n.classList.toggle('active', n.dataset.year === y));
-          }
-        });
+        entries.forEach(en => { if (en.isIntersecting) {
+          const y = en.target.dataset.year;
+          document.querySelectorAll('.tnode').forEach(n => n.classList.toggle('active', n.dataset.year === y));
+        }});
       }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
       document.querySelectorAll('.year-sec').forEach(s => io.observe(s));
     }
 
-    render();
+    renderSrcbar(); render();
+
+    document.getElementById('srcbar').addEventListener('click', e => {
+      const b = e.target.closest('.src-chip'); if (!b) return;
+      filter.src = b.dataset.src;
+      renderSrcbar(); render();
+    });
     document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim(); render(); });
     document.getElementById('rail').addEventListener('click', e => {
       const n = e.target.closest('.tnode'); if (!n) return;
