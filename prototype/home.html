@@ -15,9 +15,9 @@
     .hero { margin-bottom: 30px; }
     .hero-row { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 22px; width: 100%; }
     .hero-row .left { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--line); padding-right: 28px; }
-    .hero-row .right { display: flex; align-items: center; justify-content: flex-end; padding-left: 28px; }
+    .hero-row .right { display: flex; align-items: center; justify-content: flex-start; padding-left: 28px; }
     .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0; letter-spacing: 1px; text-align: center; }
-    .hero .sub { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0; text-align: right; }
+    .hero .sub { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0; text-align: left; }
     .search { display: flex; align-items: center; gap: 10px; width: 100%; padding: 6px 6px 6px 18px; background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: box-shadow .2s, border-color .2s; }
     .search:focus-within { border-color: var(--indigo); box-shadow: 0 6px 24px rgba(38,38,79,.12); }
     .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
@@ -26,7 +26,7 @@
     .search .sbtn:hover { opacity: .88; }
 
     /* 来源筛选（颜色 = 卡片同款 hash 渐变） */
-    .srcbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; width: 100%; }
+    .srcbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; width: 100%; justify-content: space-between; }
     .src-chip {
       display: inline-flex; align-items: center; gap: 7px;
       border: 0; cursor: pointer; color: #fff; font-family: inherit;
