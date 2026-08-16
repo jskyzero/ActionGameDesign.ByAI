@@ -8,17 +8,28 @@ function add<K>(m: Map<K, any[]>, key: K, val: any) {
   m.get(key)!.push(val);
 }
 
-function buildMarkdown(dim: 'studio' | 'year' | 'tag' | 'kind'): string {
+// 顶层分组顺序（与原文一致）
+const SECTION_ORDER = ['Capcom', 'PlatinumGames', 'Santa Monica Studio', 'FTG 相关', '其他', 'Nintendo', '非 GDC', '设计者笔记'];
+function bySection(a: string, b: string): number {
+  const ia = SECTION_ORDER.indexOf(a);
+  const ib = SECTION_ORDER.indexOf(b);
+  return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+}
+
+function buildMarkdown(dim: 'section' | 'year' | 'tag' | 'kind'): string {
   const lines: string[] = ['# 动作游戏知识库'];
 
-  if (dim === 'studio') {
+  if (dim === 'section') {
     const groups = new Map<string, any[]>();
     for (const d of docs) {
-      if (!d.id.startsWith('talks/')) continue;
-      add(groups, d.data.studio ?? '未分类', d);
+      if (d.id === 'index.mdx') continue;
+      add(groups, d.data.section ?? '未分类', d);
     }
-    for (const [studio, items] of groups) {
-      lines.push(`- ${studio}`);
+    for (const section of [...groups.keys()].sort(bySection)) {
+      lines.push(`- ${section}`);
+      const items = [...groups.get(section)!].sort(
+        (a, b) => (a.data.year ?? 9999) - (b.data.year ?? 9999) || a.data.title.localeCompare(b.data.title, 'zh')
+      );
       for (const it of items) {
         lines.push(`  - ${it.data.title}`);
         if (it.data.insight) lines.push(`    - ${it.data.insight}`);
@@ -55,16 +66,16 @@ function buildMarkdown(dim: 'studio' | 'year' | 'tag' | 'kind'): string {
     const essays = docs.filter((d) => d.id.startsWith('essays/'));
     lines.push('- 分享索引（talk）');
     const sg = new Map<string, any[]>();
-    for (const d of talks) add(sg, d.data.studio ?? '未分类', d);
-    for (const [studio, items] of sg) {
-      lines.push(`  - ${studio}`);
-      for (const it of items) {
+    for (const d of talks) add(sg, d.data.section ?? '未分类', d);
+    for (const section of [...sg.keys()].sort(bySection)) {
+      lines.push(`  - ${section}`);
+      for (const it of sg.get(section)!) {
         lines.push(`    - ${it.data.title}`);
         if (it.data.insight) lines.push(`      - ${it.data.insight}`);
       }
     }
     if (essays.length) {
-      lines.push('- 方法论文章（essay）');
+      lines.push('- 设计者笔记（essay）');
       for (const e of essays) lines.push(`  - ${e.data.title}`);
     }
   }
@@ -73,7 +84,7 @@ function buildMarkdown(dim: 'studio' | 'year' | 'tag' | 'kind'): string {
 }
 
 const data = {
-  studio: buildMarkdown('studio'),
+  section: buildMarkdown('section'),
   year: buildMarkdown('year'),
   tag: buildMarkdown('tag'),
   kind: buildMarkdown('kind'),
@@ -192,7 +203,7 @@ const data = {
 </head>
 <body>
   <div class="toolbar" id="toolbar">
-    <button data-dim="studio" class="active">厂商</button>
+    <button data-dim="section" class="active">章节</button>
     <button data-dim="year">年份</button>
     <button data-dim="tag">标签</button>
     <button data-dim="kind">类型</button>
@@ -316,7 +327,7 @@ const data = {
         });
       });
 
-      render(data.studio);
+      render(data.section);
 
       const mo = new MutationObserver(() => requestAnimationFrame(centerAnchors));
       mo.observe(document.getElementById('mindmap'), {

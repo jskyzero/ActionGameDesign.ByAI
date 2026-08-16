@@ -15,11 +15,12 @@
 | `title` | string | ✅ | 展示名，分享建议 `年份 · 游戏名`（如 `2017 · 街霸 5`） |
 | `kind` | `talk` \| `essay` | ✅ | 内容类型，默认 `talk` |
 | `year` | number | talk | 分享年份 |
-| `studio` | string | talk | 厂商 / 作者（如 `Capcom`；非厂商内容用主题名，如 `FTG 相关`） |
+| `section` | string | ✅ | 顶层分组（Capcom / PlatinumGames / Santa Monica Studio / FTG 相关 / 其他 / Nintendo / 非 GDC / 设计者笔记） |
 | `status` | `done` \| `wip` | ✅ | `wip` = 待施工（替代旧 🚧） |
 | `insight` | string | 推荐 | 一句话总结 / 金句 |
 | `references` | array | | `[{ label, url, type }]`，`type` ∈ `original`/`translation`/`other` |
 | `tags` | string[] | 推荐 | 2~4 个标签，用于标签浏览与导图聚合 |
+| `image` | string | | 配图路径（迁移期用作内容占位，如 `/images/gdc/1.png`） |
 | `description` | string | | 卡片/搜索摘要 |
 | `sources` | string[] | | 原始出处（xmind / drawio / 链接） |
 

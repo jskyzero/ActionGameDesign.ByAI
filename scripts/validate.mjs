@@ -13,7 +13,7 @@ const schema = z.object({
   title: z.string().min(1),
   kind: z.enum(['talk', 'essay']).default('talk'),
   year: z.number().optional(),
-  studio: z.string().optional(),
+  section: z.string().optional(),
   status: z.enum(['done', 'wip']).default('done'),
   insight: z.string().optional(),
   references: z

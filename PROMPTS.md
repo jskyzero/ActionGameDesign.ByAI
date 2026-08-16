@@ -23,8 +23,8 @@
 ---
 title: <年份> · <游戏名>
 kind: talk
+section: <顶层分组>
 year: <年份数字>
-studio: <厂商/作者>
 status: wip
 insight: <一句话总结/金句，用中文引号「」>
 tags: [<2~4 个标签>]

@@ -23,7 +23,7 @@ export default defineConfig({
       sidebar: [
         { label: '知识库', link: '' },
         { label: '思维导图', link: '/mindmap' },
-        { label: '标签浏览', link: '/tags' },
+        { label: '目录浏览', link: '/tags' },
         {
           label: '分享索引（GDC）',
           items: [
@@ -31,9 +31,12 @@ export default defineConfig({
             { label: 'PlatinumGames', autogenerate: { directory: 'talks/platinumgames' } },
             { label: 'Santa Monica Studio', autogenerate: { directory: 'talks/santa-monica' } },
             { label: 'FTG 相关', autogenerate: { directory: 'talks/ftg' } },
+            { label: '其他', autogenerate: { directory: 'talks/other' } },
+            { label: 'Nintendo', autogenerate: { directory: 'talks/nintendo' } },
+            { label: '非 GDC', autogenerate: { directory: 'talks/non-gdc' } },
           ],
         },
-        { label: '方法论文章', autogenerate: { directory: 'essays' } },
+        { label: '设计者笔记', autogenerate: { directory: 'essays' } },
       ],
       lastUpdated: true,
     }),
