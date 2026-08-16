@@ -30,6 +30,7 @@ scripts/
 AGENTS.md                      # AI 贡献约定
 PROMPTS.md                     # AI 整理条目提示词模板
 EXTRACTION.md                  # 内容提取与沉淀规范
+docs/KNOWLEDGE.md              # 关键知识与决策记录（架构/设计系统/踩坑）
 ```
 
 ## 常用命令
