@@ -3,21 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>交互原型 · 主页探索（按来源分组）</title>
+  <title>交互原型 · 主页时间轴</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <style>
-    :root {
-      --bg: #faf9f6;
-      --ink: #1d1d26;
-      --muted: #83838d;
-      --line: #ece8df;
-      --indigo: #26264f;
-    }
+    :root { --bg: #faf9f6; --ink: #1d1d26; --muted: #83838d; --line: #ece8df; --indigo: #26264f; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif; -webkit-font-smoothing: antialiased; }
     .wrap { max-width: 1160px; margin: 0 auto; padding: 44px 28px 100px; }
 
-    .hero { margin-bottom: 30px; }
+    .hero { margin-bottom: 34px; }
     .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0 0 10px; letter-spacing: 1px; }
     .hero .sub { color: var(--muted); font-size: 15px; margin: 0 0 20px; }
     .search { display: flex; align-items: center; gap: 10px; max-width: 580px; padding: 13px 18px; background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.05); transition: box-shadow .2s, border-color .2s; }
@@ -25,139 +19,137 @@
     .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
     .search .icon { color: var(--muted); }
 
-    /* 年份筛选条（吸顶） */
-    .bar { position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; align-items: center; overflow-x: auto; padding: 10px 0; margin-bottom: 22px; background: var(--bg); }
-    .bar .lbl { font-size: 13px; color: var(--muted); flex-shrink: 0; }
-    .year { flex-shrink: 0; font-size: 13.5px; padding: 7px 16px; border-radius: 999px; cursor: pointer; background: #fff; border: 1px solid var(--line); color: #555; transition: all .18s; }
-    .year:hover { border-color: var(--indigo); color: var(--indigo); }
-    .year.active { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+    /* 时间轴布局 */
+    .layout { display: grid; grid-template-columns: 120px 1fr; gap: 28px; }
 
-    /* 来源分组 */
-    .group { margin: 30px 0; }
-    .group-head {
-      display: flex; align-items: center; gap: 10px; cursor: pointer;
-      padding: 8px 0 14px; border-bottom: 1px solid var(--line); margin-bottom: 16px;
-      user-select: none;
+    /* 左侧时间轴（吸顶，滚动高亮） */
+    .rail { position: sticky; top: 40px; align-self: start; height: calc(100vh - 80px); overflow: hidden; }
+    .rail .line { position: relative; padding-left: 26px; border-left: 2px solid var(--line); }
+    .tnode {
+      position: relative; display: flex; align-items: center; height: 34px; cursor: pointer;
+      color: #b0b0ba; font-size: 13px; transition: color .2s;
     }
-    .group-head .swatch { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; }
-    .group-head h2 { font-size: 19px; margin: 0; font-weight: 700; color: var(--indigo); }
-    .group-head .cnt { font-size: 12.5px; color: var(--muted); }
-    .group-head .go { margin-left: auto; font-size: 13px; color: var(--muted); opacity: 0; transform: translateX(-6px); transition: all .2s; }
-    .group-head:hover .go { opacity: 1; transform: translateX(0); }
+    .tnode .dot { position: absolute; left: -31px; width: 9px; height: 9px; border-radius: 50%; background: #d8d5cc; border: 2px solid #faf9f6; transition: all .2s; }
+    .tnode.active { color: var(--indigo); font-weight: 700; }
+    .tnode.active .dot { background: var(--indigo); transform: scale(1.35); }
 
-    /* 文章卡片（封面卡样式） */
+    /* 右侧内容 */
+    .year-sec { margin-bottom: 34px; }
+    .year-sec h2 { font-size: 24px; margin: 0 0 14px; font-weight: 700; color: var(--indigo); display: flex; align-items: baseline; gap: 10px; }
+    .year-sec h2 .n { font-size: 13px; color: var(--muted); font-weight: 400; }
     .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+
+    /* 文章卡片（hash 渐变背景） */
     .art {
       position: relative; display: flex; flex-direction: column; justify-content: space-between;
       min-height: 150px; padding: 18px 18px 16px; border-radius: 14px; overflow: hidden;
       text-decoration: none; color: #fff; cursor: pointer;
-      background: linear-gradient(140deg, #26264f 0%, #3a3a72 58%, #26264f 100%);
-      box-shadow: 0 6px 18px rgba(38,38,79,.18);
+      box-shadow: 0 6px 18px rgba(0,0,0,.16);
       transition: transform .2s ease, box-shadow .2s ease;
     }
     .art::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 120% at 100% 0%, rgba(255,255,255,.10), transparent 55%); pointer-events: none; }
-    .art:hover { transform: translateY(-5px); box-shadow: 0 18px 38px rgba(38,38,79,.28); }
-    .art .kick { font-size: 12px; letter-spacing: .8px; opacity: .62; margin-bottom: 8px; }
+    .art:hover { transform: translateY(-5px); box-shadow: 0 18px 38px rgba(0,0,0,.24); }
+    .art .kick { font-size: 12px; letter-spacing: .8px; opacity: .68; margin-bottom: 8px; }
     .art .title { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 17.5px; font-weight: 700; line-height: 1.45; }
-    .art .hook { font-size: 12.5px; opacity: .58; line-height: 1.6; margin-top: 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .art .hook { font-size: 12.5px; opacity: .6; line-height: 1.6; margin-top: 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
     .art .chiprow { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
     .art .chip { font-size: 11px; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); }
-
-    .empty { display: none; color: #aaa; text-align: center; padding: 40px 0; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="hero">
       <h1>动作游戏设计知识库</h1>
-      <p class="sub">AI 驱动的动作游戏设计分享集合 · 按来源与年份探索</p>
+      <p class="sub">AI 驱动的动作游戏设计分享集合 · 按时间轴探索</p>
       <div class="search"><span class="icon">🔍</span><input id="q" placeholder="搜索分享标题、观点…" /></div>
     </header>
 
-    <div class="bar">
-      <span class="lbl">年份</span>
-      <span class="year active" data-year="0">全部</span>
-      <span id="years"></span>
+    <div class="layout">
+      <aside class="rail"><div class="line" id="rail"></div></aside>
+      <main id="content"></main>
     </div>
-
-    <div id="groups"></div>
-    <div class="empty" id="empty">没有匹配的内容</div>
   </div>
 
   <script>
     const DATA = [
-      { t: '街霸 5 的美术设计思路', h: '在满足「瞬间传达信息」的前提下，再考虑独特美术表现。', s: 'Capcom', y: 2017, g: ['美术设计'] },
-      { t: '2018 · 怪物猎人 世界', h: '在实机原型中验证概念、制作技术与标准。', s: 'Capcom', y: 2018, g: ['原型'] },
-      { t: '2019 · 鬼泣 5', h: '核心乐趣：克服困难并调整的成就感。', s: 'Capcom', y: 2019, g: ['核心乐趣'] },
-      { t: '2016 · 无国界 ACT', h: '动作游戏的本质是「被动游戏」：根据状况做出响应。', s: 'PlatinumGames', y: 2016, g: ['被动游戏'] },
-      { t: '2018 · 尼尔', h: '自由感是玩家突破限制的那一刻。', s: 'PlatinumGames', y: 2018, g: ['自由感'] },
       { t: '2023 · 战神 AI', h: '战神 AI 从 Lua 转行为树的迭代与经验。', s: 'Santa Monica Studio', y: 2023, g: ['AI'] },
+      { t: '动作游戏设计的 SSS 方法', h: 'Situation-Solution-Stage，情形-解决-编排。', s: '设计者笔记', y: 2023, g: ['SSS'] },
+      { t: '2019 · 鬼泣 5', h: '核心乐趣：克服困难并调整的成就感。', s: 'Capcom', y: 2019, g: ['核心乐趣'] },
       { t: '2019 · 战神 战斗系统', h: '新视角下战斗系统的革新。', s: 'Santa Monica Studio', y: 2019, g: ['战斗系统'] },
-      { t: '2015 · 罪恶装备 Xrd', h: '在 3D 框架内重建经典 2D 格斗视觉。', s: 'FTG 相关', y: 2015, g: ['渲染'] },
       { t: '2019 · FTG 十年来的易玩性', h: '如何为古老的 FTG 游戏扩充受众。', s: 'FTG 相关', y: 2019, g: ['易玩性'] },
+      { t: '2018 · 怪物猎人 世界', h: '在实机原型中验证概念、制作技术与标准。', s: 'Capcom', y: 2018, g: ['原型'] },
+      { t: '2018 · 尼尔', h: '自由感是玩家突破限制的那一刻。', s: 'PlatinumGames', y: 2018, g: ['自由感'] },
+      { t: '街霸 5 的美术设计思路', h: '在满足「瞬间传达信息」的前提下，再考虑独特美术表现。', s: 'Capcom', y: 2017, g: ['美术设计'] },
       { t: '2017 · 仁王', h: '如何通过玩家反馈来重塑游戏。', s: '其他', y: 2017, g: ['玩家反馈'] },
       { t: '2017 · 塞尔达 旷野之息', h: '勇气三角革新玩法，智慧三角想法落地。', s: 'Nintendo', y: 2017, g: ['塞尔达'] },
+      { t: '2016 · 无国界 ACT', h: '动作游戏的本质是「被动游戏」：根据状况做出响应。', s: 'PlatinumGames', y: 2016, g: ['被动游戏'] },
+      { t: '2015 · 罪恶装备 Xrd', h: '在 3D 框架内重建经典 2D 格斗视觉。', s: 'FTG 相关', y: 2015, g: ['渲染'] },
       { t: '1999 · 宫本茂', h: '游戏是一个更大、更广阔的世界的一部分。', s: 'Nintendo', y: 1999, g: ['设计哲学'] },
       { t: '河森正治 · 原创性', h: '跟不同次元的事物融合。', s: '非 GDC', y: 0, g: ['原创性'] },
       { t: '关卡设计术语', h: '掌握常用关卡设计术语。', s: '非 GDC', y: 0, g: ['关卡设计'] },
       { t: '动作游戏的本质', h: '通过奖惩设计，让玩家控制角色行动这件事更有乐趣。', s: '设计者笔记', y: 0, g: ['方法论'] },
-      { t: '动作游戏设计的 SSS 方法', h: 'Situation-Solution-Stage，情形-解决-编排。', s: '设计者笔记', y: 0, g: ['SSS'] },
     ];
 
-    const SECS = ['Capcom','PlatinumGames','Santa Monica Studio','FTG 相关','其他','Nintendo','非 GDC','设计者笔记'];
-    const SEC_COLORS = ['#e25a4a','#e8923c','#c9a53a','#6fae4a','#3aa8a0','#4a90d9','#8a6fd0','#d96fa0'];
-    const colorOf = s => SEC_COLORS[SECS.indexOf(s)] || '#999';
-    const allYears = [...new Set(DATA.map(d => d.y).filter(Boolean))].sort((a,b)=>b-a);
+    // 来源名 hash → 渐变
+    function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+    function gradientFor(str) {
+      const hue = hash(str) % 360;
+      return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`;
+    }
 
-    let filter = { section: '', year: 0, q: '' };
+    let filter = { q: '' };
+    function visible() {
+      return DATA.filter(d => !filter.q || (d.t + d.h + d.s).toLowerCase().includes(filter.q.toLowerCase()));
+    }
+
+    // 按年份分组（未知年份归「未标注」）
+    function grouped() {
+      const m = new Map();
+      for (const d of visible()) {
+        const k = d.y || '未标注';
+        if (!m.has(k)) m.set(k, []);
+        m.get(k).push(d);
+      }
+      const keys = [...m.keys()].sort((a, b) => (b === '未标注' ? -1 : a === '未标注' ? 1 : b - a));
+      return keys.map(k => ({ year: k, items: m.get(k) }));
+    }
 
     function artHtml(d) {
-      const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
-      return `<a class="art" href="#">
-        <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+      return `<a class="art" href="#" style="background:${gradientFor(d.s)}">
+        <div><div class="kick">${d.s}${d.y ? ' · ' + d.y : ''}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
         <div class="chiprow">${d.g.map(g => `<span class="chip">${g}</span>`).join('')}</div>
       </a>`;
     }
-    function renderYears() {
-      document.getElementById('years').innerHTML = allYears.map(y =>
-        `<span class="year" data-year="${y}">${y}</span>`).join('');
-    }
-    function renderGroups() {
-      const vis = DATA.filter(d =>
-        (!filter.year || d.y === filter.year) &&
-        (!filter.q || (d.t+d.h).toLowerCase().includes(filter.q.toLowerCase()))
-      );
-      const groups = document.getElementById('groups');
-      groups.innerHTML = SECS.map(sec => {
-        const items = vis.filter(d => d.s === sec);
-        if (filter.section && filter.section !== sec) return ''; // 单选来源时隐藏其他组
-        if (!items.length && filter.section === sec) return '';
-        return `<section class="group">
-          <div class="group-head" data-section="${sec}">
-            <span class="swatch" style="background:${colorOf(sec)}"></span>
-            <h2>${sec}</h2><span class="cnt">${items.length} 篇</span>
-            <span class="go">只看这个来源 →</span>
-          </div>
-          <div class="cards">${items.map(artHtml).join('') || '<div style="color:#aaa;font-size:13px;padding:8px 0">暂无</div>'}</div>
-        </section>`;
-      }).join('');
-      document.getElementById('empty').style.display = vis.length ? 'none' : 'block';
+
+    function render() {
+      const groups = grouped();
+      document.getElementById('content').innerHTML = groups.map(gr =>
+        `<section class="year-sec" data-year="${gr.year}">
+          <h2>${gr.year}<span class="n">${gr.items.length} 篇</span></h2>
+          <div class="cards">${gr.items.map(artHtml).join('')}</div>
+        </section>`).join('');
+      document.getElementById('rail').innerHTML = groups.map(gr =>
+        `<div class="tnode" data-year="${gr.year}"><span class="dot"></span>${gr.year}</div>`).join('');
+
+      // 滚动联动：高亮当前年份
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            const y = en.target.dataset.year;
+            document.querySelectorAll('.tnode').forEach(n => n.classList.toggle('active', n.dataset.year === y));
+          }
+        });
+      }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+      document.querySelectorAll('.year-sec').forEach(s => io.observe(s));
     }
 
-    renderYears(); renderGroups();
-
-    document.getElementById('groups').addEventListener('click', e => {
-      const h = e.target.closest('.group-head'); if (!h) return;
-      filter.section = (filter.section === h.dataset.section) ? '' : h.dataset.section;
-      renderGroups();
+    render();
+    document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim(); render(); });
+    document.getElementById('rail').addEventListener('click', e => {
+      const n = e.target.closest('.tnode'); if (!n) return;
+      const sec = document.querySelector(`.year-sec[data-year="${n.dataset.year}"]`);
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    document.querySelector('.bar').addEventListener('click', e => {
-      const y = e.target.closest('.year'); if (!y) return;
-      filter.year = Number(y.dataset.year);
-      document.querySelectorAll('.year').forEach(x => x.classList.toggle('active', x === y));
-      renderGroups();
-    });
-    document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim(); renderGroups(); });
   </script>
 </body>
 </html>
