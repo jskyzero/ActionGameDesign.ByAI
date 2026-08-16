@@ -12,11 +12,12 @@
     body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif; -webkit-font-smoothing: antialiased; }
     .wrap { max-width: 1160px; margin: 0 auto; padding: 44px 28px 100px; }
 
-    .hero { margin-bottom: 30px; text-align: center; }
-    .hero .kicker { font-size: 12px; letter-spacing: 3.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; }
-    .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 46px; font-weight: 700; margin: 0 0 14px; letter-spacing: 2px; }
-    .hero .sub { color: var(--muted); font-size: 15.5px; line-height: 1.8; margin: 0 auto 26px; max-width: 560px; }
-    .search { display: flex; align-items: center; gap: 10px; max-width: 620px; margin: 0 auto; padding: 6px 6px 6px 18px; background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: box-shadow .2s, border-color .2s; }
+    .hero { margin-bottom: 30px; }
+    .hero-row { display: flex; align-items: center; gap: 26px; margin-bottom: 22px; }
+    .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0; letter-spacing: 1px; flex-shrink: 0; }
+    .hero .divider { width: 1px; height: 52px; background: var(--line); flex-shrink: 0; }
+    .hero .sub { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0; }
+    .search { display: flex; align-items: center; gap: 10px; width: 100%; padding: 6px 6px 6px 18px; background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: box-shadow .2s, border-color .2s; }
     .search:focus-within { border-color: var(--indigo); box-shadow: 0 6px 24px rgba(38,38,79,.12); }
     .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
     .search .icon { color: var(--muted); }
@@ -69,9 +70,11 @@
 <body>
   <div class="wrap">
     <header class="hero">
-      <div class="kicker">Action Game Design · Knowledge Base</div>
-      <h1>动作游戏设计知识库</h1>
-      <p class="sub">从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。</p>
+      <div class="hero-row">
+        <h1>动作游戏设计知识库</h1>
+        <div class="divider"></div>
+        <p class="sub">收录 GDC 演讲与开发者分享，<br />沉淀动作游戏设计的<br />思考、方法与案例。</p>
+      </div>
       <div class="search"><span class="icon">🔍</span><input id="q" placeholder="搜索分享标题、观点、厂商…" /><button class="sbtn">搜索</button></div>
     </header>
 
