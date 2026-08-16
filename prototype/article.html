@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>交互原型 · 动作游戏设计知识库</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+  <style>
+    :root {
+      --paper: #f5f3ee;
+      --card: #ffffff;
+      --ink: #23232b;
+      --muted: #8b8b96;
+      --line: #ece8e0;
+      --accent: #ff5a4e;
+      --accent-soft: #fff0ed;
+      --indigo: #26264f;
+      --gold: #d9a441;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ── 封面 ── */
+    .cover {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(120% 140% at 100% 0%, rgba(255, 90, 78, 0.18), transparent 55%),
+        radial-gradient(120% 140% at 0% 100%, rgba(217, 164, 65, 0.20), transparent 55%),
+        linear-gradient(135deg, #26264f 0%, #3a3a72 60%, #26264f 100%);
+      color: #fff;
+      padding: 36px 34px 34px;
+      box-shadow: 0 18px 40px rgba(38, 38, 79, 0.25);
+    }
+    .cover .kicker {
+      font-size: 13px;
+      letter-spacing: 2px;
+      opacity: 0.75;
+      margin-bottom: 14px;
+    }
+    .cover h1 {
+      font-family: 'LXGW WenKai', 'PingFang SC', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 16px;
+      letter-spacing: 0.5px;
+    }
+    .cover .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(4px);
+    }
+    .chip b { font-weight: 600; }
+
+    /* ── 核心观点 ── */
+    .quote {
+      margin: 26px 0 6px;
+      padding: 20px 22px;
+      border-radius: 14px;
+      background: var(--card);
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      font-size: 17px;
+      line-height: 1.9;
+      position: relative;
+    }
+    .quote::before {
+      content: '核心观点';
+      display: block;
+      font-size: 11.5px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    /* ── 信息卡片 ── */
+    .info {
+      margin: 18px 0;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      padding: 6px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .info .row {
+      display: flex;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .info .row:last-child { border-bottom: 0; }
+    .info .k {
+      flex: 0 0 84px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .info .v { flex: 1; font-size: 14.5px; }
+    .info a { color: var(--indigo); text-decoration: none; border-bottom: 1px solid rgba(38,38,79,0.25); }
+
+    /* ── 正文 ── */
+    h2.sec {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      margin: 34px 0 6px;
+      color: var(--indigo);
+    }
+    h2.sec .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 9px;
+      background: var(--indigo);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 14.5px;
+      margin: 4px 0 16px;
+    }
+    .point {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 12px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .point h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--indigo);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .point h3 .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .point ul { margin: 0; padding-left: 1.1em; }
+    .point li { margin: 5px 0; font-size: 14.5px; }
+    .point li b { color: var(--ink); }
+    .hl {
+      background: linear-gradient(transparent 62%, rgba(255,90,78,0.16) 62%);
+      font-weight: 600;
+      padding: 0 2px;
+    }
+    .takeaway {
+      margin: 20px 0;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      color: #a33a30;
+      font-size: 14.5px;
+      display: flex;
+      gap: 10px;
+    }
+    .takeaway::before { content: '✦'; color: var(--accent); }
+
+    /* ── 底部 ── */
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .tag {
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 封面 -->
+    <header class="cover">
+      <div class="kicker">GDC 2017 · CAPCOM · 美术设计</div>
+      <h1>街霸 5 的美术设计思路</h1>
+      <div class="meta">
+        <span class="chip">👤 <b>龟井敏征</b></span>
+        <span class="chip">🎨 美术总监（Art Director）</span>
+        <span class="chip">🎮 街霸 5</span>
+      </div>
+    </header>
+
+    <!-- 核心观点 -->
+    <div class="quote">
+      在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
+    </div>
+
+    <!-- 信息卡片 -->
+    <div class="info">
+      <div class="row"><span class="k">分享人</span><span class="v">龟井敏征</span></div>
+      <div class="row"><span class="k">职位</span><span class="v">美术总监（负责《街霸 4》《街霸 5》）</span></div>
+      <div class="row"><span class="k">演讲标题</span><span class="v">The Art Direction of Street Fighter V: The Role of Art in Fighting Games</span></div>
+      <div class="row"><span class="k">源视频</span><span class="v"><a href="https://gdcvault.com/play/1024506/Art-Direction-of-Street-Fighter-V-The-Role-of-Art-in-Fighting-Games">GDC Vault</a></span></div>
+      <div class="row"><span class="k">参考翻译</span><span class="v"><a href="https://zhuanlan.zhihu.com/p/56750629">中译·知乎</a> · <a href="https://seicing.com/html/study/%E3%80%8A%E8%A1%97%E9%9C%B85%E3%80%8B%E7%9A%84%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%88%86%E4%BA%AB.html">中译·完整总结</a></span></div>
+    </div>
+
+    <!-- 正文 -->
+    <h2 class="sec"><span class="num">一</span>容易理解的美术设计</h2>
+    <p class="lead">格斗游戏是极快的信息【获取 → 处理 → 操作】循环，画面必须「一目了然」。</p>
+
+    <div class="point">
+      <h3><span class="dot"></span>画面特点</h3>
+      <ul>
+        <li><b>突出的肌肉线条</b> + <b>夸张的画面表现</b>——让玩家一眼读懂「这拳很痛」。</li>
+      </ul>
+    </div>
+    <div class="point">
+      <h3><span class="dot"></span>角色</h3>
+      <ul>
+        <li><b>线条绘制</b>：制定人体绘制准则；刻意与现实不符——<span class="hl">「不正确的方式制作才是正确的做法」</span>。</li>
+        <li><b>身高</b>：模型统一高度，后期按战斗画面调整（以隆为基准）。</li>
+      </ul>
+    </div>
+    <div class="point">
+      <h3><span class="dot"></span>动画</h3>
+      <ul>
+        <li><b>三要点</b>：功能性（满足 HitBox）· 战斗风格（立刻认出）· 重心节奏（正确感觉 &amp; 帅）。</li>
+        <li><b>必杀技</b>：以简单的动作让人印象深刻。</li>
+      </ul>
+    </div>
+    <div class="point">
+      <h3><span class="dot"></span>场景 &amp; 相机</h3>
+      <ul>
+        <li><b>辨识度</b>：2D 用色调分离 / Unreal 分区域调色。</li>
+        <li><b>相机</b>：角色身体偏向摄像机 5°；Fix Projection 取 0.5。</li>
+      </ul>
+    </div>
+
+    <h2 class="sec"><span class="num">二</span>独特的美术风格</h2>
+    <p class="lead">风格 = <b>丰富光线 + 油彩笔触</b>（NPR，把历代插画在游戏中具现化）。</p>
+
+    <div class="point">
+      <h3><span class="dot"></span>三个实现手段</h3>
+      <ul>
+        <li><b>细节比重</b>：按「脸 &gt; 身体 &gt; 衣服」调整笔触疏密。</li>
+        <li><b>轮廓线</b>：在 RGB 色差大的地方加线。</li>
+        <li><b>颜色与饱和度</b>：环境光 + 间接光。</li>
+      </ul>
+    </div>
+
+    <div class="takeaway">一句话带走：先保证「读得懂」，再追求「有个性」——可读性是格斗游戏美术的第一优先级。</div>
+
+    <!-- 底部 -->
+    <div class="footer">
+      <span class="tag">街霸</span>
+      <span class="tag">美术设计</span>
+      <span class="tag">信息传达</span>
+      <span class="tag">NPR</span>
+    </div>
+  </div>
+</body>
+</html>
