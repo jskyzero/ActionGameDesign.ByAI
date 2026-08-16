@@ -23,12 +23,9 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
 <Base>
   <div class="wrap">
     <header class="hero">
-      <div class="hero-row">
-        <div class="left"><h1>动作游戏设计知识库</h1></div>
-        <div class="right">
-          <p class="sub">收录 GDC 演讲与开发者分享，<br />沉淀动作游戏设计的<br />思考、方法与案例。</p>
-        </div>
-      </div>
+      <div class="kicker">AI 驱动的动作游戏设计分享集合</div>
+      <h1>动作游戏设计知识库</h1>
+      <p class="sub">从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。</p>
       <div class="search">
         <span class="icon">🔍</span>
         <input id="q" placeholder="搜索分享标题、观点、厂商…" />
@@ -158,48 +155,39 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
 
 <style is:global>
   .hero {
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
-  .hero-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    margin-bottom: 22px;
-    width: 100%;
-  }
-  .hero-row .left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid var(--line);
-    padding-right: 28px;
-  }
-  .hero-row .right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 28px;
+  .hero .kicker {
+    display: inline-flex;
+    padding: 5px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-pill);
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    background: var(--card);
   }
   .hero h1 {
     font-family: var(--font-serif);
-    font-size: 44px;
+    font-size: 46px;
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 12px;
     letter-spacing: 1px;
-    text-align: center;
   }
   .hero .sub {
     color: var(--muted);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.8;
-    margin: 0;
-    text-align: left;
+    margin: 0 0 24px;
+    max-width: 560px;
   }
   .search {
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
-    padding: 8px 8px 8px 20px;
+    padding: 10px 10px 10px 22px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: var(--r-pill);

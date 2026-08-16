@@ -52,6 +52,8 @@ a {
   background: var(--indigo);
   flex-shrink: 0;
 }
+
+/* 点子标题 + 列表 = .point 卡片（h3 是卡片上半、紧邻的 ul 是卡片下半） */
 .prose h3 {
   display: flex;
   align-items: center;
@@ -59,6 +61,12 @@ a {
   font-size: 16px;
   color: var(--indigo);
   font-weight: 600;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  padding: 14px 18px 8px;
+  margin: 0;
 }
 .prose h3::before {
   content: '';
@@ -67,6 +75,15 @@ a {
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
+}
+.prose h3 + ul {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  padding: 6px 18px 14px 40px;
+  margin: 0 0 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 .prose li::marker {
   color: var(--accent);
