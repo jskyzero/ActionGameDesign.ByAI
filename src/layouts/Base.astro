@@ -4,8 +4,9 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  contentWidth?: string;
 }
-const { title, description } = Astro.props;
+const { title, description, contentWidth = '760px' } = Astro.props;
 const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游戏设计知识库';
 ---
 
@@ -18,7 +19,7 @@ const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游
   <meta name="description" content={description ?? '从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。'} />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
 </head>
-<body>
+<body style={`--content-width: ${contentWidth}`}>
   <slot />
 
   <footer class="site-footer">
@@ -30,7 +31,7 @@ const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游
 
 <style>
   .site-footer {
-    max-width: 1160px;
+    max-width: var(--content-width, 760px);
     margin: 0 auto;
     padding: 32px 28px 40px;
     text-align: left;

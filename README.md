@@ -1,6 +1,8 @@
-# 动作游戏设计知识库
+# ActionGameDesign.ByAI
 
-互联网上动作游戏设计分享（GDC 演讲、视频分享、文章）与原创方法论的**精选集合**，AI 驱动的结构化知识库。
+动作游戏设计知识库：互联网上动作游戏设计分享（GDC 演讲、视频分享、文章）与原创方法论的**精选集合**，AI 驱动的结构化知识库。
+
+托管：`https://jskyzero.github.io/ActionGameDesign.ByAI/`
 
 技术栈：**Astro + Tailwind CSS + @tailwindcss/typography + MDX**（纯自定义站点，非文档站）。
 

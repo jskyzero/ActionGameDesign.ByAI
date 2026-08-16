@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 
 const SECTION_ORDER = ['Capcom', 'PlatinumGames', 'Santa Monica Studio', 'FTG 相关', '其他', 'Nintendo', '非 GDC', '设计者笔记'];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const entries = (await getCollection('docs'))
   .filter((e) => e.id !== 'index.mdx' && !e.id.endsWith('/index.mdx'))
@@ -12,7 +13,7 @@ const entries = (await getCollection('docs'))
     s: e.data.section ?? '未分类',
     y: e.data.year,
     g: e.data.tags ?? [],
-    href: `/${e.slug}/`,
+    href: `${base}/${e.slug}/`,
   }));
 
 const sections = [...new Set(entries.map((e) => e.s))].sort(
@@ -20,7 +21,7 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
 );
 ---
 
-<Base>
+<Base contentWidth="1160px">
   <div class="wrap">
     <header class="hero">
       <div class="hero-row">
@@ -276,7 +277,7 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
 
   .layout {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 170px 1fr;
     gap: 28px;
   }
   .rail {
