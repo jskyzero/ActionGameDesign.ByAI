@@ -10,16 +10,25 @@ const { author, role, sourceTitle, link, references = [] } = Astro.props;
 ---
 
 <div class="info">
-  {author && <div class="row"><span class="k">作者 / 分享人</span><span class="v">{author}</span></div>}
-  {role && <div class="row"><span class="k">职位</span><span class="v">{role}</span></div>}
-  {sourceTitle && <div class="row"><span class="k">原标题</span><span class="v">{sourceTitle}</span></div>}
-  {link && (
-    <div class="row"><span class="k">源链接</span><span class="v"><a href={link} target="_blank" rel="noopener">{link}</a></span></div>
+  {author && (
+    <div class="row">
+      <span class="k">作者</span>
+      <span class="v">{author}{role ? `（${role}）` : ''}</span>
+    </div>
   )}
-  {references.length > 0 && (
+  {sourceTitle && (
+    <div class="row"><span class="k">原标题</span><span class="v">{sourceTitle}</span></div>
+  )}
+  {(link || references.length > 0) && (
     <div class="row">
       <span class="k">参考</span>
       <span class="v">
+        {link && (
+          <span>
+            <a href={link} target="_blank" rel="noopener">源链接</a>
+            {references.length > 0 && ' · '}
+          </span>
+        )}
         {references.map((r, i) => (
           <span>
             {i > 0 && ' · '}
@@ -49,7 +58,7 @@ const { author, role, sourceTitle, link, references = [] } = Astro.props;
     border-bottom: 0;
   }
   .k {
-    flex: 0 0 96px;
+    flex: 0 0 76px;
     color: var(--muted);
     font-size: 13.5px;
   }

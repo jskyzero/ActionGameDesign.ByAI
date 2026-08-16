@@ -33,3 +33,35 @@ a {
 .src-grad {
   background: linear-gradient(140deg, var(--indigo) 0%, #3a3a72 100%);
 }
+
+/* —— 文章正文（prose）定制，贴近 prototype/article.html —— */
+.prose h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  color: var(--indigo);
+  font-weight: 700;
+}
+.prose h2::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.prose li::marker {
+  color: var(--accent);
+}
+.prose blockquote {
+  background: #fff0ed;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--r-card) var(--r-card) 0;
+  padding: 14px 18px;
+  font-style: normal;
+  color: #a33a30;
+}
+.prose blockquote p {
+  margin: 0;
+}
