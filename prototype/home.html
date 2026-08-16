@@ -3,101 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>交互原型 · 主页探索（卡片版）</title>
+  <title>交互原型 · 主页探索（按来源分组）</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <style>
     :root {
       --bg: #faf9f6;
-      --card: #ffffff;
       --ink: #1d1d26;
       --muted: #83838d;
       --line: #ece8df;
       --indigo: #26264f;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0; background: var(--bg); color: var(--ink);
-      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 1160px; margin: 0 auto; padding: 46px 28px 100px; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 44px 28px 100px; }
 
-    /* 头部 */
-    .hero { margin-bottom: 42px; }
+    .hero { margin-bottom: 30px; }
     .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0 0 10px; letter-spacing: 1px; }
-    .hero .sub { color: var(--muted); font-size: 15px; margin: 0 0 22px; }
-    .search {
-      display: flex; align-items: center; gap: 10px; max-width: 580px;
-      padding: 13px 18px; background: var(--card); border: 1px solid var(--line);
-      border-radius: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.05);
-      transition: box-shadow .2s, border-color .2s;
-    }
+    .hero .sub { color: var(--muted); font-size: 15px; margin: 0 0 20px; }
+    .search { display: flex; align-items: center; gap: 10px; max-width: 580px; padding: 13px 18px; background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.05); transition: box-shadow .2s, border-color .2s; }
     .search:focus-within { border-color: var(--indigo); box-shadow: 0 5px 20px rgba(38,38,79,.10); }
-    .search input { flex: 1; border: 0; outline: 0; font-size: 15px; color: var(--ink); background: transparent; }
-    .search .icon { color: var(--muted); font-size: 16px; }
+    .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
+    .search .icon { color: var(--muted); }
 
-    /* 探索区块 */
-    .exp { margin: 40px 0; }
-    .exp-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
-    .exp-head h2 { font-size: 22px; margin: 0; font-weight: 700; color: var(--indigo); letter-spacing: .5px; }
-    .exp-head .more { color: var(--muted); font-size: 13px; }
-
-    /* 章节卡片 */
-    .sections { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    @media (max-width: 880px) { .sections { grid-template-columns: repeat(2, 1fr); } }
-    .sec-card {
-      position: relative; display: flex; align-items: center; gap: 12px;
-      padding: 18px 16px; border-radius: 14px; cursor: pointer; overflow: hidden;
-      background: var(--card); border: 1px solid var(--line);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .sec-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.08); }
-    .sec-card .swatch { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; }
-    .sec-card .nm { font-size: 15px; font-weight: 600; line-height: 1.3; }
-    .sec-card .ct { font-size: 12px; color: var(--muted); }
-    .sec-card .arrow { position: absolute; right: 14px; top: 50%; transform: translateY(-50%) translateX(6px); opacity: 0; transition: all .2s; color: var(--muted); }
-    .sec-card:hover .arrow { opacity: 1; transform: translateY(-50%) translateX(0); }
-    .sec-card.selected { border-color: var(--indigo); box-shadow: 0 0 0 2px var(--indigo); }
-
-    /* 主题卡片 */
-    .tags { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
-    .tag-card {
-      display: flex; align-items: center; gap: 8px; padding: 12px 14px;
-      border-radius: 12px; cursor: pointer; background: var(--card); border: 1px solid var(--line);
-      transition: all .18s ease;
-    }
-    .tag-card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.06); border-color: var(--indigo); }
-    .tag-card .ic { font-size: 15px; }
-    .tag-card .nm { font-size: 13.5px; color: #444; }
-    .tag-card .ct { margin-left: auto; font-size: 11.5px; color: var(--muted); }
-    .tag-card.selected { border-color: var(--indigo); background: var(--indigo); }
-    .tag-card.selected .nm, .tag-card.selected .ct { color: #fff; }
-
-    /* 年份 */
-    .years { display: flex; gap: 8px; flex-wrap: wrap; }
-    .year {
-      font-size: 13.5px; padding: 8px 18px; border-radius: 999px; cursor: pointer;
-      background: var(--card); border: 1px solid var(--line); color: #555; transition: all .18s;
-    }
+    /* 年份筛选条（吸顶） */
+    .bar { position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; align-items: center; overflow-x: auto; padding: 10px 0; margin-bottom: 22px; background: var(--bg); }
+    .bar .lbl { font-size: 13px; color: var(--muted); flex-shrink: 0; }
+    .year { flex-shrink: 0; font-size: 13.5px; padding: 7px 16px; border-radius: 999px; cursor: pointer; background: #fff; border: 1px solid var(--line); color: #555; transition: all .18s; }
     .year:hover { border-color: var(--indigo); color: var(--indigo); }
     .year.active { background: var(--indigo); border-color: var(--indigo); color: #fff; }
 
-    /* 文章卡片（标题优先，无图） */
-    .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-    .art-card {
-      position: relative; display: flex; flex-direction: column;
-      padding: 18px 18px 16px; border-radius: 14px; text-decoration: none; color: inherit;
-      background: var(--card); border: 1px solid var(--line); overflow: hidden;
+    /* 来源分组 */
+    .group { margin: 30px 0; }
+    .group-head {
+      display: flex; align-items: center; gap: 10px; cursor: pointer;
+      padding: 8px 0 14px; border-bottom: 1px solid var(--line); margin-bottom: 16px;
+      user-select: none;
+    }
+    .group-head .swatch { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; }
+    .group-head h2 { font-size: 19px; margin: 0; font-weight: 700; color: var(--indigo); }
+    .group-head .cnt { font-size: 12.5px; color: var(--muted); }
+    .group-head .go { margin-left: auto; font-size: 13px; color: var(--muted); opacity: 0; transform: translateX(-6px); transition: all .2s; }
+    .group-head:hover .go { opacity: 1; transform: translateX(0); }
+
+    /* 文章卡片（封面卡样式） */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+    .art {
+      position: relative; display: flex; flex-direction: column; justify-content: space-between;
+      min-height: 150px; padding: 18px 18px 16px; border-radius: 14px; overflow: hidden;
+      text-decoration: none; color: #fff; cursor: pointer;
+      background: linear-gradient(140deg, #26264f 0%, #3a3a72 58%, #26264f 100%);
+      box-shadow: 0 6px 18px rgba(38,38,79,.18);
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .art-card:hover { transform: translateY(-5px); box-shadow: 0 16px 34px rgba(0,0,0,.09); }
-    .art-card .strip { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
-    .art-card .atitle { font-size: 16.5px; font-weight: 700; line-height: 1.45; color: var(--ink); margin: 6px 0 8px; }
-    .art-card .ahook { font-size: 13px; color: var(--muted); line-height: 1.7; margin: 0 0 14px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; flex: 1; }
-    .art-card .ameta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .art-card .asec { font-size: 12px; color: #b0b0ba; }
-    .art-card .ago { font-size: 14px; color: var(--muted); opacity: 0; transform: translateX(-6px); transition: all .2s; }
-    .art-card:hover .ago { opacity: 1; transform: translateX(0); }
+    .art::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 120% at 100% 0%, rgba(255,255,255,.10), transparent 55%); pointer-events: none; }
+    .art:hover { transform: translateY(-5px); box-shadow: 0 18px 38px rgba(38,38,79,.28); }
+    .art .kick { font-size: 12px; letter-spacing: .8px; opacity: .62; margin-bottom: 8px; }
+    .art .title { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 17.5px; font-weight: 700; line-height: 1.45; }
+    .art .hook { font-size: 12.5px; opacity: .58; line-height: 1.6; margin-top: 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .art .chiprow { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+    .art .chip { font-size: 11px; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); }
 
     .empty { display: none; color: #aaa; text-align: center; padding: 40px 0; }
   </style>
@@ -106,44 +70,32 @@
   <div class="wrap">
     <header class="hero">
       <h1>动作游戏设计知识库</h1>
-      <p class="sub">AI 驱动的动作游戏设计分享集合 · 多种方式探索</p>
-      <div class="search"><span class="icon">🔍</span><input id="q" placeholder="搜索分享标题、观点、标签…" /></div>
+      <p class="sub">AI 驱动的动作游戏设计分享集合 · 按来源与年份探索</p>
+      <div class="search"><span class="icon">🔍</span><input id="q" placeholder="搜索分享标题、观点…" /></div>
     </header>
 
-    <section class="exp">
-      <div class="exp-head"><h2>按章节探索</h2><span class="more">厂商 / 品类 / 来源</span></div>
-      <div class="sections" id="sections"></div>
-    </section>
+    <div class="bar">
+      <span class="lbl">年份</span>
+      <span class="year active" data-year="0">全部</span>
+      <span id="years"></span>
+    </div>
 
-    <section class="exp">
-      <div class="exp-head"><h2>按主题探索</h2><span class="more">点击筛选</span></div>
-      <div class="tags" id="tags"></div>
-    </section>
-
-    <section class="exp">
-      <div class="exp-head"><h2>按年份</h2><span class="more">时间线</span></div>
-      <div class="years" id="years"></div>
-    </section>
-
-    <section class="exp">
-      <div class="exp-head"><h2>分享内容</h2><span class="more" id="resultCount"></span></div>
-      <div class="list" id="list"></div>
-      <div class="empty" id="empty">没有匹配的内容</div>
-    </section>
+    <div id="groups"></div>
+    <div class="empty" id="empty">没有匹配的内容</div>
   </div>
 
   <script>
     const DATA = [
-      { t: '街霸 5 的美术设计思路', h: '在满足「瞬间传达信息」的前提下，再考虑独特美术表现。', s: 'Capcom', y: 2017, g: ['街霸','美术设计','信息传达'] },
-      { t: '2018 · 怪物猎人 世界', h: '在实机原型中验证概念、制作技术与标准。', s: 'Capcom', y: 2018, g: ['怪物猎人','原型'] },
-      { t: '2019 · 鬼泣 5', h: '核心乐趣：克服困难并调整的成就感。', s: 'Capcom', y: 2019, g: ['鬼泣','核心乐趣'] },
+      { t: '街霸 5 的美术设计思路', h: '在满足「瞬间传达信息」的前提下，再考虑独特美术表现。', s: 'Capcom', y: 2017, g: ['美术设计'] },
+      { t: '2018 · 怪物猎人 世界', h: '在实机原型中验证概念、制作技术与标准。', s: 'Capcom', y: 2018, g: ['原型'] },
+      { t: '2019 · 鬼泣 5', h: '核心乐趣：克服困难并调整的成就感。', s: 'Capcom', y: 2019, g: ['核心乐趣'] },
       { t: '2016 · 无国界 ACT', h: '动作游戏的本质是「被动游戏」：根据状况做出响应。', s: 'PlatinumGames', y: 2016, g: ['被动游戏'] },
-      { t: '2018 · 尼尔', h: '自由感是玩家突破限制的那一刻。', s: 'PlatinumGames', y: 2018, g: ['尼尔','自由感'] },
-      { t: '2023 · 战神 AI', h: '战神 AI 从 Lua 转行为树的迭代与经验。', s: 'Santa Monica Studio', y: 2023, g: ['战神','AI'] },
-      { t: '2019 · 战神 战斗系统', h: '新视角下战斗系统的革新。', s: 'Santa Monica Studio', y: 2019, g: ['战神','战斗系统'] },
-      { t: '2015 · 罪恶装备 Xrd', h: '在 3D 框架内重建经典 2D 格斗视觉。', s: 'FTG 相关', y: 2015, g: ['罪恶装备','渲染'] },
-      { t: '2019 · FTG 十年来的易玩性', h: '如何为古老的 FTG 游戏扩充受众。', s: 'FTG 相关', y: 2019, g: ['格斗','易玩性'] },
-      { t: '2017 · 仁王', h: '如何通过玩家反馈来重塑游戏。', s: '其他', y: 2017, g: ['仁王','玩家反馈'] },
+      { t: '2018 · 尼尔', h: '自由感是玩家突破限制的那一刻。', s: 'PlatinumGames', y: 2018, g: ['自由感'] },
+      { t: '2023 · 战神 AI', h: '战神 AI 从 Lua 转行为树的迭代与经验。', s: 'Santa Monica Studio', y: 2023, g: ['AI'] },
+      { t: '2019 · 战神 战斗系统', h: '新视角下战斗系统的革新。', s: 'Santa Monica Studio', y: 2019, g: ['战斗系统'] },
+      { t: '2015 · 罪恶装备 Xrd', h: '在 3D 框架内重建经典 2D 格斗视觉。', s: 'FTG 相关', y: 2015, g: ['渲染'] },
+      { t: '2019 · FTG 十年来的易玩性', h: '如何为古老的 FTG 游戏扩充受众。', s: 'FTG 相关', y: 2019, g: ['易玩性'] },
+      { t: '2017 · 仁王', h: '如何通过玩家反馈来重塑游戏。', s: '其他', y: 2017, g: ['玩家反馈'] },
       { t: '2017 · 塞尔达 旷野之息', h: '勇气三角革新玩法，智慧三角想法落地。', s: 'Nintendo', y: 2017, g: ['塞尔达'] },
       { t: '1999 · 宫本茂', h: '游戏是一个更大、更广阔的世界的一部分。', s: 'Nintendo', y: 1999, g: ['设计哲学'] },
       { t: '河森正治 · 原创性', h: '跟不同次元的事物融合。', s: '非 GDC', y: 0, g: ['原创性'] },
@@ -155,70 +107,57 @@
     const SECS = ['Capcom','PlatinumGames','Santa Monica Studio','FTG 相关','其他','Nintendo','非 GDC','设计者笔记'];
     const SEC_COLORS = ['#e25a4a','#e8923c','#c9a53a','#6fae4a','#3aa8a0','#4a90d9','#8a6fd0','#d96fa0'];
     const colorOf = s => SEC_COLORS[SECS.indexOf(s)] || '#999';
-
-    const allTags = [...new Set(DATA.flatMap(d => d.g))].sort();
     const allYears = [...new Set(DATA.map(d => d.y).filter(Boolean))].sort((a,b)=>b-a);
 
-    let filter = { section: '', tag: '', year: 0, q: '' };
+    let filter = { section: '', year: 0, q: '' };
 
-    function renderSections() {
-      document.getElementById('sections').innerHTML = SECS.map(s => {
-        const n = DATA.filter(d => d.s === s).length;
-        return `<div class="sec-card" data-section="${s}">
-          <span class="swatch" style="background:${colorOf(s)}"></span>
-          <span><span class="nm">${s}</span><br><span class="ct">${n} 篇</span></span>
-          <span class="arrow">→</span>
-        </div>`;
-      }).join('');
-    }
-    function renderTags() {
-      document.getElementById('tags').innerHTML = allTags.map(g => {
-        const n = DATA.filter(d => d.g.includes(g)).length;
-        return `<div class="tag-card" data-tag="${g}"><span class="ic">#</span><span class="nm">${g}</span><span class="ct">${n}</span></div>`;
-      }).join('');
+    function artHtml(d) {
+      const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
+      return `<a class="art" href="#">
+        <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+        <div class="chiprow">${d.g.map(g => `<span class="chip">${g}</span>`).join('')}</div>
+      </a>`;
     }
     function renderYears() {
-      document.getElementById('years').innerHTML = ['全部', ...allYears].map(y =>
-        `<span class="year${y==='全部'?' active':''}" data-year="${y}">${y}</span>`).join('');
+      document.getElementById('years').innerHTML = allYears.map(y =>
+        `<span class="year" data-year="${y}">${y}</span>`).join('');
     }
-    function renderList() {
-      const list = DATA.filter(d =>
-        (!filter.section || d.s === filter.section) &&
-        (!filter.tag || d.g.includes(filter.tag)) &&
+    function renderGroups() {
+      const vis = DATA.filter(d =>
         (!filter.year || d.y === filter.year) &&
-        (!filter.q || (d.t+d.h+d.g.join('')).toLowerCase().includes(filter.q.toLowerCase()))
-      ).sort((a,b) => b.y - a.y || a.t.localeCompare(b.t,'zh'));
-      document.getElementById('list').innerHTML = list.map(d =>
-        `<a class="art-card" href="#">
-          <span class="strip" style="background:${colorOf(d.s)}"></span>
-          <span class="atitle">${d.t}</span>
-          <span class="ahook">${d.h}</span>
-          <span class="ameta"><span class="asec">${d.s}${d.y ? ' · ' + d.y : ''}</span><span class="ago">→</span></span>
-        </a>`).join('');
-      document.getElementById('resultCount').textContent = `${list.length} 篇`;
-      document.getElementById('empty').style.display = list.length ? 'none' : 'block';
-    }
-    function refresh() {
-      renderList();
-      document.querySelectorAll('.sec-card').forEach(c => c.classList.toggle('selected', c.dataset.section === filter.section && !!filter.section));
-      document.querySelectorAll('.tag-card').forEach(t => t.classList.toggle('selected', t.dataset.tag === filter.tag && !!filter.tag));
+        (!filter.q || (d.t+d.h).toLowerCase().includes(filter.q.toLowerCase()))
+      );
+      const groups = document.getElementById('groups');
+      groups.innerHTML = SECS.map(sec => {
+        const items = vis.filter(d => d.s === sec);
+        if (filter.section && filter.section !== sec) return ''; // 单选来源时隐藏其他组
+        if (!items.length && filter.section === sec) return '';
+        return `<section class="group">
+          <div class="group-head" data-section="${sec}">
+            <span class="swatch" style="background:${colorOf(sec)}"></span>
+            <h2>${sec}</h2><span class="cnt">${items.length} 篇</span>
+            <span class="go">只看这个来源 →</span>
+          </div>
+          <div class="cards">${items.map(artHtml).join('') || '<div style="color:#aaa;font-size:13px;padding:8px 0">暂无</div>'}</div>
+        </section>`;
+      }).join('');
+      document.getElementById('empty').style.display = vis.length ? 'none' : 'block';
     }
 
-    renderSections(); renderTags(); renderYears(); renderList();
-    document.getElementById('sections').addEventListener('click', e => {
-      const c = e.target.closest('.sec-card'); if (!c) return;
-      filter.section = (filter.section === c.dataset.section) ? '' : c.dataset.section; refresh();
+    renderYears(); renderGroups();
+
+    document.getElementById('groups').addEventListener('click', e => {
+      const h = e.target.closest('.group-head'); if (!h) return;
+      filter.section = (filter.section === h.dataset.section) ? '' : h.dataset.section;
+      renderGroups();
     });
-    document.getElementById('tags').addEventListener('click', e => {
-      const t = e.target.closest('.tag-card'); if (!t) return;
-      filter.tag = (filter.tag === t.dataset.tag) ? '' : t.dataset.tag; refresh();
-    });
-    document.getElementById('years').addEventListener('click', e => {
+    document.querySelector('.bar').addEventListener('click', e => {
       const y = e.target.closest('.year'); if (!y) return;
-      filter.year = (y.dataset.year === '全部') ? 0 : Number(y.dataset.year);
-      document.querySelectorAll('.year').forEach(x => x.classList.toggle('active', x === y)); refresh();
+      filter.year = Number(y.dataset.year);
+      document.querySelectorAll('.year').forEach(x => x.classList.toggle('active', x === y));
+      renderGroups();
     });
-    document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim(); refresh(); });
+    document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim(); renderGroups(); });
   </script>
 </body>
 </html>
