@@ -15,9 +15,9 @@
     .hero { margin-bottom: 30px; }
     .hero-row { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 22px; width: 100%; }
     .hero-row .left { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--line); padding-right: 28px; }
-    .hero-row .right { display: flex; align-items: center; justify-content: center; padding-left: 28px; }
+    .hero-row .right { display: flex; align-items: center; justify-content: flex-end; padding-left: 28px; }
     .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0; letter-spacing: 1px; text-align: center; }
-    .hero .sub { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0; text-align: center; }
+    .hero .sub { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0; text-align: right; }
     .search { display: flex; align-items: center; gap: 10px; width: 100%; padding: 6px 6px 6px 18px; background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: box-shadow .2s, border-color .2s; }
     .search:focus-within { border-color: var(--indigo); box-shadow: 0 6px 24px rgba(38,38,79,.12); }
     .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
@@ -26,7 +26,7 @@
     .search .sbtn:hover { opacity: .88; }
 
     /* 来源筛选（颜色 = 卡片同款 hash 渐变） */
-    .srcbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; width: fit-content; }
+    .srcbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; width: 100%; }
     .src-chip {
       display: inline-flex; align-items: center; gap: 7px;
       border: 0; cursor: pointer; color: #fff; font-family: inherit;
@@ -108,11 +108,18 @@
     ];
 
     function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
-    // 来源名 hash → 映射到成熟配色方案（Tailwind 800→700 深色渐变，白字可读）
+    // 来源名 hash → 映射到中国色（zhongguose.com）深色渐变，白字可读
     const PALETTE = [
-      ['#312e81','#4338ca'], ['#9f1239','#be123c'], ['#9a3412','#c2410c'], ['#065f46','#047857'],
-      ['#155e75','#0e7490'], ['#1e3a8a','#1d4ed8'], ['#4c1d95','#6d28d9'], ['#831843','#a21caf'],
-      ['#7c2d12','#b45309'], ['#365314','#4d7c0f'],
+      ['#425066','#177cb0'],  // 黛蓝 → 靛青
+      ['#9d2933','#cb3a56'],  // 胭脂 → 茜色
+      ['#057748','#1ba784'],  // 松花绿 → 竹绿
+      ['#3b2e7e','#4b5cc4'],  // 藏蓝 → 宝蓝
+      ['#4c221b','#9d2933'],  // 紫檀 → 胭脂
+      ['#223e36','#1ba784'],  // 苍绿 → 竹绿
+      ['#56004f','#c93756'],  // 紫棠 → 樱桃
+      ['#50616d','#425066'],  // 墨 → 黛蓝
+      ['#a88462','#b36d61'],  // 驼色 → 檀
+      ['#003371','#4c8dae'],  // 绀青 → 群青
     ];
     function gradientFor(str) { const [a, b] = PALETTE[hash(str) % PALETTE.length]; return `linear-gradient(140deg, ${a} 0%, ${b} 100%)`; }
 
