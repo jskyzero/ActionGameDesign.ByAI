@@ -35,21 +35,38 @@ a {
 }
 
 /* —— 文章正文（prose）定制，对标 prototype/article.html —— */
+@counter-style chinese-sec {
+  system: cyclic;
+  symbols: '一' '二' '三' '四' '五' '六' '七' '八';
+  suffix: '';
+}
+.prose {
+  max-width: none;
+  counter-reset: sec;
+}
 .prose h2 {
+  counter-increment: sec;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: var(--font-serif);
   color: var(--indigo);
   font-weight: 700;
   font-size: 22px;
 }
 .prose h2::before {
-  content: '';
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
+  content: counter(sec, chinese-sec);
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
   background: var(--indigo);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-sans);
   flex-shrink: 0;
 }
 
