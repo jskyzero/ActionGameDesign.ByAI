@@ -9,7 +9,7 @@ interface Props {
   project?: string;
 }
 const { title, source, section, year, author, role, project } = Astro.props;
-const kicker = [source || section, year != null ? String(year) : ''].filter(Boolean).join(' · ');
+const kicker = source ? source : [section, year != null ? String(year) : ''].filter(Boolean).join(' · ');
 ---
 
 <header class="cover">
