@@ -34,7 +34,7 @@ a {
   background: linear-gradient(140deg, var(--indigo) 0%, #3a3a72 100%);
 }
 
-/* —— 文章正文（prose）定制，贴近 prototype/article.html —— */
+/* —— 文章正文（prose）定制，对标 prototype/article.html —— */
 .prose h2 {
   display: flex;
   align-items: center;
@@ -42,12 +42,29 @@ a {
   font-family: var(--font-serif);
   color: var(--indigo);
   font-weight: 700;
+  font-size: 22px;
 }
 .prose h2::before {
   content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--indigo);
+  flex-shrink: 0;
+}
+.prose h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--indigo);
+  font-weight: 600;
+}
+.prose h3::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
 }
@@ -55,12 +72,14 @@ a {
   color: var(--accent);
 }
 .prose blockquote {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-radius: var(--r-card);
   background: #fff0ed;
-  border-left: 4px solid var(--accent);
-  border-radius: 0 var(--r-card) var(--r-card) 0;
-  padding: 14px 18px;
-  font-style: normal;
   color: #a33a30;
+  font-size: 14.5px;
+  font-style: normal;
+  border-left: 0;
 }
 .prose blockquote p {
   margin: 0;

@@ -4,7 +4,6 @@ import Base from '../layouts/Base.astro';
 import ArticleCover from '../components/ArticleCover.astro';
 import Hook from '../components/Hook.astro';
 import InfoCard from '../components/InfoCard.astro';
-import CorePoints from '../components/CorePoints.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('docs');
@@ -20,6 +19,7 @@ const d = entry.data;
 
 <Base title={d.title} description={d.description}>
   <article class="article">
+    <a class="back" href="/">← 返回首页</a>
     <ArticleCover
       title={d.title}
       source={d.source}
@@ -31,7 +31,6 @@ const d = entry.data;
     />
     <Hook insight={d.insight} />
     <InfoCard author={d.author} role={d.role} sourceTitle={d.sourceTitle} link={d.link} references={d.references} />
-    <CorePoints points={d.corePoints} />
     <div class="prose">
       <Content />
     </div>
@@ -47,7 +46,17 @@ const d = entry.data;
   .article {
     max-width: 760px;
     margin: 0 auto;
-    padding: 44px 24px 96px;
+    padding: 32px 24px 96px;
+  }
+  .back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 14px;
+    transition: color 0.15s;
+  }
+  .back:hover {
+    color: var(--indigo);
   }
   .prose {
     margin-top: 24px;
@@ -56,7 +65,7 @@ const d = entry.data;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 32px;
+    margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid var(--line);
   }
