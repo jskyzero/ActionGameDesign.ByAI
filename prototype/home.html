@@ -7,22 +7,22 @@
   <meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <style>
-    :root { --bg: #faf9f6; --ink: #1d1d26; --muted: #83838d; --line: #ece8df; --indigo: #26264f; }
+    :root { --bg: #faf9f6; --ink: #1d1d26; --muted: #83838d; --line: #ece8df; --indigo: #26264f; --r-card: 18px; --r-pill: 999px; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif; -webkit-font-smoothing: antialiased; }
     .wrap { max-width: 1160px; margin: 0 auto; padding: 44px 28px 100px; }
 
     .hero { margin-bottom: 30px; }
-    .hero-row { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 22px; width: 100%; }
+    .hero-row { display: grid; grid-template-columns: 2fr 1fr; margin-bottom: 22px; width: 100%; }
     .hero-row .left { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--line); padding-right: 28px; }
     .hero-row .right { display: flex; align-items: center; justify-content: flex-start; padding-left: 28px; }
     .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0; letter-spacing: 1px; text-align: center; }
     .hero .sub { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0; text-align: left; }
-    .search { display: flex; align-items: center; gap: 10px; width: 100%; padding: 6px 6px 6px 18px; background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: box-shadow .2s, border-color .2s; }
+    .search { display: flex; align-items: center; gap: 10px; width: 100%; padding: 6px 6px 6px 18px; background: #fff; border: 1px solid var(--line); border-radius: var(--r-pill); box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: box-shadow .2s, border-color .2s; }
     .search:focus-within { border-color: var(--indigo); box-shadow: 0 6px 24px rgba(38,38,79,.12); }
     .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
     .search .icon { color: var(--muted); }
-    .search .sbtn { border: 0; background: var(--indigo); color: #fff; font-family: inherit; font-size: 14px; padding: 10px 20px; border-radius: 999px; cursor: pointer; transition: opacity .15s; }
+    .search .sbtn { border: 0; background: var(--indigo); color: #fff; font-family: inherit; font-size: 14px; padding: 10px 20px; border-radius: var(--r-pill); cursor: pointer; transition: opacity .15s; }
     .search .sbtn:hover { opacity: .88; }
 
     /* 来源筛选（颜色 = 卡片同款 hash 渐变） */
@@ -30,7 +30,7 @@
     .src-chip {
       display: inline-flex; align-items: center; gap: 7px;
       border: 0; cursor: pointer; color: #fff; font-family: inherit;
-      font-size: 13px; padding: 7px 14px; border-radius: 999px;
+      font-size: 13px; padding: 7px 14px; border-radius: var(--r-pill);
       box-shadow: 0 2px 6px rgba(0,0,0,.12);
       transition: transform .15s, box-shadow .15s, opacity .15s;
     }
@@ -54,7 +54,7 @@
 
     .art {
       position: relative; display: flex; flex-direction: column; justify-content: space-between;
-      min-height: 150px; padding: 18px 18px 16px; border-radius: 14px; overflow: hidden;
+      min-height: 150px; padding: 18px 18px 16px; border-radius: var(--r-card); overflow: hidden;
       text-decoration: none; color: #fff; cursor: pointer;
       box-shadow: 0 6px 18px rgba(0,0,0,.16); transition: transform .2s ease, box-shadow .2s ease;
     }
@@ -64,7 +64,7 @@
     .art .title { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 17.5px; font-weight: 700; line-height: 1.45; }
     .art .hook { font-size: 12.5px; opacity: .6; line-height: 1.6; margin-top: 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
     .art .chiprow { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
-    .art .chip { font-size: 11px; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); }
+    .art .chip { font-size: 11px; padding: 3px 9px; border-radius: var(--r-pill); background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); }
     .empty { display: none; color: #aaa; text-align: center; padding: 40px 0; }
   </style>
 </head>
@@ -108,20 +108,8 @@
     ];
 
     function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
-    // 来源名 hash → 映射到中国色（zhongguose.com）深色渐变，白字可读
-    const PALETTE = [
-      ['#425066','#177cb0'],  // 黛蓝 → 靛青
-      ['#9d2933','#cb3a56'],  // 胭脂 → 茜色
-      ['#057748','#1ba784'],  // 松花绿 → 竹绿
-      ['#3b2e7e','#4b5cc4'],  // 藏蓝 → 宝蓝
-      ['#4c221b','#9d2933'],  // 紫檀 → 胭脂
-      ['#223e36','#1ba784'],  // 苍绿 → 竹绿
-      ['#56004f','#c93756'],  // 紫棠 → 樱桃
-      ['#50616d','#425066'],  // 墨 → 黛蓝
-      ['#a88462','#b36d61'],  // 驼色 → 檀
-      ['#003371','#4c8dae'],  // 绀青 → 群青
-    ];
-    function gradientFor(str) { const [a, b] = PALETTE[hash(str) % PALETTE.length]; return `linear-gradient(140deg, ${a} 0%, ${b} 100%)`; }
+    // 来源名 hash → 纯 hash 色相渐变
+    function gradientFor(str) { const hue = hash(str) % 360; return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`; }
 
     const SRC_ORDER = ['Capcom','PlatinumGames','Santa Monica Studio','FTG 相关','其他','Nintendo','非 GDC','设计者笔记'];
     const SRC_SET = [...new Set(DATA.map(d => d.s))].sort((a,b) => (SRC_ORDER.indexOf(a) - SRC_ORDER.indexOf(b)));
