@@ -1,5 +1,5 @@
 ---
-title: 2017 · 街霸 5
+title: 街霸 5 · 龟井敏征
 kind: talk
 section: Capcom
 year: 2017
@@ -10,7 +10,7 @@ role: 美术总监（Art Director）
 project: 街霸 5（Street Fighter V）
 event: GDC 2017
 talkTitle: "The Art Direction of Street Fighter V: The Role of Art in Fighting Games"
-video: https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games
+video: https://gdcvault.com/play/1024506/Art-Direction-of-Street-Fighter-V-The-Role-of-Art-in-Fighting-Games
 tags: [街霸, 美术设计, 信息传达, NPR]
 references:
   - label: 中译（完整总结）
@@ -26,41 +26,52 @@ description: GDC 2017《The Art Direction of Street Fighter V》，美术总监�
 | --- | --- |
 | **分享人** | 龟井敏征 |
 | **职位** | 美术总监（Art Director，负责《街霸 4》《街霸 5》） |
-| **项目** | 街霸 5（Street Fighter V） |
-| **会议** | GDC 2017 |
 | **演讲标题** | The Art Direction of Street Fighter V: The Role of Art in Fighting Games |
-| **源视频** | [GDC Vault](https://gdcvault.com/play/1024506) · [Game Developer](https://www.gamedeveloper.com/design/video-i-street-fighter-v-i-and-the-impact-of-art-design-in-fighting-games) |
+| **源视频** | [GDC Vault](https://gdcvault.com/play/1024506/Art-Direction-of-Street-Fighter-V-The-Role-of-Art-in-Fighting-Games) |
 | **参考翻译** | [中译·完整总结](https://seicing.com/html/study/%E3%80%8A%E8%A1%97%E9%9C%B85%E3%80%8B%E7%9A%84%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%88%86%E4%BA%AB.html) · [中译·知乎](https://zhuanlan.zhihu.com/p/56750629) |
 
-> 核心观点：在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
+> **核心观点**：在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。
 
-## 一、容易理解的美术设计（可读性优先）
+## 一、容易理解的美术设计
 
-格斗游戏是极快的信息【获取 → 处理 → 操作】循环，画面必须「一目了然」。画面设计两大特点：① 突出的肌肉线条 ② 夸张的画面表现。
+格斗游戏是极快的信息【获取 → 处理 → 操作】循环，画面必须「一目了然」。为此街霸 5 的画面设计有两个鲜明特点：**突出的肌肉线条** + **夸张的画面表现**。
+
+:::tip[为什么「容易理解」这么重要？]
+玩家在格斗中的信息循环只有约 0.x 秒，美术如果不能瞬间传达「这拳很痛」「我的角色正在被攻击」，游戏就根本没法玩。
+:::
 
 ### 角色
 
-- **线条绘制**：制定人体各部位的绘制准则（参考 Capcom 内部《あやしい美術解剖図》）。刻意与现实不符——「不正确的方式制作才是正确的做法」，因为贴近真实比例反而让攻击动作难以认知。
-- **身高**：原始角色模型身高都一样，后期根据战斗画面应有的比例再调整（以隆为基准）。
+**线条绘制**
+- 制定人体各部位的绘制准则（参考 Capcom 内部《あやしい美術解剖図》）。
+- 刻意与现实不符——**「不正确的方式制作才是正确的做法」**：贴近真实比例反而让攻击动作难以认知。
+
+**身高**
+- 原始角色模型身高都一样，后期按战斗画面应有的比例再调整（以隆为基准）。
 
 ### 动画
 
-- **三要点**：功能性（满足策划 HitBox 要求）· 战斗风格（能被立刻认出）· 重心和节奏（正确的感觉 & 帅）。
+> 三要点：**功能性**（满足策划 HitBox 要求）· **战斗风格**（能被立刻认出）· **重心和节奏**（正确的感觉 & 帅）。
+
 - **必杀技**：以简单的动作让玩家感觉印象深刻的演出（如 Mika 的「臀部夹击」、隆的「升龙拳」）。
 
 ### 场景
 
-- **辨识度**：2D 时代用色调控制区别角色与背景（角色饱和、场景暗淡）；街霸 5 用 Unreal 的 Multi Color Grading 分区域调整背景色阶。
+- **辨识度**：2D 时代用色调分离角色与背景（角色饱和、场景暗淡）；街霸 5 用 Unreal 的 Multi Color Grading 分区域调色。
 
 ### 相机
 
-- 常态下把角色身体角度**偏向摄像机**（约转 5°，让玩家看到更多动作细节，2D 平面格斗的相机受限所以不违和）。
-- 左右两端用 Fix Projection 修正投影，效果取 **0.5**，在「边缘与中间一致」和「保持立体感」之间取平衡。
+- 常态下把角色身体角度**偏向摄像机**（约转 5°），让玩家看到更多动作细节。
+- 左右两端用 Fix Projection 修正投影，取 **0.5**，在「边缘一致」与「保持立体感」间取平衡。
 
 ## 二、独特的美术风格
 
 风格 = **丰富光线 + 油彩笔触**（NPR，目标是把历代《街霸》形象插画在游戏中具现化）。
 
 - **细节比重**：按「脸 > 身体 > 衣服」的注视优先级调整笔触疏密，脸最细腻、身体衣服较粗。
-- **轮廓线**：在 RGB 色差大的地方加轮廓线（UE4 post process），角色轮廓、阴影、背景边缘都加强，贴合插画风。
-- **颜色与饱和度控制**：环境光 + 间接光；间接光用 Indirect Lighting Cache（烘焙缓存）+ Enlighten（实时渲染）调整。
+- **轮廓线**：在 RGB 色差大的地方加轮廓线（UE4 post process），角色轮廓、阴影、背景边缘都加强。
+- **颜色与饱和度**：环境光 + 间接光（Indirect Lighting Cache 烘焙 + Enlighten 实时渲染）。
+
+:::note[一句话带走]
+先保证「读得懂」，再追求「有个性」——可读性是格斗游戏美术的第一优先级。
+:::
