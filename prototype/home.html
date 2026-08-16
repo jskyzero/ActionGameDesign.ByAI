@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>交互原型 · 主页探索</title>
+  <title>交互原型 · 主页探索（卡片版）</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <style>
     :root {
-      --bg: #fbfaf8;
+      --bg: #faf9f6;
       --card: #ffffff;
-      --ink: #1f1f28;
-      --muted: #85858f;
-      --line: #eae7e0;
-      --accent: #ff5a4e;
+      --ink: #1d1d26;
+      --muted: #83838d;
+      --line: #ece8df;
       --indigo: #26264f;
-      --gold: #d9a441;
     }
     * { box-sizing: border-box; }
     body {
@@ -22,79 +20,85 @@
       font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 44px 28px 90px; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 46px 28px 100px; }
 
-    /* 头部 + 搜索 */
-    .hero { margin-bottom: 40px; }
-    .hero h1 {
-      font-family: 'LXGW WenKai', 'PingFang SC', sans-serif;
-      font-size: 38px; font-weight: 700; margin: 0 0 10px; letter-spacing: 1px;
-    }
+    /* 头部 */
+    .hero { margin-bottom: 42px; }
+    .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0 0 10px; letter-spacing: 1px; }
     .hero .sub { color: var(--muted); font-size: 15px; margin: 0 0 22px; }
     .search {
-      display: flex; align-items: center; gap: 10px;
-      max-width: 560px; padding: 12px 18px;
-      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+      display: flex; align-items: center; gap: 10px; max-width: 580px;
+      padding: 13px 18px; background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.05);
+      transition: box-shadow .2s, border-color .2s;
     }
-    .search input {
-      flex: 1; border: 0; outline: 0; font-size: 15px; color: var(--ink); background: transparent;
-    }
-    .search .icon { color: var(--muted); }
+    .search:focus-within { border-color: var(--indigo); box-shadow: 0 5px 20px rgba(38,38,79,.10); }
+    .search input { flex: 1; border: 0; outline: 0; font-size: 15px; color: var(--ink); background: transparent; }
+    .search .icon { color: var(--muted); font-size: 16px; }
 
     /* 探索区块 */
-    .exp { margin: 38px 0; }
-    .exp-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
-    .exp-head h2 { font-size: 21px; margin: 0; font-weight: 700; color: var(--indigo); }
+    .exp { margin: 40px 0; }
+    .exp-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+    .exp-head h2 { font-size: 22px; margin: 0; font-weight: 700; color: var(--indigo); letter-spacing: .5px; }
     .exp-head .more { color: var(--muted); font-size: 13px; }
 
     /* 章节卡片 */
     .sections { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    @media (max-width: 860px) { .sections { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 880px) { .sections { grid-template-columns: repeat(2, 1fr); } }
     .sec-card {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 18px; border-radius: 14px; cursor: pointer;
+      position: relative; display: flex; align-items: center; gap: 12px;
+      padding: 18px 16px; border-radius: 14px; cursor: pointer; overflow: hidden;
       background: var(--card); border: 1px solid var(--line);
-      text-decoration: none; color: inherit;
-      transition: transform .15s, box-shadow .15s;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .sec-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.07); }
-    .sec-card .name { font-size: 15.5px; font-weight: 600; }
-    .sec-card .cnt { font-size: 12.5px; color: var(--muted); }
-    .sec-card .bar {
-      width: 6px; align-self: stretch; border-radius: 3px; margin-right: 12px; flex-shrink: 0;
-    }
+    .sec-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.08); }
+    .sec-card .swatch { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; }
+    .sec-card .nm { font-size: 15px; font-weight: 600; line-height: 1.3; }
+    .sec-card .ct { font-size: 12px; color: var(--muted); }
+    .sec-card .arrow { position: absolute; right: 14px; top: 50%; transform: translateY(-50%) translateX(6px); opacity: 0; transition: all .2s; color: var(--muted); }
+    .sec-card:hover .arrow { opacity: 1; transform: translateY(-50%) translateX(0); }
+    .sec-card.selected { border-color: var(--indigo); box-shadow: 0 0 0 2px var(--indigo); }
 
-    /* 标签云 */
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      font-size: 13.5px; padding: 7px 15px; border-radius: 999px; cursor: pointer;
-      background: var(--card); border: 1px solid var(--line); color: #555;
-      transition: all .15s; user-select: none;
+    /* 主题卡片 */
+    .tags { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+    .tag-card {
+      display: flex; align-items: center; gap: 8px; padding: 12px 14px;
+      border-radius: 12px; cursor: pointer; background: var(--card); border: 1px solid var(--line);
+      transition: all .18s ease;
     }
-    .tag:hover { border-color: var(--indigo); color: var(--indigo); }
-    .tag.active { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+    .tag-card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.06); border-color: var(--indigo); }
+    .tag-card .ic { font-size: 15px; }
+    .tag-card .nm { font-size: 13.5px; color: #444; }
+    .tag-card .ct { margin-left: auto; font-size: 11.5px; color: var(--muted); }
+    .tag-card.selected { border-color: var(--indigo); background: var(--indigo); }
+    .tag-card.selected .nm, .tag-card.selected .ct { color: #fff; }
 
-    /* 年份时间线 */
-    .years { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0; }
+    /* 年份 */
+    .years { display: flex; gap: 8px; flex-wrap: wrap; }
     .year {
-      flex-shrink: 0; font-size: 14px; padding: 8px 18px; border-radius: 999px; cursor: pointer;
-      background: var(--card); border: 1px solid var(--line); color: #555; user-select: none;
+      font-size: 13.5px; padding: 8px 18px; border-radius: 999px; cursor: pointer;
+      background: var(--card); border: 1px solid var(--line); color: #555; transition: all .18s;
     }
+    .year:hover { border-color: var(--indigo); color: var(--indigo); }
     .year.active { background: var(--indigo); border-color: var(--indigo); color: #fff; }
 
-    /* 文章列表（标题优先，无图） */
-    .list { display: flex; flex-direction: column; gap: 10px; }
-    .row {
-      display: flex; align-items: baseline; gap: 16px;
-      padding: 16px 18px; border-radius: 12px; cursor: pointer;
-      background: var(--card); border: 1px solid var(--line); text-decoration: none; color: inherit;
-      transition: box-shadow .15s, border-color .15s;
+    /* 文章卡片（标题优先，无图） */
+    .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+    .art-card {
+      position: relative; display: flex; flex-direction: column;
+      padding: 18px 18px 16px; border-radius: 14px; text-decoration: none; color: inherit;
+      background: var(--card); border: 1px solid var(--line); overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .row:hover { box-shadow: 0 4px 14px rgba(0,0,0,.06); border-color: #ddd8cc; }
-    .row .rtitle { flex: 1; font-size: 16.5px; font-weight: 600; color: var(--ink); min-width: 0; }
-    .row .rhook { flex: 1.6; font-size: 13.5px; color: var(--muted); line-height: 1.6; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-    .row .rmeta { flex: 0 0 auto; font-size: 12px; color: #b0b0ba; text-align: right; white-space: nowrap; }
+    .art-card:hover { transform: translateY(-5px); box-shadow: 0 16px 34px rgba(0,0,0,.09); }
+    .art-card .strip { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .art-card .atitle { font-size: 16.5px; font-weight: 700; line-height: 1.45; color: var(--ink); margin: 6px 0 8px; }
+    .art-card .ahook { font-size: 13px; color: var(--muted); line-height: 1.7; margin: 0 0 14px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; flex: 1; }
+    .art-card .ameta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .art-card .asec { font-size: 12px; color: #b0b0ba; }
+    .art-card .ago { font-size: 14px; color: var(--muted); opacity: 0; transform: translateX(-6px); transition: all .2s; }
+    .art-card:hover .ago { opacity: 1; transform: translateX(0); }
+
     .empty { display: none; color: #aaa; text-align: center; padding: 40px 0; }
   </style>
 </head>
@@ -129,28 +133,28 @@
   </div>
 
   <script>
-    // 示例数据（正式版从 Astro 内容集合读取）
     const DATA = [
       { t: '街霸 5 的美术设计思路', h: '在满足「瞬间传达信息」的前提下，再考虑独特美术表现。', s: 'Capcom', y: 2017, g: ['街霸','美术设计','信息传达'] },
-      { t: '2018 · 怪物猎人 世界', h: '在实机原型中验证概念、制作技术与标准。', s: 'Capcom', y: 2018, g: ['怪物猎人','原型','验证'] },
+      { t: '2018 · 怪物猎人 世界', h: '在实机原型中验证概念、制作技术与标准。', s: 'Capcom', y: 2018, g: ['怪物猎人','原型'] },
       { t: '2019 · 鬼泣 5', h: '核心乐趣：克服困难并调整的成就感。', s: 'Capcom', y: 2019, g: ['鬼泣','核心乐趣'] },
-      { t: '2016 · 无国界 ACT', h: '动作游戏的本质是「被动游戏」：根据状况做出响应。', s: 'PlatinumGames', y: 2016, g: ['白金工作室','被动游戏'] },
+      { t: '2016 · 无国界 ACT', h: '动作游戏的本质是「被动游戏」：根据状况做出响应。', s: 'PlatinumGames', y: 2016, g: ['被动游戏'] },
       { t: '2018 · 尼尔', h: '自由感是玩家突破限制的那一刻。', s: 'PlatinumGames', y: 2018, g: ['尼尔','自由感'] },
-      { t: '2023 · 战神 AI', h: '战神 AI 从 Lua 转行为树的迭代与经验。', s: 'Santa Monica Studio', y: 2023, g: ['战神','AI','行为树'] },
+      { t: '2023 · 战神 AI', h: '战神 AI 从 Lua 转行为树的迭代与经验。', s: 'Santa Monica Studio', y: 2023, g: ['战神','AI'] },
       { t: '2019 · 战神 战斗系统', h: '新视角下战斗系统的革新。', s: 'Santa Monica Studio', y: 2019, g: ['战神','战斗系统'] },
       { t: '2015 · 罪恶装备 Xrd', h: '在 3D 框架内重建经典 2D 格斗视觉。', s: 'FTG 相关', y: 2015, g: ['罪恶装备','渲染'] },
       { t: '2019 · FTG 十年来的易玩性', h: '如何为古老的 FTG 游戏扩充受众。', s: 'FTG 相关', y: 2019, g: ['格斗','易玩性'] },
       { t: '2017 · 仁王', h: '如何通过玩家反馈来重塑游戏。', s: '其他', y: 2017, g: ['仁王','玩家反馈'] },
-      { t: '2017 · 塞尔达 旷野之息', h: '勇气三角革新玩法，智慧三角想法落地。', s: 'Nintendo', y: 2017, g: ['塞尔达','任天堂'] },
-      { t: '1999 · 宫本茂', h: '游戏是一个更大、更广阔的世界的一部分。', s: 'Nintendo', y: 1999, g: ['任天堂','设计哲学'] },
-      { t: '河森正治 · 原创性', h: '跟不同次元的事物融合。', s: '非 GDC', y: 0, g: ['原创性','融合'] },
-      { t: '关卡设计术语', h: '掌握常用关卡设计术语。', s: '非 GDC', y: 0, g: ['关卡设计','术语'] },
-      { t: '动作游戏的本质', h: '通过奖惩设计，让玩家控制角色行动这件事更有乐趣。', s: '设计者笔记', y: 0, g: ['方法论','MDA'] },
-      { t: '动作游戏设计的 SSS 方法', h: 'Situation-Solution-Stage，情形-解决-编排。', s: '设计者笔记', y: 0, g: ['方法论','SSS'] },
+      { t: '2017 · 塞尔达 旷野之息', h: '勇气三角革新玩法，智慧三角想法落地。', s: 'Nintendo', y: 2017, g: ['塞尔达'] },
+      { t: '1999 · 宫本茂', h: '游戏是一个更大、更广阔的世界的一部分。', s: 'Nintendo', y: 1999, g: ['设计哲学'] },
+      { t: '河森正治 · 原创性', h: '跟不同次元的事物融合。', s: '非 GDC', y: 0, g: ['原创性'] },
+      { t: '关卡设计术语', h: '掌握常用关卡设计术语。', s: '非 GDC', y: 0, g: ['关卡设计'] },
+      { t: '动作游戏的本质', h: '通过奖惩设计，让玩家控制角色行动这件事更有乐趣。', s: '设计者笔记', y: 0, g: ['方法论'] },
+      { t: '动作游戏设计的 SSS 方法', h: 'Situation-Solution-Stage，情形-解决-编排。', s: '设计者笔记', y: 0, g: ['SSS'] },
     ];
 
     const SECS = ['Capcom','PlatinumGames','Santa Monica Studio','FTG 相关','其他','Nintendo','非 GDC','设计者笔记'];
     const SEC_COLORS = ['#e25a4a','#e8923c','#c9a53a','#6fae4a','#3aa8a0','#4a90d9','#8a6fd0','#d96fa0'];
+    const colorOf = s => SEC_COLORS[SECS.indexOf(s)] || '#999';
 
     const allTags = [...new Set(DATA.flatMap(d => d.g))].sort();
     const allYears = [...new Set(DATA.map(d => d.y).filter(Boolean))].sort((a,b)=>b-a);
@@ -158,63 +162,61 @@
     let filter = { section: '', tag: '', year: 0, q: '' };
 
     function renderSections() {
-      document.getElementById('sections').innerHTML = SECS.map((s, i) => {
+      document.getElementById('sections').innerHTML = SECS.map(s => {
         const n = DATA.filter(d => d.s === s).length;
         return `<div class="sec-card" data-section="${s}">
-          <span class="bar" style="background:${SEC_COLORS[i]}"></span>
-          <span class="name">${s}</span><span class="cnt">${n} 篇</span>
+          <span class="swatch" style="background:${colorOf(s)}"></span>
+          <span><span class="nm">${s}</span><br><span class="ct">${n} 篇</span></span>
+          <span class="arrow">→</span>
         </div>`;
       }).join('');
     }
     function renderTags() {
-      document.getElementById('tags').innerHTML = allTags.map(g =>
-        `<span class="tag" data-tag="${g}">${g}</span>`).join('');
+      document.getElementById('tags').innerHTML = allTags.map(g => {
+        const n = DATA.filter(d => d.g.includes(g)).length;
+        return `<div class="tag-card" data-tag="${g}"><span class="ic">#</span><span class="nm">${g}</span><span class="ct">${n}</span></div>`;
+      }).join('');
     }
     function renderYears() {
       document.getElementById('years').innerHTML = ['全部', ...allYears].map(y =>
-        `<span class="year${y==='全部' ? ' active' : ''}" data-year="${y}">${y}</span>`).join('');
+        `<span class="year${y==='全部'?' active':''}" data-year="${y}">${y}</span>`).join('');
     }
     function renderList() {
       const list = DATA.filter(d =>
         (!filter.section || d.s === filter.section) &&
         (!filter.tag || d.g.includes(filter.tag)) &&
         (!filter.year || d.y === filter.year) &&
-        (!filter.q || (d.t + d.h + d.g.join('')).toLowerCase().includes(filter.q.toLowerCase()))
-      ).sort((a,b) => b.y - a.y || a.t.localeCompare(b.t, 'zh'));
+        (!filter.q || (d.t+d.h+d.g.join('')).toLowerCase().includes(filter.q.toLowerCase()))
+      ).sort((a,b) => b.y - a.y || a.t.localeCompare(b.t,'zh'));
       document.getElementById('list').innerHTML = list.map(d =>
-        `<a class="row" href="#">
-          <span class="rtitle">${d.t}</span>
-          <span class="rhook">${d.h}</span>
-          <span class="rmeta">${d.s}${d.y ? ' · ' + d.y : ''}</span>
+        `<a class="art-card" href="#">
+          <span class="strip" style="background:${colorOf(d.s)}"></span>
+          <span class="atitle">${d.t}</span>
+          <span class="ahook">${d.h}</span>
+          <span class="ameta"><span class="asec">${d.s}${d.y ? ' · ' + d.y : ''}</span><span class="ago">→</span></span>
         </a>`).join('');
       document.getElementById('resultCount').textContent = `${list.length} 篇`;
       document.getElementById('empty').style.display = list.length ? 'none' : 'block';
     }
-
     function refresh() {
       renderList();
-      // 同步 active 状态
-      document.querySelectorAll('.sec-card').forEach(c => c.style.outline = (c.dataset.section === filter.section && filter.section) ? '2px solid var(--indigo)' : 'none');
-      document.querySelectorAll('.tag').forEach(t => t.classList.toggle('active', t.dataset.tag === filter.tag));
+      document.querySelectorAll('.sec-card').forEach(c => c.classList.toggle('selected', c.dataset.section === filter.section && !!filter.section));
+      document.querySelectorAll('.tag-card').forEach(t => t.classList.toggle('selected', t.dataset.tag === filter.tag && !!filter.tag));
     }
 
     renderSections(); renderTags(); renderYears(); renderList();
-
     document.getElementById('sections').addEventListener('click', e => {
       const c = e.target.closest('.sec-card'); if (!c) return;
-      filter.section = (filter.section === c.dataset.section) ? '' : c.dataset.section;
-      refresh();
+      filter.section = (filter.section === c.dataset.section) ? '' : c.dataset.section; refresh();
     });
     document.getElementById('tags').addEventListener('click', e => {
-      const t = e.target.closest('.tag'); if (!t) return;
-      filter.tag = (filter.tag === t.dataset.tag) ? '' : t.dataset.tag;
-      refresh();
+      const t = e.target.closest('.tag-card'); if (!t) return;
+      filter.tag = (filter.tag === t.dataset.tag) ? '' : t.dataset.tag; refresh();
     });
     document.getElementById('years').addEventListener('click', e => {
       const y = e.target.closest('.year'); if (!y) return;
       filter.year = (y.dataset.year === '全部') ? 0 : Number(y.dataset.year);
-      document.querySelectorAll('.year').forEach(x => x.classList.toggle('active', x === y));
-      refresh();
+      document.querySelectorAll('.year').forEach(x => x.classList.toggle('active', x === y)); refresh();
     });
     document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim(); refresh(); });
   </script>
