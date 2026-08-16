@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>交互原型 · 主页时间轴</title>
+  <title>动作游戏设计知识库</title>
+  <meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <style>
     :root { --bg: #faf9f6; --ink: #1d1d26; --muted: #83838d; --line: #ece8df; --indigo: #26264f; }
@@ -11,13 +12,16 @@
     body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif; -webkit-font-smoothing: antialiased; }
     .wrap { max-width: 1160px; margin: 0 auto; padding: 44px 28px 100px; }
 
-    .hero { margin-bottom: 24px; }
-    .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 40px; font-weight: 700; margin: 0 0 10px; letter-spacing: 1px; }
-    .hero .sub { color: var(--muted); font-size: 15px; margin: 0 0 20px; }
-    .search { display: flex; align-items: center; gap: 10px; max-width: 580px; padding: 13px 18px; background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.05); transition: box-shadow .2s, border-color .2s; }
-    .search:focus-within { border-color: var(--indigo); box-shadow: 0 5px 20px rgba(38,38,79,.10); }
+    .hero { margin-bottom: 30px; text-align: center; }
+    .hero .kicker { font-size: 12px; letter-spacing: 3.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 { font-family: 'LXGW WenKai','PingFang SC',sans-serif; font-size: 46px; font-weight: 700; margin: 0 0 14px; letter-spacing: 2px; }
+    .hero .sub { color: var(--muted); font-size: 15.5px; line-height: 1.8; margin: 0 auto 26px; max-width: 560px; }
+    .search { display: flex; align-items: center; gap: 10px; max-width: 620px; margin: 0 auto; padding: 6px 6px 6px 18px; background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 4px 18px rgba(0,0,0,.06); transition: box-shadow .2s, border-color .2s; }
+    .search:focus-within { border-color: var(--indigo); box-shadow: 0 6px 24px rgba(38,38,79,.12); }
     .search input { flex: 1; border: 0; outline: 0; font-size: 15px; background: transparent; color: var(--ink); }
     .search .icon { color: var(--muted); }
+    .search .sbtn { border: 0; background: var(--indigo); color: #fff; font-family: inherit; font-size: 14px; padding: 10px 20px; border-radius: 999px; cursor: pointer; transition: opacity .15s; }
+    .search .sbtn:hover { opacity: .88; }
 
     /* 来源筛选（颜色 = 卡片同款 hash 渐变） */
     .srcbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; }
@@ -65,9 +69,10 @@
 <body>
   <div class="wrap">
     <header class="hero">
+      <div class="kicker">Action Game Design · Knowledge Base</div>
       <h1>动作游戏设计知识库</h1>
-      <p class="sub">AI 驱动的动作游戏设计分享集合 · 按时间轴探索</p>
-      <div class="search"><span class="icon">🔍</span><input id="q" placeholder="搜索分享标题、观点…" /></div>
+      <p class="sub">从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。</p>
+      <div class="search"><span class="icon">🔍</span><input id="q" placeholder="搜索分享标题、观点、厂商…" /><button class="sbtn">搜索</button></div>
     </header>
 
     <div class="srcbar" id="srcbar"></div>
