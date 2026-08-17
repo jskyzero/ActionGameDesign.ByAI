@@ -50,7 +50,7 @@ const railHtml = years
 const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>`;
 ---
 
-<Base>
+<Base contentWidth="1080px">
   <div class="wrap">
     <header class="hero">
       <h1><span class="title-hl">动作游戏设计知识库</span></h1>
@@ -186,7 +186,7 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
   }
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 14px;
   }
   .art {
@@ -194,8 +194,8 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     display: flex;
     flex-direction: column;
     aspect-ratio: 1.618 / 1; /* 黄金矩形（宽:高 = φ:1） */
-    min-height: 230px; /* 窄屏兜底，保证内容不裁切 */
-    padding: 20px;
+    min-height: 210px; /* 窄屏兜底，保证内容不裁切 */
+    padding: 16px;
     border-radius: var(--r-card);
     overflow: hidden;
     text-decoration: none;
