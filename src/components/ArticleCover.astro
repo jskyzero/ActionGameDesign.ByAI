@@ -18,7 +18,11 @@ const bgText = event || section || '';
 ---
 
 <header class="cover" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>
-  {bgText && <div class="cover-bg">{bgText}</div>}
+  {bgText && (
+    <div class="cover-bg">
+      {Array.from({ length: 6 }).map(() => <span>{bgText}</span>)}
+    </div>
+  )}
   <div class="cover-body">
     {kicker && <div class="kicker">{kicker}</div>}
     <h1>{title}</h1>
@@ -43,17 +47,22 @@ const bgText = event || section || '';
   }
   .cover-bg {
     position: absolute;
-    top: -12px;
-    right: -6px;
+    inset: -25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: rotate(-12deg);
     font-family: var(--font-serif);
-    font-size: clamp(64px, 12vw, 140px);
+    font-size: clamp(20px, 3vw, 32px);
     font-weight: 700;
-    line-height: 1;
-    color: rgba(38, 38, 79, 0.06);
-    letter-spacing: -2px;
+    line-height: 1.8;
     white-space: nowrap;
+    color: rgba(38, 38, 79, 0.05);
     pointer-events: none;
     user-select: none;
+  }
+  .cover-bg span {
+    display: block;
   }
   .cover-body {
     position: relative;

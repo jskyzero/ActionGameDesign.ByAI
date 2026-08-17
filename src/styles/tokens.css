@@ -29,7 +29,7 @@
   --font-serif: 'LXGW WenKai', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
 
-  /* —— 阴影（蓝调） —— */
-  --shadow-card: 0 6px 18px rgba(13, 58, 140, 0.14);
-  --shadow-card-hover: 0 18px 38px rgba(13, 58, 140, 0.22);
+  /* —— 阴影（中性灰，无彩色残留） —— */
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 18px 38px rgba(0, 0, 0, 0.12);
 }

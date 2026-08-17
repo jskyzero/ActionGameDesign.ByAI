@@ -36,8 +36,9 @@ function sectionGray(s) {
   return SECTION_GRAYS[s] || '#71717a';
 }
 function artHtml(d) {
+  const bgLines = Array(5).fill(`<span>${d.s}</span>`).join('');
   return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}">
-    <div class="art-bg" style="color:${sectionGray(d.s)}22">${d.s}</div>
+    <div class="art-bg" style="color:${sectionGray(d.s)}22">${bgLines}</div>
     <div class="art-body">
       <div class="title">${d.t}</div>
       <div class="hook">${d.h}</div>
@@ -135,8 +136,9 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   }
 
   function artHtml(d) {
+    const bgLines = Array(5).fill(`<span>${d.s}</span>`).join('');
     return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}">
-      <div class="art-bg" style="color:${sectionGray(d.s)}22">${d.s}</div>
+      <div class="art-bg" style="color:${sectionGray(d.s)}22">${bgLines}</div>
       <div class="art-body">
         <div class="title">${d.t}</div>
         <div class="hook">${d.h}</div>
@@ -460,19 +462,24 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     transform: translateY(-5px);
     box-shadow: var(--shadow-card-hover);
   }
-  /* 来源名 = 超大背景文字 */
+  /* 来源名 = 多行倾斜背景文字（水印式铺满） */
   .art-bg {
     position: absolute;
-    top: -8px;
-    right: -2px;
+    inset: -25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: rotate(-12deg);
     font-family: var(--font-serif);
-    font-size: clamp(40px, 5.5vw, 60px);
+    font-size: clamp(16px, 1.8vw, 22px);
     font-weight: 700;
-    line-height: 1;
-    letter-spacing: -1px;
+    line-height: 1.8;
     white-space: nowrap;
     pointer-events: none;
     user-select: none;
+  }
+  .art-bg span {
+    display: block;
   }
   .art-body {
     position: relative;
