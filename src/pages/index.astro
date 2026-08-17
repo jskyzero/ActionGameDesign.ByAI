@@ -13,16 +13,61 @@ const entries = (await getCollection('docs'))
     s: e.data.section ?? '未分类',
     y: e.data.year,
     g: e.data.tags ?? [],
+    n: 'card-' + e.slug.replace(/[^a-zA-Z0-9_-]+/g, '-'),
     href: `${base}/${e.slug}/`,
   }));
 
 const sections = [...new Set(entries.map((e) => e.s))].sort(
   (a, b) => (SECTION_ORDER.indexOf(a) === -1 ? 999 : SECTION_ORDER.indexOf(a)) - (SECTION_ORDER.indexOf(b) === -1 ? 999 : SECTION_ORDER.indexOf(b))
 );
+
+function hash(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+function gradientFor(str) {
+  const hue = hash(str) % 360;
+  return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`;
+}
+function artHtml(d) {
+  const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
+  return `<a class="art" href="${d.href}" style="background:${gradientFor(d.s)};view-transition-name:${d.n}">
+    <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+    <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
+  </a>`;
+}
+function yearGroup(visible) {
+  const m = new Map();
+  for (const d of visible) {
+    const k = d.y || '未标注';
+    if (!m.has(k)) m.set(k, []);
+    m.get(k).push(d);
+  }
+  const keys = [...m.keys()].sort((a, b) => (b === '未标注' ? -1 : a === '未标注' ? 1 : b - a));
+  return keys.map((k) => ({ year: k, items: m.get(k) }));
+}
+const groups = yearGroup(entries);
+const srcbarHtml = [
+  `<button class="src-chip active" data-src="" style="background:linear-gradient(140deg,#26264f,#3a3a72)">全部<span class="c">${entries.length}</span></button>`,
+  ...sections.map((s) => {
+    const n = entries.filter((d) => d.s === s).length;
+    return `<button class="src-chip" data-src="${s}" style="background:${gradientFor(s)}">${s}<span class="c">${n}</span></button>`;
+  }),
+].join('');
+const contentHtml = groups
+  .map(
+    (gr) => `<section class="year-sec" data-year="${gr.year}"><h2>${gr.year}<span class="n">${gr.items.length} 篇</span></h2><div class="cards">${gr.items.map(artHtml).join('')}</div></section>`
+  )
+  .join('');
+const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><span class="dot"></span>${gr.year}</div>`).join('');
 ---
 
-<Base contentWidth="1160px">
-  <div class="wrap">
+<Base>
+  <div class="grid">
     <header class="hero">
       <div class="hero-row">
         <div class="left"><h1>动作游戏设计知识库</h1></div>
@@ -37,12 +82,10 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
       </div>
     </header>
 
-    <div class="srcbar" id="srcbar"></div>
+    <div class="srcbar" id="srcbar" set:html={srcbarHtml}></div>
 
-    <div class="layout">
-      <aside class="rail"><div class="line" id="rail"></div></aside>
-      <main id="content"></main>
-    </div>
+    <aside class="rail"><div class="line" id="rail" set:html={railHtml}></div></aside>
+    <main id="content" set:html={contentHtml}></main>
     <div class="empty" id="empty" hidden>没有匹配的内容</div>
   </div>
 </Base>
@@ -87,7 +130,7 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
 
   function artHtml(d) {
     const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
-    return `<a class="art" href="${d.href}" style="background:${gradientFor(d.s)}">
+    return `<a class="art" href="${d.href}" style="background:${gradientFor(d.s)};view-transition-name:${d.n}">
       <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
       <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
     </a>`;
@@ -243,7 +286,6 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
     gap: 8px;
     margin: 18px 0 28px;
     width: 100%;
-    justify-content: space-between;
   }
   .src-chip {
     display: inline-flex;
@@ -275,17 +317,42 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
     outline-offset: 2px;
   }
 
-  .layout {
+  .grid {
     display: grid;
-    grid-template-columns: 170px 1fr;
-    gap: 28px;
+    grid-template-columns: 1fr minmax(0, var(--content-width)) minmax(0, 1fr);
+    grid-template-areas:
+      '. hero .'
+      'rail srcbar .'
+      'rail content .'
+      '. empty .';
+  }
+  .hero {
+    grid-area: hero;
+  }
+  .srcbar {
+    grid-area: srcbar;
+  }
+  #content {
+    grid-area: content;
+    min-width: 0;
+  }
+  .empty {
+    grid-area: empty;
   }
   .rail {
+    grid-area: rail;
     position: sticky;
     top: 40px;
     align-self: start;
-    height: calc(100vh - 80px);
+    justify-self: end;
+    padding-right: 28px;
+    max-height: calc(100vh - 80px);
     overflow: hidden;
+  }
+  @media (max-width: 1080px) {
+    .rail {
+      display: none;
+    }
   }
   .rail .line {
     position: relative;

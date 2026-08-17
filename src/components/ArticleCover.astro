@@ -7,12 +7,16 @@ interface Props {
   author?: string;
   role?: string;
   project?: string;
+  transitionName?: string;
 }
-const { title, source, section, year, author, role, project } = Astro.props;
-const kicker = source ? source : [section, year != null ? String(year) : ''].filter(Boolean).join(' · ');
+const { title, source, section, year, author, role, project, transitionName } = Astro.props;
+const hasYear = typeof year === 'number';
+const kicker = source
+  ? source + (hasYear && !source.includes(String(year)) ? ` · ${year}` : '')
+  : [section, hasYear ? String(year) : ''].filter(Boolean).join(' · ');
 ---
 
-<header class="cover">
+<header class="cover" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>
   {kicker && <div class="kicker">{kicker}</div>}
   <h1>{title}</h1>
   <div class="meta">

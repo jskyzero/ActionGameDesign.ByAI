@@ -22,13 +22,6 @@ a {
   text-decoration: none;
 }
 
-/* —— 通用容器 —— */
-.wrap {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 44px 28px 96px;
-}
-
 /* —— 来源 hash 渐变的兜底（组件内会用 JS 内联覆盖） —— */
 .src-grad {
   background: linear-gradient(140deg, var(--indigo) 0%, #3a3a72 100%);

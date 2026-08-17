@@ -17,35 +17,39 @@ const { Content, headings = [] } = await render(entry);
 const d = entry.data;
 const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
 ---
 
 <Base title={d.title} description={d.description}>
-  <article class="article">
-    <div class="main">
-      <a class="back" href={`${base}/`}>← 返回首页</a>
-      <ArticleCover
-        title={d.title}
-        source={d.source}
-        section={d.section}
-        year={d.year}
-        author={d.author}
-        role={d.role}
-        project={d.project}
-      />
-      <Hook insight={d.insight} />
-      <InfoCard author={d.author} role={d.role} sourceTitle={d.sourceTitle} link={d.link} references={d.references} />
-      <div class="prose">
-        <Content />
-      </div>
-      {d.tags?.length > 0 && (
-        <div class="tags">
-          {d.tags.map((t) => <span class="tag">{t}</span>)}
+  <div class="page-grid">
+    <article class="article">
+      <div class="main">
+        <ArticleCover
+          title={d.title}
+          source={d.source}
+          section={d.section}
+          year={d.year}
+          author={d.author}
+          role={d.role}
+          project={d.project}
+          transitionName={transitionName}
+        />
+        <Hook insight={d.insight} />
+        <InfoCard author={d.author} role={d.role} sourceTitle={d.sourceTitle} link={d.link} references={d.references} />
+        <div class="prose">
+          <Content />
         </div>
-      )}
-    </div>
+        {d.tags?.length > 0 && (
+          <div class="tags">
+            {d.tags.map((t) => <span class="tag">{t}</span>)}
+          </div>
+        )}
+      </div>
+    </article>
 
     {tocItems.length > 0 && (
       <aside class="toc">
+        <a class="back" href={`${base}/`}>← 返回首页</a>
         <div class="toc-title">目录</div>
         <nav>
           {tocItems.map((h) => (
@@ -54,27 +58,46 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </nav>
       </aside>
     )}
-  </article>
+  </div>
 </Base>
 
+<script>
+  const links = Array.from(document.querySelectorAll('.toc nav a'));
+  const heads = Array.from(document.querySelectorAll('.prose h2, .prose h3'));
+  if (links.length && heads.length) {
+    const io = new IntersectionObserver(
+      (es) => {
+        es.forEach((en) => {
+          if (en.isIntersecting) {
+            const href = '#' + en.target.id;
+            links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === href));
+          }
+        });
+      },
+      { rootMargin: '-15% 0px -70% 0px', threshold: 0 }
+    );
+    heads.forEach((h) => io.observe(h));
+  }
+</script>
+
 <style>
+  .page-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--content-width)) minmax(0, 1fr);
+    grid-template-areas: '. main toc';
+  }
   .article {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 32px 24px 96px;
-    display: flex;
-    gap: 48px;
+    grid-area: main;
+    min-width: 0;
   }
   .main {
-    flex: 1;
     min-width: 0;
-    max-width: var(--content-width, 760px);
   }
   .back {
-    display: inline-block;
-    margin-bottom: 20px;
+    display: block;
+    margin-bottom: 14px;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 13px;
     transition: color 0.15s;
   }
   .back:hover {
@@ -102,21 +125,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   /* 右侧目录 */
   .toc {
+    grid-area: toc;
     width: 200px;
-    flex-shrink: 0;
     position: sticky;
     top: 40px;
-    align-self: flex-start;
+    align-self: start;
+    justify-self: start;
+    padding-left: 28px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     border-left: 1px solid var(--line);
-    padding-left: 20px;
     font-size: 13px;
   }
   .toc-title {
     font-weight: 600;
     color: var(--indigo);
     margin-bottom: 10px;
+  }
+  .toc .back {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--line);
   }
   .toc nav a {
     display: block;
@@ -127,11 +156,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .toc nav a:hover {
     color: var(--indigo);
   }
+  .toc nav a.active {
+    position: relative;
+    color: var(--indigo);
+    font-weight: 600;
+  }
+  .toc nav a.active::before {
+    content: '';
+    position: absolute;
+    left: -21px;
+    top: 4px;
+    bottom: 4px;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--accent);
+  }
   .toc nav a.h3 {
     padding-left: 12px;
     font-size: 12px;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
     .toc {
       display: none;
     }

@@ -1,12 +1,13 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title?: string;
   description?: string;
   contentWidth?: string;
 }
-const { title, description, contentWidth = '760px' } = Astro.props;
+const { title, description, contentWidth = '880px' } = Astro.props;
 const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游戏设计知识库';
 ---
 
@@ -18,26 +19,37 @@ const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游
   <title>{fullTitle}</title>
   <meta name="description" content={description ?? '从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。'} />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+  <ViewTransitions />
 </head>
 <body style={`--content-width: ${contentWidth}`}>
-  <slot />
+  <div class="page">
+    <slot />
 
-  <footer class="site-footer">
-    <p>最近更新：2026年6月6日</p>
-    <p>© 2026 jskyzero</p>
-  </footer>
+    <footer class="site-footer">
+      <div class="inner">
+        <p>最近更新：2026年6月6日</p>
+        <p>© 2026 jskyzero</p>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
 
 <style>
+  .page {
+    padding: 44px 24px 40px;
+  }
   .site-footer {
-    max-width: var(--content-width, 760px);
-    margin: 0 auto;
-    padding: 32px 28px 40px;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
     text-align: left;
     color: var(--muted);
     font-size: 13px;
-    border-top: 1px solid var(--line);
+  }
+  .site-footer .inner {
+    max-width: var(--content-width, 880px);
+    margin: 0 auto;
   }
   .site-footer p {
     margin: 4px 0;
