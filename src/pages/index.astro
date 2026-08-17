@@ -25,7 +25,7 @@ const entries = (await getCollection('docs'))
 
 function artHtml(d) {
   const typeTxt = d.type === 'GDC' || d.type === 'CEDEC'
-    ? `<span class="type-accent">${d.type}</span>`
+    ? `<span class="title-hl">${d.type}</span>`
     : d.type;
   const top = [d.y ?? '年份不详', typeTxt, d.company].filter(Boolean).join(' · ');
   const badge = d.wip ? '<span class="wip-badge">🚧 施工中</span>' : '';
@@ -226,9 +226,6 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     font-size: 11.5px;
     letter-spacing: 1px;
     color: var(--muted);
-  }
-  .art .meta-top .type-accent {
-    border-bottom: 1px solid var(--accent);
   }
   .art .head {
     display: flex;

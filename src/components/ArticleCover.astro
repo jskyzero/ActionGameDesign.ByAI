@@ -9,7 +9,7 @@ interface Props {
 }
 const { title, description, wip = false, tags = [], source, transitionName } = Astro.props;
 const typeTxt = source?.type === 'GDC' || source?.type === 'CEDEC'
-  ? `<span class="type-accent">${source.type}</span>`
+  ? `<span class="title-hl">${source.type}</span>`
   : source?.type ?? '';
 const topHtml = [source?.year ?? '年份不详', typeTxt, source?.company].filter(Boolean).join(' · ');
 ---
@@ -37,9 +37,6 @@ const topHtml = [source?.year ?? '年份不详', typeTxt, source?.company].filte
     letter-spacing: 1px;
     color: var(--muted);
     margin: 0 0 12px;
-  }
-  .meta-top .type-accent {
-    border-bottom: 1px solid var(--accent);
   }
   .hero h1 {
     font-family: var(--font-serif);

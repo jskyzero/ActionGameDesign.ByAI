@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ViewTransitions } from 'astro:transitions';
+import { execSync } from 'node:child_process';
 
 interface Props {
   title?: string;
@@ -9,6 +10,18 @@ interface Props {
 }
 const { title, description, contentWidth = '880px' } = Astro.props;
 const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游戏设计知识库';
+
+function lastUpdated() {
+  try {
+    const iso = execSync('git log -1 --format=%cs', { encoding: 'utf8' }).trim(); // YYYY-MM-DD
+    const [y, m, d] = iso.split('-').map(Number);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return `${months[m - 1]} ${d}, ${y}`;
+  } catch {
+    return '';
+  }
+}
+const updated = lastUpdated();
 ---
 
 <!doctype html>
@@ -27,11 +40,9 @@ const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游
 
     <footer class="site-footer">
       <div class="inner">
-        <p>Enjoy :)</p>
-        <p>Last updated: June 6, 2026</p>
+        <p>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener">点个Star </a>吧！</p>
+        <p>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener">{updated}</a></p>
         <p>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener">DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener">Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
-        <p>Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></p>
-        <p>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener">点个Star</a>吧</p>
         <p>Copyright © 2017-2026 设计者笔记. All rights reserved.</p>
       </div>
     </footer>
