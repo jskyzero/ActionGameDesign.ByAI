@@ -1,5 +1,7 @@
 # AGENTS.md
 
+本仓库是 **ActionGameDesign.ByAI —— AI 驱动的动作游戏设计知识库**：基于 AI 工作流整理动作游戏设计知识，内容多来自 GDC、CEDEC 等专业游戏会议。AI 不一定全对，但足够高效；每篇文章都附有源链接与参考链接，供读者自行核实。
+
 本文件约定 AI 助手（及人类）在本仓库贡献内容的规范。内容是一份份 Markdown 文件，结构由 frontmatter 定义，见 `src/content.config.ts`。
 
 ## 文档索引
