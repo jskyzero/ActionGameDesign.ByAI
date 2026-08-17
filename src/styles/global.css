@@ -116,6 +116,7 @@ a {
 .sw {
   position: absolute;
   inset: -25%;
+  transform: rotate(-12deg);
   pointer-events: none;
   user-select: none;
   display: flex;
