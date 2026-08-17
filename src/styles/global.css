@@ -130,7 +130,7 @@ a {
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 21px;
-  color: rgba(38, 38, 79, 0.06);
+  color: var(--bg);
 }
 .sw-track {
   display: inline-block;
@@ -138,14 +138,14 @@ a {
   will-change: transform;
 }
 
-/* hover：奇数行向左、偶数行向右滚动 */
+/* hover：奇数行向左、偶数行向右滚动（时长由 --dur 控制，恒定速度） */
 .art:hover .sw-track-odd,
 .cover:hover .sw-track-odd {
-  animation: sw-marquee-l 10s linear infinite;
+  animation: sw-marquee-l var(--dur, 10s) linear infinite;
 }
 .art:hover .sw-track-even,
 .cover:hover .sw-track-even {
-  animation: sw-marquee-r 10s linear infinite;
+  animation: sw-marquee-r var(--dur, 10s) linear infinite;
 }
 @keyframes sw-marquee-l {
   from { transform: translateX(0); }

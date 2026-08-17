@@ -10,7 +10,16 @@ function seedOf(text) {
 export function watermarkHtml(text, rows = 6) {
   if (!text) return '';
   const seed = seedOf(text);
-  const seg = Array(8).fill(text).join('　') + '　';
+
+  // 粗略估算单段宽度（文字 + 全角空格），据此决定重复次数与动画时长
+  const unitW = (text.length + 1) * 15;
+  // 保证每段 ≥ 800px：避免文章封面（~760px）滚动时露空白
+  const repeat = Math.max(8, Math.ceil(800 / unitW));
+  const seg = Array(repeat).fill(text).join('　') + '　';
+  const segW = repeat * unitW;
+  // 恒定速度 ~70px/s：长文字时长更长、速度一致
+  const dur = Math.max(6, (segW / 70).toFixed(1));
+
   let html = '<div class="sw">';
   for (let i = 0; i < rows; i++) {
     // 行间随机水平偏移（确定性，稳定不跳动）
@@ -18,7 +27,7 @@ export function watermarkHtml(text, rows = 6) {
     const cls = i % 2 === 0 ? 'sw-track-even' : 'sw-track-odd';
     html +=
       `<div class="sw-row" style="margin-left:${off}%">` +
-      `<div class="sw-track ${cls}"><span class="sw-seg">${seg}</span><span class="sw-seg">${seg}</span></div>` +
+      `<div class="sw-track ${cls}" style="--dur:${dur}s"><span class="sw-seg">${seg}</span><span class="sw-seg">${seg}</span></div>` +
       `</div>`;
   }
   html += '</div>';
