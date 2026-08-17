@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { watermarkHtml } from '../lib/watermark.js';
 
-const SECTION_ORDER = ['Capcom', 'PlatinumGames', 'Santa Monica Studio', 'FTG 相关', '其他', 'Nintendo', '非 GDC', '设计者笔记'];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const entries = (await getCollection('docs'))
@@ -19,24 +18,6 @@ const entries = (await getCollection('docs'))
     sw: watermarkHtml(e.data.section ?? ''),
   }));
 
-const sections = [...new Set(entries.map((e) => e.s))].sort(
-  (a, b) => (SECTION_ORDER.indexOf(a) === -1 ? 999 : SECTION_ORDER.indexOf(a)) - (SECTION_ORDER.indexOf(b) === -1 ? 999 : SECTION_ORDER.indexOf(b))
-);
-
-// 来源标签的灰阶（不同灰区分来源；卡片/标签背景统一灰、来源靠标签文字灰阶区分）
-const SECTION_GRAYS = {
-  'Capcom': '#3f3f46',
-  'PlatinumGames': '#52525b',
-  'Santa Monica Studio': '#63636c',
-  'FTG 相关': '#71717a',
-  '其他': '#7d7d85',
-  'Nintendo': '#8a8a91',
-  '非 GDC': '#97979d',
-  '设计者笔记': '#a3a3a9',
-};
-function sectionGray(s) {
-  return SECTION_GRAYS[s] || '#71717a';
-}
 function artHtml(d) {
   return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}">
     ${d.sw}
@@ -47,9 +28,10 @@ function artHtml(d) {
     </div>
   </a>`;
 }
-function yearGroup(visible) {
+
+function yearGroup(list) {
   const m = new Map();
-  for (const d of visible) {
+  for (const d of list) {
     const k = d.y || '未标注';
     if (!m.has(k)) m.set(k, []);
     m.get(k).push(d);
@@ -57,14 +39,8 @@ function yearGroup(visible) {
   const keys = [...m.keys()].sort((a, b) => (b === '未标注' ? -1 : a === '未标注' ? 1 : b - a));
   return keys.map((k) => ({ year: k, items: m.get(k) }));
 }
+
 const groups = yearGroup(entries);
-const srcbarHtml = [
-  `<button class="src-chip active" data-src="">全部<span class="c">${entries.length}</span></button>`,
-  ...sections.map((s) => {
-    const n = entries.filter((d) => d.s === s).length;
-    return `<button class="src-chip" data-src="${s}" style="color:${sectionGray(s)}">${s}<span class="c">${n}</span></button>`;
-  }),
-].join('');
 const contentHtml = groups
   .map(
     (gr) => `<section class="year-sec" data-year="${gr.year}"><h2>${gr.year}<span class="n">${gr.items.length} 篇</span></h2><div class="cards">${gr.items.map(artHtml).join('')}</div></section>`
@@ -74,109 +50,23 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 ---
 
 <Base>
-  <div class="grid">
+  <div class="wrap">
     <header class="hero">
-      <div class="hero-row">
-        <div class="left"><h1>动作游戏设计知识库</h1></div>
-        <div class="right">
-          <p class="sub">收录 GDC 演讲与开发者分享，<br />沉淀动作游戏设计的<br />思考、方法与案例。</p>
-        </div>
-      </div>
-      <div class="search">
-        <span class="icon">🔍</span>
-        <input id="q" placeholder="搜索分享标题、观点、厂商…" />
-        <button class="sbtn">搜索</button>
-      </div>
+      <h1>动作游戏设计知识库</h1>
+      <p class="sub">收录 GDC 演讲与开发者分享，沉淀动作游戏设计的思考、方法与案例。</p>
     </header>
 
-    <div class="srcbar" id="srcbar" set:html={srcbarHtml}></div>
-
-    <aside class="rail"><div class="line" id="rail" set:html={railHtml}></div></aside>
-    <main id="content" set:html={contentHtml}></main>
-    <div class="empty" id="empty" hidden>没有匹配的内容</div>
+    <div class="layout">
+      <aside class="rail"><div class="line" id="rail" set:html={railHtml}></div></aside>
+      <main id="content" set:html={contentHtml}></main>
+    </div>
   </div>
 </Base>
 
-<script define:vars={{ entries, sections }}>
-  const DATA = entries;
-  const SECS = sections;
-
-  // 来源标签的灰阶（不同灰区分来源）
-  const SECTION_GRAYS = {
-    'Capcom': '#3f3f46',
-    'PlatinumGames': '#52525b',
-    'Santa Monica Studio': '#63636c',
-    'FTG 相关': '#71717a',
-    '其他': '#7d7d85',
-    'Nintendo': '#8a8a91',
-    '非 GDC': '#97979d',
-    '设计者笔记': '#a3a3a9',
-  };
-  function sectionGray(s) {
-    return SECTION_GRAYS[s] || '#71717a';
-  }
-
-  let filter = { q: '', src: '' };
-
-  function visible() {
-    return DATA.filter(
-      (d) =>
-        (!filter.src || d.s === filter.src) &&
-        (!filter.q || (d.t + d.h + d.s + d.g.join('')).toLowerCase().includes(filter.q.toLowerCase()))
-    );
-  }
-  function grouped() {
-    const m = new Map();
-    for (const d of visible()) {
-      const k = d.y || '未标注';
-      if (!m.has(k)) m.set(k, []);
-      m.get(k).push(d);
-    }
-    const keys = [...m.keys()].sort((a, b) => (b === '未标注' ? -1 : a === '未标注' ? 1 : b - a));
-    return keys.map((k) => ({ year: k, items: m.get(k) }));
-  }
-
-  function artHtml(d) {
-    return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}">
-      ${d.sw}
-      <div class="art-body">
-        <div class="title">${d.t}</div>
-        <div class="hook">${d.h}</div>
-        <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
-      </div>
-    </a>`;
-  }
-
-  function renderSrcbar() {
-    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="">全部<span class="c">${DATA.length}</span></button>`;
-    const chips = SECS.map((s) => {
-      const n = DATA.filter((d) => d.s === s).length;
-      const active = filter.src === s ? ' active' : '';
-      const dim = filter.src && filter.src !== s ? ' dim' : '';
-      return `<button class="src-chip${active}${dim}" data-src="${s}" style="color:${sectionGray(s)}">${s}<span class="c">${n}</span></button>`;
-    }).join('');
-    const clear = filter.src || filter.q
-      ? `<button class="src-chip clear" id="clear-filter">✕ 清除筛选</button>`
-      : '';
-    document.getElementById('srcbar').innerHTML = all + chips + clear;
-  }
-
+<script>
+  // 滚动联动时间轴高亮 + 点击年份跳转
   let io;
-  function render() {
-    const groups = grouped();
-    document.getElementById('content').innerHTML = groups
-      .map(
-        (gr) => `<section class="year-sec" data-year="${gr.year}">
-          <h2>${gr.year}<span class="n">${gr.items.length} 篇</span></h2>
-          <div class="cards">${gr.items.map(artHtml).join('')}</div>
-        </section>`
-      )
-      .join('');
-    document.getElementById('rail').innerHTML = groups
-      .map((gr) => `<div class="tnode" data-year="${gr.year}"><span class="dot"></span>${gr.year}</div>`)
-      .join('');
-    document.getElementById('empty').hidden = visible().length > 0;
-
+  function observe() {
     if (io) io.disconnect();
     io = new IntersectionObserver(
       (es) => {
@@ -191,27 +81,8 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     );
     document.querySelectorAll('.year-sec').forEach((s) => io.observe(s));
   }
+  observe();
 
-  renderSrcbar();
-  render();
-
-  document.getElementById('srcbar').addEventListener('click', (e) => {
-    const b = e.target.closest('.src-chip');
-    if (!b) return;
-    if (b.id === 'clear-filter') {
-      filter.src = '';
-      document.getElementById('q').value = '';
-      filter.q = '';
-    } else {
-      filter.src = b.dataset.src;
-    }
-    renderSrcbar();
-    render();
-  });
-  document.getElementById('q').addEventListener('input', (e) => {
-    filter.q = e.target.value.trim();
-    render();
-  });
   document.getElementById('rail').addEventListener('click', (e) => {
     const n = e.target.closest('.tnode');
     if (!n) return;
@@ -222,166 +93,39 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 
 <style is:global>
   .hero {
-    margin-bottom: 24px;
-  }
-  .hero-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    margin-bottom: 22px;
-    width: 100%;
-  }
-  .hero-row .left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid var(--line);
-    padding-right: 28px;
-  }
-  .hero-row .right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 28px;
+    margin-bottom: 44px;
   }
   .hero h1 {
     font-family: var(--font-serif);
-    font-size: 44px;
+    font-size: 46px;
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 12px;
     letter-spacing: 1px;
-    text-align: center;
+    color: var(--ink);
   }
   .hero .sub {
     color: var(--muted);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.8;
     margin: 0;
-    text-align: left;
-  }
-  .search {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 8px 8px 8px 20px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r-pill);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-    transition: box-shadow 0.2s, border-color 0.2s;
-  }
-  .search:focus-within {
-    border-color: var(--primary);
-    box-shadow: 0 6px 24px rgba(38, 38, 79, 0.12);
-  }
-  .search input {
-    flex: 1;
-    border: 0;
-    outline: 0;
-    font-size: 15px;
-    background: transparent;
-    color: var(--ink);
-  }
-  .search .icon {
-    color: var(--muted);
-  }
-  .search .sbtn {
-    border: 0;
-    background: var(--primary);
-    color: #fff;
-    font-family: inherit;
-    font-size: 14px;
-    padding: 10px 20px;
-    border-radius: var(--r-pill);
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
-  .search .sbtn:hover {
-    opacity: 0.88;
   }
 
-  .srcbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 18px 0 28px;
-    width: 100%;
-  }
-  .src-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    border: 1px solid var(--line);
-    cursor: pointer;
-    color: var(--muted);
-    font-family: inherit;
-    font-size: 13px;
-    padding: 7px 14px;
-    border-radius: var(--r-pill);
-    background: var(--card);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s, background 0.15s, color 0.15s;
-  }
-  .src-chip:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-    border-color: var(--ink);
-    color: var(--ink);
-  }
-  .src-chip .c {
-    font-size: 11px;
-    opacity: 0.7;
-  }
-  .src-chip.dim {
-    opacity: 0.4;
-  }
-  .src-chip.active {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: #fff;
-  }
-  .src-chip.clear {
-    border-style: dashed;
-    color: var(--muted);
-  }
-  .src-chip.clear:hover {
-    border-color: var(--ink);
-    color: var(--ink);
-  }
-
-  .grid {
+  .layout {
     display: grid;
-    grid-template-columns: minmax(220px, 1fr) minmax(0, var(--content-width)) minmax(0, 1fr);
-    grid-template-areas:
-      '. hero .'
-      'rail srcbar .'
-      'rail content .'
-      '. empty .';
-  }
-  .hero {
-    grid-area: hero;
-  }
-  .srcbar {
-    grid-area: srcbar;
-  }
-  #content {
-    grid-area: content;
-    min-width: 0;
-  }
-  .empty {
-    grid-area: empty;
+    grid-template-columns: 170px 1fr;
+    gap: 44px;
+    align-items: start;
   }
   .rail {
-    grid-area: rail;
     position: sticky;
     top: 40px;
-    align-self: start;
-    justify-self: end;
-    padding-right: 44px;
     max-height: calc(100vh - 80px);
     overflow: hidden;
   }
-  @media (max-width: 1080px) {
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
     .rail {
       display: none;
     }
@@ -420,6 +164,9 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     transform: scale(1.35);
   }
 
+  #content {
+    min-width: 0;
+  }
   .year-sec {
     margin-bottom: 34px;
   }
@@ -485,7 +232,6 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-
   .art .chiprow {
     display: flex;
     flex-wrap: wrap;
@@ -499,10 +245,5 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     background: var(--bg);
     border: 1px solid var(--line);
     color: var(--muted);
-  }
-  .empty {
-    color: #aaa;
-    text-align: center;
-    padding: 40px 0;
   }
 </style>
