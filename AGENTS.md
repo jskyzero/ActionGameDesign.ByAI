@@ -31,7 +31,6 @@
 | `source.type` | string | | 来源类型（会议 / 平台，如 `GDC`、`CEDEC`、`Youtube`） |
 | `source.company` | string | | 厂商 / 来源方（如 `Capcom`、`Nintendo`；顶层分组沿用此字段） |
 | `references` | array | | `[{ label, url, type }]`，`type` ∈ `original`/`translation`/`other` |
-| `image` | string | | 配图路径（可选） |
 | `description` | string | | 摘要 |
 
 ## 约定
@@ -40,5 +39,5 @@
 2. 遵循**信息密度分层**（[`docs/EXTRACTION.md`](docs/EXTRACTION.md)）：Hook 一句 → 正文 Details。
 3. `article.insight` 用中文引号「」，不要用英文引号。
 4. `wip` 条目正文放 `> 🚧 待施工：内容待整理，先记录分享与参考链接。`；`done` 条目正文放完整笔记。
-5. 正文必须是纯文本（AI 可读），图片仅作可选附件。
+5. 正文必须是纯文本（AI 可读）。
 6. 新增条目后跑 `npm run validate` 校验，再 `npm run build` 确认能构建。

@@ -27,8 +27,10 @@ const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游
 
     <footer class="site-footer">
       <div class="inner">
-        <p>最近更新：2026年6月6日</p>
-        <p>© 2026 jskyzero</p>
+        <p>Last updated: June 6, 2026</p>
+        <p>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener">DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener">Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+        <p>Enjoy :)</p>
+        <p>Copyright © 2017-2026 设计者笔记. All rights reserved.</p>
       </div>
     </footer>
   </div>
@@ -53,5 +55,14 @@ const fullTitle = title ? `${title} · 动作游戏设计知识库` : '动作游
   }
   .site-footer p {
     margin: 4px 0;
+  }
+  .site-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(38, 38, 79, 0.25);
+  }
+  .site-footer a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
   }
 </style>

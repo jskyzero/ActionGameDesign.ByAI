@@ -45,7 +45,6 @@ const schema = z.object({
     )
     .default([]),
   description: z.string().optional(),
-  image: z.string().optional(),
 });
 
 function* walk(dir) {

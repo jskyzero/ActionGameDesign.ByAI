@@ -48,7 +48,6 @@ export const collections = {
 
       // ── 杂项（可选）──
       description: z.string().optional(),
-      image: z.string().optional(),
     }),
   }),
 };
