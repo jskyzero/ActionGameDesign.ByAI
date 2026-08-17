@@ -10,7 +10,7 @@
 
 ## 内容目录
 
-- `src/content/docs/talks/<章节>/<slug>.mdx` —— 所有内容（GDC 演讲、视频、文章、原创方法论）
+- `src/content/docs/<章节>/<slug>.mdx` —— 所有内容（GDC 演讲、视频、文章、原创方法论）
 - `src/pages/index.astro` —— 首页（不要往内容目录里堆首页）
 
 ## Frontmatter 字段

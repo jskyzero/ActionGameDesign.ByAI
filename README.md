@@ -12,7 +12,7 @@
 src/
 ├── content.config.ts          # 内容 schema（zod 契约，见 docs/EXTRACTION.md）
 ├── content/docs/              # 唯一数据源（纯文本，一条目一 .mdx）
-│   └── talks/<章节>/<slug>.mdx#   所有内容（演讲 / 视频 / 文章 / 原创方法论）
+│   └── <章节>/<slug>.mdx      #   所有内容（演讲 / 视频 / 文章 / 原创方法论）
 ├── layouts/
 │   └── Base.astro             # 站点外壳（头部 + 页脚）
 ├── pages/
