@@ -8,11 +8,14 @@ interface Props {
   transitionName?: string;
 }
 const { title, description, wip = false, tags = [], source, transitionName } = Astro.props;
-const top = [source?.year ?? '年份不详', source?.type, source?.company].filter(Boolean).join(' · ');
+const typeTxt = source?.type === 'GDC' || source?.type === 'CEDEC'
+  ? `<span class="type-accent">${source.type}</span>`
+  : source?.type ?? '';
+const topHtml = [source?.year ?? '年份不详', typeTxt, source?.company].filter(Boolean).join(' · ');
 ---
 
 <header class="hero" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>
-  {top && <div class="meta-top">{top}</div>}
+  {topHtml && <div class="meta-top" set:html={topHtml} />}
   <h1>
     {wip && <span class="wip-badge">🚧 施工中</span>}
     <span class="title-hl">{title}</span>
@@ -34,6 +37,10 @@ const top = [source?.year ?? '年份不详', source?.type, source?.company].filt
     letter-spacing: 1px;
     color: var(--muted);
     margin: 0 0 12px;
+  }
+  .meta-top .type-accent {
+    color: var(--accent);
+    font-weight: 600;
   }
   .hero h1 {
     font-family: var(--font-serif);
