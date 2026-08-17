@@ -10,9 +10,10 @@ function seedOf(text) {
 export function watermarkHtml(text, rows = 6) {
   if (!text) return '';
   const seed = seedOf(text);
-  // 一段 = 多次重复（含全角空格间隔），两段首尾相接可无缝循环
+  // 倾斜角度：同 section 一致、不同 section 不同（-12° ~ 12°）
+  const angle = (seed % 25) - 12;
   const seg = Array(8).fill(text).join('　') + '　';
-  let html = '<div class="sw">';
+  let html = `<div class="sw" style="transform:rotate(${angle}deg)">`;
   for (let i = 0; i < rows; i++) {
     // 行间随机水平偏移（确定性，稳定不跳动）
     const off = ((seed + i * 17) % 40) - 20; // -20 ~ 20

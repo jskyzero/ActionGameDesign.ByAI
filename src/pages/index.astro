@@ -93,7 +93,8 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 
 <style is:global>
   .hero {
-    margin-bottom: 44px;
+    max-width: var(--content-width);
+    margin: 0 auto 44px;
   }
   .hero h1 {
     font-family: var(--font-serif);
@@ -112,11 +113,13 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 
   .layout {
     display: grid;
-    grid-template-columns: 170px 1fr;
-    gap: 44px;
+    grid-template-columns: minmax(180px, 1fr) minmax(0, var(--content-width)) minmax(0, 1fr);
     align-items: start;
   }
   .rail {
+    grid-column: 1;
+    justify-self: end;
+    padding-right: 44px;
     position: sticky;
     top: 40px;
     max-height: calc(100vh - 80px);
@@ -165,6 +168,7 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   }
 
   #content {
+    grid-column: 2;
     min-width: 0;
   }
   .year-sec {
