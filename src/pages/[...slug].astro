@@ -15,36 +15,29 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings = [] } = await render(entry);
 const d = entry.data;
+const title = d.article.title;
+const tags = d.article.tags ?? [];
 const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
 ---
 
-<Base title={d.title} description={d.description}>
+<Base title={title} description={d.description}>
   <div class="page-grid">
     <article class="article">
       <div class="main">
         <ArticleCover
-          title={d.title}
-          event={d.event}
-          section={d.section}
-          year={d.year}
-          author={d.author}
-          role={d.role}
-          project={d.project}
-          tags={d.tags}
+          title={title}
+          description={d.description}
+          tags={tags}
+          source={d.source}
           transitionName={transitionName}
         />
-        <Hook insight={d.insight} />
-        <InfoCard author={d.author} role={d.role} titleOriginal={d.titleOriginal} link={d.link} references={d.references} />
+        <Hook insight={d.article.insight} />
+        <InfoCard source={d.source} references={d.references} />
         <div class="prose">
           <Content />
         </div>
-        {d.tags?.length > 0 && (
-          <div class="tags">
-            {d.tags.map((t) => <span class="tag">{t}</span>)}
-          </div>
-        )}
       </div>
     </article>
 
@@ -106,22 +99,6 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
   }
   .prose {
     margin-top: 24px;
-  }
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-  }
-  .tag {
-    font-size: 12px;
-    color: var(--muted);
-    background: var(--card);
-    border: 1px solid var(--line);
-    padding: 4px 12px;
-    border-radius: var(--r-pill);
   }
 
   /* 右侧目录 */

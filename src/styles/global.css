@@ -36,6 +36,34 @@ a {
 .prose {
   max-width: none;
   counter-reset: sec;
+  color: var(--ink); /* 修复正文 / li 颜色（typography 默认灰） */
+}
+.prose strong,
+.prose b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.prose a {
+  color: var(--primary);
+  text-decoration: none; /* 去掉下划线 */
+  border-bottom: 1px solid rgba(38, 38, 79, 0.25);
+}
+.prose a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.prose ul {
+  list-style-type: disc; /* 恢复圆点图标 */
+  padding-left: 1.5em;
+}
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+}
+.prose li {
+  color: var(--ink);
+  margin: 5px 0;
+  font-size: 14.5px;
 }
 .prose h2 {
   counter-increment: sec;
@@ -96,7 +124,7 @@ a {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 .prose li::marker {
-  color: var(--accent);
+  color: var(--ink); /* 对标 prototype：圆点用墨色，不用 accent 红 */
 }
 .prose blockquote {
   margin: 20px 0;
@@ -107,9 +135,22 @@ a {
   font-size: 14.5px;
   font-style: normal;
   border-left: 0;
+  quotes: none; /* 去掉 typography 加的引号 */
+}
+.prose blockquote p::before,
+.prose blockquote p::after {
+  content: none; /* 去掉 open/close quote */
 }
 .prose blockquote p {
   margin: 0;
+}
+
+/* —— hero 标题高亮下划线（index 卡片与 article 封面共用，对标 prototype .hl） —— */
+.title-hl {
+  background: linear-gradient(transparent 62%, rgba(255, 90, 78, 0.18) 62%);
+  padding: 0 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* —— 斜文字水印背景（配合 src/lib/watermark.js） —— */
@@ -139,14 +180,15 @@ a {
 }
 
 /* hover：奇数行向左、偶数行向右滚动（时长由 --dur 控制，恒定速度） */
-.art:hover .sw-track-odd,
+/* 暂时关闭跑马灯：注释掉 hover 动画，水印保持静态 */
+/* .art:hover .sw-track-odd,
 .cover:hover .sw-track-odd {
   animation: sw-marquee-l var(--dur, 10s) linear infinite;
 }
 .art:hover .sw-track-even,
 .cover:hover .sw-track-even {
   animation: sw-marquee-r var(--dur, 10s) linear infinite;
-}
+} */
 @keyframes sw-marquee-l {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

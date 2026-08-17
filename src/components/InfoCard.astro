@@ -1,34 +1,39 @@
 ---
 interface Props {
-  author?: string;
-  role?: string;
-  titleOriginal?: string;
-  link?: string;
+  source?: { title?: string; author?: string; authorBio?: string; url?: string; year?: number; type?: string; company?: string };
   references?: { label: string; url: string; type: string }[];
 }
-const { author, role, titleOriginal, link, references = [] } = Astro.props;
+const { source, references = [] } = Astro.props;
+const sourceTitle = source?.title;
+const sourceUrl = source?.url;
+const sourceAuthor = source?.author;
+const authorBio = source?.authorBio;
 ---
 
 <div class="info">
-  {author && (
+  {sourceTitle && (
+    <div class="row"><span class="k">原标题</span><span class="v">{sourceTitle}</span></div>
+  )}
+  {sourceUrl && (
     <div class="row">
-      <span class="k">作者</span>
-      <span class="v">{author}{role ? `（${role}）` : ''}</span>
+      <span class="k">原链接</span>
+      <span class="v"><a href={sourceUrl} target="_blank" rel="noopener">{sourceUrl}</a></span>
     </div>
   )}
-  {titleOriginal && (
-    <div class="row"><span class="k">原标题</span><span class="v">{titleOriginal}</span></div>
-  )}
-  {(link || references.length > 0) && (
+  {(sourceAuthor || authorBio) && (
     <div class="row">
-      <span class="k">参考</span>
+      <span class="k">作者简介</span>
       <span class="v">
-        {link && (
-          <span>
-            <a href={link} target="_blank" rel="noopener">源链接</a>
-            {references.length > 0 && ' · '}
-          </span>
-        )}
+        {sourceAuthor && <span class="name">{sourceAuthor}</span>}
+        {sourceAuthor && authorBio && ' · '}
+        {authorBio}
+      </span>
+    </div>
+  )}
+  {references.length > 0 && (
+    <div class="row">
+      <span class="k">其他参考</span>
+      <span class="v">
         {references.map((r, i) => (
           <span>
             {i > 0 && ' · '}
@@ -70,5 +75,8 @@ const { author, role, titleOriginal, link, references = [] } = Astro.props;
   .v a {
     color: var(--primary);
     border-bottom: 1px solid rgba(38, 38, 79, 0.25);
+  }
+  .v .name {
+    color: var(--ink);
   }
 </style>

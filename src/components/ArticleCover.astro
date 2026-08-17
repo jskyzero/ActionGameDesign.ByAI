@@ -1,82 +1,62 @@
 ---
-import { watermarkHtml } from '../lib/watermark.js';
-
 interface Props {
   title: string;
-  event?: string;
-  section?: string;
-  year?: number;
-  author?: string;
-  role?: string;
-  project?: string;
-  tags?: string[];
+  description?: string;
+  tags?: { label: string; icon?: string }[];
+  source?: { title?: string; author?: string; url?: string; year?: number; type?: string; company?: string };
   transitionName?: string;
 }
-const { title, event, section, year, author, role, project, tags = [], transitionName } = Astro.props;
-const hasYear = typeof year === 'number';
-const kicker = event
-  ? event + (hasYear && !event.includes(String(year)) ? ` · ${year}` : '')
-  : [section, hasYear ? String(year) : ''].filter(Boolean).join(' · ');
-const bgText = event || section || '';
+const { title, description, tags = [], source, transitionName } = Astro.props;
+const top = [source?.year, source?.type, source?.company].filter(Boolean).join(' · ');
 ---
 
-<header class="cover" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>
-  {bgText && <div set:html={watermarkHtml(bgText, 6)} />}
-  <div class="cover-body">
-    {kicker && <div class="kicker">{kicker}</div>}
-    <h1>{title}</h1>
-    <div class="meta">
-      {author && <span class="chip">👤 {author}</span>}
-      {role && <span class="chip">🎨 {role}</span>}
-      {project && <span class="chip">🎮 {project}</span>}
-      {tags.map((t) => <span class="chip tag">#{t}</span>)}
+<header class="hero" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>
+  {top && <div class="meta-top">{top}</div>}
+  <h1><span class="title-hl">{title}</span></h1>
+  {tags.length > 0 && (
+    <div class="tags">
+      {tags.map((t) => <span class="tag">{t.icon ? `${t.icon} ` : ''}{t.label}</span>)}
     </div>
-  </div>
+  )}
+  {description && <p class="sub">{description}</p>}
 </header>
 
 <style>
-  .cover {
-    position: relative;
-    border-radius: var(--r-card);
-    overflow: hidden;
-    padding: 40px 38px 36px;
-    color: var(--ink);
-    background: var(--cover);
-    border: 1px solid var(--line);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  .hero {
+    margin: 8px 0 36px;
   }
-  .cover-body {
-    position: relative;
-  }
-  .kicker {
+  .meta-top {
     font-size: 13px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: var(--muted);
-    margin-bottom: 14px;
+    margin: 0 0 12px;
   }
-  .cover h1 {
+  .hero h1 {
     font-family: var(--font-serif);
-    font-size: 28px;
+    font-size: 34px;
     font-weight: 700;
     line-height: 1.35;
-    margin: 0 0 16px;
+    margin: 0 0 14px;
     letter-spacing: 0.5px;
     color: var(--ink);
   }
-  .meta {
+  .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12.5px;
-    padding: 5px 12px;
-    border-radius: var(--r-pill);
+  .tag {
+    font-size: 12px;
+    color: var(--muted);
     background: var(--bg);
     border: 1px solid var(--line);
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+  }
+  .sub {
     color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 14px 0 0;
   }
 </style>

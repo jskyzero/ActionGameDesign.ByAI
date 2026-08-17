@@ -1,52 +1,40 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { watermarkHtml } from '../lib/watermark.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const entries = (await getCollection('docs'))
   .filter((e) => e.id !== 'index.mdx' && !e.id.endsWith('/index.mdx'))
   .map((e) => ({
-    t: e.data.title,
-    h: e.data.insight ?? '',
-    s: e.data.section ?? '未分类',
-    y: e.data.year,
-    g: e.data.tags ?? [],
+    t: e.data.article.title,
+    h: e.data.article.insight ?? '',
+    g: e.data.article.tags ?? [],
+    y: e.data.source?.year,
+    type: e.data.source?.type ?? '',
+    company: e.data.source?.company ?? '',
     n: 'card-' + e.slug.replace(/[^a-zA-Z0-9_-]+/g, '-'),
     href: `${base}/${e.slug}/`,
-    sw: watermarkHtml(e.data.section ?? ''),
-  }));
+  }))
+  .sort((a, b) => (b.y ?? 0) - (a.y ?? 0));
 
 function artHtml(d) {
-  return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}">
-    ${d.sw}
+  const top = [d.y, d.type, d.company].filter(Boolean).join(' · ');
+  return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}" data-year="${d.y ?? ''}">
     <div class="art-body">
-      <div class="title">${d.t}</div>
+      ${top ? `<div class="meta-top">${top}</div>` : ''}
+      <div class="title"><span class="title-hl">${d.t}</span></div>
       <div class="hook">${d.h}</div>
-      <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
+      <div class="chiprow">${d.g.map((g) => `<span class="chip">${g.icon ? `${g.icon} ` : ''}${g.label}</span>`).join('')}</div>
     </div>
   </a>`;
 }
 
-function yearGroup(list) {
-  const m = new Map();
-  for (const d of list) {
-    const k = d.y || '未标注';
-    if (!m.has(k)) m.set(k, []);
-    m.get(k).push(d);
-  }
-  const keys = [...m.keys()].sort((a, b) => (b === '未标注' ? -1 : a === '未标注' ? 1 : b - a));
-  return keys.map((k) => ({ year: k, items: m.get(k) }));
-}
+const contentHtml = `<div class="cards">${entries.map(artHtml).join('')}</div>`;
 
-const groups = yearGroup(entries);
-const contentHtml = groups
-  .map(
-    (gr) => `<section class="year-sec" data-year="${gr.year}"><h2>${gr.year}<span class="n">${gr.items.length} 篇</span></h2><div class="cards">${gr.items.map(artHtml).join('')}</div></section>`
-  )
-  .join('');
-const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><span class="dot"></span>${gr.year}</div>`).join('');
+// 年份 rail（仅作视觉时间轴 + 近似跳转，不保证精确对齐）
+const years = [...new Set(entries.map((d) => d.y).filter((y) => y != null))];
+const railHtml = years.map((y) => `<div class="tnode" data-year="${y}"><span class="dot"></span>${y}</div>`).join('');
 ---
 
 <Base>
@@ -64,31 +52,32 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 </Base>
 
 <script>
-  // 滚动联动时间轴高亮 + 点击年份跳转
+  // 点击年份 → 近似跳转到该年份的第一张卡片
+  document.getElementById('rail').addEventListener('click', (e) => {
+    const n = e.target.closest('.tnode');
+    if (!n) return;
+    const card = document.querySelector(`.art[data-year="${n.dataset.year}"]`);
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // 滚动 → 按当前可见卡片高亮年份（近似）
   let io;
   function observe() {
     if (io) io.disconnect();
     io = new IntersectionObserver(
       (es) => {
         es.forEach((en) => {
-          if (en.isIntersecting) {
+          if (en.isIntersecting && en.target.dataset.year) {
             const y = en.target.dataset.year;
             document.querySelectorAll('.tnode').forEach((n) => n.classList.toggle('active', n.dataset.year === y));
           }
         });
       },
-      { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+      { rootMargin: '-25% 0px -65% 0px', threshold: 0 }
     );
-    document.querySelectorAll('.year-sec').forEach((s) => io.observe(s));
+    document.querySelectorAll('.art').forEach((a) => io.observe(a));
   }
   observe();
-
-  document.getElementById('rail').addEventListener('click', (e) => {
-    const n = e.target.closest('.tnode');
-    if (!n) return;
-    const sec = document.querySelector(`.year-sec[data-year="${n.dataset.year}"]`);
-    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
 </script>
 
 <style is:global>
@@ -171,23 +160,6 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     grid-column: 2;
     min-width: 0;
   }
-  .year-sec {
-    margin-bottom: 34px;
-  }
-  .year-sec h2 {
-    font-size: 24px;
-    margin: 0 0 14px;
-    font-weight: 700;
-    color: var(--primary);
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-  .year-sec h2 .n {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 400;
-  }
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -218,7 +190,12 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-top: 24px;
+    margin-top: 12px;
+  }
+  .art .meta-top {
+    font-size: 11.5px;
+    letter-spacing: 1px;
+    color: var(--muted);
   }
   .art .title {
     font-family: var(--font-serif);

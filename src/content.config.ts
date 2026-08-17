@@ -5,28 +5,37 @@ export const collections = {
     type: 'content',
     schema: z.object({
       // ── 基础 ──
-      title: z.string(),                    // 展示标题（中文）
       kind: z.enum(['talk', 'essay']).default('talk'), // talk 分享 / essay 原创
       status: z.enum(['done', 'wip']).default('done'), // 整理状态
 
-      // ── 归类（浏览 / 筛选）──
-      section: z.string().optional(),       // 顶层分组（Capcom / PlatinumGames / … / 设计者笔记）
-      year: z.number().optional(),          // 年份
-      tags: z.array(z.string()).default([]),// 标签（2~4 个）
+      // ── 文章主体 ──
+      article: z.object({
+        title: z.string(),                        // 中文标题
+        insight: z.string().optional(),           // 一级信息 Hook：一句话结论
+        tags: z
+          .array(
+            z.object({
+              label: z.string(),                  // 标签名
+              icon: z.string().optional(),        // 图标（emoji，可选）
+            })
+          )
+          .default([]),                           // 标签（2~4 个）
+      }),
 
-      // ── 内容（信息密度分层，详见 EXTRACTION.md）──
-      insight: z.string().optional(),       // 一级信息 Hook：一句话结论
-      corePoints: z
-        .array(z.object({ icon: z.string().optional(), title: z.string() }))
-        .default([]),                       // 二级信息（可选）
+      // ── 来源 ──
+      source: z
+        .object({
+          title: z.string().optional(),   // 原标题（演讲 / 文章标题）
+          author: z.string().optional(),  // 作者 / 分享人（可含职位）
+          authorBio: z.string().optional(), // 作者简介
+          url: z.string().optional(),     // 源链接
+          year: z.number().optional(),    // 年份
+          type: z.string().optional(),    // 来源类型（会议 / 平台，如 GDC、CEDEC、Youtube）
+          company: z.string().optional(), // 厂商 / 来源方（如 Capcom、Nintendo）
+        })
+        .optional(),
 
-      // ── 出处（谁 / 在哪 / 怎么找）──
-      author: z.string().optional(),        // 作者 / 分享人（可含职位）
-      role: z.string().optional(),          // 职位（可并入 author）
-      project: z.string().optional(),       // 项目 / 作品
-      event: z.string().optional(),         // 会议 / 活动（如 GDC、CEDEC）
-      titleOriginal: z.string().optional(), // 原标题（演讲 / 文章标题）
-      link: z.string().optional(),          // 源链接
+      // ── 参考 ──
       references: z
         .array(
           z.object({
@@ -35,12 +44,11 @@ export const collections = {
             type: z.enum(['original', 'translation', 'other']).default('other'),
           })
         )
-        .default([]),                       // 参考（翻译 / 延伸）
+        .default([]),
 
+      // ── 杂项（可选）──
       description: z.string().optional(),
       image: z.string().optional(),
-      sources: z.array(z.string()).default([]),
-      date: z.coerce.date().optional(),
     }),
   }),
 };

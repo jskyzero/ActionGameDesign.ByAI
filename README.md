@@ -10,14 +10,14 @@
 
 ```
 src/
-├── content.config.ts          # 内容 schema（zod 契约，见 EXTRACTION.md）
+├── content.config.ts          # 内容 schema（zod 契约，见 docs/EXTRACTION.md）
 ├── content/docs/              # 唯一数据源（纯文本，一条目一 .mdx）
 │   ├── talks/<章节>/<slug>.mdx#   分享索引
 │   └── essays/<slug>.mdx      #   原创方法论（设计者笔记）
 ├── layouts/
 │   └── Base.astro             # 站点外壳（头部 + 页脚）
 ├── pages/
-│   ├── index.astro            # 主页（时间轴 + 来源筛选 + hash 渐变卡）
+│   ├── index.astro            # 主页（时间轴 + 卡片流）
 │   └── [...slug].astro        # 文章详情页（动态路由）
 ├── components/                # 文章页组件（封面/金句/信息卡/要点卡）
 ├── styles/
@@ -27,10 +27,12 @@ scripts/
 ├── validate.mjs               # frontmatter 校验
 ├── convert-xmind.mjs          # .xmind → Markdown 大纲
 └── convert-drawio.mjs         # .drawio → Markdown 大纲
-AGENTS.md                      # AI 贡献约定
-PROMPTS.md                     # AI 整理条目提示词模板
-EXTRACTION.md                  # 内容提取与沉淀规范
-docs/KNOWLEDGE.md              # 关键知识与决策记录（架构/设计系统/踩坑）
+AGENTS.md                      # AI 贡献约定（入口，链接到 docs/）
+docs/
+├── EXTRACTION.md              # 内容提取与沉淀规范
+├── PROMPTS.md                 # AI 整理条目提示词模板
+├── KNOWLEDGE.md               # 关键知识与决策记录（架构/设计系统/踩坑）
+└── prototype/                 # 设计原型（仅参考，不参与构建，见 docs/prototype/README.md）
 ```
 
 ## 常用命令
@@ -44,11 +46,11 @@ npm run validate     # 校验所有条目的 frontmatter
 
 ## 内容模型
 
-每条一个 `.mdx`，frontmatter 字段见 `AGENTS.md` 和 `EXTRACTION.md`：
+每条一个 `.mdx`，frontmatter 字段见 `AGENTS.md` 和 [`docs/EXTRACTION.md`](docs/EXTRACTION.md)：
 
-- **信息密度分层**：`insight`（Hook，一级）· `corePoints`（3 条核心观点，二级）· 正文（Details，三级）
-- **通用信息卡片**：`author / role / project / source / sourceTitle / link / references`
-- **归类**：`section`（顶层分组）· `tags` · `kind`（talk/essay）· `year`
+- **信息密度分层**：`article.insight`（Hook，一级）· 正文（Details）
+- **通用信息卡片**：`article（title·insight·tags）/ source（title·author·url·year·type·company）/ references`
+- **归类**：`source.company`（顶层分组）· `article.tags` · `kind`（talk/essay）· `source.year`
 
 ## 设计 token（CSS 架构）
 
@@ -70,4 +72,4 @@ node scripts/convert-xmind.mjs  path/to/foo.xmind  out.md
 node scripts/convert-drawio.mjs path/to/bar.drawio out.md
 ```
 
-提取出的 Markdown 大纲交给 AI（或人工）按 `PROMPTS.md` 模板整理成 `.mdx`，审校后入库。**图片内容**需要多模态模型转写，脚本无法提取。
+提取出的 Markdown 大纲交给 AI（或人工）按 [`docs/PROMPTS.md`](docs/PROMPTS.md) 模板整理成 `.mdx`，审校后入库。**图片内容**需要多模态模型转写，脚本无法提取。

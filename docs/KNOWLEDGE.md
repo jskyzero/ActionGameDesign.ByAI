@@ -22,16 +22,15 @@
 | 正文形态 | 文字卡片（point 卡）而非导图 | 用户确认「文字卡片可以，方向正确」 |
 | 圆角 | 苹果风格统一：`--r-card: 18px` / `--r-pill: 999px` | 统一美学语言 |
 
-## 3. 内容模型与提取规范（详见 EXTRACTION.md / AGENTS.md）
+## 3. 内容模型与提取规范（详见 [EXTRACTION.md](EXTRACTION.md) / [../AGENTS.md](../AGENTS.md)）
 
 - **信息密度分层**：
-  - 一级 Hook（`insight`）：1 句结论，大字号
-  - 二级 Core Points（`corePoints`，当前不渲染）：3 条核心观点
-  - 三级 Details（正文）：具体解释，point 卡片呈现
+  - 一级 Hook（`article.insight`）：1 句结论，大字号
+  - 二级 Details（正文）：具体解释，point 卡片呈现
 - **通用信息卡片**（兼容 GDC 演讲 / 普通文章 / 书籍）：
-  `author`（可含职位）· `source`（GDC 2017 / 知乎…）· `sourceTitle`（原标题）· `link`（源链接）· `references`（翻译/延伸）
-- **归类**：`section`（8 个顶层分组）· `tags`（2~4 个）· `kind`（talk/essay）· `year`
-- **精简原则**：`title` = 演讲标题中文翻译 · 分享人；删冗余字段（`description`/`project`/`corePoints` 当前不渲染可去）。
+  `article`（`title`·`insight`·`tags`）· `source`（`title`=原标题 · `author`·`url` · `year` · `type`=会议/平台 · `company`=厂商）· `references`（翻译/延伸）
+- **归类**：`source.company`（顶层分组）· `article.tags`（2~4 个）· `kind`（talk/essay）· `source.year`
+- **精简原则**：`article.title` = 中文标题；分享人放 `source.author`；删冗余字段（`description`/`image` 可选保留）。
 
 ## 4. 设计系统（CSS token 集中管理）
 

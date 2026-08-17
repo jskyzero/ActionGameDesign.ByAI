@@ -8,21 +8,33 @@ import yaml from 'js-yaml';
 const ROOT = new URL('../', import.meta.url).pathname;
 const DOCS = join(ROOT, 'src/content/docs');
 
-// 与 src/content.config.ts 的 extend 字段保持一致（title 由 Starlight 提供）
+// 与 src/content.config.ts 的 schema 保持一致
 const schema = z.object({
-  title: z.string().min(1),
   kind: z.enum(['talk', 'essay']).default('talk'),
-  year: z.number().optional(),
-  section: z.string().optional(),
   status: z.enum(['done', 'wip']).default('done'),
-  insight: z.string().optional(),
-  corePoints: z.array(z.object({ icon: z.string().optional(), title: z.string() })).default([]),
-  author: z.string().optional(),
-  role: z.string().optional(),
-  project: z.string().optional(),
-  event: z.string().optional(),
-  titleOriginal: z.string().optional(),
-  link: z.string().optional(),
+  article: z.object({
+    title: z.string().min(1),
+    insight: z.string().optional(),
+    tags: z
+      .array(
+        z.object({
+          label: z.string(),
+          icon: z.string().optional(),
+        })
+      )
+      .default([]),
+  }),
+  source: z
+    .object({
+      title: z.string().optional(),
+      author: z.string().optional(),
+      authorBio: z.string().optional(),
+      url: z.string().optional(),
+      year: z.number().optional(),
+      type: z.string().optional(),
+      company: z.string().optional(),
+    })
+    .optional(),
   references: z
     .array(
       z.object({
@@ -32,12 +44,8 @@ const schema = z.object({
       })
     )
     .default([]),
-  tags: z.array(z.string()).default([]),
-  sources: z.array(z.string()).default([]),
   description: z.string().optional(),
   image: z.string().optional(),
-  date: z.coerce.date().optional(),
-  category: z.string().optional(),
 });
 
 function* walk(dir) {
