@@ -28,8 +28,8 @@
 | `author` | 作者 / 分享人 | 龟井敏征 | 某作者 |
 | `role` | 身份 / 职位 | 美术总监 | —（可空） |
 | `project` | 项目 / 作品 | 街霸 5 | —（可空） |
-| `source` | 来源 / 出处 | GDC 2017 | 知乎 / 某杂志 |
-| `sourceTitle` | 原标题 | The Art Direction of... | 文章标题 |
+| `event` | 会议 / 活动 | GDC | 知乎 / 某杂志 |
+| `titleOriginal` | 原标题 | The Art Direction of... | 文章标题 |
 | `link` | 源链接 | GDC Vault URL | 文章 URL |
 | `references` | 参考（翻译/延伸） | 中译链接 | 延伸阅读 |
 

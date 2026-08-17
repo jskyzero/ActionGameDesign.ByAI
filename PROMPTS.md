@@ -24,7 +24,7 @@
 
 ```markdown
 ---
-title: <演讲标题中文翻译 · 分享人>
+title: <中文标题（演讲标题翻译）>
 kind: talk
 section: <顶层分组>
 year: <年份数字>
@@ -40,8 +40,8 @@ corePoints:
 author: <分享人/作者>
 role: <职位>
 project: <项目/作品>
-source: <来源>
-sourceTitle: "<原标题>"
+event: <会议>
+titleOriginal: "<原标题>"
 link: <源链接>
 tags: [<2~4 个标签>]
 references:

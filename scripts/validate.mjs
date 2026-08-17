@@ -20,8 +20,8 @@ const schema = z.object({
   author: z.string().optional(),
   role: z.string().optional(),
   project: z.string().optional(),
-  source: z.string().optional(),
-  sourceTitle: z.string().optional(),
+  event: z.string().optional(),
+  titleOriginal: z.string().optional(),
   link: z.string().optional(),
   references: z
     .array(

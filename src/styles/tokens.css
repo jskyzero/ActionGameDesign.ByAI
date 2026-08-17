@@ -1,16 +1,20 @@
 /* ==========================================================================
    设计 Token —— 全站视觉的唯一事实来源
    后期频繁调 CSS 时，优先改这里。
+   视觉基调：蓝色为主（参考 coolors.co/tailwind/0066ff），黑/白/灰为辅。
    ========================================================================== */
 :root {
   /* —— 颜色 —— */
-  --bg: #faf9f6;              /* 页面底色（暖纸） */
+  --bg: #f5f8fd;              /* 页面底色（冷白） */
   --card: #ffffff;            /* 卡片底色 */
-  --ink: #1d1d26;             /* 主文字 */
-  --muted: #83838d;           /* 次级文字 */
-  --line: #ece8df;            /* 分隔线 / 边框 */
-  --indigo: #26264f;          /* 主强调（深靛） */
-  --accent: #ff5a4e;          /* 点缀（珊瑚红） */
+  --ink: #0f172a;             /* 主文字（深石板） */
+  --muted: #64748b;           /* 次级文字 */
+  --line: #e2e8f0;            /* 分隔线 / 边框 */
+  --primary: #1e40af;         /* 主强调（深蓝，标题/按钮/链接） */
+  --accent: #0066ff;          /* 点缀（主蓝，高亮/圆点） */
+
+  /* —— 统一的卡片 / 封面渐变（蓝色；所有卡片同色，来源靠标签文字色区分） —— */
+  --gradient: linear-gradient(140deg, #0a2540 0%, #0d3a8c 100%);
 
   /* —— 圆角（苹果风格统一） —— */
   --r-card: 18px;             /* 卡片 / 容器 */
@@ -25,7 +29,7 @@
   --font-serif: 'LXGW WenKai', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
 
-  /* —— 阴影 —— */
-  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.16);
-  --shadow-card-hover: 0 18px 38px rgba(0, 0, 0, 0.24);
+  /* —— 阴影（蓝调） —— */
+  --shadow-card: 0 6px 18px rgba(13, 58, 140, 0.14);
+  --shadow-card-hover: 0 18px 38px rgba(13, 58, 140, 0.22);
 }

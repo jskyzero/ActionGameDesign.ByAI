@@ -2,11 +2,11 @@
 interface Props {
   author?: string;
   role?: string;
-  sourceTitle?: string;
+  titleOriginal?: string;
   link?: string;
   references?: { label: string; url: string; type: string }[];
 }
-const { author, role, sourceTitle, link, references = [] } = Astro.props;
+const { author, role, titleOriginal, link, references = [] } = Astro.props;
 ---
 
 <div class="info">
@@ -16,8 +16,8 @@ const { author, role, sourceTitle, link, references = [] } = Astro.props;
       <span class="v">{author}{role ? `（${role}）` : ''}</span>
     </div>
   )}
-  {sourceTitle && (
-    <div class="row"><span class="k">原标题</span><span class="v">{sourceTitle}</span></div>
+  {titleOriginal && (
+    <div class="row"><span class="k">原标题</span><span class="v">{titleOriginal}</span></div>
   )}
   {(link || references.length > 0) && (
     <div class="row">
@@ -68,7 +68,7 @@ const { author, role, sourceTitle, link, references = [] } = Astro.props;
     word-break: break-all;
   }
   .v a {
-    color: var(--indigo);
+    color: var(--primary);
     border-bottom: 1px solid rgba(38, 38, 79, 0.25);
   }
 </style>

@@ -12,7 +12,7 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `title` | string | ✅ | 展示名，建议「演讲标题中文翻译 · 分享人」（如 `街霸 5 的美术设计思路 · 龟井敏征`） |
+| `title` | string | ✅ | 中文标题（如 `街霸 5 的美术设计思路`），分享人放 `author` |
 | `kind` | `talk` \| `essay` | ✅ | 内容类型，默认 `talk` |
 | `year` | number | | 分享 / 发布年份 |
 | `section` | string | ✅ | 顶层分组（Capcom / PlatinumGames / Santa Monica Studio / FTG 相关 / 其他 / Nintendo / 非 GDC / 设计者笔记） |
@@ -22,8 +22,8 @@
 | `author` | string | | 作者 / 分享人 |
 | `role` | string | | 身份 / 职位 |
 | `project` | string | | 项目 / 作品 |
-| `source` | string | | 来源 / 出处（如 `GDC 2017`、`知乎`） |
-| `sourceTitle` | string | | 原标题（演讲标题 / 文章标题） |
+| `event` | string | | 会议 / 活动（如 `GDC`、`CEDEC`） |
+| `titleOriginal` | string | | 原标题（演讲标题 / 文章标题） |
 | `link` | string | | 源链接 |
 | `references` | array | | `[{ label, url, type }]`，`type` ∈ `original`/`translation`/`other` |
 | `tags` | string[] | 推荐 | 2~4 个标签，供主页筛选 |

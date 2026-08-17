@@ -94,18 +94,19 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   const DATA = entries;
   const SECS = sections;
 
-  // 来源名 hash → 纯 hash 色相渐变
-  function hash(str) {
-    let h = 2166136261;
-    for (let i = 0; i < str.length; i++) {
-      h ^= str.charCodeAt(i);
-      h = Math.imul(h, 16777619);
-    }
-    return h >>> 0;
-  }
-  function gradientFor(str) {
-    const hue = hash(str) % 360;
-    return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`;
+  // 来源标签文字色（蓝色系，区分不同来源；卡片/标签背景统一为蓝色渐变）
+  const SOURCE_COLORS = {
+    'Capcom': '#60a5fa',
+    'PlatinumGames': '#38bdf8',
+    'Santa Monica Studio': '#818cf8',
+    'FTG 相关': '#22d3ee',
+    '其他': '#93c5fd',
+    'Nintendo': '#a5b4fc',
+    '非 GDC': '#67e8f9',
+    '设计者笔记': '#c7d2fe',
+  };
+  function sourceColor(s) {
+    return SOURCE_COLORS[s] || '#93c5fd';
   }
 
   let filter = { q: '', src: '' };
@@ -130,19 +131,19 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 
   function artHtml(d) {
     const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
-    return `<a class="art" href="${d.href}" style="background:${gradientFor(d.s)};view-transition-name:${d.n}">
-      <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+    return `<a class="art" href="${d.href}" style="background:var(--gradient);view-transition-name:${d.n}">
+      <div><div class="kick" style="color:${sourceColor(d.s)}">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
       <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
     </a>`;
   }
 
   function renderSrcbar() {
-    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="" style="background:linear-gradient(140deg,#26264f,#3a3a72)">全部<span class="c">${DATA.length}</span></button>`;
+    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="" style="background:var(--gradient)">全部<span class="c">${DATA.length}</span></button>`;
     const chips = SECS.map((s) => {
       const n = DATA.filter((d) => d.s === s).length;
       const active = filter.src === s ? ' active' : '';
       const dim = filter.src && filter.src !== s ? ' dim' : '';
-      return `<button class="src-chip${active}${dim}" data-src="${s}" style="background:${gradientFor(s)}">${s}<span class="c">${n}</span></button>`;
+      return `<button class="src-chip${active}${dim}" data-src="${s}" style="background:var(--gradient);color:${sourceColor(s)}">${s}<span class="c">${n}</span></button>`;
     }).join('');
     document.getElementById('srcbar').innerHTML = all + chips;
   }
@@ -251,7 +252,7 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     transition: box-shadow 0.2s, border-color 0.2s;
   }
   .search:focus-within {
-    border-color: var(--indigo);
+    border-color: var(--primary);
     box-shadow: 0 6px 24px rgba(38, 38, 79, 0.12);
   }
   .search input {
@@ -267,7 +268,7 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   }
   .search .sbtn {
     border: 0;
-    background: var(--indigo);
+    background: var(--primary);
     color: #fff;
     font-family: inherit;
     font-size: 14px;
@@ -380,11 +381,11 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     transition: all 0.2s;
   }
   .tnode.active {
-    color: var(--indigo);
+    color: var(--primary);
     font-weight: 700;
   }
   .tnode.active .dot {
-    background: var(--indigo);
+    background: var(--primary);
     transform: scale(1.35);
   }
 
@@ -395,7 +396,7 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     font-size: 24px;
     margin: 0 0 14px;
     font-weight: 700;
-    color: var(--indigo);
+    color: var(--primary);
     display: flex;
     align-items: baseline;
     gap: 10px;

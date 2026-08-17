@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  source?: string;
+  event?: string;
   section?: string;
   year?: number;
   author?: string;
@@ -9,10 +9,10 @@ interface Props {
   project?: string;
   transitionName?: string;
 }
-const { title, source, section, year, author, role, project, transitionName } = Astro.props;
+const { title, event, section, year, author, role, project, transitionName } = Astro.props;
 const hasYear = typeof year === 'number';
-const kicker = source
-  ? source + (hasYear && !source.includes(String(year)) ? ` · ${year}` : '')
+const kicker = event
+  ? event + (hasYear && !event.includes(String(year)) ? ` · ${year}` : '')
   : [section, hasYear ? String(year) : ''].filter(Boolean).join(' · ');
 ---
 
@@ -34,9 +34,9 @@ const kicker = source
     padding: 36px 34px 34px;
     color: #fff;
     background:
-      radial-gradient(120% 140% at 100% 0%, rgba(255, 255, 255, 0.14), transparent 55%),
-      linear-gradient(135deg, #26264f 0%, #3a3a72 60%, #26264f 100%);
-    box-shadow: 0 18px 40px rgba(38, 38, 79, 0.25);
+      radial-gradient(120% 140% at 100% 0%, rgba(255, 255, 255, 0.12), transparent 55%),
+      var(--gradient);
+    box-shadow: 0 18px 40px rgba(13, 58, 140, 0.25);
   }
   .kicker {
     font-size: 13px;

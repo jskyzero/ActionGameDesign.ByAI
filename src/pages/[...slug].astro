@@ -26,7 +26,7 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
       <div class="main">
         <ArticleCover
           title={d.title}
-          source={d.source}
+          event={d.event}
           section={d.section}
           year={d.year}
           author={d.author}
@@ -35,7 +35,7 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
           transitionName={transitionName}
         />
         <Hook insight={d.insight} />
-        <InfoCard author={d.author} role={d.role} sourceTitle={d.sourceTitle} link={d.link} references={d.references} />
+        <InfoCard author={d.author} role={d.role} titleOriginal={d.titleOriginal} link={d.link} references={d.references} />
         <div class="prose">
           <Content />
         </div>
@@ -101,7 +101,7 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
     transition: color 0.15s;
   }
   .back:hover {
-    color: var(--indigo);
+    color: var(--primary);
   }
   .prose {
     margin-top: 24px;
@@ -139,7 +139,7 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
   }
   .toc-title {
     font-weight: 600;
-    color: var(--indigo);
+    color: var(--primary);
     margin-bottom: 10px;
   }
   .toc .back {
@@ -154,11 +154,11 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
     line-height: 1.5;
   }
   .toc nav a:hover {
-    color: var(--indigo);
+    color: var(--primary);
   }
   .toc nav a.active {
     position: relative;
-    color: var(--indigo);
+    color: var(--primary);
     font-weight: 600;
   }
   .toc nav a.active::before {

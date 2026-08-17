@@ -24,7 +24,7 @@ a {
 
 /* —— 来源 hash 渐变的兜底（组件内会用 JS 内联覆盖） —— */
 .src-grad {
-  background: linear-gradient(140deg, var(--indigo) 0%, #3a3a72 100%);
+  background: linear-gradient(140deg, var(--primary) 0%, #3a3a72 100%);
 }
 
 /* —— 文章正文（prose）定制，对标 prototype/article.html —— */
@@ -43,7 +43,7 @@ a {
   align-items: center;
   gap: 12px;
   font-family: var(--font-serif);
-  color: var(--indigo);
+  color: var(--primary);
   font-weight: 700;
   font-size: 22px;
 }
@@ -52,7 +52,7 @@ a {
   width: 32px;
   height: 32px;
   border-radius: 9px;
-  background: var(--indigo);
+  background: var(--primary);
   color: #fff;
   display: inline-flex;
   align-items: center;
@@ -69,7 +69,7 @@ a {
   align-items: center;
   gap: 8px;
   font-size: 16px;
-  color: var(--indigo);
+  color: var(--primary);
   font-weight: 600;
   background: var(--card);
   border: 1px solid var(--line);
@@ -102,8 +102,8 @@ a {
   margin: 20px 0;
   padding: 16px 20px;
   border-radius: var(--r-card);
-  background: #fff0ed;
-  color: #a33a30;
+  background: #eaf1ff;
+  color: var(--primary);
   font-size: 14.5px;
   font-style: normal;
   border-left: 0;
