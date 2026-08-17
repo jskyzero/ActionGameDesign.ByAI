@@ -9,9 +9,10 @@ interface Props {
   author?: string;
   role?: string;
   project?: string;
+  tags?: string[];
   transitionName?: string;
 }
-const { title, event, section, year, author, role, project, transitionName } = Astro.props;
+const { title, event, section, year, author, role, project, tags = [], transitionName } = Astro.props;
 const hasYear = typeof year === 'number';
 const kicker = event
   ? event + (hasYear && !event.includes(String(year)) ? ` · ${year}` : '')
@@ -28,6 +29,7 @@ const bgText = event || section || '';
       {author && <span class="chip">👤 {author}</span>}
       {role && <span class="chip">🎨 {role}</span>}
       {project && <span class="chip">🎮 {project}</span>}
+      {tags.map((t) => <span class="chip tag">#{t}</span>)}
     </div>
   </div>
 </header>

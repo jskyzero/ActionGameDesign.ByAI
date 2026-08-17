@@ -32,6 +32,7 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
           author={d.author}
           role={d.role}
           project={d.project}
+          tags={d.tags}
           transitionName={transitionName}
         />
         <Hook insight={d.insight} />

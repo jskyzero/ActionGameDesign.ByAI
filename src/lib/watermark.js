@@ -7,15 +7,17 @@ function seedOf(text) {
   return h;
 }
 
+const GAP = '　　'; // 同行文字间的孔隙（两个全角空格）
+
 export function watermarkHtml(text, rows = 6) {
   if (!text) return '';
   const seed = seedOf(text);
 
-  // 粗略估算单段宽度（文字 + 全角空格），据此决定重复次数与动画时长
-  const unitW = (text.length + 1) * 15;
-  // 保证每段 ≥ 800px：避免文章封面（~760px）滚动时露空白
-  const repeat = Math.max(8, Math.ceil(800 / unitW));
-  const seg = Array(repeat).fill(text).join('　') + '　';
+  // 粗略估算单段宽度（文字 + 孔隙）
+  const unitW = (text.length + 2) * 15;
+  // 保证每段足够宽：.sw 用 inset:-25% 撑到 1.5× 卡片，封面 ~760px → 需 ≥ 1.5×760≈1140px
+  const repeat = Math.max(8, Math.ceil(1400 / unitW));
+  const seg = Array(repeat).fill(text).join(GAP) + GAP;
   const segW = repeat * unitW;
   // 恒定速度 ~70px/s：长文字时长更长、速度一致
   const dur = Math.max(6, (segW / 70).toFixed(1));
