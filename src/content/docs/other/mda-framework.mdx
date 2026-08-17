@@ -1,0 +1,93 @@
+---
+status: done
+article:
+  title: MDA 框架：机制、动态与美学
+  insight: 别问「该加什么系统」，先问「想让玩家感受到什么」——MDA 用机制、动态、美学三层，把设计师的意图翻译成玩家的体验。
+  tags:
+    - label: 设计框架
+      icon: 🏗️
+    - label: 玩家体验
+      icon: 🎯
+    - label: 学术论文
+      icon: 📄
+source:
+  title: "MDA: A Formal Approach to Game Design and Game Research"
+  author: Robin Hunicke、Marc LeBlanc、Robert Zubek
+  authorBio: Robin Hunicke 时任西北大学博士生，后任 thatgamecompany 制作人；Marc LeBlanc 独立游戏设计师；Robert Zubek 时任西北大学博士生，后创立工作室 Mighty Signal。
+  url: https://users.cs.northwestern.edu/~hunicke/pubs/MDA.pdf
+  year: 2004
+  type: 文章
+  company: 其他
+references:
+  - label: MDA framework（Wikipedia）
+    url: https://en.wikipedia.org/wiki/MDA_framework
+    type: original
+  - label: 论文页面（AAAI）
+    url: https://aaai.org/papers/ws04-04-001-mda-a-formal-approach-to-game-design-and-game-research/
+    type: original
+  - label: 中译（机核 GCORES）
+    url: https://www.gcores.com/articles/130941
+    type: translation
+  - label: 中译（GameRes）
+    url: https://www.gameres.com/877180.html
+    type: translation
+  - label: 中译（知乎浅译）
+    url: https://zhuanlan.zhihu.com/p/402577913
+    type: translation
+
+---
+
+## 为什么需要一套「形式化」的语言
+
+2004 年，Robin Hunicke、Marc LeBlanc、Robert Zubek 在 AAAI Workshop on Challenges in Game AI 上发表论文 "MDA: A Formal Approach to Game Design and Game Research"。电影有蒙太奇、文学有叙事学，游戏却连「好玩」都说不清——这篇论文想给游戏设计补上一套通用的分析语言。
+
+### 框架的由来
+
+- **背景**：2000 年代初游戏行业快速扩张，设计师与研究者却缺少可沟通的术语，「手感」「乐趣」各说各话。
+- **目标**：把游戏拆成可分析、可讨论、可调整的层次，让设计者与研究者共用同一套词汇。
+- **一句话立场**：别只描述「游戏做了什么」，要追问「玩家感受到了什么」。
+
+## 三层模型：Mechanics / Dynamics / Aesthetics
+
+- **Mechanics（机制）**：游戏最底层的规则、数据与算法——组件、数据表示与逻辑。这是设计师唯一能直接编写的一层。
+- **Dynamics（动态）**：机制在玩家输入与时间推进下「跑起来」之后涌现出的运行时行为。
+- **Aesthetics（美学）**：玩家与游戏交互时产生的可欲情感反应（desirable emotional responses）——玩家真正消费的东西。
+
+### 两个方向，两种视角
+
+- **设计师（自下而上）**：Mechanics → Dynamics → Aesthetics。先写规则，规则跑出动态，动态唤起情感。
+- **玩家（自上而下）**：Aesthetics → Dynamics → Mechanics。先感受到情感，再摸清动态，最后（常常无意识地）理解机制。
+- **关键洞察**：玩家并不直接消费机制，机制只是通往情感的中介。盯着 Mechanics 猛加系统、却不知道它在玩家端唤起什么，是设计者最常见的错。
+
+### 消费模式（Consumption Modes）
+
+- **输入-输出循环**：玩家的动作（input）→ 游戏的呈现（output）→ 玩家的消化理解（assimilation）→ 新的动作，游戏体验在这个循环里滚动。
+- **游戏即动态系统**：把游戏看作状态随时间演进的系统，MDA 就是描述「规则 → 系统行为 → 情感」这条因果链的框架。
+
+## 八类 Aesthetics：把「乐趣」拆开
+
+论文把「乐趣」分解为八种可欲情感：
+
+- **Sensation**：作为感官享受的游戏——视听刺激本身。
+- **Fantasy**：作为幻想世界的游戏——扮演他者，进入想象情境。
+- **Narrative**：作为戏剧叙事的游戏——被故事牵引，期待剧情展开。
+- **Challenge**：作为障碍赛道的游戏——克服困难，检验技巧。
+- **Fellowship**：作为社交框架的游戏——与他人合作、竞争、共处。
+- **Discovery**：作为未知领域的游戏——探索、解谜、发现新东西。
+- **Expression**：作为自我发现的游戏——创造、装扮、表达自我。
+- **Submission**：作为消遣的游戏——放下控制，任其带走。
+
+### 怎么用这八类
+
+- **混合而非单选**：大多数游戏同时承载多种 Aesthetics，通常有一两个主导。拿《俄罗斯方块》对照——它主打 Challenge，同时带着 Discovery（摸索新玩法）与 Submission（进入心流的放松），却几乎不含 Narrative 与 Expression。
+- **设计提问**：与其罗列功能，不如在每个关卡问「此刻玩家该体验到哪种情感」。
+- **检验标准**：同一套 Mechanics 可以唤起完全不同的 Aesthetics——换个美术与叙事包装，同样的方块可以变成 Fantasy，也可以变成纯 Submission。
+
+## 把 MDA 用起来：从情感目标到机制
+
+- **第一步，定 Aesthetics**：明确「要让玩家感受到什么」，而不是「要玩家做到什么」。
+- **第二步，造 Dynamics**：设计能产出该情感的系统行为——想要紧张感，就压资源和时间；想要成就感，就调难度曲线与反馈节奏。
+- **第三步，写 Mechanics**：把 Dynamics 落成具体的规则、数值与代码。
+- **Tuning（调参）**：观察实际游玩，若玩家端的 Aesthetics 与预期不符，回头调 Dynamics，再下沉到 Mechanics——三层里只有 Mechanics 是可控的，另外两层只能间接影响。
+
+> ✦ 一句话总结：MDA 把游戏拆成机制、动态、美学三层——设计师从机制向上造，玩家从美学向下体验，用「想让玩家感受到什么」替代「该加什么系统」，是横跨设计意图与玩家体验的通用语言。
