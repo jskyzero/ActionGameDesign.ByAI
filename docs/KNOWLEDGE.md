@@ -29,7 +29,7 @@
   - 二级 Details（正文）：具体解释，point 卡片呈现
 - **通用信息卡片**（兼容 GDC 演讲 / 普通文章 / 书籍）：
   `article`（`title`·`insight`·`tags`）· `source`（`title`=原标题 · `author`·`url` · `year` · `type`=会议/平台 · `company`=厂商）· `references`（翻译/延伸）
-- **归类**：`source.company`（顶层分组）· `article.tags`（2~4 个）· `kind`（talk/essay）· `source.year`
+- **归类**：`source.company`（顶层分组）· `article.tags`（2~4 个）· `source.year`
 - **精简原则**：`article.title` = 中文标题；分享人放 `source.author`；删冗余字段（`description`/`image` 可选保留）。
 
 ## 4. 设计系统（CSS token 集中管理）

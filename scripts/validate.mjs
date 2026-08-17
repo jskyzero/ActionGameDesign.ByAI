@@ -10,7 +10,6 @@ const DOCS = join(ROOT, 'src/content/docs');
 
 // 与 src/content.config.ts 的 schema 保持一致
 const schema = z.object({
-  kind: z.enum(['talk', 'essay']).default('talk'),
   status: z.enum(['done', 'wip']).default('done'),
   article: z.object({
     title: z.string().min(1),
@@ -30,7 +29,7 @@ const schema = z.object({
       author: z.string().optional(),
       authorBio: z.string().optional(),
       url: z.string().optional(),
-      year: z.number().optional(),
+      year: z.union([z.number(), z.string()]).optional(),
       type: z.string().optional(),
       company: z.string().optional(),
     })

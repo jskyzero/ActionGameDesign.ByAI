@@ -5,7 +5,6 @@ export const collections = {
     type: 'content',
     schema: z.object({
       // ── 基础 ──
-      kind: z.enum(['talk', 'essay']).default('talk'), // talk 分享 / essay 原创
       status: z.enum(['done', 'wip']).default('done'), // 整理状态
 
       // ── 文章主体 ──
@@ -29,7 +28,7 @@ export const collections = {
           author: z.string().optional(),  // 作者 / 分享人（可含职位）
           authorBio: z.string().optional(), // 作者简介
           url: z.string().optional(),     // 源链接
-          year: z.number().optional(),    // 年份
+          year: z.union([z.number(), z.string()]).optional(), // 年份（找不到填「年份不详」）
           type: z.string().optional(),    // 来源类型（会议 / 平台，如 GDC、CEDEC、Youtube）
           company: z.string().optional(), // 厂商 / 来源方（如 Capcom、Nintendo）
         })

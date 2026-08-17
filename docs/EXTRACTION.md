@@ -44,9 +44,9 @@
 3. **优先本地源**：若本地有对应 `.xmind`/`.drawio`（如 `GDC.xmind`），**以作者自己的归纳为准**，公开信息只作补充。
 4. **分层提取**：按第 1 节产出 Hook + Details。
 5. **归档**：生成 `.mdx`（frontmatter 结构化字段 + 正文 Details），跑 `npm run validate` 校验，再 `npm run build`。
+6. **缺失补全**：标准字段（如年份、作者、源链接）缺失时，先尝试检索补全；实在找不到，用默认值占位（如年份写 `年份不详`）。
 
 ## 4. 归类
 
 - `source.company`（厂商/来源方）：沿用现有分组（Capcom / PlatinumGames / Santa Monica Studio / Nintendo / FTG 相关 / 其他 / 非 GDC / 设计者笔记），新内容按「厂商 / 品类 / 来源 / 原创」归入，必要时可新增。
 - `article.tags`：2~4 个，供筛选。
-- `kind`：分享（talk）还是原创方法论（essay）。

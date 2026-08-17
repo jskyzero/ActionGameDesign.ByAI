@@ -10,15 +10,13 @@
 
 ## 内容目录
 
-- `src/content/docs/talks/<章节>/<slug>.mdx` —— 分享索引（GDC 演讲、视频、文章等）
-- `src/content/docs/essays/<slug>.mdx` —— 原创方法论文章
+- `src/content/docs/talks/<章节>/<slug>.mdx` —— 所有内容（GDC 演讲、视频、文章、原创方法论）
 - `src/pages/index.astro` —— 首页（不要往内容目录里堆首页）
 
 ## Frontmatter 字段
 
 | 字段 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `kind` | `talk` \| `essay` | ✅ | 内容类型，默认 `talk` |
 | `status` | `done` \| `wip` | ✅ | `wip` = 待施工 |
 | `article.title` | string | ✅ | 中文标题（如 `街霸 5 的美术设计思路`） |
 | `article.insight` | string | 推荐 | **一级信息 Hook**：一句话结论 |

@@ -24,7 +24,6 @@
 
 ```markdown
 ---
-kind: talk
 status: wip
 article:
   title: <中文标题>

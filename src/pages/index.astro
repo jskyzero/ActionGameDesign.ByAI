@@ -16,10 +16,14 @@ const entries = (await getCollection('docs'))
     n: 'card-' + e.slug.replace(/[^a-zA-Z0-9_-]+/g, '-'),
     href: `${base}/${e.slug}/`,
   }))
-  .sort((a, b) => (b.y ?? 0) - (a.y ?? 0));
+  .sort((a, b) => {
+    const av = typeof a.y === 'number' ? a.y : -Infinity;
+    const bv = typeof b.y === 'number' ? b.y : -Infinity;
+    return bv - av;
+  });
 
 function artHtml(d) {
-  const top = [d.y, d.type, d.company].filter(Boolean).join(' · ');
+  const top = [d.y ?? '年份不详', d.type, d.company].filter(Boolean).join(' · ');
   return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}" data-year="${d.y ?? ''}">
     <div class="art-body">
       ${top ? `<div class="meta-top">${top}</div>` : ''}
@@ -32,8 +36,8 @@ function artHtml(d) {
 
 const contentHtml = `<div class="cards">${entries.map(artHtml).join('')}</div>`;
 
-// 年份 rail（仅作视觉时间轴 + 近似跳转，不保证精确对齐）
-const years = [...new Set(entries.map((d) => d.y).filter((y) => y != null))];
+// 年份 rail（仅作视觉时间轴 + 近似跳转，不保证精确对齐；只显示数字年份）
+const years = [...new Set(entries.map((d) => d.y).filter((y) => typeof y === 'number'))];
 const railHtml = years.map((y) => `<div class="tnode" data-year="${y}"><span class="dot"></span>${y}</div>`).join('');
 ---
 
@@ -203,6 +207,11 @@ const railHtml = years.map((y) => `<div class="tnode" data-year="${y}"><span cla
     font-weight: 700;
     line-height: 1.45;
     color: var(--ink);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    min-height: 2.9em; /* 固定两行高度，不足也占满 */
   }
   .art .hook {
     font-size: 13px;
@@ -212,12 +221,14 @@ const railHtml = years.map((y) => `<div class="tnode" data-year="${y}"><span cla
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    min-height: 3.3em; /* 固定两行高度，不足也占满 */
   }
   .art .chiprow {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 5px;
     margin-top: 12px;
+    overflow: hidden;
   }
   .art .chip {
     font-size: 11px;
@@ -226,5 +237,7 @@ const railHtml = years.map((y) => `<div class="tnode" data-year="${y}"><span cla
     background: var(--bg);
     border: 1px solid var(--line);
     color: var(--muted);
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 </style>

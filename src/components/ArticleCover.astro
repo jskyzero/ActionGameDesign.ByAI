@@ -3,11 +3,11 @@ interface Props {
   title: string;
   description?: string;
   tags?: { label: string; icon?: string }[];
-  source?: { title?: string; author?: string; url?: string; year?: number; type?: string; company?: string };
+  source?: { title?: string; author?: string; url?: string; year?: number | string; type?: string; company?: string };
   transitionName?: string;
 }
 const { title, description, tags = [], source, transitionName } = Astro.props;
-const top = [source?.year, source?.type, source?.company].filter(Boolean).join(' · ');
+const top = [source?.year ?? '年份不详', source?.type, source?.company].filter(Boolean).join(' · ');
 ---
 
 <header class="hero" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>

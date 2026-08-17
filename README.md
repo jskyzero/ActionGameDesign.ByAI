@@ -12,8 +12,7 @@
 src/
 ├── content.config.ts          # 内容 schema（zod 契约，见 docs/EXTRACTION.md）
 ├── content/docs/              # 唯一数据源（纯文本，一条目一 .mdx）
-│   ├── talks/<章节>/<slug>.mdx#   分享索引
-│   └── essays/<slug>.mdx      #   原创方法论（设计者笔记）
+│   └── talks/<章节>/<slug>.mdx#   所有内容（演讲 / 视频 / 文章 / 原创方法论）
 ├── layouts/
 │   └── Base.astro             # 站点外壳（头部 + 页脚）
 ├── pages/
@@ -50,7 +49,7 @@ npm run validate     # 校验所有条目的 frontmatter
 
 - **信息密度分层**：`article.insight`（Hook，一级）· 正文（Details）
 - **通用信息卡片**：`article（title·insight·tags）/ source（title·author·url·year·type·company）/ references`
-- **归类**：`source.company`（顶层分组）· `article.tags` · `kind`（talk/essay）· `source.year`
+- **归类**：`source.company`（顶层分组）· `article.tags` · `source.year`
 
 ## 设计 token（CSS 架构）
 
