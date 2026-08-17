@@ -21,24 +21,9 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
   (a, b) => (SECTION_ORDER.indexOf(a) === -1 ? 999 : SECTION_ORDER.indexOf(a)) - (SECTION_ORDER.indexOf(b) === -1 ? 999 : SECTION_ORDER.indexOf(b))
 );
 
-// 来源标签文字色（蓝色系，区分不同来源；卡片/标签背景统一为微软蓝纯色）
-const SOURCE_COLORS = {
-  'Capcom': '#0067b8',
-  'PlatinumGames': '#0ea5e9',
-  'Santa Monica Studio': '#4f46e5',
-  'FTG 相关': '#0891b2',
-  '其他': '#2563eb',
-  'Nintendo': '#3730a3',
-  '非 GDC': '#0284c7',
-  '设计者笔记': '#60a5fa',
-};
-function sourceColor(s) {
-  return SOURCE_COLORS[s] || '#2563eb';
-}
 function artHtml(d) {
-  const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
   return `<a class="art" href="${d.href}" style="background:var(--cover);view-transition-name:${d.n}">
-    <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+    <div><div class="kick">${d.s}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
     <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
   </a>`;
 }
@@ -54,10 +39,10 @@ function yearGroup(visible) {
 }
 const groups = yearGroup(entries);
 const srcbarHtml = [
-  `<button class="src-chip active" data-src="" style="background:var(--primary);color:#fff">全部<span class="c">${entries.length}</span></button>`,
+  `<button class="src-chip active" data-src="">全部<span class="c">${entries.length}</span></button>`,
   ...sections.map((s) => {
     const n = entries.filter((d) => d.s === s).length;
-    return `<button class="src-chip" data-src="${s}" style="color:${sourceColor(s)}">${s}<span class="c">${n}</span></button>`;
+    return `<button class="src-chip" data-src="${s}">${s}<span class="c">${n}</span></button>`;
   }),
 ].join('');
 const contentHtml = groups
@@ -97,20 +82,6 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   const SECS = sections;
 
   // 来源标签文字色（蓝色系，区分不同来源；卡片/标签背景统一为微软蓝纯色）
-  const SOURCE_COLORS = {
-    'Capcom': '#0067b8',
-    'PlatinumGames': '#0ea5e9',
-    'Santa Monica Studio': '#4f46e5',
-    'FTG 相关': '#0891b2',
-    '其他': '#2563eb',
-    'Nintendo': '#3730a3',
-    '非 GDC': '#0284c7',
-    '设计者笔记': '#60a5fa',
-  };
-  function sourceColor(s) {
-    return SOURCE_COLORS[s] || '#2563eb';
-  }
-
   let filter = { q: '', src: '' };
 
   function visible() {
@@ -132,22 +103,24 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   }
 
   function artHtml(d) {
-    const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
     return `<a class="art" href="${d.href}" style="background:var(--cover);view-transition-name:${d.n}">
-      <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+      <div><div class="kick">${d.s}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
       <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
     </a>`;
   }
 
   function renderSrcbar() {
-    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="" style="background:var(--primary);color:#fff">全部<span class="c">${DATA.length}</span></button>`;
+    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="">全部<span class="c">${DATA.length}</span></button>`;
     const chips = SECS.map((s) => {
       const n = DATA.filter((d) => d.s === s).length;
       const active = filter.src === s ? ' active' : '';
       const dim = filter.src && filter.src !== s ? ' dim' : '';
-      return `<button class="src-chip${active}${dim}" data-src="${s}" style="color:${sourceColor(s)}">${s}<span class="c">${n}</span></button>`;
+      return `<button class="src-chip${active}${dim}" data-src="${s}">${s}<span class="c">${n}</span></button>`;
     }).join('');
-    document.getElementById('srcbar').innerHTML = all + chips;
+    const clear = filter.src || filter.q
+      ? `<button class="src-chip clear" id="clear-filter">✕ 清除筛选</button>`
+      : '';
+    document.getElementById('srcbar').innerHTML = all + chips + clear;
   }
 
   let io;
@@ -187,7 +160,13 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   document.getElementById('srcbar').addEventListener('click', (e) => {
     const b = e.target.closest('.src-chip');
     if (!b) return;
-    filter.src = b.dataset.src;
+    if (b.id === 'clear-filter') {
+      filter.src = '';
+      document.getElementById('q').value = '';
+      filter.q = '';
+    } else {
+      filter.src = b.dataset.src;
+    }
     renderSrcbar();
     render();
   });
@@ -296,29 +275,40 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     gap: 7px;
     border: 1px solid var(--line);
     cursor: pointer;
-    color: var(--primary);
+    color: var(--muted);
     font-family: inherit;
     font-size: 13px;
     padding: 7px 14px;
     border-radius: var(--r-pill);
     background: var(--card);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s, background 0.15s, color 0.15s;
   }
   .src-chip:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    border-color: var(--ink);
+    color: var(--ink);
   }
   .src-chip .c {
     font-size: 11px;
-    opacity: 0.8;
+    opacity: 0.7;
   }
   .src-chip.dim {
     opacity: 0.4;
   }
   .src-chip.active {
-    outline: 2px solid var(--ink);
-    outline-offset: 2px;
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+  .src-chip.clear {
+    border-style: dashed;
+    color: var(--muted);
+  }
+  .src-chip.clear:hover {
+    border-color: var(--ink);
+    color: var(--ink);
   }
 
   .grid {
