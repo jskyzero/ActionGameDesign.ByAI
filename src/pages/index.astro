@@ -21,21 +21,23 @@ const sections = [...new Set(entries.map((e) => e.s))].sort(
   (a, b) => (SECTION_ORDER.indexOf(a) === -1 ? 999 : SECTION_ORDER.indexOf(a)) - (SECTION_ORDER.indexOf(b) === -1 ? 999 : SECTION_ORDER.indexOf(b))
 );
 
-function hash(str) {
-  let h = 2166136261;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
-}
-function gradientFor(str) {
-  const hue = hash(str) % 360;
-  return `linear-gradient(140deg, hsl(${hue}, 46%, 32%) 0%, hsl(${(hue + 45) % 360}, 54%, 21%) 100%)`;
+// 来源标签文字色（蓝色系，区分不同来源；卡片/标签背景统一为微软蓝纯色）
+const SOURCE_COLORS = {
+  'Capcom': '#0067b8',
+  'PlatinumGames': '#0ea5e9',
+  'Santa Monica Studio': '#4f46e5',
+  'FTG 相关': '#0891b2',
+  '其他': '#2563eb',
+  'Nintendo': '#3730a3',
+  '非 GDC': '#0284c7',
+  '设计者笔记': '#60a5fa',
+};
+function sourceColor(s) {
+  return SOURCE_COLORS[s] || '#2563eb';
 }
 function artHtml(d) {
   const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
-  return `<a class="art" href="${d.href}" style="background:${gradientFor(d.s)};view-transition-name:${d.n}">
+  return `<a class="art" href="${d.href}" style="background:var(--cover);view-transition-name:${d.n}">
     <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
     <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
   </a>`;
@@ -52,10 +54,10 @@ function yearGroup(visible) {
 }
 const groups = yearGroup(entries);
 const srcbarHtml = [
-  `<button class="src-chip active" data-src="" style="background:linear-gradient(140deg,#26264f,#3a3a72)">全部<span class="c">${entries.length}</span></button>`,
+  `<button class="src-chip active" data-src="" style="background:var(--primary);color:#fff">全部<span class="c">${entries.length}</span></button>`,
   ...sections.map((s) => {
     const n = entries.filter((d) => d.s === s).length;
-    return `<button class="src-chip" data-src="${s}" style="background:${gradientFor(s)}">${s}<span class="c">${n}</span></button>`;
+    return `<button class="src-chip" data-src="${s}" style="color:${sourceColor(s)}">${s}<span class="c">${n}</span></button>`;
   }),
 ].join('');
 const contentHtml = groups
@@ -94,19 +96,19 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   const DATA = entries;
   const SECS = sections;
 
-  // 来源标签文字色（蓝色系，区分不同来源；卡片/标签背景统一为蓝色渐变）
+  // 来源标签文字色（蓝色系，区分不同来源；卡片/标签背景统一为微软蓝纯色）
   const SOURCE_COLORS = {
-    'Capcom': '#60a5fa',
-    'PlatinumGames': '#38bdf8',
-    'Santa Monica Studio': '#818cf8',
-    'FTG 相关': '#22d3ee',
-    '其他': '#93c5fd',
-    'Nintendo': '#a5b4fc',
-    '非 GDC': '#67e8f9',
-    '设计者笔记': '#c7d2fe',
+    'Capcom': '#0067b8',
+    'PlatinumGames': '#0ea5e9',
+    'Santa Monica Studio': '#4f46e5',
+    'FTG 相关': '#0891b2',
+    '其他': '#2563eb',
+    'Nintendo': '#3730a3',
+    '非 GDC': '#0284c7',
+    '设计者笔记': '#60a5fa',
   };
   function sourceColor(s) {
-    return SOURCE_COLORS[s] || '#93c5fd';
+    return SOURCE_COLORS[s] || '#2563eb';
   }
 
   let filter = { q: '', src: '' };
@@ -131,19 +133,19 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 
   function artHtml(d) {
     const kick = `${d.s}${d.y ? ' · ' + d.y : ''}`;
-    return `<a class="art" href="${d.href}" style="background:var(--gradient);view-transition-name:${d.n}">
-      <div><div class="kick" style="color:${sourceColor(d.s)}">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
+    return `<a class="art" href="${d.href}" style="background:var(--cover);view-transition-name:${d.n}">
+      <div><div class="kick">${kick}</div><div class="title">${d.t}</div><div class="hook">${d.h}</div></div>
       <div class="chiprow">${d.g.map((g) => `<span class="chip">${g}</span>`).join('')}</div>
     </a>`;
   }
 
   function renderSrcbar() {
-    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="" style="background:var(--gradient)">全部<span class="c">${DATA.length}</span></button>`;
+    const all = `<button class="src-chip${!filter.src ? ' active' : ''}" data-src="" style="background:var(--primary);color:#fff">全部<span class="c">${DATA.length}</span></button>`;
     const chips = SECS.map((s) => {
       const n = DATA.filter((d) => d.s === s).length;
       const active = filter.src === s ? ' active' : '';
       const dim = filter.src && filter.src !== s ? ' dim' : '';
-      return `<button class="src-chip${active}${dim}" data-src="${s}" style="background:var(--gradient);color:${sourceColor(s)}">${s}<span class="c">${n}</span></button>`;
+      return `<button class="src-chip${active}${dim}" data-src="${s}" style="color:${sourceColor(s)}">${s}<span class="c">${n}</span></button>`;
     }).join('');
     document.getElementById('srcbar').innerHTML = all + chips;
   }
@@ -292,14 +294,15 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    border: 0;
+    border: 1px solid var(--line);
     cursor: pointer;
-    color: #fff;
+    color: var(--primary);
     font-family: inherit;
     font-size: 13px;
     padding: 7px 14px;
     border-radius: var(--r-pill);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    background: var(--card);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
   }
   .src-chip:hover {
