@@ -2,17 +2,21 @@
 interface Props {
   title: string;
   description?: string;
+  wip?: boolean;
   tags?: { label: string; icon?: string }[];
   source?: { title?: string; author?: string; url?: string; year?: number | string; type?: string; company?: string };
   transitionName?: string;
 }
-const { title, description, tags = [], source, transitionName } = Astro.props;
+const { title, description, wip = false, tags = [], source, transitionName } = Astro.props;
 const top = [source?.year ?? '年份不详', source?.type, source?.company].filter(Boolean).join(' · ');
 ---
 
 <header class="hero" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>
   {top && <div class="meta-top">{top}</div>}
-  <h1><span class="title-hl">{title}</span></h1>
+  <h1>
+    {wip && <span class="wip-badge">🚧 施工中</span>}
+    <span class="title-hl">{title}</span>
+  </h1>
   {tags.length > 0 && (
     <div class="tags">
       {tags.map((t) => <span class="tag">{t.icon ? `${t.icon} ` : ''}{t.label}</span>)}
@@ -39,6 +43,22 @@ const top = [source?.year ?? '年份不详', source?.type, source?.company].filt
     margin: 0 0 14px;
     letter-spacing: 0.5px;
     color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero h1 .wip-badge {
+    flex-shrink: 0;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 5px 10px;
+    border-radius: var(--r-pill);
+    background: #fff0ed;
+    color: #a33a30;
+    border: 1px solid rgba(255, 90, 78, 0.35);
+    white-space: nowrap;
   }
   .tags {
     display: flex;

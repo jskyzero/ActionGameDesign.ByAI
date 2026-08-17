@@ -13,6 +13,7 @@ const entries = (await getCollection('docs'))
     y: e.data.source?.year,
     type: e.data.source?.type ?? '',
     company: e.data.source?.company ?? '',
+    wip: e.data.status === 'wip',
     n: 'card-' + e.slug.replace(/[^a-zA-Z0-9_-]+/g, '-'),
     href: `${base}/${e.slug}/`,
   }))
@@ -24,11 +25,12 @@ const entries = (await getCollection('docs'))
 
 function artHtml(d) {
   const top = [d.y ?? '年份不详', d.type, d.company].filter(Boolean).join(' · ');
+  const badge = d.wip ? '<span class="wip-badge">🚧 施工中</span>' : '';
   return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}" data-year="${d.y ?? ''}">
     <div class="art-body">
       ${top ? `<div class="meta-top">${top}</div>` : ''}
       <div class="head">
-        <div class="title"><span class="title-hl">${d.t}</span></div>
+        <div class="title">${badge}<span class="title-text"><span class="title-hl">${d.t}</span></span></div>
         <div class="hook">${d.h}</div>
       </div>
       <div class="chiprow">${d.g.map((g) => `<span class="chip">${g.icon ? `${g.icon} ` : ''}${g.label}</span>`).join('')}</div>
@@ -229,6 +231,14 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     height: 110px; /* 标题2行 + 简介2行 + 间距 */
   }
   .art .title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .art .title-text {
+    flex: 1;
+    min-width: 0;
     font-family: var(--font-serif);
     font-size: 21px; /* 与简介 13px 成黄金比例 ≈1.618 */
     font-weight: 700;
@@ -238,7 +248,19 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+  }
+  .art .wip-badge {
     flex-shrink: 0;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 3px 8px;
+    border-radius: var(--r-pill);
+    background: #fff0ed;
+    color: #a33a30;
+    border: 1px solid rgba(255, 90, 78, 0.35);
+    white-space: nowrap;
   }
   .art .hook {
     font-size: 13px;

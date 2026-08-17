@@ -29,6 +29,7 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
         <ArticleCover
           title={title}
           description={d.description}
+          wip={d.status === 'wip'}
           tags={tags}
           source={d.source}
           transitionName={transitionName}
