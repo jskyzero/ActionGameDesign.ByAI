@@ -341,7 +341,7 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
 
   .grid {
     display: grid;
-    grid-template-columns: 1fr minmax(0, var(--content-width)) minmax(0, 1fr);
+    grid-template-columns: minmax(190px, 1fr) minmax(0, var(--content-width)) minmax(0, 1fr);
     grid-template-areas:
       '. hero .'
       'rail srcbar .'
