@@ -1,29 +1,93 @@
 ---
-status: wip
+status: done
 article:
-  title: 2019 · 战神 战斗系统
-  insight: 新视角下战斗系统的革新。
+  title: 《战神》：为新视角而进化的战斗系统
+  insight: 过肩特写镜头让「一打多」的高侵略性战斗失去视野，Santa Monica 围绕玩家的视线重建「追踪 → 锁定 → 攻击」整条战斗链路，才保住了系列的核心标识。
   tags:
-    - label: 战神
     - label: 战斗系统
+      icon: ⚔️
+    - label: 过肩视角
+      icon: 📷
+    - label: 一打多
+      icon: 🥊
 source:
+  title: "Evolving Combat in 'God of War' for a New Perspective"
+  author: Mihir Sheth
+  authorBio: Sony Santa Monica Studio 首席战斗设计师（Lead Combat Designer），负责《战神》(2018) 的战斗系统设计，后参与《战神：诸神黄昏》。
+  url: https://www.youtube.com/watch?v=hE5tWF-Ou2k
   year: 2019
   type: GDC
   company: Santa Monica Studio
 references:
-  - label: 原分享
+  - label: GDC Vault（原）
+    url: https://gdcvault.com/play/1026423/
+    type: original
+  - label: YouTube 官方视频（原）
     url: https://www.youtube.com/watch?v=hE5tWF-Ou2k
     type: original
-  - label: 中译
+  - label: 中译（indienova，中英字幕视频）
     url: https://indienova.com/indie-game-development/evolving-combat-in-god-of-war-for-a-new-perspective/
+    type: translation
+  - label: 中译（GameRes 全文笔记）
+    url: https://www.gameres.com/880877.html
     type: translation
 ---
 
-> 新视角下战斗系统的革新。
+## 设计目标：新视角下重做战斗
 
-> 🚧 待施工：内容待整理，先记录分享与参考链接。
+革新由两个具体目标构成：**以新视角为基础重新构思战斗系统** + **保留系列的核心标识（identity）**。
 
-## 参考
+### 系列的核心标识
 
-- [原分享](https://www.youtube.com/watch?v=hE5tWF-Ou2k)
-- [中译](https://indienova.com/indie-game-development/evolving-combat-in-god-of-war-for-a-new-perspective/)
+- **连击玩法**：有趣的敌人受击反馈。
+- **力量感**：威力强大的攻击会向前位移。
+- **一打多**：同时面对多个敌人。
+- **容易上手**：低门槛、高侵略性的体验。
+
+### 核心矛盾
+
+- 成熟的第三人称动作游戏大多建立在 **1v1** 上；《战神》要的是一打多 + 高侵略性，直接照搬只会让战场混乱。
+- 混乱的代价是：玩家最大的挑战变成「调视角」，而不是游戏内容本身。
+- 因此要让玩家建立明确的战斗行为顺序：**追踪敌人 → 锁定敌人 → 攻击敌人**。
+
+## 追踪敌人（Tracking Enemies）
+
+### 威胁评分与站位
+
+- **威胁评分（scoring）+ token 分配**：给敌人排序威胁优先级，标记谁是 aggressive 的；token 有固定分配值，分完的敌人归为 non-aggressive，与玩家保持距离。
+- 第一版 **weight-based position** 系统：围绕奎托斯找最优站位，但越来越繁复、难 debug；敌人离开屏幕后玩家容易胆怯、失去进攻性——迭代一年后放弃。
+- 新方案 **Prevent bad positions**：aggressive 的敌人尽量站进玩家眼前的扇形区域（角度按摄像机视角宽度计算），non-aggressive 的留在外圈——系统更简单、更直观、更好 debug。
+
+### 象限系统与屏幕外提示
+
+- **象限系统（Quadrants）**：屏幕外的敌人待在原象限，直到奎托斯面向它才转为 on-screen——保持标识稳定，让玩家建立 mental map（心理地图），重拾自信与进攻性。
+- **空间箭头**：不用雷达等 non-diegetic UI（避免信息过载），用环绕奎托斯的箭头指向敌人，红色提示近战、紫色提示远程。
+- **Strafe Assist**：为不常推右摇杆的玩家自动横向摆动摄像机对准 aggressive 敌人，可手动关闭。
+
+## 锁定敌人（Targeting Enemies）
+
+- **目标选择**：左摇杆闲置时优先选眼前敌人（屏幕外不被选中）；左摇杆象征攻击意图，按朝向推测目标——避免「向下攻击却打向摄像机」的旧问题。
+- **Suck To Target（吸附）**：过肩视角难判断距离，按攻击范围、攻击速度与暂停距离把奎托斯「吸」向目标；再用视线角度动态调整吸附距离（角度越大距离越短），减少刻意吸附的违和感。
+- **远程辅助**：Aim Friction（准星滑入判定区时加摩擦）+ Zoom Snapping（缩放键聚焦目标）。
+- **锁定键是妥协**：主流第三人称游戏经验让玩家依赖锁定，最终加入；进入瞄准模式时记住上一个锁定对象，松开后重新朝向它——支持同时处理两个敌人。
+
+## 攻击敌人（Engaging Enemies）
+
+### 解决视角推进问题
+
+- 老《战神》靠击退 + 位移动画制造力量感；新视角下向前位移 = 摄像机推进 = 丢失可视范围，玩家会转向防御。
+- 三个解法：**减少敌人受击后退距离**、**减少奎托斯前推距离**（STT 已提供侵略性）、**脚本迭代程序化缩放位移**。
+
+### 打击辅助（Strike Assists）
+
+- **保持敌人在镜头内**：受击时记录偏移值，按视角方向插值，让攻击中的敌人尽量留在摄像机朝向。
+- **击飞方向对准摄像机**：保证击飞后敌人仍在视野内，不打断追击。
+- **Hit Reaction Collisions**：受击生成碰撞体，连带命中邻近敌人——安全输出 + 放大威力的视觉反馈。
+
+### 维持进攻节奏（Disrupting Enemy Aggression）
+
+- 敌人受击时**不回收 aggressive token**：玩家不会因为敌人被击飞而被迫切换目标。
+- 滞空击飞时延迟 token 回收；打断敌人攻击时延迟其他敌人的攻击。
+- 严格控制击飞高度：超过 float height 时额外加速率，把敌人弹回屏幕内。
+
+> ✦ 一句话总结：镜头从背视角换成过肩特写后，一打多的高侵略性战斗必须围绕玩家的视线重建——用威胁评分、象限站位、吸附与打击辅助，让玩家始终看得见敌人、打得准目标、保持进攻节奏。
