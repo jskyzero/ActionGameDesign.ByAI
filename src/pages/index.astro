@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import { watermarkHtml } from '../lib/watermark.js';
 
 const SECTION_ORDER = ['Capcom', 'PlatinumGames', 'Santa Monica Studio', 'FTG 相关', '其他', 'Nintendo', '非 GDC', '设计者笔记'];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -15,6 +16,7 @@ const entries = (await getCollection('docs'))
     g: e.data.tags ?? [],
     n: 'card-' + e.slug.replace(/[^a-zA-Z0-9_-]+/g, '-'),
     href: `${base}/${e.slug}/`,
+    sw: watermarkHtml(e.data.section ?? ''),
   }));
 
 const sections = [...new Set(entries.map((e) => e.s))].sort(
@@ -36,9 +38,8 @@ function sectionGray(s) {
   return SECTION_GRAYS[s] || '#71717a';
 }
 function artHtml(d) {
-  const bgLines = Array(5).fill(`<span>${d.s}</span>`).join('');
   return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}">
-    <div class="art-bg" style="color:${sectionGray(d.s)}22">${bgLines}</div>
+    ${d.sw}
     <div class="art-body">
       <div class="title">${d.t}</div>
       <div class="hook">${d.h}</div>
@@ -136,9 +137,8 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   }
 
   function artHtml(d) {
-    const bgLines = Array(5).fill(`<span>${d.s}</span>`).join('');
     return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}">
-      <div class="art-bg" style="color:${sectionGray(d.s)}22">${bgLines}</div>
+      ${d.sw}
       <div class="art-body">
         <div class="title">${d.t}</div>
         <div class="hook">${d.h}</div>
@@ -461,25 +461,6 @@ const railHtml = groups.map((gr) => `<div class="tnode" data-year="${gr.year}"><
   .art:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-card-hover);
-  }
-  /* 来源名 = 多行倾斜背景文字（水印式铺满） */
-  .art-bg {
-    position: absolute;
-    inset: -25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    transform: rotate(-12deg);
-    font-family: var(--font-serif);
-    font-size: clamp(16px, 1.8vw, 22px);
-    font-weight: 700;
-    line-height: 1.8;
-    white-space: nowrap;
-    pointer-events: none;
-    user-select: none;
-  }
-  .art-bg span {
-    display: block;
   }
   .art-body {
     position: relative;

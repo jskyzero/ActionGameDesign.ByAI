@@ -111,3 +111,47 @@ a {
 .prose blockquote p {
   margin: 0;
 }
+
+/* —— 斜文字水印背景（配合 src/lib/watermark.js） —— */
+.sw {
+  position: absolute;
+  inset: -25%;
+  transform: rotate(-12deg);
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.sw-row {
+  line-height: 1.7;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 21px;
+  color: rgba(38, 38, 79, 0.06);
+}
+.sw-track {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* hover：奇数行向左、偶数行向右滚动 */
+.art:hover .sw-track-odd,
+.cover:hover .sw-track-odd {
+  animation: sw-marquee-l 10s linear infinite;
+}
+.art:hover .sw-track-even,
+.cover:hover .sw-track-even {
+  animation: sw-marquee-r 10s linear infinite;
+}
+@keyframes sw-marquee-l {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes sw-marquee-r {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
