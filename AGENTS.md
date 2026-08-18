@@ -4,6 +4,15 @@
 
 本文件约定 AI 助手（及人类）在本仓库贡献内容的规范。内容是一份份 Markdown 文件，结构由 frontmatter 定义，见 `src/content.config.ts`。
 
+## 模型分工约定
+
+| 阶段 | 模型 | 说明 |
+|---|---|---|
+| 检索 / 扫描（找 talk、找链接、翻资料） | `deepseek-v4-flash` | 量大但不需要深度推理，用 Flash 省 token |
+| 正文写作（精修中文、去 AI 味、信息密度分层） | `deepseek-v4-pro` | 需要文字质量，用 Pro |
+
+- 主对话负责判断、规划、汇总；派出去的**子代理 / 工作流**默认按「检索用 Flash、写作用 Pro」分工，可在 `agent()` / workflow phase 里显式指定 `model`。
+
 ## 文档索引
 
 - [`docs/EXTRACTION.md`](docs/EXTRACTION.md) —— 内容提取与沉淀规范（信息密度分层、字段语义、归类）
