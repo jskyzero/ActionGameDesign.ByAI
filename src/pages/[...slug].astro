@@ -26,6 +26,7 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
   <div class="page-grid">
     <article class="article">
       <div class="main">
+        <a class="back-mobile" href={`${base}/`}>← 返回首页</a>
         <ArticleCover
           title={title}
           description={d.description}
@@ -98,6 +99,16 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
   .back:hover {
     color: var(--primary);
   }
+  .back-mobile {
+    display: none;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+    transition: color 0.15s;
+  }
+  .back-mobile:hover {
+    color: var(--primary);
+  }
   .prose {
     margin-top: 24px;
   }
@@ -156,6 +167,9 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
   @media (max-width: 1080px) {
     .toc {
       display: none;
+    }
+    .back-mobile {
+      display: inline-block;
     }
   }
 </style>
