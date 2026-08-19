@@ -1,0 +1,103 @@
+---
+status: done
+article:
+  title: 《漫威蜘蛛侠》技术复盘：把整个纽约城塞进一张蓝光碟
+  insight: 「让蜘蛛侠在曼哈顿高速穿梭的秘诀不是黑科技，而是围绕具体问题量身定制的工程：串流、压缩、渲染、光照，每个环节都调对一点点。」
+  tags:
+    - label: 开放世界串流
+      icon: 🕸️
+    - label: 程序化城市
+      icon: 🏙️
+    - label: 性能优化
+      icon: ⚙️
+source:
+  title: "'Marvel's Spider-Man': A Technical Postmortem"
+  author: Elan Ruskin
+  authorBio: Insomniac Games 高级引擎程序员，负责《漫威蜘蛛侠》引擎、串流与城市技术，参与《瑞奇与叮当》《抵抗》《日落过载》等系列开发。
+  url: https://gdcvault.com/play/1026496/
+  year: 2019
+  type: GDC
+  company: Insomniac Games
+references:
+  - label: GDC Vault 官方页面（原文）
+    url: https://gdcvault.com/play/1026496/
+    type: original
+  - label: GDC 官方 YouTube 演讲视频
+    url: https://www.youtube.com/watch?v=KDhKyIZd3O8
+    type: original
+  - label: 蜘蛛侠主机游戏：高度定制化的技术方案（全文翻译整理）
+    url: https://vitalight.me/archives/spider-man-console-game
+    type: translation
+  - label: 知乎：GDC2019《漫威蜘蛛侠》的技术复盘
+    url: https://zhuanlan.zhihu.com/p/60501986
+    type: translation
+  - label: 知乎：[gdc19]《蜘蛛侠》开发解读（1/4 概览，含工具/Runtime/研发哲学全系列）
+    url: https://zhuanlan.zhihu.com/p/74567486
+    type: translation
+  - label: GameRes 转载：GDC 2019《蜘蛛侠》开发解读
+    url: https://www.gameres.com/849518.html
+    type: translation
+  - label: IGN 报道：拆解曼哈顿以装下 Fisk Tower 内部
+    url: https://sea.ign.com/spider-man-ps4/148447/news/spider-man-ps4-had-to-unmake-its-manhattan-open-world-to-keep-running
+    type: other
+  - label: Kotaku 报道：让城市显得更大的镜头技巧
+    url: https://kotaku.com/insomniac-reveals-one-of-the-camera-tricks-that-makes-s-1834246823
+    type: other
+  - label: "80.lv 报道：Marvel's Spider-Man: A Technical Postmortem"
+    url: https://80.lv/articles/marvels-spider-man-a-technical-postmortem
+    type: other
+description: Elan Ruskin 复盘《漫威蜘蛛侠》如何用串流、压缩、渲染、光照与程序化流水线，把曼哈顿开放世界塞进一张蓝光碟。
+---
+
+## 三重矛盾：速度 × 规模 × 容量
+
+- **演讲背景**：GDC 2019「Programming」分会场演讲，主讲人 Elan Ruskin（Insomniac Games 高级引擎程序员），复盘 2018 年 9 月发售的 PS4《漫威蜘蛛侠》；截至 2019 年 7 月游戏销量超 900 万份。
+- **挑战三角**：曼哈顿大地图（海量物件、超大视野）＋ 蜘蛛侠最高约 32m/s 的高速移动 ＋ AAA 级品质，三者互相拉扯。
+- **连锁代价**：移动越快，单位时间需串流的数据越多，IO 带宽压力成倍上升；城市越大，磁盘与内存越吃紧。
+- **容量红线**：游戏尚未完成时预估体积已超过一张蓝光碟容量——既增加发行成本，多碟换碟的体验也差，必须从根上压缩数据。
+
+## 串流与文件：为「飞檐走壁」量身定制
+
+### 串流
+
+- **分块加载**：地图按矩形块（Zone）划分存储与加载，相交判断用圆形范围简化计算；每移动一个区块需读入周边约 5 个新区块。
+- **直线预载**：玩家多为近似直线运动，所以只预载正前方 3 块；蜘蛛侠转向约需 1 秒，足够异步加载系统重新规划。
+- **Delayed Loading**：高速移动时镜头有运动模糊，贴图只载入 mip 3/4 低层级，停下才载 mip0；空中疾驰时街边店铺内模型一并延后加载，大幅节省带宽。
+- **Fisk Tower 开场任务**：内部空间远大于外观包络、无法与曼哈顿同时驻留内存——用镜头对焦建筑正面、背景虚化来「拆解」曼哈顿，卸载玩家看不到的区域，同时在空中加载更大的内部模型，蜘蛛侠破窗瞬间切到内部场景，玩家毫无察觉。
+
+### 文件与内存
+
+- **推翻空间换时间**：PS 平台机械硬盘 seek 昂贵，惯例是 Duplication（冗余存储）换取连续读取，但纽约规模下磁盘装不下。
+- **聪明冗余**：可延迟加载的文件、体积 >4MB 的文件、冗余次数 >400 的文件不再重复存储。
+- **模型格式魔改**：顶点索引改存增量（74,75,76 → 74,+1,+1），数据重复更多，配合 LZ4 压缩后模型文件体积再省约 20%。
+- **屋顶装饰 Hibernate**：水塔、烟囱等约 60 万个实例用精简对象只存必要信息（位置存为区块中心偏移量，16 位即可），从 384B/个降到 40B/个，总内存 230.4MB → 24MB，玩家靠近时才切换为完整 GameObject。
+
+## 渲染与光照：把城市装进内存
+
+### 渲染
+
+- **3D Imposter 远景**：远景建筑用极低面数、无 UV/法线（靠 position 反算）的替身，以 Zone 为单位把贴图打成 atlas、按 cubemap 方式采样，兼顾 PS4 画质与性能。
+- **帧时间优化**：async compute 并行跑 SSAO/FFT/SSR；后处理移到下一帧帧首执行。
+
+### 光照
+
+- **预烘焙的陷阱**：城市级规模下预烘焙光照贴图的内存/磁盘不可承受，且开发期城市频繁改动导致反复重烘焙。
+- **环境反射改造**：envprobe/IBL 改为实时异步生成 + 缓存，磁盘占用 0，替代原本约 8GB 的离线探测球。
+- **漫反射方案**：用离线烘焙的 lightgrid（irradiance volume，256 分辨率 cubemap 卷积成 HDR 颜色+方向），按昼夜多时段烘焙多套数据。
+
+## 程序化城市：用流水线取代手摆
+
+- **错误的垂直切片**：早期手工搭建的垂直切片很美，但照此速度永远做不完整个曼哈顿——流程不可扩展，必须改变城市的构建方式。
+- **Houdini 流水线**：程序化生成路面/路径、建筑与装饰、车辆、特效及部分 gameplay 事件；要点是分治（按区模块化生成）、简化（限制策划美术选项、减少耦合）、打好 tag 区分程序生成与手工摆放资产。
+- **行人 AI 的 LOD**：默认轻量逻辑，每 30 秒随机将附近一名行人升级为完整 AI（合照/签名、报案、指引去重要区域等交互）；远处行人动画与 AI 暂停、只做左右平移的「仍在走动」错觉。
+- **活的城市的成长**：车流、街头小景与随机犯罪也从简单起步，逐步长成「活的城市」的一部分。
+
+## 拍照模式与四条信条
+
+- **拍照模式的诞生**：最初只打算做简单版用于宣传，玩家大量自拍/晒图带来可观传播价值后，团队加码滤镜、贴花等功能。
+- **信条一：Simple is Good**——简单的实现就是好的实现。
+- **信条二：Fit Tech To Context**——因地制宜，自研引擎可以无限魔改。
+- **信条三：Revisit Speed-Space Tradeoffs**——重新权衡空间与速度，CPU 充裕、磁盘吃紧时反转传统取舍。
+- **信条四：If There's No Fun Then What is Even The Point**——做游戏先要好玩。
+
+> ✦ 一句话总结：把曼哈顿、32m/s 的高速移动和 AAA 品质同时塞进一张蓝光碟，靠的不是黑科技，而是串流、压缩、渲染、光照、程序化每个环节都调对一点点。
