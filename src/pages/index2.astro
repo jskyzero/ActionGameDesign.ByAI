@@ -45,11 +45,11 @@ const entries = (await getCollection('docs'))
         <tbody>
           <tr><th>中文标题</th><td><span class="title-hl">{e.title}</span></td></tr>
           <tr><th>作者</th><td>{e.author}</td></tr>
+          <tr><th>内容简介</th><td>{e.insight}</td></tr>
           <tr><th>标签</th><td>{e.tags}</td></tr>
           <tr><th>原文标题</th><td>{e.sourceTitle}</td></tr>
           <tr><th>原链接</th><td>{e.url ? <a href={e.url} target="_blank" rel="noopener">{e.url}</a> : ''}</td></tr>
-          <tr><th>内容简介</th><td>{e.insight}</td></tr>
-          <tr><th>完整知识库内容</th><td><a href={e.kbUrl}>{e.kbUrl}</a></td></tr>
+          <tr><th>知识库总结</th><td><a href={e.kbUrl}>{e.kbUrl}</a></td></tr>
         </tbody>
       </table>
     ))}
