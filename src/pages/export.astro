@@ -27,36 +27,26 @@ const entries = (await getCollection('docs'))
     const bv = typeof b.year === 'number' ? b.year : -Infinity;
     return bv - av;
   });
-
-const esc = (s) =>
-  String(s ?? '')
-    .replace(/\|/g, '\\|')
-    .replace(/\r?\n/g, ' ')
-    .trim();
-
-function table(e) {
-  return [
-    '| 字段 | 内容 |',
-    '| --- | --- |',
-    `| 中文标题 | ${esc(e.title)} |`,
-    `| 内容简介 | ${esc(e.insight)} |`,
-    `| 标签 | ${esc(e.tags)} |`,
-    `| 原文标题 | ${esc(e.sourceTitle)} |`,
-    `| 原链接 | ${esc(e.url)} |`,
-    `| 知识库链接 | ${esc(e.kbUrl)} |`,
-  ].join('\n');
-}
 ---
 
-<Base title="Markdown 表格导出" contentWidth="880px">
+<Base title="文章表格" contentWidth="880px">
   <div class="wrap">
     <header class="hero">
-      <h1><span class="title-hl">Markdown 表格导出</span></h1>
-      <p class="sub">每篇文章以可复制的 Markdown 表格呈现，共 {entries.length} 篇。</p>
+      <h1><span class="title-hl">文章表格</span></h1>
+      <p class="sub">每篇文章以表格形式呈现，共 {entries.length} 篇。</p>
     </header>
 
     {entries.map((e) => (
-      <pre><code>{table(e)}</code></pre>
+      <table>
+        <tbody>
+          <tr><th>中文标题</th><td>{e.title}</td></tr>
+          <tr><th>内容简介</th><td>{e.insight}</td></tr>
+          <tr><th>标签</th><td>{e.tags}</td></tr>
+          <tr><th>原文标题</th><td>{e.sourceTitle}</td></tr>
+          <tr><th>原链接</th><td>{e.url ? <a href={e.url} target="_blank" rel="noopener">{e.url}</a> : ''}</td></tr>
+          <tr><th>知识库链接</th><td><a href={e.kbUrl}>{e.kbUrl}</a></td></tr>
+        </tbody>
+      </table>
     ))}
   </div>
 </Base>
@@ -83,19 +73,43 @@ function table(e) {
     line-height: 1.8;
     margin: 0;
   }
-  pre {
-    margin: 0 0 16px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: var(--r-card);
-    padding: 16px 18px;
-    overflow-x: auto;
-    white-space: pre;
-    font-size: 13px;
-    line-height: 1.75;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 0 16px;
+    font-size: 14px;
   }
-  code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  th,
+  td {
+    padding: 10px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line);
+  }
+  tr:last-child th,
+  tr:last-child td {
+    border-bottom: 0;
+  }
+  th {
+    width: 96px;
+    white-space: nowrap;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  td {
     color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+  td a {
+    color: var(--primary);
+    border-bottom: 1px solid rgba(38, 38, 79, 0.25);
+  }
+  td a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
   }
 </style>
