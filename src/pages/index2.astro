@@ -12,10 +12,14 @@ const entries = (await getCollection('docs'))
     const tags = (d.article.tags ?? [])
       .map((t) => `${t.icon ? t.icon + ' ' : ''}${t.label}`)
       .join(' / ');
+    const author = [d.source?.author, d.source?.company, d.source?.year]
+      .filter((v) => v !== undefined && v !== null && v !== '')
+      .join(' / ');
     return {
       title: d.article.title,
       insight: d.article.insight ?? d.description ?? '',
       tags,
+      author,
       sourceTitle: d.source?.title ?? '',
       url: d.source?.url ?? '',
       kbUrl: `${site}${base}/${e.slug}/`,
@@ -39,12 +43,13 @@ const entries = (await getCollection('docs'))
     {entries.map((e) => (
       <table>
         <tbody>
-          <tr><th>中文标题</th><td>{e.title}</td></tr>
-          <tr><th>内容简介</th><td>{e.insight}</td></tr>
+          <tr><th>中文标题</th><td><span class="title-hl">{e.title}</span></td></tr>
+          <tr><th>作者</th><td>{e.author}</td></tr>
           <tr><th>标签</th><td>{e.tags}</td></tr>
           <tr><th>原文标题</th><td>{e.sourceTitle}</td></tr>
           <tr><th>原链接</th><td>{e.url ? <a href={e.url} target="_blank" rel="noopener">{e.url}</a> : ''}</td></tr>
-          <tr><th>知识库链接</th><td><a href={e.kbUrl}>{e.kbUrl}</a></td></tr>
+          <tr><th>内容简介</th><td>{e.insight}</td></tr>
+          <tr><th>完整知识库内容</th><td><a href={e.kbUrl}>{e.kbUrl}</a></td></tr>
         </tbody>
       </table>
     ))}
