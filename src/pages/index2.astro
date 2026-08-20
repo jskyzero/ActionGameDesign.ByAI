@@ -37,7 +37,7 @@ const entries = (await getCollection('docs'))
   <div class="wrap">
     <header class="hero">
       <h1><span class="title-hl">文章表格</span></h1>
-      <p class="sub">每篇文章以表格形式呈现，共 {entries.length} 篇。</p>
+      <p class="sub">当前共 {entries.length} 篇。</p>
     </header>
 
     {entries.map((e) => (
