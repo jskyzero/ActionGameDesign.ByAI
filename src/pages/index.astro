@@ -220,6 +220,8 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     display: flex;
     flex-direction: column;
     gap: 6px;
+    flex: 1;
+    min-height: 0;
     margin-top: 12px;
   }
   .art .meta-top {
@@ -229,12 +231,13 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-shrink: 0;
   }
   .art .head {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    height: 110px; /* 标题2行 + 简介2行 + 间距 */
+    flex-shrink: 0;
   }
   .art .title {
     display: flex;
@@ -276,15 +279,16 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    flex: 1 1 auto; /* 标题只有一行时，简介最多涨到 3 行填满 */
-    min-height: 0;
+    flex: none;
   }
   .art .chiprow {
     display: flex;
     flex-wrap: nowrap;
     gap: 5px;
-    margin-top: 12px;
+    margin-top: auto;
+    padding-top: 12px;
     overflow: hidden;
+    flex-shrink: 0;
   }
   .art .chip {
     font-size: 11px;
