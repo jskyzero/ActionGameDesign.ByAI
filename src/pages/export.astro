@@ -13,7 +13,6 @@ const entries = (await getCollection('docs'))
       .map((t) => `${t.icon ? t.icon + ' ' : ''}${t.label}`)
       .join(' / ');
     return {
-      slug: e.slug,
       title: d.article.title,
       insight: d.article.insight ?? d.description ?? '',
       tags,
@@ -35,7 +34,7 @@ const esc = (s) =>
     .replace(/\r?\n/g, ' ')
     .trim();
 
-function perArticleTable(e) {
+function table(e) {
   return [
     '| 字段 | 内容 |',
     '| --- | --- |',
@@ -47,87 +46,20 @@ function perArticleTable(e) {
     `| 知识库链接 | ${esc(e.kbUrl)} |`,
   ].join('\n');
 }
-
-function combinedTable(list) {
-  const head = '| 中文标题 | 内容简介 | 标签 | 原文标题 | 原链接 | 知识库链接 |';
-  const sep = '| --- | --- | --- | --- | --- | --- |';
-  const rows = list.map(
-    (e) =>
-      `| ${esc(e.title)} | ${esc(e.insight)} | ${esc(e.tags)} | ${esc(e.sourceTitle)} | ${esc(e.url)} | ${esc(e.kbUrl)} |`
-  );
-  return [head, sep, ...rows].join('\n');
-}
-
-const combinedMd = combinedTable(entries);
 ---
 
-<Base title="Markdown 表格导出" contentWidth="960px">
+<Base title="Markdown 表格导出" contentWidth="880px">
   <div class="wrap">
     <header class="hero">
       <h1><span class="title-hl">Markdown 表格导出</span></h1>
-      <p class="sub">
-        每篇文章以可复制的 Markdown 表格呈现，方便复制粘贴到其它文本平台（Notion、语雀、简书、公众号等）。共 {entries.length} 篇，点击「复制」一键拷贝。
-      </p>
+      <p class="sub">每篇文章以可复制的 Markdown 表格呈现，共 {entries.length} 篇。</p>
     </header>
 
-    <section>
-      <h2>全部文章（一张大表）</h2>
-      <div class="block">
-        <button class="copy" type="button">复制全部</button>
-        <pre><code>{combinedMd}</code></pre>
-      </div>
-    </section>
-
-    <section>
-      <h2>单篇表格</h2>
-      {entries.map((e) => (
-        <article class="item">
-          <div class="block">
-            <button class="copy" type="button">复制</button>
-            <pre><code>{perArticleTable(e)}</code></pre>
-          </div>
-        </article>
-      ))}
-    </section>
+    {entries.map((e) => (
+      <pre><code>{table(e)}</code></pre>
+    ))}
   </div>
 </Base>
-
-<script>
-  function copyText(text) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text);
-    }
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    return Promise.resolve();
-  }
-
-  document.querySelectorAll('.copy').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const pre = btn.closest('.block').querySelector('pre');
-      copyText(pre.textContent)
-        .then(() => {
-          const old = btn.textContent;
-          btn.textContent = '已复制 ✓';
-          btn.classList.add('ok');
-          setTimeout(() => {
-            btn.textContent = old;
-            btn.classList.remove('ok');
-          }, 1500);
-        })
-        .catch(() => {
-          btn.textContent = '复制失败';
-          setTimeout(() => (btn.textContent = '复制'), 1500);
-        });
-    });
-  });
-</script>
 
 <style>
   .wrap {
@@ -135,7 +67,7 @@ const combinedMd = combinedTable(entries);
     margin: 0 auto;
   }
   .hero {
-    margin: 0 0 24px;
+    margin: 0 0 28px;
   }
   .hero h1 {
     font-family: var(--font-serif);
@@ -151,46 +83,16 @@ const combinedMd = combinedTable(entries);
     line-height: 1.8;
     margin: 0;
   }
-  h2 {
-    font-family: var(--font-serif);
-    color: var(--primary);
-    font-size: 20px;
-    font-weight: 700;
-    margin: 32px 0 12px;
-  }
-  .block {
-    margin: 0 0 16px;
-  }
-  .copy {
-    display: block;
-    margin: 0 0 6px auto;
-    font-size: 12px;
-    padding: 5px 14px;
-    border-radius: var(--r-pill);
-    border: 1px solid var(--line);
-    background: var(--card);
-    color: var(--primary);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .copy:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .copy.ok {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
   pre {
-    margin: 0;
+    margin: 0 0 16px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: var(--r-card);
     padding: 16px 18px;
     overflow-x: auto;
     white-space: pre;
-    font-size: 12.5px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.75;
   }
   code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
