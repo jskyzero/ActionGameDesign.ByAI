@@ -220,8 +220,6 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     display: flex;
     flex-direction: column;
     gap: 6px;
-    flex: 1;
-    min-height: 0;
     margin-top: 12px;
   }
   .art .meta-top {
@@ -237,7 +235,7 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     display: flex;
     flex-direction: column;
     gap: 6px;
-    flex-shrink: 0;
+    height: 110px; /* 标题2行 + 简介2行（标题1行时简介可涨到3行） */
   }
   .art .title {
     display: flex;
@@ -272,23 +270,30 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     white-space: nowrap;
   }
   .art .hook {
+    position: relative;
     font-size: 13px;
     color: var(--muted);
     line-height: 1.65;
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    flex: none;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  .art .hook::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.65em;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--cover));
+    pointer-events: none;
   }
   .art .chiprow {
     display: flex;
     flex-wrap: nowrap;
     gap: 5px;
-    margin-top: auto;
-    padding-top: 12px;
+    margin-top: 12px;
     overflow: hidden;
-    flex-shrink: 0;
   }
   .art .chip {
     font-size: 11px;
