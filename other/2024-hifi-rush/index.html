@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《Hi-Fi RUSH》：节奏与战斗互相驱动的正向循环（倒推式开发） · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2024-hifi-rush" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2024 · <span class="title-hl">GDC</span> · Tango Gameworks</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《Hi-Fi RUSH》：节奏与战斗互相驱动的正向循环（倒推式开发）</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🎵 节奏与音乐</span><span class="tag" data-astro-cid-6bfer2tv>🔁 正向循环</span><span class="tag" data-astro-cid-6bfer2tv>🧭 倒推式开发</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>从预期的体验倒推设计，让战斗与节拍互相驱动——「只奖励、不惩罚」的正向循环，是把玩家留在音乐里的秘诀。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Developing &#39;Hi-Fi RUSH&#39; Backwards and Finding Our Positive Gameplay Loop</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=pG4UxqRMNX0" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=pG4UxqRMNX0</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>John Johanas</span>  ·  Tango Gameworks 游戏总监，《Hi-Fi RUSH》总监；曾师从三上真司担任《恶灵附身》游戏设计师及其 DLC 设计总监，并出任《恶灵附身2》设计总监。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1034256/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://mp.weixin.qq.com/s/uy5tD2oCHnYjYb-a8iV8BA" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（雷火UX）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.igda.tw/content/gdc2024_hifi_rush" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（IGDA 台湾）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="从体验目标倒推先定终点再找路">从体验目标倒推：先定终点，再找路</h2>
+<p>《Hi-Fi RUSH》诞生于《恶灵附身2》完成后的一个新构思：一款色彩鲜艳、风格独特的音乐动作游戏，让玩家的每个动作与环境都同步在音乐里。团队对这个未知类型既共鸣又忐忑，最终靠一个 10~15 分钟的原型 demo 说服公司立项。</p>
+<ul>
+<li><strong>定义问题</strong>：节奏游戏要求动作严格匹配音乐，限制多、自由度低；动作游戏自由度极高、几乎无限制——目标是<strong>结合两者</strong>：保留动作游戏的自由流畅，又让动作与节拍自然同步。</li>
+<li><strong>倒推思路</strong>：不从玩法出发再加音乐，而是<strong>从「理想的游戏体验」出发，倒推实现手段</strong>。</li>
+<li><strong>RSS 节奏同步系统</strong>（Rhythm Synchro System）：把音乐数据转成节奏信号，自动调整玩家输入的动作去匹配节拍——同步不需要任何 UI 提示。</li>
+<li><strong>原型先行</strong>：早期专注验证「音乐与动作同步」这一核心概念，用 10~15 分钟的 demo 向公司内部证明其魅力，推动项目正式立项。</li>
+</ul>
+<h2 id="正向循环只奖励不惩罚">正向循环：只奖励，不惩罚</h2>
+<p>RSS 建成后，团队无意中发现它创造了一个<strong>正向反馈循环</strong>：玩家跟着音乐打，系统不断给予反馈鼓励继续——自我维持、不需要 UI 提示，玩家自然就踩上了节拍。</p>
+<h3 id="战斗中的循环">战斗中的循环</h3>
+<ul>
+<li><strong>在节拍上攻击</strong>：系统引导玩家以完美时机继续连击。</li>
+<li><strong>没踩上拍</strong>：乱按或错过一拍，只需在下一个动作中调整即可，<strong>整体节奏不会乱</strong>。</li>
+<li><strong>循环自持</strong>：这一系列反馈与奖励鼓励玩家按节奏游戏——目标是让没有音乐背景的玩家也能获得积极体验，<strong>感觉自己像摇滚明星</strong>。</li>
+</ul>
+<h3 id="多通道的成功反馈">多通道的成功反馈</h3>
+<ul>
+<li><strong>音效</strong>：节拍攻击会有人声「嘿/耶」反馈；节拍闪避伴随鼓点声——让动作听起来就像音乐的一部分。</li>
+<li><strong>视觉</strong>：屏幕出现节奏标记与特效；猫咪伙伴 808 在节奏正确时给出反馈；血条与得分表在动作正确时闪烁颜色。</li>
+<li><strong>触觉</strong>：手柄震动。</li>
+</ul>
+<h3 id="失败不惩罚">失败不惩罚</h3>
+<ul>
+<li><strong>得分系统</strong>：不因失拍而惩罚，而是根据节奏表现动态调整得分。</li>
+<li><strong>隐藏伤害加成</strong>：踩拍攻击伤害更高、能更快结束战斗，但<strong>不在界面上明示</strong>——避免玩家觉得自己「没完美攻击就损失了伤害」。</li>
+<li><strong>只在需要明确时机的元素上明示</strong>：连击终结技「节拍击打」带倒计时，完美执行显示 <strong>PERFECT</strong>（全特效+追击）、稍差显示 <strong>GOOD</strong>（特效减少）、失败则只是普通攻击动作，无额外反馈。</li>
+</ul>
+<h2 id="倒推式开发从击打点出发">倒推式开发：从「击打点」出发</h2>
+<p>先设计功能再加音乐效果，体验会不连贯、与音乐不协调。团队因此改变方法：<strong>从预期效果出发，反向推导每个功能的设计</strong>。</p>
+<ul>
+<li><strong>核心方法</strong>：先定每个动作在音乐中的理想「击打点」，再设计能落在该节拍点上的功能——音乐持续播放，玩家动作与之同步。</li>
+<li><strong>处处同步</strong>：连门的开启都要根据玩家接近的距离调整速度，以对齐节拍。</li>
+<li><strong>关卡结构 = 歌曲结构</strong>：按音乐的高潮与低谷设计关卡——<strong>副歌做战斗场景，主歌做平台跳跃</strong>，让情绪起伏与音乐结构匹配。</li>
+<li><strong>授权音乐做极端逆向工程</strong>：不是把歌当背景音乐，而是<strong>围绕歌曲本身逆向设计玩法</strong>——把歌拆解、识别结构、列出哪些段落可循环，再与玩法事件节点结合。</li>
+<li><strong>第一个 Boss 战（Nine Inch Nails《1 Million》）</strong>：先在歌曲的指定时间点插入战斗与过场动画，确保这些节点既有趣又与音乐紧密相连。</li>
+</ul>
+<h2 id="收获与代价">收获与代价</h2>
+<ul>
+<li><strong>明确的最终目标</strong>：把清晰的终点传达给全员，提供一个<strong>可反向推导的蓝图</strong>——没有终点，项目范围就会无限膨胀。</li>
+<li><strong>尽早实现核心功能</strong>：把概念转成可玩的体验，疑问在游戏里得到解答——迭代更快，范围更好调整。</li>
+<li><strong>用「临时但方向明确」的资产跑游戏</strong>：想法确定后打磨更容易、方向不易被误解，与团队此前做恐怖游戏的经验形成鲜明对比。</li>
+<li><strong>放下旧经验</strong>：把新类型当作重新学习的机会，专注《Hi-Fi RUSH》应有的样子。</li>
+</ul>
+<h3 id="代价与警告">代价与警告</h3>
+<ul>
+<li><strong>很长的前期制作时间表</strong>：深入制作前需要大量规划。</li>
+<li><strong>后期几乎不能改</strong>：玩法和音乐绑定太紧，接近完成时一处改动就等于重做一切。</li>
+<li><strong>一切都要定制</strong>：BPM 变化、歌曲细微差别，连以为可复用的资产都要为每个关卡手动调整。</li>
+<li><strong>接受挑战并绕开它</strong>：与其试图解决所有问题，不如早期预见关键问题、围绕它们规划，把精力留给高质量内容。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：从想要的体验倒推每一个设计——用「节拍同步」与「只奖励、不惩罚」的正向循环，让玩家不靠任何 UI 提示也能踩着音乐打出摇滚感。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#从体验目标倒推先定终点再找路" class data-astro-cid-fzx4jmue>从体验目标倒推：先定终点，再找路</a><a href="#正向循环只奖励不惩罚" class data-astro-cid-fzx4jmue>正向循环：只奖励，不惩罚</a><a href="#战斗中的循环" class="h3" data-astro-cid-fzx4jmue>战斗中的循环</a><a href="#多通道的成功反馈" class="h3" data-astro-cid-fzx4jmue>多通道的成功反馈</a><a href="#失败不惩罚" class="h3" data-astro-cid-fzx4jmue>失败不惩罚</a><a href="#倒推式开发从击打点出发" class data-astro-cid-fzx4jmue>倒推式开发：从「击打点」出发</a><a href="#收获与代价" class data-astro-cid-fzx4jmue>收获与代价</a><a href="#代价与警告" class="h3" data-astro-cid-fzx4jmue>代价与警告</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

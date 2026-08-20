@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>动作游戏设计的 SSS 方法 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-notes-sss-method" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2025 · 文章 · 设计者笔记</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>动作游戏设计的 SSS 方法</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🧭 方法论</span><span class="tag" data-astro-cid-6bfer2tv>👹 怪物设计</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「情形-解决-编排」三步法：先立可复用的应对范式，再为每个 BOSS 补独有情形，最后编排整场战斗的起伏。</p></div> <div class="info" data-astro-cid-jk4h5f6k>  <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://design.jskyzero.com/2025/03/25/SSS/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://design.jskyzero.com/2025/03/25/SSS/</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>jskyzero</span>   </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://design.jskyzero.com/2025/03/25/SSS/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>设计者笔记（原文）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gcores.com/articles/204253" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>机核 · 【万字长文】动作游戏设计的SSS方法</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://zhuanlan.zhihu.com/p/2049665454512288389" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>知乎专栏 · 动作游戏设计的SSS方法</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="第一步确立基础情形与应对方式">第一步：确立基础情形与应对方式</h2>
+<p>动作游戏最基础的情形，就是「敌人发起攻击，玩家应对攻击，并找机会反击」。这是所有战斗的原子单位：一次攻击、一次应对、一个反击窗口。SSS 方法的第一步，就是先把这一个循环拆清楚、立住，让它成为可以反复套用的范式。</p>
+<h3 id="为什么需要总结范式">为什么需要总结范式</h3>
+<ul>
+<li><strong>工程学动机</strong>：招式设计如果每次都是「从零发明」，产出的内容既难复用也难以验证。把「情形-应对」抽象成范式，就像给程序库写接口——「突进攻击」的情形配一套「闪避/格挡/打断」的应对接口，之后的 BOSS 设计只是在接口上填充实现。</li>
+<li><strong>可测试性</strong>：范式一旦成立，设计就变成「这个情形下玩家的应对是否符合预期」的检查清单，而不是凭感觉的玄学。</li>
+</ul>
+<h3 id="先有情形还是先有解决">先有情形，还是先有解决</h3>
+<ul>
+<li><strong>理想顺序</strong>：先有问题，再有问题的解决——先想清楚玩家会处在什么处境，再设计应对它的手段。</li>
+<li><strong>现实顺序</strong>：往往反过来。团队手里先攒了一批「看起来很帅的解决方案」（某个新招式、某种演出），然后功利主义地倒推：这个解决方案配得上什么样的情形来衬托？价值排序之后，谁更值得被保留，谁就决定先后。</li>
+</ul>
+<h3 id="多种应对与风险回报">多种应对与风险回报</h3>
+<ul>
+<li><strong>一对多的应对</strong>：一个好情形不该只有唯一解。回避、格挡、打断、拉开距离、甚至故意挨打换资源，都是合法选项——多样性是玩家「觉得是自己赢」的前提。</li>
+<li><strong>风险与回报匹配</strong>：玩家行为承担的风险必须换来相称的回报。高风险高回报、低风险低回报，玩家才会主动选择更刺激的打法；如果「最安全的应对」永远最优，玩法就会坍缩成一种答案。</li>
+<li><strong>契约破坏的代价</strong>：绝大多数情况下，面对敌人的攻击玩家是躲开的。如果设计师设计了一个「躲不开」的攻击，就必须额外做大量告知工作——比如教玩家用特定行为打断它。情形与应对之间的隐性契约一旦被打破，代价是玩家困惑，需要用额外的教学成本来偿还。</li>
+</ul>
+<h2 id="第二步根据-boss-特点补充具体情形">第二步：根据 BOSS 特点补充具体情形</h2>
+<p>基础范式保证战斗「能玩」，但「值得玩、记得住」靠的是为每个 BOSS 量身定制的具体情形。</p>
+<h3 id="让特色成为记忆点">让特色成为记忆点</h3>
+<ul>
+<li><strong>发挥 BOSS 的特点</strong>：设计 BOSS 招式的同时就要思考玩家的应对，而不是先画一个酷炫动作再硬凑玩法。招式与应对咬合得越紧，BOSS 的性格越鲜明。</li>
+<li><strong>多手段强化印象</strong>：一个特色动作要想让玩家印象深刻，光靠动作本身不够——起手提示、音效、镜头、演出、打击反馈，以及它打断玩家惯常节奏的方式，都是在帮玩家「记住这一下」。</li>
+</ul>
+<h3 id="从攻击来源找灵感">从攻击来源找灵感</h3>
+<ul>
+<li><strong>来源不止武器</strong>：物理（重击、抓取、冲撞）、元素（火、冰、雷、毒）、演出（即死演出、蓄力表演）、环境（场地机关、落石、弹幕）——攻击的来源越多样，同一套基础范式的变体就越丰富，玩家的应对也需要越多维度。</li>
+</ul>
+<h3 id="难度递进的基本方法">难度递进的基本方法</h3>
+<ul>
+<li><strong>提高单次行为的难度</strong>：更快的起手、更大的判定、更狠的惩罚，让一次应对本身更有挑战。</li>
+<li><strong>组合多个单次行为</strong>：把若干单次攻击串成连段、复合弹幕或阶段连携，挑战从「应对一下」变成「管理一段」。</li>
+</ul>
+<h2 id="第三步编排整场战斗流程">第三步：编排整场战斗流程</h2>
+<p>没有编排、没有设计的 BOSS 战在今天已经失去竞争力——玩家要的是一场有起伏的「对话」，而不是一串独立的回合。</p>
+<h3 id="动态交互与流程变化">动态交互与流程变化</h3>
+<ul>
+<li><strong>用动态交互传达信息、营造感受</strong>：攻击的节奏、阶段的转换、演出与交互的配合，本身就是叙事手段——BOSS 的「愤怒」不需要台词，靠攻击变密、变狠就能让玩家感受到。</li>
+<li><strong>设计流程的变化</strong>：阶段切换、招式库更替、场地变化、节奏快慢交替，让同一场战斗在不同段落呈现出不同的「玩法」。</li>
+</ul>
+<h3 id="从玩家感受编排节奏">从玩家感受编排节奏</h3>
+<ul>
+<li><strong>交错安排三类内容</strong>：常规攻击（维持压力的基线）、演出破绽（给玩家喘息与表现机会）、记忆点（整场战斗的高光时刻）。三类内容交替出现，玩家的体验才会在「紧张-释放-惊喜」之间循环，而不是一条直线。</li>
+</ul>
+<h2 id="理论探讨">理论探讨</h2>
+<h3 id="sss-方法还能用在哪里">SSS 方法还能用在哪里</h3>
+<ul>
+<li><strong>流程 BOSS 战</strong>：多阶段、多形态的 BOSS 战，本质就是把多套「情形-应对」范式串成一条有编排的流程。</li>
+<li><strong>关卡设计</strong>：「情形-应对」在关卡中广泛存在——敌人配置、机关陷阱、资源补给点，都是玩家需要「读情形、做选择」的节点。</li>
+<li><strong>互动性的结构化</strong>：电子游戏最大的特征是互动性，而 SSS 方法做的是把互动性结构化：让每个交互点都有明确的情形、可选的应对和相应的奖惩，玩家才始终「有事可做、有得可选」。</li>
+</ul>
+<h3 id="用奖惩导向赋予操作意义">用奖惩导向赋予操作意义</h3>
+<ul>
+<li><strong>控制-奖励循环</strong>：奖惩导向让「控制角色」与「获得反馈」咬合成循环，玩家操作的每个瞬间都更有意义。</li>
+<li><strong>筛选行为</strong>：奖惩导向本质上是对玩家行为的筛选——有意识地只让部分行为「通过筛选」（或让部分行为的结果更好），玩家的注意力就会被引导到设计者想让他们发现的那条路上。</li>
+<li><strong>不是游戏的全部</strong>：奖惩导向只是「玩法层面」的描述，它不负责故事、不负责世界观、也不负责美术——它回答的只有一个问题：玩家这个操作，值不值得做。</li>
+<li><strong>如何设计</strong>：回到动作表现本身，用角色实际的动作、敌我动作之间的交互逻辑来传达交互关系——让玩家从「看得懂」的攻防里自己读出奖惩，而不是靠文字提示硬灌。</li>
+</ul>
+<h3 id="在动作游戏语境下的进一步讨论">在动作游戏语境下的进一步讨论</h3>
+<ul>
+<li><strong>成就感的来源</strong>：克服困难带来的成就感，建立在「困难是必要的」之上——但困难本身不是目的，困难与成长的落差才是。没有落差，克服就没有分量。</li>
+<li><strong>决定「怎么玩」的底层逻辑</strong>：一是框体判定——Hitbox/Hurtbox 定义了攻防的物理契约，是动作游戏最硬的底层；二是交互关系——玩家与敌人、与系统之间如何互相影响。</li>
+<li><strong>避让模型与玩家对策</strong>：3D 动作游戏里，攻击的避让模型（躲避方向、时机、无敌帧）决定了玩家对策的空间，也是「情形」是否成立的技术前提。</li>
+<li><strong>第一个敌人与第一次奖惩</strong>：游戏里第一个敌人教会玩家的，是整套游戏最重要的一次「情形-应对-奖惩」循环——它悄悄设定了玩家对「这个游戏怎么玩」的全部预期。</li>
+</ul>
+<h3 id="与其他设计方法对比">与其他设计方法对比</h3>
+<ul>
+<li><strong>偏流程向的方法</strong>：擅长整场流程与事件编排，但容易陷入「设计了一堆，玩家记不住单个时刻」。</li>
+<li><strong>偏思路向的方法</strong>：擅长原则与理念的提炼，但落地时缺少可操作的单元。</li>
+<li><strong>SSS 的特别之处</strong>：以「情形」为最小设计单元，把工程学的可复用性（第一步）与体验的独特性（第二步）、编排的完整性（第三步）串在同一条流程里——范式保下限，特色与编排定上限。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：先立可复用的「情形-应对」范式，再为每个 BOSS 补上独有的招式情形，最后把整场战斗编排成有起伏的体验——SSS 方法把动作游戏设计从「会做招式」推进到「会设计整场战斗」。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#第一步确立基础情形与应对方式" class data-astro-cid-fzx4jmue>第一步：确立基础情形与应对方式</a><a href="#为什么需要总结范式" class="h3" data-astro-cid-fzx4jmue>为什么需要总结范式</a><a href="#先有情形还是先有解决" class="h3" data-astro-cid-fzx4jmue>先有情形，还是先有解决</a><a href="#多种应对与风险回报" class="h3" data-astro-cid-fzx4jmue>多种应对与风险回报</a><a href="#第二步根据-boss-特点补充具体情形" class data-astro-cid-fzx4jmue>第二步：根据 BOSS 特点补充具体情形</a><a href="#让特色成为记忆点" class="h3" data-astro-cid-fzx4jmue>让特色成为记忆点</a><a href="#从攻击来源找灵感" class="h3" data-astro-cid-fzx4jmue>从攻击来源找灵感</a><a href="#难度递进的基本方法" class="h3" data-astro-cid-fzx4jmue>难度递进的基本方法</a><a href="#第三步编排整场战斗流程" class data-astro-cid-fzx4jmue>第三步：编排整场战斗流程</a><a href="#动态交互与流程变化" class="h3" data-astro-cid-fzx4jmue>动态交互与流程变化</a><a href="#从玩家感受编排节奏" class="h3" data-astro-cid-fzx4jmue>从玩家感受编排节奏</a><a href="#理论探讨" class data-astro-cid-fzx4jmue>理论探讨</a><a href="#sss-方法还能用在哪里" class="h3" data-astro-cid-fzx4jmue>SSS 方法还能用在哪里</a><a href="#用奖惩导向赋予操作意义" class="h3" data-astro-cid-fzx4jmue>用奖惩导向赋予操作意义</a><a href="#在动作游戏语境下的进一步讨论" class="h3" data-astro-cid-fzx4jmue>在动作游戏语境下的进一步讨论</a><a href="#与其他设计方法对比" class="h3" data-astro-cid-fzx4jmue>与其他设计方法对比</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

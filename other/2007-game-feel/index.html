@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《游戏手感：隐藏的秘方》 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2007-game-feel" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2007 · <span class="title-hl">GDC</span> · 其他</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《游戏手感：隐藏的秘方》</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🕹️ 游戏手感</span><span class="tag" data-astro-cid-6bfer2tv>🎮 操控设计</span><span class="tag" data-astro-cid-6bfer2tv>🧪 原型验证</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「手感是玩家花时间最多、却最常被忽视的体验——它由实时操控、模拟空间、润色三层构成，值得从预制作一路打磨到发售。」</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Game Feel: The Secret Ingredient</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.gamedeveloper.com/design/game-feel-the-secret-ingredient" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.gamedeveloper.com/design/game-feel-the-secret-ingredient</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Steve Swink</span>  ·  独立游戏开发者，著有《Game Feel》一书，提出「实时操控 / 模拟空间 / 润色」游戏手感三层理论。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://www.gamedeveloper.com/design/game-feel-the-secret-ingredient" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>原文（Game Developer）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.ithome.com/0/661/974.htm" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中文总结（IT 之家）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gcores.com/articles/203071" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中文（机核）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="手感最强大也最被忽视的现象">手感：最强大也最被忽视的现象</h2>
+<p>「操控数字物体的触觉与动觉」，这是 Steve Swink 给 game feel 下的定义——一种把视觉、听觉与触觉揉在一起的「虚拟感觉」。它摸不着、说不清，藏在潜意识里，属于「一碰就知道」的东西：差一点点，游戏就完了；对了，「响应快、手感紧、有深度」，游戏就变得神奇。</p>
+<ul>
+<li><strong>《马力欧 64》是最好样本</strong>：把玩家的时间按粒度拆开——20 多小时通关拿 120 颗星、一两小时一次 Boss 战、半小时进一个新区域、五分钟完成一个目标——剩下每一刻都在做的，是操控马里奥跑、跳、转圈。<strong>玩家花时间最多的，就是移动角色本身</strong>，所以《马力欧 64》本质上是一款「关于手感」的游戏。</li>
+<li><strong>宫本茂的「花园」</strong>：关卡还没做，宫本茂先让马里奥在一小片试验田里跑起来、捡东西（Giles Goddard 回忆：正式关卡之前动画就已经在了）。游泳手感比跑步难调，他们不想让玩家躲着水，而是想把下水变成优势、变得好玩——<strong>手感在关卡之前就成立</strong>。</li>
+<li><strong>别把打磨留到最后</strong>：「最后统一抛光一下就好」是最常见的坑——手感是玩家体验最多的东西，却常常在生产里坐冷板凳。从预制作到发售，手感都该被设计、被原型验证，而不是当补丁打。</li>
+</ul>
+<h2 id="三层理论实时操控--模拟空间--润色">三层理论：实时操控 · 模拟空间 · 润色</h2>
+<p>《Game Feel》把游戏感拆成三个互相重合的基本要素，用韦恩图表示：<strong>实时操控、模拟空间、润色</strong>。定义一句话：<strong>在模拟空间中对虚拟物体的实时操控，再以润色增强交互感</strong>。</p>
+<ul>
+<li><strong>三个集合的重合</strong>：不同游戏落在韦恩图的不同位置——即时战略（如《星际争霸》）点一下鼠标、指令下达的瞬间操作就结束了，不属于「实时操控」；《文明 6》则几乎只用润色来赋予物体重量与体积。<strong>三者缺一，就出不了书里定义的游戏感</strong>。</li>
+<li><strong>原文的六个要素</strong>：这篇文章把游戏感拆得更细——输入（Input）、响应（Response）、上下文（Context）、润色（Polish）、隐喻（Metaphor）、规则（Rules），正好挂到三层之下：实时操控 = 输入 + 响应，模拟空间 = 上下文 + 隐喻，润色 = 润色 + 规则。</li>
+</ul>
+<h3 id="第一层实时操控玩家与游戏之间的界面">第一层：实时操控——玩家与游戏之间的界面</h3>
+<ul>
+<li><strong>输入（Input）</strong>：玩家向系统表达意图的唯一器官，也最容易被忽略——<strong>输入设备本身的触感会影响手感</strong>：Xbox 360 手柄扎实、配重合适，握起来就是比「轻飘飘像山寨货」的 PS3 手柄舒服；原型阶段把输入接到好手柄上，手感立刻上一个台阶。</li>
+<li><strong>自然映射</strong>：动作与效果之间清晰直观的对应关系——炉灶的旋钮按位置对应火眼，无需思考；《几何战争》里摇杆在圆形凹槽里转，屏幕上的飞船就画小圆，几乎一比一。<strong>映射越自然，越不需要解释和教学</strong>。</li>
+<li><strong>输入灵敏度</strong>：从只有开/关两种状态的按钮，到两轴完全自由的鼠标，输入设备自带表达力。规律很简单：<strong>灵敏度越高，复杂度越大</strong>——这不是好坏之分，而是设计取舍。</li>
+<li><strong>响应（Response）</strong>：系统如何实时处理并回应输入。灵敏度也可以做在响应侧——《祖玛》把鼠标的两轴自由度钳制为原地旋转，把灵敏度压到可控；《奇异吸引子》只用一个按钮，靠开关重力井操纵飞船。</li>
+<li><strong>《超级马力欧兄弟》的三种灵敏度</strong>：按键全是开关，响应却极富表达——<strong>跨时间</strong>（从静止逐渐加速、再减速，粗糙地模拟惯性与摩擦；跳按得越久跳得越高）、<strong>跨组合</strong>（跳 + 左 = 向左跳）、<strong>跨状态</strong>（地面的「左」和空中的「左」含义不同）。</li>
+<li><strong>对照《大金刚》</strong>：大金刚用的是比 NES 手柄灵敏得多的摇杆，响应却毫无灵敏度、只有开关式的移动。结论是反直觉的：<strong>无论输入多简单，响应都能做得很灵敏；无论输入多灵敏，响应也能被磨平</strong>。</li>
+</ul>
+<h3 id="第二层模拟空间让运动有意义的土壤">第二层：模拟空间——让运动有意义的土壤</h3>
+<ul>
+<li><strong>上下文（Context）</strong>：约束给运动以空间意义。马里奥站在一片空白里，长跳、三连跳、踢墙跳全都失去意义——<strong>没有墙，就没有踢墙跳</strong>。约束定义感觉：物体挤得太密，游戏笨拙压抑，催生焦虑；拉得太开，手感被稀释，无脑快乐变成无脑无聊（大型网游多少都犯这个病）。</li>
+<li><strong>测试花园</strong>：按各种尺寸的基本图元随手扔进场景——拱门、圆形、胖的、尖的——观察空间与手感怎么互相作用，<strong>记下愉悦的高潮点，顺着调参、加地形</strong>。</li>
+<li><strong>标准单位</strong>：从试验田里找到关卡的基本单元——2D 游戏是一跳多高多宽，赛车游戏是路面宽度与弯道角度。</li>
+<li><strong>约束是技巧与挑战之母</strong>：足球场四周的边界定义了足球的全部技巧；没有边界、想跑多远跑多远，挑战就不存在了。</li>
+<li><strong>隐喻（Metaphor）</strong>：给运动注入情感意义，用熟悉感消化学习挫折。把《GT 赛车》里的车换成一个大腹便便的胖子全力奔跑、汗如雨下——数值、结构、玩法一个字没动，手感完全变味。</li>
+<li><strong>先入为主的运动模型</strong>：人人心里都有一套「这玩意该怎么动」的模型。没骑过马的人玩骑马游戏也会说「这不像骑马」——<strong>原型阶段就要决定隐喻做到几成</strong>：不必写实，但得读得出「这是辆车」。</li>
+</ul>
+<h3 id="第三层润色物理感的最后涂层">第三层：润色——物理感的最后涂层</h3>
+<ul>
+<li><strong>润色（Polish）</strong>：动画、音效、特效与输入驱动的运动和谐一致，营造出「这世界有自己的物理」的印象——碰撞的粒子、屏幕震动、视角偏移、挤压与拉伸，都在传递物体的物理属性。<strong>向电影、动画和现实偷师</strong>：锤子砸玻璃桌，碎得有声有色有粒子。</li>
+<li><strong>把物理线索拆开列清单</strong>：想做一个「软」的东西——变形（碰到其他物体会弯折）、触觉（能捏能揉）、视觉（像果冻一样半透明带小气泡）、声音（咕叽咕叽）。按重要性排序，只做关键项：<strong>软体需要变形和声音，但多半不需要流体模拟</strong>——润色是时间黑洞，别陷进去。</li>
+<li><strong>规则（Rules）</strong>：更高层、更长周期的目标，给「操控与掌握」额外的意义，检验手感能否撑起一整局游戏：从 A 跑到 B、爬上那座山、救五只迷路的小狗。</li>
+<li><strong>把目标写进游戏，和自己脑补目标完全不同</strong>：完成游戏内目标，意味着满足「无私的第三方电脑」的条件，还会给奖励——哪怕再小。<strong>如果连一堆好玩的临时目标都想不出来，就该放弃或大改这个机制</strong>。</li>
+</ul>
+<h2 id="把手感当成第一公民">把手感当成第一公民</h2>
+<ul>
+<li><strong>顺序</strong>：先搭输入与响应，再放空间，同步加点润色，最后用规则检验可持续性——手感在基本层面成立，才有资格谈后面的系统。</li>
+<li><strong>留意「快乐的意外」</strong>：会不会自己都被操作惊讶到？操作本身有没有产生美感？愿不愿意放着正事不做、就为了摆弄它？<strong>手感对味时，玩家会自己找事做</strong>——把那些自发的目标收进游戏，就是下一批规则。</li>
+<li><strong>写在最后</strong>：玩家第一次、最后一次、以及花最多时间体验的，都是手感。<strong>在玩家与游戏的交界处，造出美的东西</strong>。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：游戏手感是「在模拟空间里实时操控虚拟物体、再以润色强化交互」的三层结构——输入、响应、空间、隐喻、润色与规则逐层搭好，玩家才会在每一帧的操控里流连忘返。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#手感最强大也最被忽视的现象" class data-astro-cid-fzx4jmue>手感：最强大也最被忽视的现象</a><a href="#三层理论实时操控--模拟空间--润色" class data-astro-cid-fzx4jmue>三层理论：实时操控 · 模拟空间 · 润色</a><a href="#第一层实时操控玩家与游戏之间的界面" class="h3" data-astro-cid-fzx4jmue>第一层：实时操控——玩家与游戏之间的界面</a><a href="#第二层模拟空间让运动有意义的土壤" class="h3" data-astro-cid-fzx4jmue>第二层：模拟空间——让运动有意义的土壤</a><a href="#第三层润色物理感的最后涂层" class="h3" data-astro-cid-fzx4jmue>第三层：润色——物理感的最后涂层</a><a href="#把手感当成第一公民" class data-astro-cid-fzx4jmue>把手感当成第一公民</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

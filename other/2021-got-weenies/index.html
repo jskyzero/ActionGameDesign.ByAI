@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《对马岛之魂》的地标引导：让岛屿指引你 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2021-got-weenies" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2021 · <span class="title-hl">GDC</span> · Sucker Punch Productions</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《对马岛之魂》的地标引导：让岛屿指引你</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🗼 地标引导</span><span class="tag" data-astro-cid-6bfer2tv>🌄 开放世界</span><span class="tag" data-astro-cid-6bfer2tv>🌬️ 无 UI 引导</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>最好的引导不是地图上的标记，而是让岛屿本身开口说话——把地标、风与动物变成世界的语言。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Exploration in Ghost of Tsushima: Letting the Island Guide You</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://gdcvault.com/play/1027399/Exploration-in-Ghost-of-Tsushima" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://gdcvault.com/play/1027399/Exploration-in-Ghost-of-Tsushima</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Parker Hamilton</span>  ·  Sucker Punch Productions 首席游戏系统设计师，曾负责《声名狼藉》系列与《对马岛之魂》的系统设计。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1027399/Exploration-in-Ghost-of-Tsushima" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gamedeveloper.com/design/a-taxonomy-of-weenies-the-landmarks-that-define-i-ghost-of-tsushima-i-" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GameDeveloper 原文（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gcores.com/articles/168695" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>机核听课笔记（译）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="设计起点让玩家流浪在封建日本">设计起点：让玩家「流浪」在封建日本</h2>
+<ul>
+<li>关键词是<strong>流浪（wandering）</strong>——想做一款能让人在封建日本迷路、沉浸其中的开放世界：爬一座山、走向树梢间露出的寺庙、或骑马穿过森林去追一名落单的浪人。</li>
+<li><strong>不用小地图等抽象 UI</strong>：它们不「diegetic」（不符合故事世界观），所有解决方案都必须<strong>有机且叙事化（organic and diegetic）</strong>——看起来像是世界本身的一部分。</li>
+<li><strong>地域差异化</strong>：三大区域各有独特的色彩与地形（如 Toyotama 沼泽湿地中的疗养小镇 Akashima——巨钟与寺庙）；每个地点都要有历史感——「这里过去发生了什么？现在是什么状态？玩家到来之后又会发生什么？」</li>
+</ul>
+<h2 id="weenie从迪士尼借来的地标引导">Weenie：从迪士尼借来的地标引导</h2>
+<ul>
+<li>术语来自 <strong>Disney Imagineering</strong>：乐园里最高、最中心的建筑（城堡 / EPCOT）始终吸引游客走向它。</li>
+<li>Weenie = <strong>看得见的地标</strong>：负责导航、制造惊奇，并形成贯穿整个世界的一致规则。</li>
+</ul>
+<h3 id="flags向上生长的旗标">Flags：向上生长的「旗标」</h3>
+<ul>
+<li>高大地标、与天际线形成对比：<strong>狼烟、建筑、红枫树、鸟群</strong>，按各自优先级在不同距离可见。</li>
+<li><strong>Short Flag（短旗标）</strong>：只在近距离可见的高物体——作用是告诉玩家「你的直觉没错，这里确实有东西」，但远处看不到，是被审视的对象。</li>
+</ul>
+<h3 id="breadcrumbs地面层的面包屑">Breadcrumbs：地面层的「面包屑」</h3>
+<ul>
+<li><strong>鸟居（Torii Gate）</strong>：隐藏寺庙的入口标记，按间隔排列让玩家穿过——像通往新内容的「软倒计时」；「即使身在密林中也能被发现」。</li>
+</ul>
+<h3 id="粒子与声音">粒子与声音</h3>
+<ul>
+<li>烟、树叶、鸟、萤火虫等<strong>粒子</strong>能让地标远处可见、昼夜可见、靠近时变化，还能随内容完成度而改变。</li>
+<li>声音也能赋予地标身份：渐近的<strong>蒙古鼓声</strong>提示附近有营地。</li>
+</ul>
+<h3 id="30-秒规则">30 秒规则</h3>
+<ul>
+<li>移动中<strong>每 30 秒或更短</strong>必须能看到一个「召唤物」——不是撞到东西，而是能远远看见有东西在召唤。</li>
+<li>缩短间隔有时不是加内容，而是<strong>砍树、清灌木</strong>让地标露出来（例：小松镇被树木遮挡、本应可见的篝火烟被「纯装饰」的树挡住）。</li>
+</ul>
+<h2 id="偶遇内容stumble-content">偶遇内容（Stumble Content）</h2>
+<ul>
+<li><strong>定制内容（Bespoke Content）</strong>：让玩家觉得自己发现了一个隐藏地点（如秘宝）。</li>
+<li><strong>动态内容（Dynamic Content）</strong>：路上的随机互动、小游戏、收藏、随机挑战——让世界显得更有生机。</li>
+<li><strong>任务设计配合</strong>：任务起点与终点尽量拉开距离，让途中有机会偶遇这些内容，而不是在原地打转。</li>
+</ul>
+<h2 id="探索奖励reward-exploration">探索奖励（Reward Exploration）</h2>
+<ul>
+<li>规则：<strong>所有地点都有奖励</strong>，范围分四类：
+<ul>
+<li><strong>世界的内容</strong></li>
+<li><strong>游戏优势</strong>（属性 / 技能 / 装备）</li>
+<li><strong>自我表达</strong>（换装、绝佳景点）</li>
+<li><strong>快速传送</strong>（开图）</li>
+</ul>
+</li>
+</ul>
+<h2 id="风引导windicator把指南针藏进世界">风引导（Windicator）：把指南针藏进世界</h2>
+<ul>
+<li><strong>放弃 HUD</strong>：指南针、头顶 UI、地图标记承载的信息太多，破坏沉浸、让人分心；图标繁杂、笨拙、没有代入感。</li>
+<li><strong>原型迭代</strong>：手指光束、雾化的鹿、丁达尔光束……最终选定<strong>风</strong>——设定目标后，风会吹动草木与粒子指向目标方向，目标变更时 HUD 给出即时反馈。</li>
+</ul>
+<h3 id="玩测发现的问题与改进">玩测发现的问题与改进</h3>
+<ul>
+<li><strong>可视性（Visibility）</strong>：骑马穿过树林、雨天时看不清风 → 大幅提高风力与粒子可视性，加<strong>呼风按钮</strong>（随时唤起一阵可见的风，白色丝线即前进方向）。</li>
+<li><strong>向导性（Navigation）</strong>：风只指直线，但河要绕渡口、崖壁爬不上去 → 漏斗形<strong>感知地形的粒子</strong>（沿陡峭山崖上升消失）+ 补充可攀爬路径。</li>
+<li><strong>任务整合（Mission Integration）</strong>：一次只追踪一个目标；<strong>删除自动任务</strong>（会打乱指引）；与 NPC 对话时关闭风引导（风会不断吹拂 NPC），离开后再激活；区域型任务进入区域时关闭、离开时激活。</li>
+<li>结果：UI 大幅减少、世界更美——风成为游戏「物哀」气质的一部分，过场动画也配合改得干净简洁。</li>
+</ul>
+<h2 id="动物向导鹿鸟狐萤火虫">动物向导：鹿、鸟、狐、萤火虫</h2>
+<ul>
+<li>
+<p>无 UI 后「未探索区域标记」失效 → 大型区域（敌营）用鲜明的视觉 / 听觉元素吸引；小型区域（神社）要花更多精力去寻找。</p>
+</li>
+<li>
+<p>系统化地在待探索区域附近生成<strong>动物</strong>来引导。</p>
+</li>
+<li>
+<p><strong>鹿</strong>：引导主角，但爬不上悬崖。</p>
+</li>
+<li>
+<p><strong>鸟</strong>：在鹿到不了的地方<strong>接力引导</strong>，像开盲盒——抵达前不知道会探索到什么；大部分情境下引导会被清除，以免分散玩家注意。</p>
+</li>
+<li>
+<p><strong>鹰的转变</strong>：最初设计是帮敌人发现主角（玩家的躲避对象）→ 被改造为玩家的引导动物。</p>
+</li>
+<li>
+<p><strong>狐</strong>：全部定制，有固定寻路路线，目标是营造「找到隐藏神秘地点」的感觉；路径非一本道，途中安排<strong>不难的挑战</strong>加深成就感；还设计了「跟丢狐狸再找回」的内容。</p>
+</li>
+<li>
+<p><strong>萤火虫</strong>：原地盘旋，把自己置于玩家与收集品之间；靠近时荧光脉冲变得更频繁。</p>
+</li>
+</ul>
+<h2 id="播种新机遇npc-的传闻">播种新机遇：NPC 的传闻</h2>
+<ul>
+<li>让 NPC 有自己的故事，通过 NPC 周遭的世界构建起游戏的历史真实感。</li>
+<li>NPC 动态散布在地图上，倾诉自己的遭遇、透露与探索相关的信息（传闻）。</li>
+<li>直觉式的参数管理：提示村民的<strong>密度</strong>、村民之间的<strong>间隔</strong>、<strong>冷却时间</strong>、提示上限（按内容种类分，每种最多 2 条）。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：先确立「流浪」的美学目标，再用地标（weenie）、风与动物替代 UI 引导玩家——让岛屿本身成为地图，而不是给玩家一张地图。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#设计起点让玩家流浪在封建日本" class data-astro-cid-fzx4jmue>设计起点：让玩家「流浪」在封建日本</a><a href="#weenie从迪士尼借来的地标引导" class data-astro-cid-fzx4jmue>Weenie：从迪士尼借来的地标引导</a><a href="#flags向上生长的旗标" class="h3" data-astro-cid-fzx4jmue>Flags：向上生长的「旗标」</a><a href="#breadcrumbs地面层的面包屑" class="h3" data-astro-cid-fzx4jmue>Breadcrumbs：地面层的「面包屑」</a><a href="#粒子与声音" class="h3" data-astro-cid-fzx4jmue>粒子与声音</a><a href="#30-秒规则" class="h3" data-astro-cid-fzx4jmue>30 秒规则</a><a href="#偶遇内容stumble-content" class data-astro-cid-fzx4jmue>偶遇内容（Stumble Content）</a><a href="#探索奖励reward-exploration" class data-astro-cid-fzx4jmue>探索奖励（Reward Exploration）</a><a href="#风引导windicator把指南针藏进世界" class data-astro-cid-fzx4jmue>风引导（Windicator）：把指南针藏进世界</a><a href="#玩测发现的问题与改进" class="h3" data-astro-cid-fzx4jmue>玩测发现的问题与改进</a><a href="#动物向导鹿鸟狐萤火虫" class data-astro-cid-fzx4jmue>动物向导：鹿、鸟、狐、萤火虫</a><a href="#播种新机遇npc-的传闻" class data-astro-cid-fzx4jmue>播种新机遇：NPC 的传闻</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

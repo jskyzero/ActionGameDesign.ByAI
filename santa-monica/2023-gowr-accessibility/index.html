@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《战神：诸神黄昏》：战斗无障碍——降门槛而不损深度 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-santa-monica-2023-gowr-accessibility" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2023 · <span class="title-hl">GDC</span> · Santa Monica Studio</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《战神：诸神黄昏》：战斗无障碍——降门槛而不损深度</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>♿ 无障碍设计</span><span class="tag" data-astro-cid-6bfer2tv>⚔️ 战斗设计</span><span class="tag" data-astro-cid-6bfer2tv>🎯 设计意图</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>无障碍不是把难度做低，而是拆掉与挑战无关的「无意障碍」——把选择权交还给玩家，深度一分不减。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Breaking Barriers: Combat Accessibility in &#39;God of War: Ragnarök&#39;</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=iA8tpcHwVtg" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=iA8tpcHwVtg</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Adam Oliver</span>  ·  Santa Monica Studio 高级战斗设计师，主导《战神：诸神黄昏》的战斗辅助/无障碍功能。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1028726/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gamelook.com.cn/2023/04/516126/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameLook）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.bilibili.com/video/BV1GV4y1d7kQ/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中字视频（B站）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="无障碍的定义移除无意障碍">无障碍的定义：移除「无意障碍」</h2>
+<p>无障碍 = 通过设计或定制的功能，避免无意的障碍阻止有缺陷的玩家访问或享受游戏。</p>
+<ul>
+<li><strong>故意障碍不是问题</strong>：击败敌人、解开谜题才能推进，是设计意图；无障碍只处理「无意的障碍」。</li>
+<li><strong>聚焦运动障碍</strong>：与操作和角色移动相关（截肢、腱鞘炎等），参与游戏操作的能力较弱，玩一会儿就疲劳。</li>
+</ul>
+<h2 id="为什么战神是难题">为什么《战神》是难题</h2>
+<p>战斗目标本是「以平易近人的方式呈现激烈的角色动作」，但上手简单 ≠ 无障碍。</p>
+<ul>
+<li><strong>手柄所有按钮都被用满</strong>，战斗内外有大量行动。</li>
+<li>玩法有意给误操作惩罚：玩家必须注意多线情况，并在限定时间内实时反应——这些恰恰是运动障碍玩家最难的部分。</li>
+</ul>
+<h3 id="评估辅助功能的三件事">评估辅助功能的三件事</h3>
+<ul>
+<li><strong>玩家价值</strong>：多少人会用 × 对使用者改变多大（早期很难预测）。</li>
+<li><strong>代价</strong>：做 BOSS 有成本估算，做无障碍功能却几乎无法估算。</li>
+<li><strong>是否与设计意图冲突</strong>：冲突越大的功能，项目早期越不敢碰。</li>
+</ul>
+<h3 id="从低风险功能起步">从低风险功能起步</h3>
+<ul>
+<li><strong>高度扩展的按键重绘</strong>：引擎处理输入排列的绝对数量，让它耗费了大量工作。</li>
+<li><strong>情景往返移动半自动化</strong>：读取玩家意图，替代原本的按钮输入。</li>
+<li>经验：哪怕完整版不可用，半自动本身就有价值——早期成功换来做更多功能的信心。</li>
+</ul>
+<h2 id="战斗摄像机辅助">战斗摄像机辅助</h2>
+<p>双摇杆是核心问题：很多运动障碍玩家一次只能操作一个摇杆；而奎爷的攻击方向 = 摄像机前方，无法用导航摇杆瞄准近战。</p>
+<h3 id="锁定系统的无障碍化">锁定系统的无障碍化</h3>
+<ul>
+<li><strong>问题</strong>：目标死后需再按 R3 重新锁定；敌人必须在画面内才是有效目标；瞄准会临时解除锁定。</li>
+<li><strong>方案</strong>：目标死后自动获取新目标；瞄准期间也保持锁定；敌人无法脱离锁定（除非完全离开屏幕）。</li>
+<li>从「只允许正向结果」的模型转向<strong>通用模型</strong>：更易部署、数据可跨角色共享，还给玩家试验空间（自由瞄准时的爆头/绊倒也被允许）。</li>
+</ul>
+<h3 id="自动瞄准与攻击转向">自动瞄准与攻击转向</h3>
+<ul>
+<li><strong>自动瞄准</strong>：没有自由瞄准，但可上下摇杆在多个兴趣点（爆头、绊倒）之间选择攻击。</li>
+<li><strong>攻击转向</strong>：把 2018 版「命中后摄像机朝向目标」扩展为「攻击时始终如此」——玩家只需聚焦攻击与防御，即使敌人在身后也能靠攻击转身。</li>
+<li>运动障碍咨询团队（低位截瘫、用下巴操作手柄）实测反馈：终于克服了 2018 版的战斗转向障碍，还有余力尝试伙伴控制等更多系统。</li>
+</ul>
+<h2 id="特技stun-grabs捕捉玩家意图">特技（Stun Grabs）：捕捉玩家意图</h2>
+<p>特技输入是 R3 或按住圆圈——在手柄右半边，对运动障碍玩家是门槛。</p>
+<ul>
+<li><strong>自动释放的诱惑</strong>：释放期间短暂无敌，看似合理；但近距离摄像机下无目标动作不和谐，伙伴可能误触发，<strong>玩家的意图与选择被抹掉</strong>（玩家想先打满扭曲再释放）。</li>
+<li><strong>方案：摇杆意图特技</strong>——玩家本就要用摇杆移动，用同一摇杆触发特技，去掉按键要求。</li>
+<li>收获：玩家能在释放前探索特技的乐趣与深度，还顺带解决了引擎的输入技术问题，为所有玩家提升部署效率。</li>
+</ul>
+<h2 id="boss-检查点感知度问题">Boss 检查点：感知度问题</h2>
+<p>miniboss 血厚、战斗长，疲劳 + 丢进度对障碍玩家是双杀。</p>
+<ul>
+<li><strong>初版放进主玩法菜单</strong>：感知度极低，玩家开了数小时都不知道，导致「开着检查点却喊 miniboss 太多」。</li>
+<li><strong>修正</strong>：移到无障碍菜单（找帮助的人才会看到）、锁定到两个高难度、<strong>每次死亡时提示</strong>该功能已开启。</li>
+<li><strong>设计意图</strong>：想挑战就该降难度或变强；检查点只解决「战斗持续时长」，攻击行为与顺序完全不变。</li>
+</ul>
+<h2 id="躲避辅助挑战设计直觉">躲避辅助：挑战设计直觉</h2>
+<p>其他游戏的做法是翻滚全程无敌——这与《战神》的防御设计目标直接冲突（风险与时限让防御在数小时游玩中保持吸引力；有伙伴在场时无敌 ≈ 白嫖输出）。</p>
+<ul>
+<li><strong>换个角度</strong>：玩家只是躲避得太早——<strong>时间限制本身就是辅助的机会</strong>，帮一点点会怎样？</li>
+<li><strong>方案</strong>：为回避与翻滚两个状态各增加少量无敌帧（一帧之差就能决定成败，但玩家仍需掌握时机、方向并使用防御）。</li>
+<li>结果：设计冲突被验证为「可接受的微调」，功能锁定在更高难度。</li>
+</ul>
+<h2 id="挑战-boss相信玩家">挑战 Boss：相信玩家</h2>
+<p>瓦尔基里女王等可选挑战 Boss 是系统整合的终极考验，检查点似乎与之直接冲突。</p>
+<ul>
+<li>但「从简单到困难、最终克服挑战」只是部分玩家的追求——<strong>把选择交给玩家</strong>：检查点让你先获得进度，而不是打被削弱的 Boss。</li>
+<li>关键方法论：<strong>验证担忧而不是否决功能</strong>；面对冲突先问「加了它真的会毁掉设计意图吗」。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：战斗无障碍不是把难度做低，而是把与挑战无关的门槛拆掉——早做决定、找残障玩家实测、挑战自己的设计直觉，才能降门槛而不损深度。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#无障碍的定义移除无意障碍" class data-astro-cid-fzx4jmue>无障碍的定义：移除「无意障碍」</a><a href="#为什么战神是难题" class data-astro-cid-fzx4jmue>为什么《战神》是难题</a><a href="#评估辅助功能的三件事" class="h3" data-astro-cid-fzx4jmue>评估辅助功能的三件事</a><a href="#从低风险功能起步" class="h3" data-astro-cid-fzx4jmue>从低风险功能起步</a><a href="#战斗摄像机辅助" class data-astro-cid-fzx4jmue>战斗摄像机辅助</a><a href="#锁定系统的无障碍化" class="h3" data-astro-cid-fzx4jmue>锁定系统的无障碍化</a><a href="#自动瞄准与攻击转向" class="h3" data-astro-cid-fzx4jmue>自动瞄准与攻击转向</a><a href="#特技stun-grabs捕捉玩家意图" class data-astro-cid-fzx4jmue>特技（Stun Grabs）：捕捉玩家意图</a><a href="#boss-检查点感知度问题" class data-astro-cid-fzx4jmue>Boss 检查点：感知度问题</a><a href="#躲避辅助挑战设计直觉" class data-astro-cid-fzx4jmue>躲避辅助：挑战设计直觉</a><a href="#挑战-boss相信玩家" class data-astro-cid-fzx4jmue>挑战 Boss：相信玩家</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

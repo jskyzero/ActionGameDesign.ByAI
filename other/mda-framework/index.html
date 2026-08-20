@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MDA 框架：机制、动态与美学 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-mda-framework" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2004 · 文章 · 其他</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>MDA 框架：机制、动态与美学</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🏗️ 设计框架</span><span class="tag" data-astro-cid-6bfer2tv>🎯 玩家体验</span><span class="tag" data-astro-cid-6bfer2tv>📄 学术论文</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>别问「该加什么系统」，先问「想让玩家感受到什么」——MDA 用机制、动态、美学三层，把设计师的意图翻译成玩家的体验。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>MDA: A Formal Approach to Game Design and Game Research</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://users.cs.northwestern.edu/~hunicke/pubs/MDA.pdf" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://users.cs.northwestern.edu/~hunicke/pubs/MDA.pdf</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Robin Hunicke、Marc LeBlanc、Robert Zubek</span>  ·  Robin Hunicke 时任西北大学博士生，后任 thatgamecompany 制作人；Marc LeBlanc 独立游戏设计师；Robert Zubek 时任西北大学博士生，后创立工作室 Mighty Signal。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://en.wikipedia.org/wiki/MDA_framework" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>MDA framework（Wikipedia）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://aaai.org/papers/ws04-04-001-mda-a-formal-approach-to-game-design-and-game-research/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>论文页面（AAAI）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gcores.com/articles/130941" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（机核 GCORES）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameres.com/877180.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameRes）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://zhuanlan.zhihu.com/p/402577913" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（知乎浅译）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="为什么需要一套形式化的语言">为什么需要一套「形式化」的语言</h2>
+<p>2004 年，Robin Hunicke、Marc LeBlanc、Robert Zubek 在 AAAI Workshop on Challenges in Game AI 上发表论文 “MDA: A Formal Approach to Game Design and Game Research”。电影有蒙太奇、文学有叙事学，游戏却连「好玩」都说不清——这篇论文想给游戏设计补上一套通用的分析语言。</p>
+<h3 id="框架的由来">框架的由来</h3>
+<ul>
+<li><strong>背景</strong>：2000 年代初游戏行业快速扩张，设计师与研究者却缺少可沟通的术语，「手感」「乐趣」各说各话。</li>
+<li><strong>目标</strong>：把游戏拆成可分析、可讨论、可调整的层次，让设计者与研究者共用同一套词汇。</li>
+<li><strong>一句话立场</strong>：别只描述「游戏做了什么」，要追问「玩家感受到了什么」。</li>
+</ul>
+<h2 id="三层模型mechanics--dynamics--aesthetics">三层模型：Mechanics / Dynamics / Aesthetics</h2>
+<ul>
+<li><strong>Mechanics（机制）</strong>：游戏最底层的规则、数据与算法——组件、数据表示与逻辑。这是设计师唯一能直接编写的一层。</li>
+<li><strong>Dynamics（动态）</strong>：机制在玩家输入与时间推进下「跑起来」之后涌现出的运行时行为。</li>
+<li><strong>Aesthetics（美学）</strong>：玩家与游戏交互时产生的可欲情感反应（desirable emotional responses）——玩家真正消费的东西。</li>
+</ul>
+<h3 id="两个方向两种视角">两个方向，两种视角</h3>
+<ul>
+<li><strong>设计师（自下而上）</strong>：Mechanics → Dynamics → Aesthetics。先写规则，规则跑出动态，动态唤起情感。</li>
+<li><strong>玩家（自上而下）</strong>：Aesthetics → Dynamics → Mechanics。先感受到情感，再摸清动态，最后（常常无意识地）理解机制。</li>
+<li><strong>关键洞察</strong>：玩家并不直接消费机制，机制只是通往情感的中介。盯着 Mechanics 猛加系统、却不知道它在玩家端唤起什么，是设计者最常见的错。</li>
+</ul>
+<h3 id="消费模式consumption-modes">消费模式（Consumption Modes）</h3>
+<ul>
+<li><strong>输入-输出循环</strong>：玩家的动作（input）→ 游戏的呈现（output）→ 玩家的消化理解（assimilation）→ 新的动作，游戏体验在这个循环里滚动。</li>
+<li><strong>游戏即动态系统</strong>：把游戏看作状态随时间演进的系统，MDA 就是描述「规则 → 系统行为 → 情感」这条因果链的框架。</li>
+</ul>
+<h2 id="八类-aesthetics把乐趣拆开">八类 Aesthetics：把「乐趣」拆开</h2>
+<p>论文把「乐趣」分解为八种可欲情感：</p>
+<ul>
+<li><strong>Sensation</strong>：作为感官享受的游戏——视听刺激本身。</li>
+<li><strong>Fantasy</strong>：作为幻想世界的游戏——扮演他者，进入想象情境。</li>
+<li><strong>Narrative</strong>：作为戏剧叙事的游戏——被故事牵引，期待剧情展开。</li>
+<li><strong>Challenge</strong>：作为障碍赛道的游戏——克服困难，检验技巧。</li>
+<li><strong>Fellowship</strong>：作为社交框架的游戏——与他人合作、竞争、共处。</li>
+<li><strong>Discovery</strong>：作为未知领域的游戏——探索、解谜、发现新东西。</li>
+<li><strong>Expression</strong>：作为自我发现的游戏——创造、装扮、表达自我。</li>
+<li><strong>Submission</strong>：作为消遣的游戏——放下控制，任其带走。</li>
+</ul>
+<h3 id="怎么用这八类">怎么用这八类</h3>
+<ul>
+<li><strong>混合而非单选</strong>：大多数游戏同时承载多种 Aesthetics，通常有一两个主导。拿《俄罗斯方块》对照——它主打 Challenge，同时带着 Discovery（摸索新玩法）与 Submission（进入心流的放松），却几乎不含 Narrative 与 Expression。</li>
+<li><strong>设计提问</strong>：与其罗列功能，不如在每个关卡问「此刻玩家该体验到哪种情感」。</li>
+<li><strong>检验标准</strong>：同一套 Mechanics 可以唤起完全不同的 Aesthetics——换个美术与叙事包装，同样的方块可以变成 Fantasy，也可以变成纯 Submission。</li>
+</ul>
+<h2 id="把-mda-用起来从情感目标到机制">把 MDA 用起来：从情感目标到机制</h2>
+<ul>
+<li><strong>第一步，定 Aesthetics</strong>：明确「要让玩家感受到什么」，而不是「要玩家做到什么」。</li>
+<li><strong>第二步，造 Dynamics</strong>：设计能产出该情感的系统行为——想要紧张感，就压资源和时间；想要成就感，就调难度曲线与反馈节奏。</li>
+<li><strong>第三步，写 Mechanics</strong>：把 Dynamics 落成具体的规则、数值与代码。</li>
+<li><strong>Tuning（调参）</strong>：观察实际游玩，若玩家端的 Aesthetics 与预期不符，回头调 Dynamics，再下沉到 Mechanics——三层里只有 Mechanics 是可控的，另外两层只能间接影响。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：MDA 把游戏拆成机制、动态、美学三层——设计师从机制向上造，玩家从美学向下体验，用「想让玩家感受到什么」替代「该加什么系统」，是横跨设计意图与玩家体验的通用语言。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#为什么需要一套形式化的语言" class data-astro-cid-fzx4jmue>为什么需要一套「形式化」的语言</a><a href="#框架的由来" class="h3" data-astro-cid-fzx4jmue>框架的由来</a><a href="#三层模型mechanics--dynamics--aesthetics" class data-astro-cid-fzx4jmue>三层模型：Mechanics / Dynamics / Aesthetics</a><a href="#两个方向两种视角" class="h3" data-astro-cid-fzx4jmue>两个方向，两种视角</a><a href="#消费模式consumption-modes" class="h3" data-astro-cid-fzx4jmue>消费模式（Consumption Modes）</a><a href="#八类-aesthetics把乐趣拆开" class data-astro-cid-fzx4jmue>八类 Aesthetics：把「乐趣」拆开</a><a href="#怎么用这八类" class="h3" data-astro-cid-fzx4jmue>怎么用这八类</a><a href="#把-mda-用起来从情感目标到机制" class data-astro-cid-fzx4jmue>把 MDA 用起来：从情感目标到机制</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

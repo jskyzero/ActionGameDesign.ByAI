@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《怪物猎人：世界》事后剖析：通过原型与迭代进行概念设计 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-capcom-2018-monster-hunter-world" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2018 · <span class="title-hl">GDC</span> · Capcom</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《怪物猎人：世界》事后剖析：通过原型与迭代进行概念设计</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🧪 原型</span><span class="tag" data-astro-cid-6bfer2tv>✅ 验证</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>先不急着做战斗——用不带武器的原型验证「无缝世界的探索感」，概念、技术、标准都在实机原型里被反复试错与迭代。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>&#39;Monster Hunter: World&#39; Postmortem: Concept Design through Prototyping and Iteration</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.gdcvault.com/play/1024981/-Monster-Hunter-World-Postmortem" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.gdcvault.com/play/1024981/-Monster-Hunter-World-Postmortem</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>德田优也、Peter Fabiano</span>  ·  德田优也（Yuya Tokuda）为 Capcom《怪物猎人：世界》导演，自系列初代起参与制作；Peter Fabiano 为 Capcom 制作人，负责北美本地化与全球发行。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://www.gcores.com/videos/174499" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（机核译介）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameres.com/874122.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（立项与原型详解）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://igda.tw/content/gdc18_mhw" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（IGDA 繁中简介）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.bilibili.com/video/BV1vW411u7NN" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>原视频（Bilibili 搬运）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="立项背景先想清楚怪猎是什么">立项背景：先想清楚「怪猎」是什么</h2>
+<p>《怪物猎人：世界》立项时，团队先回到初代宣传片，重新确认系列的根基，再决定「下一代」要怎么走。</p>
+<h3 id="系列的三大核心">系列的三大核心</h3>
+<ul>
+<li><strong>动作</strong>：怪物猎人首先是正宗的动作游戏，只是主题是狩猎。</li>
+<li><strong>多人 / 社交</strong>：和朋友一起狩猎，把过程分享出去。</li>
+<li><strong>游戏循环</strong>：狩猎 → 取材 → 做装备 → 挑战更强的怪物，这个循环是系列的骨架。</li>
+</ul>
+<h3 id="下一代的目标">「下一代」的目标</h3>
+<ul>
+<li><strong>受众更广</strong>：不止日本市场，还要打动全球玩家。</li>
+<li><strong>无缝大地图</strong>：一张连贯的大地图，狩猎要利用环境与生态。</li>
+<li><strong>先做故事版</strong>：动手之前，用故事版把想要的场景和流程讲给团队听。</li>
+</ul>
+<h3 id="高层给的边界">高层给的边界</h3>
+<ul>
+<li><strong>辻本良三的两个要求</strong>：为家用机做出「下一代」怪猎；让全世界的玩家都沉浸其中。</li>
+<li><strong>更少但更大的区域</strong>：不做一堆小地图，而是把每张地图做得足够密，配上实时天气昼夜、怪物领地行为与互扰，形成活的生态。</li>
+</ul>
+<h2 id="原型一让环境先活起来">原型一：让环境先「活」起来</h2>
+<p>第一版原型甚至没有战斗——先验证一件事：不靠怪物，世界能不能让人感觉是活的。</p>
+<h3 id="填充小型生物">填充小型生物</h3>
+<ul>
+<li><strong>蜘蛛与两栖鱼类</strong>：还没放大型怪物时，用大量小型生物填满地图；踩破蜘蛛网蜘蛛会四散逃窜，树上的壁虎会被玩家惊走。</li>
+<li><strong>幽暗环境与探索感</strong>：更暗的场景 + 视野限制 + 引导虫带路，探索的紧张感更强。</li>
+</ul>
+<h3 id="光源的教训">光源的教训</h3>
+<ul>
+<li><strong>额外光源破坏探索感</strong>：发现怪物的过程本身就有乐趣，玩家自制的发光道具会提前暴露目标；而且氛围灯光性价比低、技术上还和场景灯光冲突，最终正式版选择把场景光调亮。</li>
+</ul>
+<h3 id="不用武器的玩法">不用武器的玩法</h3>
+<ul>
+<li><strong>草丛隐藏与烟雾</strong>：被小怪群包围时不用武器，靠草丛藏身、释放孢子制造烟雾脱身。</li>
+<li><strong>沿用至正式版</strong>：这些「躲藏 → 逃脱」的思路大多保留到了成品里。</li>
+</ul>
+<h2 id="原型二大型怪物的行为验证">原型二：大型怪物的行为验证</h2>
+<p>环境立住之后，重点转向大型怪物——它们怎么移动、怎么被打、怎么与玩家和环境互动。</p>
+<h3 id="移动与-ai">移动与 AI</h3>
+<ul>
+<li><strong>开放区域的穿梭</strong>：巨大怪物在场地中移动，会被树木阻挡、也能撞断树木。</li>
+<li><strong>AI 找路</strong>：怪物要能自行判断可行路径与碰撞；旧引擎里多只怪物同场几乎必然卡死，让 AI 自然寻路是整个原型的关键突破。</li>
+<li><strong>复杂地形</strong>：测试爬墙等移动方式，以及「在怪物能通过的前提下，通道最小能做到多窄」。</li>
+</ul>
+<h3 id="骑乘与倒地">骑乘与倒地</h3>
+<ul>
+<li><strong>更有动作性的骑乘</strong>：怪物会撞击障碍物试图把玩家甩下来，玩家得选择合适的部位（头 / 尾）骑乘、消耗它的体力。</li>
+<li><strong>自动操作平衡难度</strong>：操作门槛过高，就加入满足条件时自动执行的设计。</li>
+<li><strong>倒地后的生态</strong>：大怪物被打倒，原本围观的小怪物会一拥而上攻击它——敌人也能成为帮手。</li>
+</ul>
+<h3 id="环境机关与战斗节奏">环境机关与战斗节奏</h3>
+<ul>
+<li><strong>闪光弹与藤蔓</strong>：受刺激会发光的虫子可以阻碍怪物追击、减缓速度；藤蔓的震动可以传导成「地震」。</li>
+<li><strong>投技与投射器</strong>：怪物的捕食投技 + 玩家用投射器打落带气味的果实，用来摆脱撕咬——给偏长的 BOSS 战增加改变节奏的手段。</li>
+<li><strong>治疗与隐蔽</strong>：不能再切地图吃药，要在怪物眼皮底下创造喘息的空档；怪物还会靠气味追踪玩家，躲藏变得更难。</li>
+<li><strong>场景破坏</strong>：引导怪物攻击破坏水库等场景，既能帮玩家狩猎，也顺带验证了多人同步。</li>
+<li><strong>怪物互斗</strong>：测试怪物之间的冲突，让生态成为玩家可以利用的战术。</li>
+</ul>
+<h2 id="复盘原型是概念的翻译器">复盘：原型是概念的翻译器</h2>
+<ul>
+<li><strong>故事版与案例流程</strong>：为了让整个团队理解构想，用「沼泽埋炸弹 → 引怪 → 树林藏身 → 引回沼泽触发机关」这类小故事来讲设计，而不是空谈概念。</li>
+<li><strong>原型先行</strong>：概念 → 原型 → 实测 → 迭代，用实机原型验证技术上限与制作标准，再决定做不做。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：先不急着做战斗——用不带武器的原型验证「无缝世界的探索感」，再用大型怪物的行为原型验证技术与生态，概念设计就在这一轮轮原型中落地。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#立项背景先想清楚怪猎是什么" class data-astro-cid-fzx4jmue>立项背景：先想清楚「怪猎」是什么</a><a href="#系列的三大核心" class="h3" data-astro-cid-fzx4jmue>系列的三大核心</a><a href="#下一代的目标" class="h3" data-astro-cid-fzx4jmue>「下一代」的目标</a><a href="#高层给的边界" class="h3" data-astro-cid-fzx4jmue>高层给的边界</a><a href="#原型一让环境先活起来" class data-astro-cid-fzx4jmue>原型一：让环境先「活」起来</a><a href="#填充小型生物" class="h3" data-astro-cid-fzx4jmue>填充小型生物</a><a href="#光源的教训" class="h3" data-astro-cid-fzx4jmue>光源的教训</a><a href="#不用武器的玩法" class="h3" data-astro-cid-fzx4jmue>不用武器的玩法</a><a href="#原型二大型怪物的行为验证" class data-astro-cid-fzx4jmue>原型二：大型怪物的行为验证</a><a href="#移动与-ai" class="h3" data-astro-cid-fzx4jmue>移动与 AI</a><a href="#骑乘与倒地" class="h3" data-astro-cid-fzx4jmue>骑乘与倒地</a><a href="#环境机关与战斗节奏" class="h3" data-astro-cid-fzx4jmue>环境机关与战斗节奏</a><a href="#复盘原型是概念的翻译器" class data-astro-cid-fzx4jmue>复盘：原型是概念的翻译器</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

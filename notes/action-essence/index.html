@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>动作游戏的本质 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-notes-action-essence" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2024 · 文章 · 设计者笔记</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>动作游戏的本质</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🎯 奖惩导向</span><span class="tag" data-astro-cid-6bfer2tv>⚙️ 底层机制</span><span class="tag" data-astro-cid-6bfer2tv>🧩 MDA 理论</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「控制」本身并不有趣，让动作游戏有趣的是一套奖惩导向——设计考验场合、奖励正确、惩罚错误，玩家在「感知-认知-行动」的循环里越玩越强。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>动作游戏的本质，与相关设计方法论</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://design.jskyzero.com/2024/05/14/ActionGameDesign/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://design.jskyzero.com/2024/05/14/ActionGameDesign/</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>jskyzero</span>   </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://design.jskyzero.com/2024/05/14/ActionGameDesign/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>设计者笔记（原文）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="什么是动作游戏">什么是动作游戏</h2>
+<p>动作游戏是歧义最大的游戏类型之一——先划清边界，再谈本质。</p>
+<h3 id="广义与狭义">广义与狭义</h3>
+<ul>
+<li><strong>广义定义</strong>：任何以动作为主要表现内容的游戏都算动作游戏，MOBA 里的英雄技能、射击游戏里的近战动作，都是动作游戏跨类别的「影子」。</li>
+<li><strong>狭义（日式）定义</strong>：2D 分横版卷轴、纵向卷轴、俯视角、固定画面；3D 分无双类、硬核动作、怪猎、魂 like；格斗类作为掌上明珠单独枚举。</li>
+<li><strong>本文讨论的是狭义</strong>：强调「反应与操作」的细分类型的松散集合；从碰撞框与帧数判定、攻击-防御-投掷三角克制，到跳跃空战、群体战斗 AI、QTE、一闪——这些设计创举几乎都出自日式动作游戏，这张发展史本身就是一部动作游戏设计史。</li>
+</ul>
+<h3 id="本质的抽象">本质的抽象</h3>
+<ul>
+<li><strong>核心逻辑</strong>：玩家 控制 游戏角色 播放 动作。动作游戏的一切设计，都由这一句底层抽象展开。</li>
+</ul>
+<h2 id="哲学与本质奖惩导向">哲学与本质：奖惩导向</h2>
+<p>「控制」本身提供的乐趣是有限的，动作游戏靠什么让控制变得有趣？答案是赋予控制更多意义。</p>
+<h3 id="控制的乐趣">控制的乐趣</h3>
+<ul>
+<li><strong>纯控制乐趣有限</strong>：按游戏感理论，单纯控制主要提供「即时控制」与「润色（特殊物理感受）」两种感受。</li>
+<li><strong>赋予控制意义</strong>：把控制放进「观察画面 → 获取信息 → 再控制」的循环里，乐趣就从操作本身转移到读懂考验、做出决策之上。</li>
+<li><strong>动作游戏像音游</strong>：对高手玩家而言，一旦完全掌握决策规则与画面阅读，剩下的事情（抓时机、卡判定）和音游几乎没差别——这反向说明，大众玩家的乐趣不在「纯执行」，而在「破解考验」。</li>
+</ul>
+<h3 id="奖惩导向">奖惩导向</h3>
+<ul>
+<li><strong>奖惩导向</strong>：玩家做出正确控制时给奖励、错误控制时给惩罚——最基本也最广泛的例子是血量。</li>
+<li><strong>与白金工作室呼应</strong>：2016 GDC《无国界的动作游戏》说动作游戏是「根据情形选择行为的被动游戏」，设计动作游戏就是「设计考验场合，以及突破考验场合的方法」——同一套思路。</li>
+<li><strong>与樱井政博呼应</strong>：2004 GDC《游戏设计：风险与回报》早已把奖惩思路用于一般玩家行为的反馈设计——它不局限于动作游戏。</li>
+<li><strong>旗舰评论</strong>：狭义动作游戏的历史，就是想尽办法设计玩家可判读的资讯，然后奖励正确操作、惩罚错误操作。</li>
+</ul>
+<h2 id="奖惩导向怎么落地">奖惩导向怎么落地</h2>
+<p>奖惩导向要生效，有前提条件，也有方向取舍与长期有效性的问题。</p>
+<h3 id="奖惩生效的三个环节">奖惩生效的三个环节</h3>
+<ul>
+<li><strong>获取信息</strong>：动作与画面清晰明确；位移、判定符合预期，且有经验可循。</li>
+<li><strong>采取行动</strong>：玩家有应对各种情况的处理方式，且知道这些方式存在、知道如何选择。</li>
+<li><strong>行动产生结果</strong>：结果呈现清晰、明确、自然。反向例子：动画看不清 → 信息获取失败 → 决策失据 → 结果不符预期，体验随之崩坏。</li>
+</ul>
+<h3 id="方向取舍场合与选项">方向取舍：场合与选项</h3>
+<ul>
+<li><strong>场合少、选项多</strong>：无双类——主角性能强、可操控角色多，怪物考核弱。</li>
+<li><strong>场合多、选项少</strong>：魂 like——主角能力种类少，关卡与敌人的丰富度和考核方式极多。</li>
+<li><strong>两者均衡</strong>：不要贪心——「左手画圆、右手画框」很难；都想做就降低各自难度，或至少循序渐进地提高。</li>
+</ul>
+<h3 id="让奖惩长期有效">让奖惩长期有效</h3>
+<ul>
+<li><strong>避免奖励同质化</strong>：受击僵直可以做成不同的连招序列；控制方式可分浮空、投技、眩晕；不同怪物可以有不同僵直甚至霸体。</li>
+<li><strong>让收益最大化有门槛</strong>：靠操作难度，或靠玩家自行探索发现——奖励要「够得着但不白给」。</li>
+<li><strong>动作游戏天生有深度</strong>：行为即时响应、高耦合、多重状态变化（攻击常伴随位移），门槛与复杂度写在底层基因里。</li>
+<li><strong>结论</strong>：奖惩导向是否有效、有趣，直接决定一款动作游戏的耐玩性与乐趣度。</li>
+<li><strong>奖惩 vs 交互</strong>：奖惩判定是某个静态瞬间的「交互结果描述」；奖惩导向是玩家「选择交互方式」的过程——后者才是设计要管的。</li>
+</ul>
+<h2 id="基于-m-d-a-的拆解">基于 M-D-A 的拆解</h2>
+<p>把「玩家控制角色播放动作」放进 机制-动态-美学（M-D-A）框架，可以拆出动作游戏设计的三个层次。</p>
+<h3 id="动作游戏的两种乐趣">动作游戏的两种乐趣</h3>
+<ul>
+<li><strong>控制感</strong>：符合直觉的控制、丰富的控制选项、丰富的考核场景（带来不同的正面应对意义）。</li>
+<li><strong>打击感</strong>：聚焦动作本身的美学呈现。</li>
+</ul>
+<h3 id="底层机制">底层机制</h3>
+<ul>
+<li><strong>状态机</strong>：决定动画状态的数量、长度、表现与跳转——如一个 Actor 有 idle / walk / show 三个状态。</li>
+<li><strong>逻辑轴</strong>：决定单个动画的框体变化、逻辑脚本执行、表现创建——如 walk 状态带受击框。</li>
+<li><strong>系统规则</strong>：更上层的规则，如数值积蓄——如攒满 3 格能量才能从 idle 跳转释放技能。</li>
+<li><strong>典型实现</strong>：攻击命中进受击动画（攻击框与受击框相交）、投技（投技框与受击框相交）……</li>
+<li><strong>模糊机制的代价</strong>：动画融合过多导致帧数感知不清、判定与移动引入辅助算法弱化性能感知、打断规则不清晰、预输入规则不统一——未必是致命缺陷，但决定一款动作游戏能否达到殿堂级「高度」。</li>
+</ul>
+<h3 id="微观循环感知-认知-行动">微观循环：感知-认知-行动</h3>
+<p>玩家每一秒都在重复 感知 → 认知 → 行动 的循环；感知的目的是利用奖惩机制让控制更有乐趣。</p>
+<ul>
+<li><strong>针对感知</strong>：引入信息传递模型（发送、噪声、接收），每个环节都能对应具体设计。</li>
+<li><strong>针对认知</strong>：玩家的决策规则应与设计师的规则保持一致，奖惩才持续有效。典型的认知行为目标：
+<ul>
+<li>精准交互类（感知）：配合敌方动作判定释放动作，换取额外效果——当身、返技、弹反、防反、GP。</li>
+<li>抉择类（认知）：结合敌我位置与状态，从可选行为中选出最优。</li>
+<li>量表计算类（认知）：统计攻击量表的增减，利用满额效果（如硬直）。</li>
+<li>移动-回避类（行动）：远离攻击区域。</li>
+<li>移动-进攻类（行动）：精确调整位置与朝向，让下一次行为刚好命中目标或特定部位。</li>
+<li>连招 / Combo（行动）：在僵直窗口内连续完成指令输入，可能需要摇杆组合按键——搓招。</li>
+</ul>
+</li>
+</ul>
+<h3 id="行动与注意事项">行动与注意事项</h3>
+<ul>
+<li><strong>输入设备</strong>：屏幕、键鼠、手柄各有经典的输入模式设计。</li>
+<li><strong>别要求「左手画圆、右手画框」</strong>：既要精准阅读信息即时操作、又要复杂输入高精度瞄准，多半是为难玩家——同时要求做多件事，是设计师最常忘记、也最容易被玩家骂的事。</li>
+</ul>
+<h3 id="打击感">打击感</h3>
+<ul>
+<li><strong>三个部分</strong>：攻击动作（开始、攻击、结束）、攻击特效、受击动作——话题太大，这里只点出框架。</li>
+</ul>
+<h2 id="从微观到宏观">从微观到宏观</h2>
+<p>微观循环是动作游戏的「帧」，玩家真正玩到的，是由无数帧组织起来的内容序列。</p>
+<ul>
+<li><strong>层级递进</strong>：离散的画面组成电影，离散的动作组成角色，离散的角色（作为敌人）组成关卡，关卡构成游戏。</li>
+</ul>
+<h3 id="内容构建理论与工具">内容构建理论与工具</h3>
+<ul>
+<li><strong>体验蓝图与玩家阶段</strong>：控制玩家是否处于心流区间，是构建复杂体验的常见方式。</li>
+<li><strong>叙事与英雄之旅</strong>：PVE 游戏的主角与怪物离不开关卡与叙事；让动作设计贴合经典叙事结构（如英雄之旅），整体更容易被接受、印象更深刻。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：动作游戏的本质是「玩家控制角色播放动作」；让控制有趣的钥匙是奖惩导向——设计考验场合、奖励正确惩罚错误，再把「感知-认知-行动」的微观循环，一路编排进从底层机制到关卡与叙事的宏观结构。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#什么是动作游戏" class data-astro-cid-fzx4jmue>什么是动作游戏</a><a href="#广义与狭义" class="h3" data-astro-cid-fzx4jmue>广义与狭义</a><a href="#本质的抽象" class="h3" data-astro-cid-fzx4jmue>本质的抽象</a><a href="#哲学与本质奖惩导向" class data-astro-cid-fzx4jmue>哲学与本质：奖惩导向</a><a href="#控制的乐趣" class="h3" data-astro-cid-fzx4jmue>控制的乐趣</a><a href="#奖惩导向" class="h3" data-astro-cid-fzx4jmue>奖惩导向</a><a href="#奖惩导向怎么落地" class data-astro-cid-fzx4jmue>奖惩导向怎么落地</a><a href="#奖惩生效的三个环节" class="h3" data-astro-cid-fzx4jmue>奖惩生效的三个环节</a><a href="#方向取舍场合与选项" class="h3" data-astro-cid-fzx4jmue>方向取舍：场合与选项</a><a href="#让奖惩长期有效" class="h3" data-astro-cid-fzx4jmue>让奖惩长期有效</a><a href="#基于-m-d-a-的拆解" class data-astro-cid-fzx4jmue>基于 M-D-A 的拆解</a><a href="#动作游戏的两种乐趣" class="h3" data-astro-cid-fzx4jmue>动作游戏的两种乐趣</a><a href="#底层机制" class="h3" data-astro-cid-fzx4jmue>底层机制</a><a href="#微观循环感知-认知-行动" class="h3" data-astro-cid-fzx4jmue>微观循环：感知-认知-行动</a><a href="#行动与注意事项" class="h3" data-astro-cid-fzx4jmue>行动与注意事项</a><a href="#打击感" class="h3" data-astro-cid-fzx4jmue>打击感</a><a href="#从微观到宏观" class data-astro-cid-fzx4jmue>从微观到宏观</a><a href="#内容构建理论与工具" class="h3" data-astro-cid-fzx4jmue>内容构建理论与工具</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

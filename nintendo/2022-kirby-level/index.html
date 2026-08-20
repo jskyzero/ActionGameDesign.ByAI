@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《星之卡比 探索发现》：程序化地形生成让玩法与美术兼得 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-nintendo-2022-kirby-level" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2022 · <span class="title-hl">CEDEC</span> · HAL Laboratory</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《星之卡比 探索发现》：程序化地形生成让玩法与美术兼得</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🤖 程序化生成</span><span class="tag" data-astro-cid-6bfer2tv>🔄 关卡工作流</span><span class="tag" data-astro-cid-6bfer2tv>🎮 3D 动作</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>把地形「生成」交给程序，关卡设计师能改到最后一刻，美术也不必反复返工——玩法与外观不再是二选一。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Procedural Terrain Generation in Kirby and the Forgotten Land</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://cedec.cesa.or.jp/2022/session/detail/28.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://cedec.cesa.or.jp/2022/session/detail/28.html</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>加藤歩</span>  ·  HAL Laboratory 开发本部开发环境室工程师，《星之卡比 探索发现》程序化地形生成程序员，负责地图制作流程设计与地形生成系统的设计、实现；此前参与《星之卡比 星之同盟》的技术程序。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://cedec.cesa.or.jp/2022/session/detail/28.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDEC 2022 官方页（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://news.boxuu.com/c/370341.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（盒子游戏）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="http://www.gamelook.com.cn/2022/09/496311/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameLook）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="从设计图--建模到自动生成">从「设计图 → 建模」到「自动生成」</h2>
+<p>《星之卡比 探索发现》是系列首款 3D 动作游戏，250 张地图中约 230 张由程序化地形生成系统产出。HAL Laboratory 工程师加藤歩介绍了这套让关卡设计师与美术「不再互相迁就」的系统。</p>
+<h3 id="旧流程关卡设计图--美术建模">旧流程：关卡设计图 → 美术建模</h3>
+<ul>
+<li>关卡设计师用方块地形画出设计图，美术据此制作 3D 模型。</li>
+<li>痛点：关卡设计师难以精细调整与变更，美术的作业成本巨大——加藤歩称之为「对双方都绑手绑脚的状态」。</li>
+</ul>
+<h3 id="新流程方块--一键输出--成品地形">新流程：方块 → 一键输出 → 成品地形</h3>
+<ul>
+<li>关卡设计师在 Unity 地图编辑器里摆方块，按下输出按钮，系统自动生成正式地形模型。</li>
+<li>关卡设计师可以把玩法调整留到开发末期；美术不必每次改关卡就重做模型。</li>
+<li>美术的愿景成为生成主题：「毛茸茸的地形边缘」（内部称「毛边 / モコ」）、「可替换外观的部件」、「仿佛自然形成的墙壁」。</li>
+<li>美术用 Maya 的 Curve Warp 准备边缘部件；只需更换素材与毛边，就能从草原变出沙漠、商场等不同风格。</li>
+</ul>
+<h2 id="用部件补足程序生成的丑">用部件补足「程序生成的丑」</h2>
+<p>初版生成结果达不到美术要求的品质，于是陆续追加功能，让生成的地形更自然、更可玩。</p>
+<h3 id="道路用顶点色彩代替-mesh">道路：用顶点色彩代替 mesh</h3>
+<ul>
+<li>不用 mesh 或投影：在地图编辑器里把想变道路的区域标上顶点色彩，生成时系统自动识别为道路。</li>
+<li>换材质共用同一套 UV，角落也不会被拉伸；自动设置碰撞属性，「走在沙上扬起沙尘」的效果轻松实现。</li>
+</ul>
+<h3 id="山丘与扭曲打破方块感">山丘与扭曲：打破方块感</h3>
+<ul>
+<li>山丘部件不做成方块，直接放置形成自然的隆起。</li>
+<li>扭曲功能：故意给直线地形边缘的顶点坐标加噪点、错开，让地形呈现自然歪斜。</li>
+</ul>
+<h3 id="崩坏挖洞部件负向地形">崩坏挖洞部件：负向地形</h3>
+<ul>
+<li>与山丘完全相反：放置后把地形挖出坑洞，契合文明荒废的世界观，也常用于门——移动部件即可改门的位置，无需改动地形方块。</li>
+<li>配合 Maya 布尔运算：用逻辑差挖洞，用逻辑积做出破坏前的地形，复制切割后成为卡比破坏时飞出的碎片。</li>
+</ul>
+<h3 id="细节收尾">细节收尾</h3>
+<ul>
+<li>倒角处理硬边角；在拐角与毛边附近自动添加顶点色彩，提升生成品质。</li>
+</ul>
+<h2 id="成果数字与代价">成果、数字与代价</h2>
+<h3 id="规模数字">规模数字</h3>
+<ul>
+<li>2 位美术准备约 40 种主题数据（草原、大楼、水泥、沙漠……）；5～10 位关卡设计师共制作 250 张地图，其中约 230 张由自动生成系统产出。</li>
+<li>关卡形状可保留、自由换外观：早期做成洞窟的关卡，换主题 + 重新配置装饰部件，就变成了游乐园关卡。</li>
+</ul>
+<h3 id="工程取舍">工程取舍</h3>
+<ul>
+<li>UV 中断问题：本作相机「反固定」，可以把中断处藏到镜头拍不到的地方。</li>
+<li>新系统伴随试错成本：输出耗时、偶有失败；持续更新主题数据也可能让已做好的地图过时。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：把地形「生成」交给程序，关卡设计师能改到最后一刻，美术也不必返工——玩法与外观不再是二选一。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#从设计图--建模到自动生成" class data-astro-cid-fzx4jmue>从「设计图 → 建模」到「自动生成」</a><a href="#旧流程关卡设计图--美术建模" class="h3" data-astro-cid-fzx4jmue>旧流程：关卡设计图 → 美术建模</a><a href="#新流程方块--一键输出--成品地形" class="h3" data-astro-cid-fzx4jmue>新流程：方块 → 一键输出 → 成品地形</a><a href="#用部件补足程序生成的丑" class data-astro-cid-fzx4jmue>用部件补足「程序生成的丑」</a><a href="#道路用顶点色彩代替-mesh" class="h3" data-astro-cid-fzx4jmue>道路：用顶点色彩代替 mesh</a><a href="#山丘与扭曲打破方块感" class="h3" data-astro-cid-fzx4jmue>山丘与扭曲：打破方块感</a><a href="#崩坏挖洞部件负向地形" class="h3" data-astro-cid-fzx4jmue>崩坏挖洞部件：负向地形</a><a href="#细节收尾" class="h3" data-astro-cid-fzx4jmue>细节收尾</a><a href="#成果数字与代价" class data-astro-cid-fzx4jmue>成果、数字与代价</a><a href="#规模数字" class="h3" data-astro-cid-fzx4jmue>规模数字</a><a href="#工程取舍" class="h3" data-astro-cid-fzx4jmue>工程取舍</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

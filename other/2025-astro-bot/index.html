@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《宇宙机器人》：能畅快游玩的 3D 关卡设计 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2025-astro-bot" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2025 · <span class="title-hl">CEDEC</span> · Sony Interactive Entertainment</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《宇宙机器人》：能畅快游玩的 3D 关卡设计</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🧩 关卡设计</span><span class="tag" data-astro-cid-6bfer2tv>⏱️ 节奏</span><span class="tag" data-astro-cid-6bfer2tv>🚀 3D 平台</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>关卡设计的本质是节奏设计——用看得懂的地形、顺手的手柄操作与不打断的引导，把「让玩家玩得开心」落实到每个瞬间。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Astro Bot: 3D Level Design You Can Play at a Good Tempo</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://cedec.cesa.or.jp/2025/timetable/detail/s67e2aff9bb974" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://cedec.cesa.or.jp/2025/timetable/detail/s67e2aff9bb974</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>矢徳浩章</span>  ·  SIE PlayStation Studios Team ASOBI 首席游戏设计师，《宇宙机器人》是他首次负责关卡设计的项目。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://cedec.cesa.or.jp/2025/timetable/detail/s67e2aff9bb974" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDEC 官方页（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://esportstw.com/news/561062/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（台湾电竞新闻）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.9game.cn/news/11313706.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（9game）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="先找好素材再做烹饪">先找「好素材」，再做「烹饪」</h2>
+<p>关卡设计 = 制定计划 → 构建地形 → 布置元素 → 把一段连贯、节奏良好的体验交到玩家手上。设计师像厨师，先找到能发挥游戏特色的优质素材，思路才会清晰。</p>
+<h3 id="素材筛选">素材筛选</h3>
+<ul>
+<li><strong>判断标准</strong>：能否发挥游戏的特色与卖点。《宇宙机器人》以「能否通过 DualSense 带来愉悦体验」筛选素材。</li>
+<li><strong>实例</strong>：发现「按压 R2 拧干海绵很舒适」→ 把海绵做成动作素材（吸水变大、挤水释放）→ 美术主题顺理成章走向「水」→ 再想「哪些对象会想被浇水」，逐步串联成完整关卡。</li>
+</ul>
+<h3 id="点子孵化">点子孵化</h3>
+<ul>
+<li><strong>团队头脑风暴</strong>：5 人小组、约 30 分钟，创意用便签记录存档，筛出优质创意做可玩原型。</li>
+<li><strong>先测试再构思关卡</strong>：在明确「优质体验是什么」的前提下开工，推进计划更有信心。</li>
+</ul>
+<h3 id="一页纸规划">一页纸规划</h3>
+<ul>
+<li><strong>设计文档只有一页</strong>：记录规模、地标、敌人机关、玩家体验与兴奋点；设计师亲自从空地做到完成，边做边玩边改。</li>
+<li><strong>玩法 × 美术主题</strong>：确保与整体不重复，兼顾自然/人工元素与色彩平衡。</li>
+</ul>
+<h2 id="几何设计让地形一眼看懂">几何设计：让地形「一眼看懂」</h2>
+<p>主路径清晰、消除模糊、纵深可判——玩家不犹豫，节奏就流畅。</p>
+<h3 id="主路径与方向">主路径与方向</h3>
+<ul>
+<li><strong>主路径清晰可见</strong>：起点就能看到终点与途中目标，玩家探索支线时知道「自己在绕路，之后会回主线」，从而安心。</li>
+<li><strong>终点靠近地标</strong>：地形变化后保持「直走或向上爬就不会出错」的逻辑。</li>
+</ul>
+<h3 id="消除模糊感">消除模糊感</h3>
+<ul>
+<li><strong>台阶高度一眼可判</strong>：是否需要跳跃一目了然，避免「要不要跳」的犹豫打断节奏。</li>
+<li><strong>区分可交互与不可交互</strong>：圆形元素多的关卡，用形状、颜色区分玩法区域与建筑，减少误操作。</li>
+<li><strong>警惕信息过载</strong>：地面装饰过多会杂乱，改成简洁结构。</li>
+</ul>
+<h3 id="纵深与路径">纵深与路径</h3>
+<ul>
+<li><strong>同形同尺寸连续摆放</strong>：相同平台帮助玩家判断距离与高差。</li>
+<li><strong>出入口宽度统一</strong>：即使高度角度变化，统一宽度也让纵深更好判断（平台循环移动场景尤甚）。</li>
+<li><strong>地形贴合预期路径</strong>：预期「直行右转」就做平滑弯曲；「突然右转」就做棱角分明的形状；配合触觉反馈布置地面材质。</li>
+</ul>
+<h2 id="布局移动路径--手柄节奏">布局：移动路径 × 手柄节奏</h2>
+<p>把爽快机关放在玩家必经或易达处，让操作像打节拍一样连贯。</p>
+<h3 id="机关与敌人">机关与敌人</h3>
+<ul>
+<li><strong>沿预期移动路径布置</strong>：把拳击破坏的物体放在台阶中间，让「左摇杆从左拨到右」的破坏操作更爽。</li>
+<li><strong>敌人间距当节拍调</strong>：5 个敌人的间距精确到让手柄操作形成流畅节奏，连后续跳跃时机一起算。</li>
+<li><strong>衔接连贯动作</strong>：掌握某动作后立刻提供连续使用的场景；「必须连续使用新动作」的紧张场景（逃离、跑酷）尤其有效。</li>
+</ul>
+<h3 id="重要元素与装饰">重要元素与装饰</h3>
+<ul>
+<li><strong>重要元素放中央</strong>：救援对象、开关、Boss 都置于画面/地形中央；Boss 死后「终点」在中央出现，形成目标聚焦闭环。</li>
+<li><strong>装饰填补空白</strong>：不挡路的草丛柔化区域划分、触碰有触觉音效反馈；用装饰密度差异强化「主路径 vs 非关键区域」的区分。</li>
+<li><strong>物理对象集中摆放</strong>：初始整洁、由玩家亲手弄乱才有乐趣；倾斜 90° 关卡里，集中摆放的对象集体倒向新重力方向，直观展示环境变化。</li>
+</ul>
+<h2 id="调整教玩家但不打断玩家">调整：教玩家，但不打断玩家</h2>
+<h3 id="示范而非文字">示范而非文字</h3>
+<ul>
+<li><strong>试错探索区代替说明文字</strong>：先给玩家自主试错的空间，再放必须用新元素才能推进的机关；实在不懂才自动播教程动画，且播放不暂停游戏。</li>
+<li><strong>Boss 战前设「准备关卡」</strong>：让玩家在轻松氛围中回忆关键动作，避免战斗中看教程。</li>
+</ul>
+<h3 id="空窗与突袭">空窗与突袭</h3>
+<ul>
+<li><strong>减少无法操作的时刻</strong>：阶段切换演出中玩家仍可操作；加载界面也能用陀螺仪互动——「让玩家亲身经历，而不是被动观看」。</li>
+<li><strong>给 1 秒预判时间</strong>：玩家调整计划到执行新操作约需 1 秒，敌人应提前登场；纵向推进视野受限时，用金币强化路径引导。</li>
+</ul>
+<h3 id="终点情绪">终点情绪</h3>
+<ul>
+<li><strong>结尾制造情绪高潮</strong>：看似终点仍有后续，音乐突然紧张、设适中挑战；终点前放 Boss 战，战后保持高涨情绪直达终点，避免拖沓冷却。</li>
+</ul>
+<h2 id="秘密与支线藏得有提示绕得有乐趣">秘密与支线：藏得有提示，绕得有乐趣</h2>
+<h3 id="提示与难度分层">提示与难度分层</h3>
+<ul>
+<li><strong>隐藏内容必带提示</strong>：栅栏「唯一断开处」、空中墨水暗示透明地板、木桶传出机器人声音——多维度提示让发现过程本身成为快乐瞬间。</li>
+<li><strong>发现难度 70/30 分层</strong>：70% 易于发现且多配动作挑战；30% 难度适中带清晰提示；少量高难度 Secret Goal 满足核心玩家。</li>
+<li><strong>防「藏太深」</strong>：重玩时可用金币买位置提示，但高难度目标只标位置、不教方法。</li>
+</ul>
+<h3 id="支线路径">支线路径</h3>
+<ul>
+<li><strong>主路显眼、支线低调</strong>：主路径更宽、正向延伸；支线较窄、略微倾斜，玩家一眼能分辨「在绕路」。</li>
+<li><strong>返程也是支线体验的一部分</strong>：专属返程通道（来时攀爬、返程滑索）或「从顶端直接跳回主路」，避免原路返回。</li>
+<li><strong>在「玩家觉得能到」的地方放奖励</strong>：满足直觉期待（爬树顶有金币）；玩家觉得「能飞上喷壶顶」就保留可达的视觉效果，在顶部补小型奖励。</li>
+</ul>
+<h2 id="相机不操作也看得清">相机：不操作，也看得清</h2>
+<ul>
+<li><strong>随移动自动转向</strong>：地形向左延伸相机就向左转；开发时「不手动调相机」测试，确认关键信息自然入画。</li>
+<li><strong>按场景定制机位</strong>：精确跳跃用俯瞰、平视观察前方事件；倾斜 90° 关卡固定相机让玩家横向移动；甩猪怪时相机自动对准「扔出后可破坏的目标」。</li>
+<li><strong>相机贴近角色</strong>：拉远虽视野好，但削弱代入感与速度感；在「看清关键信息」与「贴近角色」之间取平衡。</li>
+</ul>
+<h2 id="三条设计思路">三条设计思路</h2>
+<ul>
+<li><strong>重质轻量</strong>：洞窟关卡删掉第 3 层——数量越多、要改的越多，全体负担越重；不安时不要靠堆数量缓解，要聚焦质量。</li>
+<li><strong>不止于逻辑</strong>：只满足必要功能的设计无法触动玩家；连制作人员表都做成可互动，让玩家全程保持愉悦。</li>
+<li><strong>两周一轮反复重做</strong>：每两周把关卡打磨到「无需说明就能享受」，全员互评、每人提「一个优点 + 一个可优化点」；首要目标是「让团队成员玩得开心」。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：快节奏关卡不是赶路，而是让玩家每个瞬间都知道下一步该做什么——地形、布局、引导、秘密、相机，全部为「不打断」服务。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#先找好素材再做烹饪" class data-astro-cid-fzx4jmue>先找「好素材」，再做「烹饪」</a><a href="#素材筛选" class="h3" data-astro-cid-fzx4jmue>素材筛选</a><a href="#点子孵化" class="h3" data-astro-cid-fzx4jmue>点子孵化</a><a href="#一页纸规划" class="h3" data-astro-cid-fzx4jmue>一页纸规划</a><a href="#几何设计让地形一眼看懂" class data-astro-cid-fzx4jmue>几何设计：让地形「一眼看懂」</a><a href="#主路径与方向" class="h3" data-astro-cid-fzx4jmue>主路径与方向</a><a href="#消除模糊感" class="h3" data-astro-cid-fzx4jmue>消除模糊感</a><a href="#纵深与路径" class="h3" data-astro-cid-fzx4jmue>纵深与路径</a><a href="#布局移动路径--手柄节奏" class data-astro-cid-fzx4jmue>布局：移动路径 × 手柄节奏</a><a href="#机关与敌人" class="h3" data-astro-cid-fzx4jmue>机关与敌人</a><a href="#重要元素与装饰" class="h3" data-astro-cid-fzx4jmue>重要元素与装饰</a><a href="#调整教玩家但不打断玩家" class data-astro-cid-fzx4jmue>调整：教玩家，但不打断玩家</a><a href="#示范而非文字" class="h3" data-astro-cid-fzx4jmue>示范而非文字</a><a href="#空窗与突袭" class="h3" data-astro-cid-fzx4jmue>空窗与突袭</a><a href="#终点情绪" class="h3" data-astro-cid-fzx4jmue>终点情绪</a><a href="#秘密与支线藏得有提示绕得有乐趣" class data-astro-cid-fzx4jmue>秘密与支线：藏得有提示，绕得有乐趣</a><a href="#提示与难度分层" class="h3" data-astro-cid-fzx4jmue>提示与难度分层</a><a href="#支线路径" class="h3" data-astro-cid-fzx4jmue>支线路径</a><a href="#相机不操作也看得清" class data-astro-cid-fzx4jmue>相机：不操作，也看得清</a><a href="#三条设计思路" class data-astro-cid-fzx4jmue>三条设计思路</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

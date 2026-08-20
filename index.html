@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>动作游戏设计知识库【AI驱动】</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<style>.hero{max-width:var(--content-width);margin:0 auto 44px}.hero h1{font-family:var(--font-serif);font-size:46px;font-weight:700;margin:0 0 12px;letter-spacing:1px;color:var(--ink)}.hero .sub{color:var(--muted);font-size:15px;line-height:1.8;margin:0}.layout{display:grid;grid-template-columns:minmax(180px,1fr) minmax(0,var(--content-width)) minmax(0,1fr);align-items:start}.rail{grid-column:1;justify-self:end;padding-right:44px;position:sticky;top:40px;max-height:calc(100vh - 80px);overflow:hidden}@media(max-width:860px){.layout{grid-template-columns:1fr}.rail{display:none}}.rail .line{position:relative;padding-left:26px;border-left:2px solid var(--line)}.tnode{position:relative;display:flex;align-items:center;height:38px;cursor:pointer;color:#b0b0ba;font-size:14px;transition:color .2s}.tnode .dot{position:absolute;left:-31px;width:9px;height:9px;border-radius:50%;background:#d8d5cc;border:2px solid var(--bg);transition:all .2s}.tnode.active{color:var(--primary);font-weight:700}.tnode.active .dot{background:var(--primary);transform:scale(1.35)}.tnode.total{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted);font-weight:600;cursor:default}.tnode.total .dot{display:none}#content{grid-column:2;min-width:0}.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}.art{position:relative;display:flex;flex-direction:column;aspect-ratio:1.618 / 1;min-height:210px;padding:16px;border-radius:var(--r-card);overflow:hidden;text-decoration:none;color:var(--ink);background:var(--cover);border:1px solid var(--line);cursor:pointer;box-shadow:0 2px 10px #0000000d;transition:transform .2s ease,box-shadow .2s ease}.art:hover{transform:translateY(-5px);box-shadow:var(--shadow-card-hover)}.art-body{position:relative;display:flex;flex-direction:column;gap:6px;margin-top:12px}.art .meta-top{font-size:11.5px;letter-spacing:1px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0}.art .head{display:flex;flex-direction:column;gap:6px;height:110px}.art .title{display:flex;align-items:center;gap:6px;flex-shrink:0}.art .title-text{flex:1;min-width:0;font-family:var(--font-serif);font-size:21px;font-weight:700;line-height:1.45;color:var(--ink);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.art .wip-badge{flex-shrink:0;font-family:var(--font-sans);font-size:11px;font-weight:500;line-height:1;padding:3px 8px;border-radius:var(--r-pill);background:#fff0ed;color:#a33a30;border:1px solid rgba(255,90,78,.35);white-space:nowrap}.art .hook{position:relative;font-size:13px;color:var(--muted);line-height:1.65;overflow:hidden;flex:1 1 auto;min-height:0}.art .hook:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.65em;background:linear-gradient(to bottom,rgba(255,255,255,0),var(--cover));pointer-events:none}.art .chiprow{display:flex;flex-wrap:nowrap;gap:5px;margin-top:12px;overflow:hidden}.art .chip{font-size:11px;padding:3px 9px;border-radius:var(--r-pill);background:var(--bg);border:1px solid var(--line);color:var(--muted);flex-shrink:0;white-space:nowrap}
+</style></head> <body style="--content-width: 1080px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="wrap"> <header class="hero"> <h1><span class="title-hl">动作游戏设计知识库.AI驱动</span></h1> <p class="sub">本站是由AI驱动整理的动作游戏设计知识库：把 GDC、CEDEC 等专业会议上的分享，提炼成带「一句话结论」与标签的速览笔记，覆盖战斗、关卡、动画、AI 等主题。每篇都附原始出处与参考链接，方便回到源头核实；左侧时间轴可按年份快速跳转。AI 整理未必全对，但足够高效，希望对读者有所帮助。</p> </header> <div class="layout"> <aside class="rail"><div class="line" id="rail"><div class="tnode" data-year="2026"><span class="dot"></span>2026年（2篇）</div><div class="tnode" data-year="2025"><span class="dot"></span>2025年（4篇）</div><div class="tnode" data-year="2024"><span class="dot"></span>2024年（5篇）</div><div class="tnode" data-year="2023"><span class="dot"></span>2023年（4篇）</div><div class="tnode" data-year="2022"><span class="dot"></span>2022年（2篇）</div><div class="tnode" data-year="2021"><span class="dot"></span>2021年（5篇）</div><div class="tnode" data-year="2019"><span class="dot"></span>2019年（8篇）</div><div class="tnode" data-year="2018"><span class="dot"></span>2018年（4篇）</div><div class="tnode" data-year="2017"><span class="dot"></span>2017年（5篇）</div><div class="tnode" data-year="2016"><span class="dot"></span>2016年（2篇）</div><div class="tnode" data-year="2015"><span class="dot"></span>2015年（2篇）</div><div class="tnode" data-year="2014"><span class="dot"></span>2014年（1篇）</div><div class="tnode" data-year="2009"><span class="dot"></span>2009年（1篇）</div><div class="tnode" data-year="2007"><span class="dot"></span>2007年（1篇）</div><div class="tnode" data-year="2005"><span class="dot"></span>2005年（1篇）</div><div class="tnode" data-year="2004"><span class="dot"></span>2004年（2篇）</div><div class="tnode" data-year="1999"><span class="dot"></span>1999年（1篇）</div><div class="tnode" data-year="1981"><span class="dot"></span>1981年（1篇）</div><div class="tnode total">合计51篇</div></div></aside> <main id="content"><div class="cards"><a class="art" href="/ActionGameDesign.ByAI/other/2026-got2-combat/" style="view-transition-name:card-other-2026-got2-combat" data-year="2026">
+    <div class="art-body">
+      <div class="meta-top">2026 · <span class="title-hl">GDC</span> · Sucker Punch Productions</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《羊蹄山之魂》：近战战斗的打磨与进化</span></span></div>
+        <div class="hook">「取消架势、还权于玩家」——让每把武器自成完整战斗体系，是《羊蹄山之魂》近战进化的核心思路。</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚔️ 战斗设计</span><span class="chip">🗡️ 武器系统</span><span class="chip">🔧 设计迭代</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2026-tekken-martial/" style="view-transition-name:card-other-2026-tekken-martial" data-year="2026">
+    <div class="art-body">
+      <div class="meta-top">2026 · <span class="title-hl">CEDEC</span> · Bandai Namco</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《铁拳》：用中国武术「元素分解」重构真实攻击动画</span></span></div>
+        <div class="hook">用「元素分解」拆解武术动作的基本单元，先懂真实的发力与重心、再夸张演出——攻击动画才既流畅又可信，还能重组出原创招式。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🥋 动作动画</span><span class="chip">🐉 中国武术</span><span class="chip">🧩 元素分解</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/capcom/2025-sf6-ai/" style="view-transition-name:card-capcom-2025-sf6-ai" data-year="2025">
+    <div class="art-body">
+      <div class="meta-top">2025 · <span class="title-hl">CEDEC</span> · Capcom</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《街霸6》「虚拟劲敌」：模仿玩家失误、自然成长的 AI 对手</span></span></div>
+        <div class="hook">AI 的目标不是「最强」而是「最像」——连玩家的失误也一起模仿，配合赛后的肯定与建议，把对人对战的门槛变成每天的成长循环。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🤖 AI 对战</span><span class="chip">🧭 新手引导</span><span class="chip">📈 成长循环</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/notes/sss-method/" style="view-transition-name:card-notes-sss-method" data-year="2025">
+    <div class="art-body">
+      <div class="meta-top">2025 · 文章 · 设计者笔记</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">动作游戏设计的 SSS 方法</span></span></div>
+        <div class="hook">「情形-解决-编排」三步法：先立可复用的应对范式，再为每个 BOSS 补独有情形，最后编排整场战斗的起伏。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🧭 方法论</span><span class="chip">👹 怪物设计</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2025-astro-bot/" style="view-transition-name:card-other-2025-astro-bot" data-year="2025">
+    <div class="art-body">
+      <div class="meta-top">2025 · <span class="title-hl">CEDEC</span> · Sony Interactive Entertainment</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《宇宙机器人》：能畅快游玩的 3D 关卡设计</span></span></div>
+        <div class="hook">关卡设计的本质是节奏设计——用看得懂的地形、顺手的手柄操作与不打断的引导，把「让玩家玩得开心」落实到每个瞬间。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🧩 关卡设计</span><span class="chip">⏱️ 节奏</span><span class="chip">🚀 3D 平台</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2025-elden-background/" style="view-transition-name:card-other-2025-elden-background" data-year="2025">
+    <div class="art-body">
+      <div class="meta-top">2025 · <span class="title-hl">CEDEC</span> · FromSoftware</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《艾尔登法环》的背景布局：在限制中强化世界的印象</span></span></div>
+        <div class="hook">用「消除单调、引导视线、放进违和感」三步强化背景，再把资源集中到视点与限制的夹缝里——这就是《艾尔登法环》世界的构筑术。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🖼️ 背景布局</span><span class="chip">👁️ 视线引导</span><span class="chip">🗺️ 世界观构筑</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/notes/action-essence/" style="view-transition-name:card-notes-action-essence" data-year="2024">
+    <div class="art-body">
+      <div class="meta-top">2024 · 文章 · 设计者笔记</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">动作游戏的本质</span></span></div>
+        <div class="hook">「控制」本身并不有趣，让动作游戏有趣的是一套奖惩导向——设计考验场合、奖励正确、惩罚错误，玩家在「感知-认知-行动」的循环里越玩越强。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎯 奖惩导向</span><span class="chip">⚙️ 底层机制</span><span class="chip">🧩 MDA 理论</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/notes/dota2/" style="view-transition-name:card-notes-dota2" data-year="2024">
+    <div class="art-body">
+      <div class="meta-top">2024 · 文章 · 设计者笔记</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">DOTA2 的机制设计</span></span></div>
+        <div class="hook">先明确「要素 × 方式」，再允许规则互相作用——好的机制，是在碰撞中「涌现」出来的。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🛠️ 机制设计</span><span class="chip">⚡ 状态效果</span><span class="chip">✨ 涌现</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2024-hifi-rush/" style="view-transition-name:card-other-2024-hifi-rush" data-year="2024">
+    <div class="art-body">
+      <div class="meta-top">2024 · <span class="title-hl">GDC</span> · Tango Gameworks</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《Hi-Fi RUSH》：节奏与战斗互相驱动的正向循环（倒推式开发）</span></span></div>
+        <div class="hook">从预期的体验倒推设计，让战斗与节拍互相驱动——「只奖励、不惩罚」的正向循环，是把玩家留在音乐里的秘诀。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎵 节奏与音乐</span><span class="chip">🔁 正向循环</span><span class="chip">🧭 倒推式开发</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2024-spiderman2-procedural-content/" style="view-transition-name:card-other-2024-spiderman2-procedural-content" data-year="2024">
+    <div class="art-body">
+      <div class="meta-top">2024 · <span class="title-hl">GDC</span> · Insomniac Games</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《漫威蜘蛛侠2》：十年程序化内容创作历程</span></span></div>
+        <div class="hook">「一个从 2013 年只有 1 人起步的技术美术团队，用点云与 Houdini 把纽约从 726 个 Tile 程序化'生'到 1,794 个，撑起了三代《漫威蜘蛛侠》的开放世界。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🧬 程序化生成</span><span class="chip">🏙️ 开放世界</span><span class="chip">🎨 技术美术</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/level-design-terms/" style="view-transition-name:card-other-level-design-terms" data-year="2024">
+    <div class="art-body">
+      <div class="meta-top">2024 · <span class="title-hl">CEDEC</span> · 其他</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">海外文献中频繁出现的关卡设计用语</span></span></div>
+        <div class="hook">读海外关卡设计文献，最大的障碍往往不是理论而是术语——掌握这套高频用词，就等于拿到了 Level Design 第一手资料的钥匙。</div>
+      </div>
+      <div class="chiprow"><span class="chip">📖 术语</span><span class="chip">🧭 引导设计</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2023-ff16-combat/" style="view-transition-name:card-other-2023-ff16-combat" data-year="2023">
+    <div class="art-body">
+      <div class="meta-top">2023 · <span class="title-hl">CEDEC</span> · Square Enix</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《最终幻想16》：为各层次玩家打造的正统动作战斗</span></span></div>
+        <div class="hook">「门槛低、天花板高」——用饰品支援降低门槛，用技术介入撑高深度，让不擅长与擅长动作的玩家都感到「是自己在操作」。</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚔️ 战斗设计</span><span class="chip">🎯 受众分层</span><span class="chip">🕹️ 操作手感</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/santa-monica/2023-gow-ai/" style="view-transition-name:card-santa-monica-2023-gow-ai" data-year="2023">
+    <div class="art-body">
+      <div class="meta-top">2023 · <span class="title-hl">GDC</span> · Santa Monica Studio</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《战神：诸神黄昏》：为续作准备 AI 系统</span></span></div>
+        <div class="hook">把 AI 从 Lua 整体迁到自研行为树系统，性能不降反升——同样的 AI 跑起来比 Lua 快 3 倍以上。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🧠 行为树</span><span class="chip">🤖 AI 系统</span><span class="chip">⚡ 性能优化</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/santa-monica/2023-gowr-accessibility/" style="view-transition-name:card-santa-monica-2023-gowr-accessibility" data-year="2023">
+    <div class="art-body">
+      <div class="meta-top">2023 · <span class="title-hl">GDC</span> · Santa Monica Studio</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《战神：诸神黄昏》：战斗无障碍——降门槛而不损深度</span></span></div>
+        <div class="hook">无障碍不是把难度做低，而是拆掉与挑战无关的「无意障碍」——把选择权交还给玩家，深度一分不减。</div>
+      </div>
+      <div class="chiprow"><span class="chip">♿ 无障碍设计</span><span class="chip">⚔️ 战斗设计</span><span class="chip">🎯 设计意图</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/santa-monica/2023-gowr-final-battle/" style="view-transition-name:card-santa-monica-2023-gowr-final-battle" data-year="2023">
+    <div class="art-body">
+      <div class="meta-top">2023 · <span class="title-hl">GDC</span> · Santa Monica Studio</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《战神：诸神黄昏》：高压力终局战斗编排</span></span></div>
+        <div class="hook">终局场面拼的不是特效密度，而是关键信息能否被玩家看见和听见——加料解决不了认知过载，取舍与声音引导才能。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎯 关卡设计</span><span class="chip">🎬 场面编排</span><span class="chip">📖 演出叙事</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/nintendo/2022-kirby-level/" style="view-transition-name:card-nintendo-2022-kirby-level" data-year="2022">
+    <div class="art-body">
+      <div class="meta-top">2022 · <span class="title-hl">CEDEC</span> · HAL Laboratory</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《星之卡比 探索发现》：程序化地形生成让玩法与美术兼得</span></span></div>
+        <div class="hook">把地形「生成」交给程序，关卡设计师能改到最后一刻，美术也不必反复返工——玩法与外观不再是二选一。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🤖 程序化生成</span><span class="chip">🔄 关卡工作流</span><span class="chip">🎮 3D 动作</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2022-elden-open-world/" style="view-transition-name:card-other-2022-elden-open-world" data-year="2022">
+    <div class="art-body">
+      <div class="meta-top">2022 · <span class="title-hl">CEDEC</span> · FromSoftware</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《艾尔登法环》开放世界的「待客之道」</span></span></div>
+        <div class="hook">场景做「变化」防无聊、地标做「引导」不打扰、角色做「性格」演出——把玩家当客人款待，这就是开放世界的待客之道。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🗺️ 开放世界</span><span class="chip">🧭 地标引导</span><span class="chip">⚔️ 动作演出</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2021-got-lethality/" style="view-transition-name:card-other-2021-got-lethality" data-year="2021">
+    <div class="art-body">
+      <div class="meta-top">2021 · <span class="title-hl">GDC</span> · Sucker Punch Productions</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《对马岛之魂》：一击必杀下的难度平衡</span></span></div>
+        <div class="hook">「一击必杀」不是把数值调高，而是用对称规则兑现武士幻想——让每一刀都值得被尊重。</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚖️ 难度设计</span><span class="chip">⚔️ 战斗节奏</span><span class="chip">🗡️ 玩家幻想</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2021-got-melee/" style="view-transition-name:card-other-2021-got-melee" data-year="2021">
+    <div class="art-body">
+      <div class="meta-top">2021 · <span class="title-hl">GDC</span> · Sucker Punch</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">大师之刃：《对马岛之魂》的近身战斗</span></span></div>
+        <div class="hook">「玩家觉得最高效的玩法，就是他们觉得最有意思的玩法」——不惩罚旧打法，把新玩法做得更顺手、更直观，玩家自己就会走进去。</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚔️ 近战设计</span><span class="chip">🥋 架势系统</span><span class="chip">🧭 玩家引导</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2021-got-weenies/" style="view-transition-name:card-other-2021-got-weenies" data-year="2021">
+    <div class="art-body">
+      <div class="meta-top">2021 · <span class="title-hl">GDC</span> · Sucker Punch Productions</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《对马岛之魂》的地标引导：让岛屿指引你</span></span></div>
+        <div class="hook">最好的引导不是地图上的标记，而是让岛屿本身开口说话——把地标、风与动物变成世界的语言。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🗼 地标引导</span><span class="chip">🌄 开放世界</span><span class="chip">🌬️ 无 UI 引导</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2021-miles-morales-opening/" style="view-transition-name:card-other-2021-miles-morales-opening" data-year="2021">
+    <div class="art-body">
+      <div class="meta-top">2021 · <span class="title-hl">GDC</span> · Insomniac Games</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《漫威蜘蛛侠：迈尔斯·莫拉莱斯》：开场 30 分钟的叙事与设计协作拆解</span></span></div>
+        <div class="hook">「叙事与设计从立项第一天就并肩作战，才能在开场 30 分钟里让玩家同时接纳一个新角色和一套新机制。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🕸️ 开场教学</span><span class="chip">📖 叙事设计</span><span class="chip">🤝 团队协作</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2021-spiderman-miles-creative-journey/" style="view-transition-name:card-other-2021-spiderman-miles-creative-journey" data-year="2021">
+    <div class="art-body">
+      <div class="meta-top">2021 · <span class="title-hl">GDC</span> · Insomniac Games</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《漫威蜘蛛侠：迈尔斯·莫拉莱斯》的创作之旅：让迈尔斯成为他自己的蜘蛛侠</span></span></div>
+        <div class="hook">「让配角成长为独当一面的主角：从早期原型、动捕现场到东哈莱姆田野调查，Insomniac 用独家幕后素材拆解一部 PS5 首发作品从概念到交付的完整创作旅程。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🕷️ 超级英雄</span><span class="chip">🎨 创作流程</span><span class="chip">🌆 文化真实性</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/capcom/2019-dmc5/" style="view-transition-name:card-capcom-2019-dmc5" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">GDC</span> · Capcom</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《鬼泣5》：打造一款出类拔萃的动作游戏</span></span></div>
+        <div class="hook">动作游戏的核心乐趣，是克服困难挑战后获得的成就感——这是 30 多年未变的真理。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎮 核心乐趣</span><span class="chip">🏆 成就感</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2019-ffxv-ai/" style="view-transition-name:card-other-2019-ffxv-ai" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">CEDEC</span> · Luminous Productions</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《最终幻想15》：用深度学习自动生成敌人 AI</span></span></div>
+        <div class="hook">「光会变强不够格当游戏对手」——深度学习量产敌人 AI，再用调整报酬与人工介入，把最优解拉回好玩的对手。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🤖 AI 技术</span><span class="chip">🧠 强化学习</span><span class="chip">⚔️ 敌人设计</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2019-sekiro-background-graphics/" style="view-transition-name:card-other-2019-sekiro-background-graphics" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">CEDEC</span> · FromSoftware</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《只狼：影逝二度》背景图形制作：可用性与美术的兼顾</span></span></div>
+        <div class="hook">「让玩家『看得懂』的风景——从关卡设计到图形制作，《只狼》的背景美术始终在追求可用性与艺术的『两立』。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎨 背景美术</span><span class="chip">🗺️ 关卡设计</span><span class="chip">⚙️ 制作流程</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2019-spiderman-ai/" style="view-transition-name:card-other-2019-spiderman-ai" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">GDC</span> · Insomniac Games</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《漫威蜘蛛侠》AI 复盘：失眠组如何重构战斗 AI，让「你就是蜘蛛侠」成为必然</span></span></div>
+        <div class="hook">「做过《日落过载》就以为会做战斗？失眠组被《漫威蜘蛛侠》狠狠上了一课——64 种 AI 类、30 个活跃敌人上限，从行为树到数据驱动，全靠一次彻底的 AI 重构。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🤖 战斗AI</span><span class="chip">🧩 数据驱动</span><span class="chip">🕷️ 电影感战斗</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2019-spiderman-technical-postmortem/" style="view-transition-name:card-other-2019-spiderman-technical-postmortem" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">GDC</span> · Insomniac Games</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《漫威蜘蛛侠》技术复盘：把整个纽约城塞进一张蓝光碟</span></span></div>
+        <div class="hook">「让蜘蛛侠在曼哈顿高速穿梭的秘诀不是黑科技，而是围绕具体问题量身定制的工程：串流、压缩、渲染、光照，每个环节都调对一点点。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🕸️ 开放世界串流</span><span class="chip">🏙️ 程序化城市</span><span class="chip">⚙️ 性能优化</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/santa-monica/2019-gow-combat/" style="view-transition-name:card-santa-monica-2019-gow-combat" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">GDC</span> · Santa Monica Studio</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《战神》：为新视角而进化的战斗系统</span></span></div>
+        <div class="hook">过肩特写镜头让「一打多」的高侵略性战斗失去视野，Santa Monica 围绕玩家的视线重建「追踪 → 锁定 → 攻击」整条战斗链路，才保住了系列的核心标识。</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚔️ 战斗系统</span><span class="chip">📷 过肩视角</span><span class="chip">🥊 一打多</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/santa-monica/2019-gow-level/" style="view-transition-name:card-santa-monica-2019-gow-level" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">GDC</span> · Santa Monica Studio</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《战神》的关卡设计</span></span></div>
+        <div class="hook">先用「战斗、剧情、探索」三大核心要素统一方向，再靠指标、新能力与核心区域把关卡串起来——3A 规模也通用的关卡方法论。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🗺️ 关卡设计</span><span class="chip">🎯 核心要素</span><span class="chip">✨ 最佳实践</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/santa-monica/2019-gow-reboot/" style="view-transition-name:card-santa-monica-2019-gow-reboot" data-year="2019">
+    <div class="art-body">
+      <div class="meta-top">2019 · <span class="title-hl">GDC</span> · Santa Monica Studio</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">重新定义《战神》</span></span></div>
+        <div class="hook">创造新战神之路似乎是无休止地攀登一座大山，在无数失败后迎来成功。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🔄 系列重启</span><span class="chip">🏔️ 开发历程</span><span class="chip">👨‍👦 父与子</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/capcom/2018-monster-hunter-world/" style="view-transition-name:card-capcom-2018-monster-hunter-world" data-year="2018">
+    <div class="art-body">
+      <div class="meta-top">2018 · <span class="title-hl">GDC</span> · Capcom</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《怪物猎人：世界》事后剖析：通过原型与迭代进行概念设计</span></span></div>
+        <div class="hook">先不急着做战斗——用不带武器的原型验证「无缝世界的探索感」，概念、技术、标准都在实机原型里被反复试错与迭代。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🧪 原型</span><span class="chip">✅ 验证</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/platinumgames/2018-nier-automata/" style="view-transition-name:card-platinumgames-2018-nier-automata" data-year="2018">
+    <div class="art-body">
+      <div class="meta-top">2018 · <span class="title-hl">GDC</span> · PlatinumGames</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《尼尔：机械纪元》制作谈：不靠谱开发者的欢乐时光</span></span></div>
+        <div class="hook">手感的关键是让玩家按下按键的瞬间就「有趣」；自由感不来自世界的体量，而来自玩家突破限制的那一瞬。</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚡ 动作手感</span><span class="chip">🕊️ 自由感</span><span class="chip">🧱 突破限制</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2018-celeste-level/" style="view-transition-name:card-other-2018-celeste-level" data-year="2018">
+    <div class="art-body">
+      <div class="meta-top">2018 · <span class="title-hl">GDC</span> · Extremely OK Games</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《蔚蓝》：一步一挑战的模块化关卡设计</span></span></div>
+        <div class="hook">把整座山拆成一个个自足的「房间模块」，每个房间只考一个概念——难度来自组合，而不是让单个动作更难。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🗺️ 关卡设计</span><span class="chip">🧩 模块化</span><span class="chip">⛰️ 难度设计</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/tokuda-mhw-design/" style="view-transition-name:card-other-tokuda-mhw-design" data-year="2018">
+    <div class="art-body">
+      <div class="meta-top">2018 · <span class="title-hl">CEDEC</span> · 其他</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">从场景与怪物的制作工程解读《怪物猎人：世界》的游戏设计</span></span></div>
+        <div class="hook">以「怪物为轴心」的生态设计——场景与怪物一体构思，用「冲击性 + 攻略性」让玩家反复狩猎也不腻。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🌍 生态设计</span><span class="chip">🐉 怪物设计</span><span class="chip">💡 概念设计</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/capcom/2017-street-fighter-5/" style="view-transition-name:card-capcom-2017-street-fighter-5" data-year="2017">
+    <div class="art-body">
+      <div class="meta-top">2017 · <span class="title-hl">GDC</span> · Capcom</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《街霸5》的美术指导：美术在格斗游戏中的作用</span></span></div>
+        <div class="hook">在满足「瞬间传达信息」的前提下，再考虑独特美术表现——这就是格斗游戏的艺术。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎨 美术设计</span><span class="chip">👁️ 信息传达</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/nintendo/2017-zelda-botw/" style="view-transition-name:card-nintendo-2017-zelda-botw" data-year="2017">
+    <div class="art-body">
+      <div class="meta-top">2017 · <span class="title-hl">GDC</span> · Nintendo</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《塞尔达传说 旷野之息》：打破系列惯例</span></span></div>
+        <div class="hook">勇气三角，革新玩法；智慧三角，想法落地；力量三角，美学统一。</div>
+      </div>
+      <div class="chiprow"><span class="chip">💥 打破惯例</span><span class="chip">🗺️ 开放世界</span><span class="chip">🎮 游戏设计</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2017-nioh/" style="view-transition-name:card-other-2017-nioh" data-year="2017">
+    <div class="art-body">
+      <div class="meta-top">2017 · <span class="title-hl">GDC</span> · Team Ninja</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《仁王》：与武士对话</span></span></div>
+        <div class="hook">把试玩版当作开发工具而非营销手段，用玩家的真实反馈重塑开发方向——这是《仁王》十二年开发史留下的最宝贵一课。</div>
+      </div>
+      <div class="chiprow"><span class="chip">💬 玩家反馈</span><span class="chip">🧪 试玩版开发</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2017-souls-to-nioh/" style="view-transition-name:card-other-2017-souls-to-nioh" data-year="2017">
+    <div class="art-body">
+      <div class="meta-top">2017 · 知乎 · 旗舰评论</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">从《恶魔之魂》到《仁王》：两个游戏类型的重构史</span></span></div>
+        <div class="hook">「魂系列真正值钱的不是'难'，而是难得讲道理的设计——《仁王》用两次公开体验测试证明了这一点」</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚔️ 动作游戏设计</span><span class="chip">🕯️ 魂系玩法</span><span class="chip">🧬 游戏类型重构</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/kawamori-originality/" style="view-transition-name:card-other-kawamori-originality" data-year="2017">
+    <div class="art-body">
+      <div class="meta-top">2017 · TEDx · 其他</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">如何多维思考，创造原创性</span></span></div>
+        <div class="hook">原创性分「发明的原创」与「个性的原创」两种，而打开它的钥匙是多维思考——换视角、切次元，去没有答案的领域提出疑问。</div>
+      </div>
+      <div class="chiprow"><span class="chip">💡 原创性</span><span class="chip">🧭 多维思考</span><span class="chip">✨ 融合</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/platinumgames/2016-boundless-act/" style="view-transition-name:card-platinumgames-2016-boundless-act" data-year="2016">
+    <div class="art-body">
+      <div class="meta-top">2016 · <span class="title-hl">GDC</span> · PlatinumGames</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">无国界动作游戏：为世界打造白金品质的游戏</span></span></div>
+        <div class="hook">动作游戏的本质是「被动游戏」：要求玩家根据不同的「状况」做出对应的响应。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎮 被动游戏</span><span class="chip">🧩 状况应对</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2015-bloodborne/" style="view-transition-name:card-other-2015-bloodborne" data-year="2016">
+    <div class="art-body">
+      <div class="meta-top">2016 · <span class="title-hl">GDC</span> · 其他</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《血源诅咒》的哥特式恐怖音乐</span></span></div>
+        <div class="hook">极具挑战的合唱写作与扩展管弦技法，如何唤起瘟疫之城亚南的绝望。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎵 配乐</span><span class="chip">🦇 哥特恐怖</span><span class="chip">🎻 管弦乐</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/ftg/2015-guilty-gear-xrd/" style="view-transition-name:card-ftg-2015-guilty-gear-xrd" data-year="2015">
+    <div class="art-body">
+      <div class="meta-top">2015 · <span class="title-hl">GDC</span> · Arc System Works</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《罪恶装备 Xrd》的美术风格：2D 与 3D 之间的 X 因素</span></span></div>
+        <div class="hook">在纯 3D 框架里重建经典 2D 格斗的全部魅力——关键不是模型精细度，而是剪影与扁平色调。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎨 卡通渲染</span><span class="chip">✨ 2D/3D 融合</span><span class="chip">🖋️ 轮廓线</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/ftg/2015-skullgirls/" style="view-transition-name:card-ftg-2015-skullgirls" data-year="2015">
+    <div class="art-body">
+      <div class="meta-top">2015 · <span class="title-hl">GDC</span> · Lab Zero</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《骷髅女孩》：2D 动画的现场演示</span></span></div>
+        <div class="hook">骷髅女孩的动画没有「省事」的捷径——每一帧手绘，流程上先让角色可玩，作画上把力气花在关键帧与动势上。</div>
+      </div>
+      <div class="chiprow"><span class="chip">✍️ 2D 动画</span><span class="chip">🖌️ 手绘动画</span><span class="chip">🎬 现场演示</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/ftg/2014-skullgirls/" style="view-transition-name:card-ftg-2014-skullgirls" data-year="2014">
+    <div class="art-body">
+      <div class="meta-top">2014 · <span class="title-hl">GDC</span> · Lab Zero</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《骷髅女孩》：制作流畅而有力的动画</span></span></div>
+        <div class="hook">好的格斗动画不是帧数多，而是关键帧清晰可读、动势服务玩法——帧限制恰恰逼出了最有力的表达。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎨 2D 动画</span><span class="chip">✏️ 手绘帧动画</span><span class="chip">🥊 格斗游戏</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2009-l4d-ai/" style="view-transition-name:card-other-2009-l4d-ai" data-year="2009">
+    <div class="art-body">
+      <div class="meta-top">2009 · <span class="title-hl">GDC</span> · Valve</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《求生之路》：AI Director 如何导演一场可重玩的合作恐怖片</span></span></div>
+        <div class="hook">「可重玩性的秘密不在关卡，而在导演——动态调度情绪曲线，让玩家像演员一样，每场戏都略有不同。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎬 AI 导演</span><span class="chip">📈 动态难度</span><span class="chip">💓 情绪曲线</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2007-game-feel/" style="view-transition-name:card-other-2007-game-feel" data-year="2007">
+    <div class="art-body">
+      <div class="meta-top">2007 · <span class="title-hl">GDC</span> · 其他</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《游戏手感：隐藏的秘方》</span></span></div>
+        <div class="hook">「手感是玩家花时间最多、却最常被忽视的体验——它由实时操控、模拟空间、润色三层构成，值得从预制作一路打磨到发售。」</div>
+      </div>
+      <div class="chiprow"><span class="chip">🕹️ 游戏手感</span><span class="chip">🎮 操控设计</span><span class="chip">🧪 原型验证</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/nintendo/2005-iwata/" style="view-transition-name:card-nintendo-2005-iwata" data-year="2005">
+    <div class="art-body">
+      <div class="meta-top">2005 · <span class="title-hl">GDC</span> · Nintendo</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《玩家之心》</span></span></div>
+        <div class="hook">心里装着玩家的乐趣，而不是公司报表，才能做出让更多人玩到的游戏。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🧢 岩田聪</span><span class="chip">❤️ 玩家之心</span><span class="chip">🍄 任天堂</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/2004-sakurai-risk-reward/" style="view-transition-name:card-other-2004-sakurai-risk-reward" data-year="2004">
+    <div class="art-body">
+      <div class="meta-top">2004 · <span class="title-hl">GDC</span> · 其他</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">《游戏设计：风险与回报》：解读游戏趣味性的底层机制</span></span></div>
+        <div class="hook">游戏趣味性的本质是风险与回报——玩家总在想办法用最小风险换取最大回报，这正是攻略的乐趣。</div>
+      </div>
+      <div class="chiprow"><span class="chip">⚖️ 风险与回报</span><span class="chip">🎯 游戏趣味性</span><span class="chip">🧗 难度设计</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/mda-framework/" style="view-transition-name:card-other-mda-framework" data-year="2004">
+    <div class="art-body">
+      <div class="meta-top">2004 · 文章 · 其他</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">MDA 框架：机制、动态与美学</span></span></div>
+        <div class="hook">别问「该加什么系统」，先问「想让玩家感受到什么」——MDA 用机制、动态、美学三层，把设计师的意图翻译成玩家的体验。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🏗️ 设计框架</span><span class="chip">🎯 玩家体验</span><span class="chip">📄 学术论文</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/nintendo/1999-miyamoto/" style="view-transition-name:card-nintendo-1999-miyamoto" data-year="1999">
+    <div class="art-body">
+      <div class="meta-top">1999 · <span class="title-hl">GDC</span> · Nintendo</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">宫本茂 1999 GDC 主题演讲</span></span></div>
+        <div class="hook">游戏是一个更大、更广阔的世界的一部分。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎩 宫本茂</span><span class="chip">🍄 任天堂</span><span class="chip">💡 设计哲学</span></div>
+    </div>
+  </a><a class="art" href="/ActionGameDesign.ByAI/other/disney-12-principles/" style="view-transition-name:card-other-disney-12-principles" data-year="1981">
+    <div class="art-body">
+      <div class="meta-top">1981 · 文章 · Disney</div>
+      <div class="head">
+        <div class="title"><span class="title-text"><span class="title-hl">动画的12项基本法则</span></span></div>
+        <div class="hook">动画不是画得准，而是让观众信——迪士尼的 12 条法则，就是一套把角色演活的表演系统。</div>
+      </div>
+      <div class="chiprow"><span class="chip">🎬 动画</span><span class="chip">🎭 表演</span><span class="chip">📐 方法论</span></div>
+    </div>
+  </a></div></main> </div> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">document.getElementById("rail").addEventListener("click",t=>{const e=t.target.closest(".tnode");if(!e)return;const r=document.querySelector(`.art[data-year="${e.dataset.year}"]`);r&&r.scrollIntoView({behavior:"smooth",block:"start"})});let o;function c(){o&&o.disconnect(),o=new IntersectionObserver(t=>{t.forEach(e=>{if(e.isIntersecting&&e.target.dataset.year){const r=e.target.dataset.year;document.querySelectorAll(".tnode").forEach(a=>a.classList.toggle("active",a.dataset.year===r))}})},{rootMargin:"-25% 0px -65% 0px",threshold:0}),document.querySelectorAll(".art").forEach(t=>o.observe(t))}c();</script> 

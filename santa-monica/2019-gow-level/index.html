@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《战神》的关卡设计 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-santa-monica-2019-gow-level" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2019 · <span class="title-hl">GDC</span> · Santa Monica Studio</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《战神》的关卡设计</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🗺️ 关卡设计</span><span class="tag" data-astro-cid-6bfer2tv>🎯 核心要素</span><span class="tag" data-astro-cid-6bfer2tv>✨ 最佳实践</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>先用「战斗、剧情、探索」三大核心要素统一方向，再靠指标、新能力与核心区域把关卡串起来——3A 规模也通用的关卡方法论。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>The Level Design of God of War</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=eSB29qx6sWw" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=eSB29qx6sWw</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Rob Davis</span>  ·  Sony Santa Monica Studio 首席关卡设计师（Lead Level Designer），负责《战神》新作的关卡设计。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1026953/Level-Design-Workshop-The-Level" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.youtube.com/watch?v=eSB29qx6sWw" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>YouTube 官方视频（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="http://www.gamelook.com.cn/2021/06/445171" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameLook）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameres.com/885756.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameRes 转载）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <blockquote>
+<p>石匠关卡是战斗、剧情、探索三者融合得最好的案例——控制好三者的关系，就能控制游戏节奏。</p>
+</blockquote>
+<h2 id="三大核心要素方向先行">三大核心要素（方向先行）</h2>
+<p>2014 年，团队为新作重新寻找核心要素：游戏总监 Cory 召集关键成员，最终确定了<strong>战斗、剧情、探索</strong>三个支柱，并把目标计划书贴在咖啡机走道的护栏上给所有人「洗脑」。</p>
+<ul>
+<li><strong>战斗</strong>：冒险围绕动作展开，竞技场、线性遭遇、特殊规则与 Boss 战均匀分布，控制节奏。</li>
+<li><strong>剧情</strong>：用父子故事做出系列从未尝试过的剧情玩法——无镜头定格的过场、慢节奏闲聊场景、环境叙事。</li>
+<li><strong>探索</strong>：从真实摄像头转到 3D 摄像头（「摄像头决定品类」），解谜 + 选择性战斗 + 连接到更大的区域（九界之湖）。</li>
+<li><strong>融合</strong>：不是所有关卡都能三要素完美融合，但一开始就往融合方向做，更容易做出好关卡。</li>
+</ul>
+<h2 id="六条关卡设计原则">六条关卡设计原则</h2>
+<h3 id="1-聚焦核心要素">1. 聚焦核心要素</h3>
+<ul>
+<li>不能在一个游戏里做完所有事，只能把几件事做好——这些就是核心要素。</li>
+<li>核心要素让团队聚焦、思维方向一致，也让游戏与众不同。</li>
+</ul>
+<h3 id="2-为核心要素设计指标">2. 为核心要素设计指标</h3>
+<ul>
+<li>指标 = 游戏玩法的设计衡量标准，是关卡设计的「砖块」。</li>
+<li>团队有一份《关卡打造密码》：人物与场景下的具体标准（1 米 / 2 米 / 3 米），墙壁高度、通道宽度、障碍物厚度都有精确要求。</li>
+<li><strong>3 米是角色直接攀爬的上限</strong>，不算太高，但足以造成「从一个关卡到另一个关卡」的感觉，成为战斗结束或探索秘密的奖励。</li>
+<li>台阶高度、圆平台直径、跳跃间隙、斜坡都按指标定，让研发目标清晰、可做深度测试（如攀爬动画测试）。</li>
+</ul>
+<h3 id="3-强调主题">3. 强调主题</h3>
+<ul>
+<li>每个关卡都讲述一个主题，主题成为关卡的基础；设计得当，很容易做出多样性和复杂场景。</li>
+</ul>
+<h3 id="4-所有重要路径关卡都解锁一个新能力">4. 所有重要路径关卡都解锁一个新能力</h3>
+<ul>
+<li>每 90~120 分钟解锁一个新能力，让关卡与众不同、避免千篇一律。</li>
+<li>阿特柔斯的电箭：学习过程刻意保持简单；最初设计是奎爷自己解谜，后改为让阿特柔斯帮忙，顺带升华父子感情。</li>
+<li>新能力带出解谜、秘密空间与战斗变化——<strong>电箭出现的地方往往意味着新的秘密</strong>，也让玩家记住它。</li>
+</ul>
+<h3 id="5-给玩家清晰的探索间歇">5. 给玩家清晰的探索间歇</h3>
+<ul>
+<li>目标：玩家能自己判断「何时探索、何时推主线」，知道一段剧情要投入多久。</li>
+<li>新能力解锁后进入<strong>休息时间</strong>让玩家练习；石匠关卡里电箭分布占关卡四分之三，剩余四分之一是 Boss 战的关键转折点，之后就是休息区。</li>
+<li>用红色水晶等视觉标记引导自主探索（乘船时看到路边红色石头）；必要时用奎爷和儿子的对话反映玩家内心想法。</li>
+</ul>
+<h3 id="6-用核心区域连接所有关卡">6. 用核心区域连接所有关卡</h3>
+<ul>
+<li><strong>核心并非开放世界</strong>——核心是能向外发散的中心化位置，像车轮的轴心。</li>
+<li>九界之湖就是核心区域：在石匠关卡学到电箭 → 返回核心 → 去小地方练习 → 熟练后再探索主要关卡 → 学到新事物 → 回到核心，循环往复。</li>
+</ul>
+<h2 id="现实与取舍隐藏的第七原则">现实与取舍（隐藏的第七原则）</h2>
+<ul>
+<li>解谜很重要，但<strong>不是核心要素</strong>——这个结论花了 2 年半才确认。</li>
+<li>3 米指标遇到灌木丛：环境团队把灌木丛设计成世界高度的边缘，即玩家不可通行之处。</li>
+<li>并非所有关卡都强调主题、每个关卡都有新物品——都是为了增加多样性，后期关卡会把此前所有玩法叠加在同一个场景里。</li>
+<li>九界之湖没有做正圆：正圆理论上完美，但会严重限制环境设计，最终做成了不规则形状。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：三大核心要素定方向、指标定骨架、新能力与探索间歇定节奏、核心区域定结构——这套打法从概念到完成，任何规模的团队都能用。</p>
+</blockquote>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://gdcvault.com/play/1026953/Level-Design-Workshop-The-Level">GDC Vault（原）</a></li>
+<li><a href="https://www.youtube.com/watch?v=eSB29qx6sWw">YouTube 官方视频（原）</a></li>
+<li><a href="http://www.gamelook.com.cn/2021/06/445171">中译（GameLook）</a></li>
+<li><a href="https://www.gameres.com/885756.html">中译（GameRes 转载）</a></li>
+</ul> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#三大核心要素方向先行" class data-astro-cid-fzx4jmue>三大核心要素（方向先行）</a><a href="#六条关卡设计原则" class data-astro-cid-fzx4jmue>六条关卡设计原则</a><a href="#1-聚焦核心要素" class="h3" data-astro-cid-fzx4jmue>1. 聚焦核心要素</a><a href="#2-为核心要素设计指标" class="h3" data-astro-cid-fzx4jmue>2. 为核心要素设计指标</a><a href="#3-强调主题" class="h3" data-astro-cid-fzx4jmue>3. 强调主题</a><a href="#4-所有重要路径关卡都解锁一个新能力" class="h3" data-astro-cid-fzx4jmue>4. 所有重要路径关卡都解锁一个新能力</a><a href="#5-给玩家清晰的探索间歇" class="h3" data-astro-cid-fzx4jmue>5. 给玩家清晰的探索间歇</a><a href="#6-用核心区域连接所有关卡" class="h3" data-astro-cid-fzx4jmue>6. 用核心区域连接所有关卡</a><a href="#现实与取舍隐藏的第七原则" class data-astro-cid-fzx4jmue>现实与取舍（隐藏的第七原则）</a><a href="#参考" class data-astro-cid-fzx4jmue>参考</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

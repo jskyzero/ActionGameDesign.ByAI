@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《蔚蓝》：一步一挑战的模块化关卡设计 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2018-celeste-level" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2018 · <span class="title-hl">GDC</span> · Extremely OK Games</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《蔚蓝》：一步一挑战的模块化关卡设计</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🗺️ 关卡设计</span><span class="tag" data-astro-cid-6bfer2tv>🧩 模块化</span><span class="tag" data-astro-cid-6bfer2tv>⛰️ 难度设计</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>把整座山拆成一个个自足的「房间模块」，每个房间只考一个概念——难度来自组合，而不是让单个动作更难。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Level Design Workshop: Designing &#39;Celeste&#39;</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=4RlpMhBKNr0" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=4RlpMhBKNr0</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Matt Thorson</span>  ·  《蔚蓝》制作人，独立工作室 Extremely OK Games 创始人。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1024307/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://ld0.indienova.com/indie-game-development/level-design-workshop-designing-celeste/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（indienova）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.bilibili.com/video/av32390171/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中字视频（B 站）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="把一座山拆成房间">把一座山拆成房间</h2>
+<p>《蔚蓝》的关卡不是连续的长廊，而是由几百个独立房间拼接而成的章节——每个房间都是一个自足的挑战单元，可以单独测试、自由重组。</p>
+<ul>
+<li><strong>房间即模块</strong>：房间按「一个挑战」设计，插进任何章节都成立；章节 = 房间的排列组合。</li>
+<li><strong>目标一目了然</strong>：玩家一进房间就知道要做什么，挑战清楚，难度来自执行而不是困惑。</li>
+<li><strong>房间承载叙事</strong>：章节里穿插剧情房间，角色对话与休整穿插在硬核挑战之间，给攀登的过程注入情绪。</li>
+</ul>
+<h3 id="一步一挑战">一步一挑战</h3>
+<ul>
+<li><strong>一个房间只考一个概念</strong>：新机制先在安全环境教学，再与旧机制组合成新挑战。</li>
+<li><strong>先教后考</strong>：每个新动作（冲刺、爬墙跳、羽毛飞行）都从零风险的教学房间开始，玩家先学会，再被考。</li>
+<li><strong>组合产生深度</strong>：难度不来自操作变复杂，而来自把已学概念排列组合——难在组合，不在单个动作。</li>
+</ul>
+<h2 id="难度即内容">难度即内容</h2>
+<p>对高难度平台跳跃而言，挑战本身就是玩家买的内容——所以难度曲线必须诚实、公平、可预期。</p>
+<ul>
+<li><strong>峰谷节奏</strong>：难点与难点之间放安全房间（剧情、对话），给玩家喘息与成就感沉淀的空间。</li>
+<li><strong>每章一个新机制</strong>：风、羽毛、镜子……每章围绕一个新概念展开，让山每一段都保持新鲜感。</li>
+<li><strong>硬核但公平</strong>：保证每个房间都能过，失败只因为执行不到位，而不是因为看不懂。</li>
+</ul>
+<h3 id="死亡是学习不是惩罚">死亡是学习，不是惩罚</h3>
+<ul>
+<li><strong>秒复活零惩罚</strong>：死亡后立即重生，把重试成本压到最低。</li>
+<li><strong>死亡计数</strong>：如实显示本章死亡次数，把「死很多次」从失败信号变成「正在变强」的证据。</li>
+<li><strong>降低挫败感</strong>：每次死亡都更接近通关——重试本身就是游戏的正常节奏。</li>
+</ul>
+<h3 id="给想挑战的人加料">给想挑战的人加料</h3>
+<ul>
+<li><strong>草莓</strong>：可选的额外挑战，摆在看得见、够得着但有风险的地方，不影响通关进度。</li>
+<li><strong>B 面</strong>：复用 A 面房间，以更苛刻的条件重排，满足通关后仍想挑战的硬核玩家。</li>
+</ul>
+<h2 id="工具与迭代把试错压到分钟级">工具与迭代：把试错压到分钟级</h2>
+<ul>
+<li><strong>自制关卡编辑器</strong>：即时试玩、单独测试任意房间，把「改 → 试 → 改」的循环压到分钟级。</li>
+<li><strong>大量迭代</strong>：一个房间反复打磨，直到「一进房间就知道怎么玩、玩起来又够刺激」。</li>
+<li><strong>设计从机制出发</strong>：先让机制本身好玩，再围绕它构建挑战房间。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：把关卡拆成「一步一挑战」的房间模块——每个房间只考一个概念，难度来自组合而非复杂操作，再用死亡与草莓把挑战包装成乐趣。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#把一座山拆成房间" class data-astro-cid-fzx4jmue>把一座山拆成房间</a><a href="#一步一挑战" class="h3" data-astro-cid-fzx4jmue>一步一挑战</a><a href="#难度即内容" class data-astro-cid-fzx4jmue>难度即内容</a><a href="#死亡是学习不是惩罚" class="h3" data-astro-cid-fzx4jmue>死亡是学习，不是惩罚</a><a href="#给想挑战的人加料" class="h3" data-astro-cid-fzx4jmue>给想挑战的人加料</a><a href="#工具与迭代把试错压到分钟级" class data-astro-cid-fzx4jmue>工具与迭代：把试错压到分钟级</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

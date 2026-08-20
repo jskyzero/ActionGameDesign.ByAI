@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《尼尔：机械纪元》制作谈：不靠谱开发者的欢乐时光 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-platinumgames-2018-nier-automata" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2018 · <span class="title-hl">GDC</span> · PlatinumGames</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《尼尔：机械纪元》制作谈：不靠谱开发者的欢乐时光</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>⚡ 动作手感</span><span class="tag" data-astro-cid-6bfer2tv>🕊️ 自由感</span><span class="tag" data-astro-cid-6bfer2tv>🧱 突破限制</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>手感的关键是让玩家按下按键的瞬间就「有趣」；自由感不来自世界的体量，而来自玩家突破限制的那一瞬。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>A Fun Time in Which Some No-Good Game Developers May or May Not Discuss How We Made &#39;NieR:Automata&#39;</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.gdcvault.com/play/1024894/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.gdcvault.com/play/1024894/</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>田浦贵久、横尾太郎</span>  ·  田浦贵久为白金工作室主游戏设计师，负责《尼尔：机械纪元》玩家角色与敌人 AI 的设计，后执导《异界锁链》；横尾太郎为《尼尔》系列总监与编剧，以打破常规的叙事著称。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://www.bilibili.com/opus/294614999661180101" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（B 站专栏·全篇翻译）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.bilibili.com/video/BV11W411N71T/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中文字幕视频（B 站）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://gwb.tencent.com/community/detail/123883" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（腾讯游戏学堂·总结）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="动作游戏设计按下按键的那一刻就要有趣">动作游戏设计：按下按键的那一刻就要有趣</h2>
+<p>白金工作室主游戏设计师田浦贵久，负责《尼尔：机械纪元》玩家角色与敌人 AI 的设计。他开宗明义：<strong>设计宗旨是让玩家从按下按键的第一刻起就体会到乐趣</strong>——这未必适用于所有游戏，但它是本作所有取舍的出发点。</p>
+<h3 id="设计流程目标先行持续调优">设计流程：目标先行，持续调优</h3>
+<ul>
+<li><strong>明确目标体验</strong>：先想清楚「什么算好玩」，把目标游戏体验写清楚，再评估每个设计的可行性与必要性。</li>
+<li><strong>没有绝对答案</strong>：手感不存在放之四海皆准的标准答案，正因为如此，开局就要有清晰的目标和计划，否则调优无从下手。</li>
+<li><strong>持续调优细节</strong>：手感是靠一轮轮细调磨出来的，非常耗时，且高度依赖执行者的手感直觉。</li>
+</ul>
+<h3 id="即时反馈让响应快得自然">即时反馈：让响应「快得自然」</h3>
+<ul>
+<li><strong>瞬间出招</strong>：基础攻击按下后约 10 帧（0.16 秒）内就要出判定——攻击的「响应」和「结果」同样重要，把命中反馈压到最短，整个游戏都会显得更跟手。</li>
+<li><strong>任意取消</strong>：闪避与跳跃可以随时取消其他动作的前摇，保证「任何时候想闪都能闪」（与《猎天使魔女》同款原则）。</li>
+<li><strong>受击例外</strong>：只有被打中硬直时才会禁用闪避——这个特殊 flag 是经过视觉与数值平衡验证后保留的：不能闪避的短暂瞬间，反而让手感更扎实。</li>
+<li><strong>挫败的代价</strong>：如果按了键却没有立即动作，玩家就会感到挫败；一旦挫败，「不好玩」就顺理成章。</li>
+</ul>
+<h3 id="细节调优让手感对的土办法">细节调优：让手感「对」的土办法</h3>
+<ul>
+<li><strong>追踪敌人 flag</strong>：在攻击动画早期开启自动转向——起手时角色会自动面向范围内敌人；时间太短打不中，太长则动作机械、挑战尽失，只能逐帧试。</li>
+<li><strong>设计与动画的协作</strong>：动画师先出动画，设计师进游戏实测后给出逐帧修改意见，再交还给动画师迭代——白金的工作流就是这么转起来的。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结（动作篇）：手感 = 明确的目标体验 + 即时的输入反馈 + 一轮轮调出来的细节。</p>
+</blockquote>
+<h2 id="游戏中的自由自由感的诞生">游戏中的自由：自由感的诞生</h2>
+<p>横尾太郎戴上面具上台，直言今天不谈剧本创作，只谈一个词：自由。他的结论有些反直觉——<strong>自由不是世界的体量，而是玩家心中认知框架被撑大的那一瞬</strong>。</p>
+<h3 id="自由的错觉高自由度--自由感">自由的错觉：高自由度 ≠ 自由感</h3>
+<ul>
+<li><strong>开放世界疲劳</strong>：沙盒、开放世界、大地图……这些年玩家却在抱怨《上古卷轴》《GTA》式的大地图——满地图无脑跑腿任务与空荡荡的支线。</li>
+<li><strong>状态与体验的区别</strong>：「自由度高」是设计状态，「感到自由」是体验状态，两者并不等价——这正是游戏独有的现象。</li>
+<li><strong>自由的边界</strong>：在 GTA 里你能对 NPC 做的事其实极其有限，所谓开放世界的自由，处处是看不见的墙。</li>
+</ul>
+<h3 id="突破限制才是自由">突破限制才是自由</h3>
+<ul>
+<li><strong>马里奥的启示</strong>：横尾小时候在《超级马里奥》1-1 跳到地图顶部的砖块上，发现分数位置藏着隐藏通道——「这个世界的框架被砸碎了」，原来世界比想象中大得多。</li>
+<li><strong>自由的定义</strong>：自由感诞生于玩家认知框架突然扩大的瞬间：「哦！原来我还能这么做！」玩家在不自由的限制下突破限制，才会惊叹「卧槽，还能这样！」。</li>
+</ul>
+<h3 id="用限制制造自由尼尔的实现">用「限制」制造自由：尼尔的实现</h3>
+<ul>
+<li><strong>小地图反复利用</strong>：预算有限就向内做——设计一个有边界的世界，再在内部嵌套一个更小的「假边界」，让玩家误以为那就是世界尽头（同地图分童年、青年两段游玩，横尾自称是抄《塞尔达：时之笛》）。</li>
+<li><strong>多周目叙事</strong>：Ending A 让玩家以为游戏到此结束、世界就这么大；之后换角色视角重玩、听懂敌人语言，Ending B 才揭示世界比想象中大——对世界的认知被一次次推倒重来。</li>
+<li><strong>打破「已知的隐藏」</strong>：老玩家知道尼尔有隐藏路线，会带着「还会再结束一次」的预期游玩，而游戏再次打破这个预期——认知扩展因此不断发生。</li>
+</ul>
+<h3 id="终盘来自世界另一端的鼓励">终盘：来自世界另一端的鼓励</h3>
+<ul>
+<li><strong>可口可乐的启发</strong>：结局弹幕式的互相援助，灵感来自可口可乐「Small World Machines」广告——印巴两国隔屏互动：「人可以憎恨素未谋面的人，而他们其实和我们一样。」</li>
+<li><strong>放弃强制配对</strong>：原计划强制让关系不好的国家的玩家互看留言，最终放弃——那等于把自己的价值观强加给玩家；游戏至少要给玩家最低限度的自由，让他们做自己的选择。</li>
+<li><strong>随机的世界留言</strong>：改成随机展示来自世界各地的鼓励留言——玩家会看到什么、想到什么，都是未知数。「这就是我想做的电子游戏的自由。」</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：手感的目标是让玩家按下按键的瞬间就有趣；自由不是世界的体量，而是玩家突破认知限制的那一瞬间。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#动作游戏设计按下按键的那一刻就要有趣" class data-astro-cid-fzx4jmue>动作游戏设计：按下按键的那一刻就要有趣</a><a href="#设计流程目标先行持续调优" class="h3" data-astro-cid-fzx4jmue>设计流程：目标先行，持续调优</a><a href="#即时反馈让响应快得自然" class="h3" data-astro-cid-fzx4jmue>即时反馈：让响应「快得自然」</a><a href="#细节调优让手感对的土办法" class="h3" data-astro-cid-fzx4jmue>细节调优：让手感「对」的土办法</a><a href="#游戏中的自由自由感的诞生" class data-astro-cid-fzx4jmue>游戏中的自由：自由感的诞生</a><a href="#自由的错觉高自由度--自由感" class="h3" data-astro-cid-fzx4jmue>自由的错觉：高自由度 ≠ 自由感</a><a href="#突破限制才是自由" class="h3" data-astro-cid-fzx4jmue>突破限制才是自由</a><a href="#用限制制造自由尼尔的实现" class="h3" data-astro-cid-fzx4jmue>用「限制」制造自由：尼尔的实现</a><a href="#终盘来自世界另一端的鼓励" class="h3" data-astro-cid-fzx4jmue>终盘：来自世界另一端的鼓励</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

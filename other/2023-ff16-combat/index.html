@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《最终幻想16》：为各层次玩家打造的正统动作战斗 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2023-ff16-combat" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2023 · <span class="title-hl">CEDEC</span> · Square Enix</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《最终幻想16》：为各层次玩家打造的正统动作战斗</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>⚔️ 战斗设计</span><span class="tag" data-astro-cid-6bfer2tv>🎯 受众分层</span><span class="tag" data-astro-cid-6bfer2tv>🕹️ 操作手感</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「门槛低、天花板高」——用饰品支援降低门槛，用技术介入撑高深度，让不擅长与擅长动作的玩家都感到「是自己在操作」。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>FINAL FANTASY XVI: Combat Design for Players of All Ranges</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://cedec.cesa.or.jp/2023/session/detail/s64285321a8d39.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://cedec.cesa.or.jp/2023/session/detail/s64285321a8d39.html</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>鈴木良太</span>  ·  Square Enix《FF16》战斗总监（第三开发事业本部）；前 Capcom，代表作《鬼泣5》《龙之信条》。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://cedec.cesa.or.jp/2023/session/detail/s64285321a8d39.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDEC 官方页（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://esportstw.com/news/336766/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（台湾电竞新闻）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://gnn.gamer.com.tw/detail.php?sn=255174" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（巴哈姆特）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="面向各层次玩家的战斗设计">面向各层次玩家的战斗设计</h2>
+<p>《FF》的指令式战斗经 ATB 一路演化，到《FF16》首次做成完全实时的正统动作战斗——目标是覆盖「所有层次」的玩家。</p>
+<h3 id="三大目标玩家">三大目标玩家</h3>
+<ul>
+<li><strong>系列玩家</strong>：习惯指令式 / ATB 战斗的老玩家。</li>
+<li><strong>轻量动作玩家</strong>：喜欢动作游戏、追求轻松游玩的玩家。</li>
+<li><strong>重度动作玩家</strong>：要求深入钻研与高挑战的玩家。</li>
+</ul>
+<h3 id="基本铁律">基本铁律</h3>
+<ul>
+<li><strong>效率可以分层，玩法不被否定</strong>：操作效率可以因技巧高低而变化，但绝不能把玩家自己摸索出的玩法判为「错误解答」。</li>
+</ul>
+<h2 id="玩家篇门槛低天花板高">玩家篇：门槛低、天花板高</h2>
+<h3 id="用饰品支援降低门槛不做难度选项">用饰品支援降低门槛（不做难度选项）</h3>
+<ul>
+<li><strong>自动缓慢</strong>：即将被击中时游戏时间减速——但闪避按钮仍需玩家自己按，「在慢动作瞬间按下闪避」就是亲手操作的实感。</li>
+<li><strong>自动治疗剂</strong>：体力降到一定程度时，在最恰当的时机自动使用恢复道具，不浪费。</li>
+<li><strong>自动攻击</strong>：连按攻击键自动打出「看起来最华丽」的连段——优先华丽而非最高伤害。</li>
+<li><strong>可切换的饰品</strong>：每个人不擅长的点不同；不设简单/普通难度选项，换饰品即调难度。</li>
+<li><strong>保留思考空间</strong>：即使支援全开也不能只剩连按——范围攻击要躲、破绽要进攻，因此刻意不采用自动战斗。</li>
+</ul>
+<h3 id="用技术介入撑高天花板">用技术介入撑高天花板</h3>
+<ul>
+<li><strong>精准闪避</strong>（低难度）：成功闪避让敌人瞬间减速，制造攻击机会并触发专用反击。</li>
+<li><strong>魔法爆裂</strong>（中难度）：剑击命中时按下魔法键，追加近距离魔法攻击——连击火力更高、更易破平衡。</li>
+<li><strong>招架</strong>（高难度）：捉准时机挥剑弹开敌人攻击，攻守易位，大型敌人也会停顿；失败则会被击中。</li>
+<li><strong>不惩罚方针</strong>：不强制使用任何技巧——不列为讨伐必要条件，奖励保持在「会了就有好处」的范围内，避免催生「必须会」的压力。</li>
+</ul>
+<h3 id="放宽判定增加成功体验">放宽判定，增加成功体验</h3>
+<ul>
+<li><strong>把「针孔」做大</strong>：时机判定刻意放宽——FF16 招架成立 13 帧，约为过去硬核作品的 3 倍（过去仅 4 帧；1 帧 ≈ 1/60 秒）。</li>
+<li><strong>目的</strong>：增加「感觉自己操作得当」的次数与兴奋点，让玩家真切感到自己在变强。</li>
+</ul>
+<h2 id="玩家篇保持玩法多样性">玩家篇：保持玩法多样性</h2>
+<h3 id="召唤兽特技七选三">召唤兽「特技」（七选三）</h3>
+<ul>
+<li><strong>凤凰</strong>：瞬间拉近与敌人的距离，泛用性极高的动作。</li>
+<li><strong>迦楼罗</strong>：用爪拉近敌人并使其失衡，适合主动抢攻的玩家；空中施展还能把地面敌人拉上天。</li>
+<li><strong>泰坦</strong>：以臂格挡敌人攻击并顺势反击，适合擅长技术介入的玩家。</li>
+</ul>
+<h3 id="能力组合的调整方针">能力组合的调整方针</h3>
+<ul>
+<li><strong>每个招式都有长短处</strong>，短处可由其他召唤兽的招式弥补，避免无用技能。</li>
+<li>迦楼罗系快而多段、泰坦系重而慢——玩家自由装配「火力流」或「反击流」；目标：通关时每位玩家的装配都大不相同。</li>
+</ul>
+<h2 id="玩家篇提升角色与玩家的连接感">玩家篇：提升角色与玩家的连接感</h2>
+<ul>
+<li><strong>不可操作时的姿势</strong>：先定停顿时间，再让动画师摆出「现在不能操作」的姿势——如突刺后重心大幅下倾，让玩家一眼读懂。</li>
+<li><strong>取消时机的法则</strong>：按动作类别分别设定——突刺全长 190 帧：28 帧后可闪避/跳跃/召唤兽动作，再过 10 帧可用攻击/魔法，48 帧后开始移动；闪避与召唤兽动作最优先开放，移动最晚。</li>
+</ul>
+<h2 id="敌人篇提升被击倒时的接受度">敌人篇：提升被击倒时的接受度</h2>
+<h3 id="三个调整">三个调整</h3>
+<ul>
+<li><strong>预兆记号</strong>：攻击前必有预兆，把「会出什么攻击」与「何时出手」调到凭直觉可感——巨人横扫前先夸张地扭身并后退一步。</li>
+<li><strong>降低画面外攻击</strong>：近身攻击前敌人先进入画面再出手；远程魔法型例外，画面外施法时屏幕边缘显示警告图标。</li>
+<li><strong>攻击权门票制度</strong>：小兵领到「门票」才能攻击，攻击后回收——动作聚焦模式最多 2 张、FF 挑战赛 4 张、阿尔提玛挑战赛 8 张，Boss 不受限；既控制群战难度，也让「20 只小兵同屏」的演出不乱。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：门槛低到人人能玩、天花板高到值得钻研——用饰品支援兜底、技术介入加冕，让每个玩家都觉得「是自己在操作」。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#面向各层次玩家的战斗设计" class data-astro-cid-fzx4jmue>面向各层次玩家的战斗设计</a><a href="#三大目标玩家" class="h3" data-astro-cid-fzx4jmue>三大目标玩家</a><a href="#基本铁律" class="h3" data-astro-cid-fzx4jmue>基本铁律</a><a href="#玩家篇门槛低天花板高" class data-astro-cid-fzx4jmue>玩家篇：门槛低、天花板高</a><a href="#用饰品支援降低门槛不做难度选项" class="h3" data-astro-cid-fzx4jmue>用饰品支援降低门槛（不做难度选项）</a><a href="#用技术介入撑高天花板" class="h3" data-astro-cid-fzx4jmue>用技术介入撑高天花板</a><a href="#放宽判定增加成功体验" class="h3" data-astro-cid-fzx4jmue>放宽判定，增加成功体验</a><a href="#玩家篇保持玩法多样性" class data-astro-cid-fzx4jmue>玩家篇：保持玩法多样性</a><a href="#召唤兽特技七选三" class="h3" data-astro-cid-fzx4jmue>召唤兽「特技」（七选三）</a><a href="#能力组合的调整方针" class="h3" data-astro-cid-fzx4jmue>能力组合的调整方针</a><a href="#玩家篇提升角色与玩家的连接感" class data-astro-cid-fzx4jmue>玩家篇：提升角色与玩家的连接感</a><a href="#敌人篇提升被击倒时的接受度" class data-astro-cid-fzx4jmue>敌人篇：提升被击倒时的接受度</a><a href="#三个调整" class="h3" data-astro-cid-fzx4jmue>三个调整</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

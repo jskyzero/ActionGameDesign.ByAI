@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《漫威蜘蛛侠》技术复盘：把整个纽约城塞进一张蓝光碟 · 动作游戏设计知识库</title><meta name="description" content="Elan Ruskin 复盘《漫威蜘蛛侠》如何用串流、压缩、渲染、光照与程序化流水线，把曼哈顿开放世界塞进一张蓝光碟。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2019-spiderman-technical-postmortem" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2019 · <span class="title-hl">GDC</span> · Insomniac Games</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《漫威蜘蛛侠》技术复盘：把整个纽约城塞进一张蓝光碟</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🕸️ 开放世界串流</span><span class="tag" data-astro-cid-6bfer2tv>🏙️ 程序化城市</span><span class="tag" data-astro-cid-6bfer2tv>⚙️ 性能优化</span> </div> <p class="sub" data-astro-cid-6bfer2tv>Elan Ruskin 复盘《漫威蜘蛛侠》如何用串流、压缩、渲染、光照与程序化流水线，把曼哈顿开放世界塞进一张蓝光碟。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「让蜘蛛侠在曼哈顿高速穿梭的秘诀不是黑科技，而是围绕具体问题量身定制的工程：串流、压缩、渲染、光照，每个环节都调对一点点。」</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>&#39;Marvel&#39;s Spider-Man&#39;: A Technical Postmortem</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://gdcvault.com/play/1026496/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://gdcvault.com/play/1026496/</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Elan Ruskin</span>  ·  Insomniac Games 高级引擎程序员，负责《漫威蜘蛛侠》引擎、串流与城市技术，参与《瑞奇与叮当》《抵抗》《日落过载》等系列开发。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1026496/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault 官方页面（原文）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.youtube.com/watch?v=KDhKyIZd3O8" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC 官方 YouTube 演讲视频</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://vitalight.me/archives/spider-man-console-game" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>蜘蛛侠主机游戏：高度定制化的技术方案（全文翻译整理）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://zhuanlan.zhihu.com/p/60501986" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>知乎：GDC2019《漫威蜘蛛侠》的技术复盘</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://zhuanlan.zhihu.com/p/74567486" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>知乎：[gdc19]《蜘蛛侠》开发解读（1/4 概览，含工具/Runtime/研发哲学全系列）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameres.com/849518.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GameRes 转载：GDC 2019《蜘蛛侠》开发解读</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://sea.ign.com/spider-man-ps4/148447/news/spider-man-ps4-had-to-unmake-its-manhattan-open-world-to-keep-running" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>IGN 报道：拆解曼哈顿以装下 Fisk Tower 内部</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://kotaku.com/insomniac-reveals-one-of-the-camera-tricks-that-makes-s-1834246823" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Kotaku 报道：让城市显得更大的镜头技巧</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://80.lv/articles/marvels-spider-man-a-technical-postmortem" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>80.lv 报道：Marvel&#39;s Spider-Man: A Technical Postmortem</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="三重矛盾速度--规模--容量">三重矛盾：速度 × 规模 × 容量</h2>
+<ul>
+<li><strong>演讲背景</strong>：GDC 2019「Programming」分会场演讲，主讲人 Elan Ruskin（Insomniac Games 高级引擎程序员），复盘 2018 年 9 月发售的 PS4《漫威蜘蛛侠》；截至 2019 年 7 月游戏销量超 900 万份。</li>
+<li><strong>挑战三角</strong>：曼哈顿大地图（海量物件、超大视野）＋ 蜘蛛侠最高约 32m/s 的高速移动 ＋ AAA 级品质，三者互相拉扯。</li>
+<li><strong>连锁代价</strong>：移动越快，单位时间需串流的数据越多，IO 带宽压力成倍上升；城市越大，磁盘与内存越吃紧。</li>
+<li><strong>容量红线</strong>：游戏尚未完成时预估体积已超过一张蓝光碟容量——既增加发行成本，多碟换碟的体验也差，必须从根上压缩数据。</li>
+</ul>
+<h2 id="串流与文件为飞檐走壁量身定制">串流与文件：为「飞檐走壁」量身定制</h2>
+<h3 id="串流">串流</h3>
+<ul>
+<li><strong>分块加载</strong>：地图按矩形块（Zone）划分存储与加载，相交判断用圆形范围简化计算；每移动一个区块需读入周边约 5 个新区块。</li>
+<li><strong>直线预载</strong>：玩家多为近似直线运动，所以只预载正前方 3 块；蜘蛛侠转向约需 1 秒，足够异步加载系统重新规划。</li>
+<li><strong>Delayed Loading</strong>：高速移动时镜头有运动模糊，贴图只载入 mip 3/4 低层级，停下才载 mip0；空中疾驰时街边店铺内模型一并延后加载，大幅节省带宽。</li>
+<li><strong>Fisk Tower 开场任务</strong>：内部空间远大于外观包络、无法与曼哈顿同时驻留内存——用镜头对焦建筑正面、背景虚化来「拆解」曼哈顿，卸载玩家看不到的区域，同时在空中加载更大的内部模型，蜘蛛侠破窗瞬间切到内部场景，玩家毫无察觉。</li>
+</ul>
+<h3 id="文件与内存">文件与内存</h3>
+<ul>
+<li><strong>推翻空间换时间</strong>：PS 平台机械硬盘 seek 昂贵，惯例是 Duplication（冗余存储）换取连续读取，但纽约规模下磁盘装不下。</li>
+<li><strong>聪明冗余</strong>：可延迟加载的文件、体积 &gt;4MB 的文件、冗余次数 &gt;400 的文件不再重复存储。</li>
+<li><strong>模型格式魔改</strong>：顶点索引改存增量（74,75,76 → 74,+1,+1），数据重复更多，配合 LZ4 压缩后模型文件体积再省约 20%。</li>
+<li><strong>屋顶装饰 Hibernate</strong>：水塔、烟囱等约 60 万个实例用精简对象只存必要信息（位置存为区块中心偏移量，16 位即可），从 384B/个降到 40B/个，总内存 230.4MB → 24MB，玩家靠近时才切换为完整 GameObject。</li>
+</ul>
+<h2 id="渲染与光照把城市装进内存">渲染与光照：把城市装进内存</h2>
+<h3 id="渲染">渲染</h3>
+<ul>
+<li><strong>3D Imposter 远景</strong>：远景建筑用极低面数、无 UV/法线（靠 position 反算）的替身，以 Zone 为单位把贴图打成 atlas、按 cubemap 方式采样，兼顾 PS4 画质与性能。</li>
+<li><strong>帧时间优化</strong>：async compute 并行跑 SSAO/FFT/SSR；后处理移到下一帧帧首执行。</li>
+</ul>
+<h3 id="光照">光照</h3>
+<ul>
+<li><strong>预烘焙的陷阱</strong>：城市级规模下预烘焙光照贴图的内存/磁盘不可承受，且开发期城市频繁改动导致反复重烘焙。</li>
+<li><strong>环境反射改造</strong>：envprobe/IBL 改为实时异步生成 + 缓存，磁盘占用 0，替代原本约 8GB 的离线探测球。</li>
+<li><strong>漫反射方案</strong>：用离线烘焙的 lightgrid（irradiance volume，256 分辨率 cubemap 卷积成 HDR 颜色+方向），按昼夜多时段烘焙多套数据。</li>
+</ul>
+<h2 id="程序化城市用流水线取代手摆">程序化城市：用流水线取代手摆</h2>
+<ul>
+<li><strong>错误的垂直切片</strong>：早期手工搭建的垂直切片很美，但照此速度永远做不完整个曼哈顿——流程不可扩展，必须改变城市的构建方式。</li>
+<li><strong>Houdini 流水线</strong>：程序化生成路面/路径、建筑与装饰、车辆、特效及部分 gameplay 事件；要点是分治（按区模块化生成）、简化（限制策划美术选项、减少耦合）、打好 tag 区分程序生成与手工摆放资产。</li>
+<li><strong>行人 AI 的 LOD</strong>：默认轻量逻辑，每 30 秒随机将附近一名行人升级为完整 AI（合照/签名、报案、指引去重要区域等交互）；远处行人动画与 AI 暂停、只做左右平移的「仍在走动」错觉。</li>
+<li><strong>活的城市的成长</strong>：车流、街头小景与随机犯罪也从简单起步，逐步长成「活的城市」的一部分。</li>
+</ul>
+<h2 id="拍照模式与四条信条">拍照模式与四条信条</h2>
+<ul>
+<li><strong>拍照模式的诞生</strong>：最初只打算做简单版用于宣传，玩家大量自拍/晒图带来可观传播价值后，团队加码滤镜、贴花等功能。</li>
+<li><strong>信条一：Simple is Good</strong>——简单的实现就是好的实现。</li>
+<li><strong>信条二：Fit Tech To Context</strong>——因地制宜，自研引擎可以无限魔改。</li>
+<li><strong>信条三：Revisit Speed-Space Tradeoffs</strong>——重新权衡空间与速度，CPU 充裕、磁盘吃紧时反转传统取舍。</li>
+<li><strong>信条四：If There’s No Fun Then What is Even The Point</strong>——做游戏先要好玩。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：把曼哈顿、32m/s 的高速移动和 AAA 品质同时塞进一张蓝光碟，靠的不是黑科技，而是串流、压缩、渲染、光照、程序化每个环节都调对一点点。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#三重矛盾速度--规模--容量" class data-astro-cid-fzx4jmue>三重矛盾：速度 × 规模 × 容量</a><a href="#串流与文件为飞檐走壁量身定制" class data-astro-cid-fzx4jmue>串流与文件：为「飞檐走壁」量身定制</a><a href="#串流" class="h3" data-astro-cid-fzx4jmue>串流</a><a href="#文件与内存" class="h3" data-astro-cid-fzx4jmue>文件与内存</a><a href="#渲染与光照把城市装进内存" class data-astro-cid-fzx4jmue>渲染与光照：把城市装进内存</a><a href="#渲染" class="h3" data-astro-cid-fzx4jmue>渲染</a><a href="#光照" class="h3" data-astro-cid-fzx4jmue>光照</a><a href="#程序化城市用流水线取代手摆" class data-astro-cid-fzx4jmue>程序化城市：用流水线取代手摆</a><a href="#拍照模式与四条信条" class data-astro-cid-fzx4jmue>拍照模式与四条信条</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

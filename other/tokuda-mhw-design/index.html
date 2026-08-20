@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>从场景与怪物的制作工程解读《怪物猎人：世界》的游戏设计 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-tokuda-mhw-design" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2018 · <span class="title-hl">CEDEC</span> · 其他</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>从场景与怪物的制作工程解读《怪物猎人：世界》的游戏设计</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🌍 生态设计</span><span class="tag" data-astro-cid-6bfer2tv>🐉 怪物设计</span><span class="tag" data-astro-cid-6bfer2tv>💡 概念设计</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>以「怪物为轴心」的生态设计——场景与怪物一体构思，用「冲击性 + 攻略性」让玩家反复狩猎也不腻。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>フィールドとモンスターの制作工程から読み解く「モンスターハンター：ワールド」のゲームデザイン</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://cedil.cesa.or.jp/cedil_sessions/view/1942" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://cedil.cesa.or.jp/cedil_sessions/view/1942</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>德田优也</span>  ·  Capcom 第二开发部总监，2004 年入社，自《怪物猎人 G》起参与《怪物猎人》系列开发，负责金狮子、轰龙、迅龙等主要怪物制作；《怪物猎人：世界》总监，负责概念设计与游戏内容执导。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://cedil.cesa.or.jp/cedil_sessions/view/1942" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDiL 官方页面（原，含讲义 PDF）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameres.com/820167.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameRes 编译自 4Gamer 现场报告）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://zhuanlan.zhihu.com/p/56294550" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（知乎 · 4Gamer 报告）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.bilibili.com/video/BV1LM4y1n7Pd" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（B 站字幕视频）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="概念从何而来">概念从何而来</h2>
+<p>德田优也 2004 年进入 Capcom，从《怪物猎人 G》起持续参与系列开发，主要负责金狮子、轰龙、迅龙等主要怪物。回顾过往，对他最重要的作品是《怪物猎人 3》。</p>
+<h3 id="怪物猎人-3的顿悟">《怪物猎人 3》的顿悟</h3>
+<ul>
+<li>水中战斗的取舍：让地上与水中的手感一致，同时加入纵向移动与闪避——这段经历让他意识到「<strong>想活用怪物，就必须连同场景一起设计</strong>」。</li>
+<li>在区分怪物出场场景、强弱排序与骨骼的过程中，重新确认「《怪物猎人》的游戏体验以怪物为轴心」。</li>
+</ul>
+<h3 id="三项目标与商品概念">三项目标与商品概念</h3>
+<ul>
+<li><strong>制作人辻本良三的三项目标</strong>：家用主机上做出次世代《怪物猎人》、让日本与海外玩家都能享受、2017 年底发售。</li>
+<li><strong>2014 年先下印象视觉设计订单</strong>：弱肉强食的大型怪物、环境生物、3 只以上大型怪物同场，随从艾路也在其中。</li>
+<li><strong>三条商品概念</strong>：家用主机上的世界最高品质《怪物猎人》、能成为下一个十年基础的《怪物猎人》、初学者也能马上上手的《怪物猎人》。</li>
+<li>世界观由此推导：新大陆 + 调查团设定，是为了放心打造全新生态，也让新玩家更容易代入。</li>
+</ul>
+<h3 id="动作与场景的方向">动作与场景的方向</h3>
+<ul>
+<li><strong>无接缝</strong>：恢复、填充时也能移动，重点放在「不让玩家停止行动」。</li>
+<li><strong>高密度而非广度</strong>：利用环境躲开怪物视线、引怪入陷阱；刺激草食龙赶到邻区，引诱大型怪物——这是无读盘区域带来的战术可能。</li>
+</ul>
+<h2 id="场景与怪物一体设计">场景与怪物一体设计</h2>
+<p>每个场景都按生态逻辑分层，怪物和机关是场景的一部分。</p>
+<h3 id="古代树森林新手村的生态分层">古代树森林：新手村的生态分层</h3>
+<ul>
+<li>开阔草地放无攻击性的草食龙；踏进森林一步就遇上肉食性的贼龙、第一个难关蛮颚龙；场景中央栖息食物链顶端的雄火龙。</li>
+<li>机关（麻痹气体蛙、冲走怪物的水坝）按场景与地图难度配置——「要配置的东西比以往系列多，所以设计时把要素分解开来」。</li>
+</ul>
+<h3 id="瘴气之谷从大象墓场鲸骨生物群集出发">瘴气之谷：从「大象墓场」「鲸骨生物群集」出发</h3>
+<ul>
+<li>以古龙尸骸为中心形成独特生态，与故事和新大陆整体的生态环境紧密相关——这是德田一直想做的场景。</li>
+</ul>
+<h3 id="大蚁塚荒地与龙结晶之地">大蚁塚荒地与龙结晶之地</h3>
+<ul>
+<li><strong>大蚁塚荒地</strong>：兼顾开阔感，用水和泥限制玩家行动。</li>
+<li><strong>龙结晶之地</strong>：怪物本身就很强悍，场景反而做得方便游玩。</li>
+</ul>
+<h2 id="怪物设计">怪物设计</h2>
+<p>怪物是「<strong>给予玩家适度压力，最后被玩家打倒的存在</strong>」。系列三大特征里，最重要的是「和同一只怪物打数次也很有趣」。</p>
+<h3 id="冲击性">冲击性</h3>
+<ul>
+<li>举起巨石、与身材不符的飞扑——让玩家看到就吃惊的要素。</li>
+<li>让玩家产生「这怪到底怎么打」的感觉，打倒后的感动会加倍。</li>
+<li>冲击性受画面设计影响较多，但<strong>设计者不去意识，就会做出欠缺冲击性的怪物</strong>。</li>
+</ul>
+<h3 id="攻略性">攻略性</h3>
+<ul>
+<li>给玩家更多行动选项：一开始只能挡下来的攻击，朝怪物方向回避反而能获得攻击机会。</li>
+<li>玩家注意到「原来可以这样打」的瞬间，狩猎就更有趣——<strong>要素越多、攻略性越高，反复狩猎也不腻</strong>。</li>
+</ul>
+<h3 id="尽早定型与及时确认">尽早定型与及时确认</h3>
+<ul>
+<li>越早决定怪物在游戏里扮演的角色与设计概念，调平衡的时间越宽裕。</li>
+<li>设计者要即时确认成品，与调整团队保持紧密联络，这是提升整体品质的重点。</li>
+</ul>
+<h2 id="企画的三条心得">企画的三条心得</h2>
+<ul>
+<li><strong>确认前提条件 / 基本概念</strong>。</li>
+<li><strong>冲击性和攻略</strong>。</li>
+<li><strong>不要放弃的点子</strong>：当年在《怪物猎人 3》被否的「次级任务」提案，在《怪物猎人：世界》以「奖金（Bounty）」形式复活。</li>
+</ul>
+<p>德田最后提醒想做游戏设计的人：<strong>「制作或改变规则来取悦别人的经验，会是你的一大优势」</strong>——他自己就来自学生时代制作 TRPG 规则的经验。</p>
+<blockquote>
+<p>✦ 一句话总结：以「怪物为轴心」，把场景、怪物与机关当作一体来设计——用冲击性制造惊叹，用攻略性留出选择，让玩家反复狩猎也不腻。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#概念从何而来" class data-astro-cid-fzx4jmue>概念从何而来</a><a href="#怪物猎人-3的顿悟" class="h3" data-astro-cid-fzx4jmue>《怪物猎人 3》的顿悟</a><a href="#三项目标与商品概念" class="h3" data-astro-cid-fzx4jmue>三项目标与商品概念</a><a href="#动作与场景的方向" class="h3" data-astro-cid-fzx4jmue>动作与场景的方向</a><a href="#场景与怪物一体设计" class data-astro-cid-fzx4jmue>场景与怪物一体设计</a><a href="#古代树森林新手村的生态分层" class="h3" data-astro-cid-fzx4jmue>古代树森林：新手村的生态分层</a><a href="#瘴气之谷从大象墓场鲸骨生物群集出发" class="h3" data-astro-cid-fzx4jmue>瘴气之谷：从「大象墓场」「鲸骨生物群集」出发</a><a href="#大蚁塚荒地与龙结晶之地" class="h3" data-astro-cid-fzx4jmue>大蚁塚荒地与龙结晶之地</a><a href="#怪物设计" class data-astro-cid-fzx4jmue>怪物设计</a><a href="#冲击性" class="h3" data-astro-cid-fzx4jmue>冲击性</a><a href="#攻略性" class="h3" data-astro-cid-fzx4jmue>攻略性</a><a href="#尽早定型与及时确认" class="h3" data-astro-cid-fzx4jmue>尽早定型与及时确认</a><a href="#企画的三条心得" class data-astro-cid-fzx4jmue>企画的三条心得</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

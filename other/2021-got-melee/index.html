@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>大师之刃：《对马岛之魂》的近身战斗 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2021-got-melee" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2021 · <span class="title-hl">GDC</span> · Sucker Punch</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>大师之刃：《对马岛之魂》的近身战斗</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>⚔️ 近战设计</span><span class="tag" data-astro-cid-6bfer2tv>🥋 架势系统</span><span class="tag" data-astro-cid-6bfer2tv>🧭 玩家引导</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「玩家觉得最高效的玩法，就是他们觉得最有意思的玩法」——不惩罚旧打法，把新玩法做得更顺手、更直观，玩家自己就会走进去。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Master of the Katana: Melee Combat in Ghost of Tsushima</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=1ih5BxnJu2I" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=1ih5BxnJu2I</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Chris Zimmerman</span>  ·  Sucker Punch Productions 联合创始人兼工作室负责人，负责《对马岛之魂》战斗系统。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://www.gdcvault.com/play/1027019/Master-of-the-Katana-Melee" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameres.com/887233.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameRes 完整演讲）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="http://www.gamelook.com.cn/2021/08/448968/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameLook 完整演讲）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="三个目标把武士对决框起来">三个目标，把武士对决框起来</h2>
+<p>《对马岛之魂》取材于 1274 年蒙古入侵对马（文永之役）：八十多名武士战死，主角境井仁是仅存的武士，只能舍弃叔父传授的堂堂正正，用苦无、烟雾弹化身「冥人」反击。战斗系统就诞生在这三个目标之下：</p>
+<ul>
+<li><strong>玩家沉浸感</strong>：让游戏成为玩家的「时光机」，置身历史中的日本。</li>
+<li><strong>脚踏实地</strong>：不做完全还原历史的游戏，而是基于事实做「有真实感」的游戏——没有怪兽、没有魔法，全凭土、血与铁。</li>
+<li><strong>低门槛</strong>：不想把游戏锁进细分市场，几百万玩家都要能玩。</li>
+</ul>
+<p>近身战斗是这套思路的落点：刀的外观与打击感是一切的前提；仁被逼着用的「下三滥」招数，又反过来推动故事。如果战斗从不引导玩家用暗器、暗杀，故事逻辑就会出现纰漏。</p>
+<h2 id="规律与精准近身战斗的骨架">「规律与精准」：近身战斗的骨架</h2>
+<p>Chris 把近身战斗的关键总结为「规律与精准」，背后是「静与动」「紧张与缓和」：敌人的每个动作都有明确目的，玩家要精准处理；身处险境时则要悄悄行动、静候时机，在正确的时间点一口气爆发。</p>
+<h3 id="玩家不是反应而是预测">玩家不是反应，而是预测</h3>
+<ul>
+<li><strong>真人反应太慢了</strong>：早期想让 NPC 反应接近人类，结果动作又慢又粗糙，彻底失败。</li>
+<li><strong>原因</strong>：时代剧的武打都是编排好的固定动作，玩家只能靠「预测」而非纯反应去应对。</li>
+<li><strong>目标</strong>：把《对马岛》做成纯靠玩家技术的游戏——操作完美的玩家可以毫发无损地连杀一片，像电视剧主角一样。</li>
+</ul>
+<h3 id="格挡第一个让人满意的技术驱动设计">格挡：第一个让人满意的技术驱动设计</h3>
+<ul>
+<li><strong>弹反</strong>：抓准时机弹开敌人攻击，玩家不是按按钮，而是感觉自己真的在挥刀、架刀。</li>
+<li><strong>沉浸感的第一个例子</strong>：玩家能感到自己正在用刀。</li>
+<li><strong>格挡过强？</strong> 团队清楚格挡机制过分强大，但「玩家觉得最高效的玩法，就是他们觉得最有意思的玩法」——它强，所以玩家享受。</li>
+</ul>
+<h2 id="奖励玩家做过的事不惩罚没做的事">奖励玩家做过的事，不惩罚没做的事</h2>
+<p>测试显示玩家会各显神通（剑戟对决、技能、暗器、暗杀），但也容易死守一种高效打法不再换。引导换打法有两条路：<strong>阻止旧打法</strong>，或<strong>让新打法更有吸引力</strong>。前者会剥夺玩家最爽的玩法，还让人意识到「我在玩游戏」，破坏沉浸感——团队选了后者。</p>
+<h3 id="强攻击把好处做出来给玩家看">强攻击：把好处做出来给玩家看</h3>
+<ul>
+<li><strong>现状</strong>：测试中 90% 以上的玩家只用更快的弱攻击，但用强攻击的人战斗更高效。</li>
+<li><strong>调法</strong>：强攻击专破防御，一次击溃太简单，就做成多次击溃，同时加伤害、加速度。</li>
+<li><strong>视觉传达</strong>：给敌人加「眩晕槽」，猛攻时画面还会闪烁——不堆 UI，让玩家直观感到强攻击的收益。</li>
+</ul>
+<h3 id="暗器简化操作消除挫败感">暗器：简化操作，消除挫败感</h3>
+<ul>
+<li><strong>苦无</strong>：射程远、难瞄准，玩家自然会放弃打不中的武器。追加「隐刃」技能一次投出复数苦无，让玩家感觉「不会落空」。</li>
+<li><strong>装备限制</strong>：苦无、粘性炸弹、烟雾弹只能固定装备一个——少一个按键组合，就少一份战斗中的思考负担。</li>
+<li><strong>掉率</strong>：手边道具少就不爱用，所以即使携带数已满，也允许继续拾取。</li>
+</ul>
+<h2 id="用新情境催生变化弓兵的例子">用新情境催生变化：弓兵的例子</h2>
+<p>一味追求复杂化会带来挫败感，反过来又让游戏简单无趣。以弓兵为例：画面外射箭让玩家憋屈；玩家养成「一看到敌人先把弓兵暗杀」的习惯后，战斗又变得机械。</p>
+<ul>
+<li><strong>解法</strong>：给箭矢加破空音效，让玩家在画面外也能听到、能回避。</li>
+<li><strong>「虚假」被接受</strong>：像敌人在喊「我要射你了」，听着不协调，但测试里玩家善意地接受了这种向玩法妥协的设计。</li>
+<li><strong>情景设计</strong>：再设计行动受限、并肩作战等冲突，玩家绕不开预设情景，自然就会试出新打法。</li>
+</ul>
+<h2 id="初次体验架势系统是半路加进来的">初次体验：架势系统是半路加进来的</h2>
+<p>架势其实是开发中途才加的系统——团队本来担心游戏太复杂，实装测试时利用率也确实低，玩家的负担看得见。但构思获得好评，团队决定保留，并把力气花在<strong>第一次体验</strong>上，让玩家一上手就明白它的好处。</p>
+<ul>
+<li><strong>水型 vs 石型</strong>：水型崩解敌人格挡的速度是石型的两倍，专克持盾士兵。</li>
+<li><strong>立刻兑现</strong>：玩家拿到水型后，马上就遭遇一场盾兵战——好处当场见效。</li>
+<li><strong>同理</strong>：拿到苦无后有对应苦无的战斗；主线送的铠甲数值好、外观也漂亮。</li>
+<li><strong>第一印象</strong>：初次体验不佳，玩家就会走回老路子——所有后续体验都建立在第一印象上。</li>
+</ul>
+<h2 id="先找魔法单挑">先找「魔法」：单挑</h2>
+<p>Chris 说新项目第一件事是找「魔法」（灵感）。《对马岛》的魔法是<strong>单挑</strong>——致敬黑泽明《椿三十郎》里三十郎与半兵卫的经典对决。</p>
+<ul>
+<li><strong>拔刀</strong>：不是让玩家配合时机按下按键，而是长按蓄力、抓准时机<strong>松手拔刀</strong>，营造出鞘的效果。</li>
+<li><strong>演出与构图</strong>：动画和构图专门用来渲染紧张感。</li>
+<li><strong>很早就定了</strong>：2018 年 E3 就放出单挑原型视频；落地需要大量技术作业，但它一直是《对马岛》最重要的一部分。</li>
+<li><strong>测试底气</strong>：六年开发里，内部测试约 35 次、外部约 25 次，其中一半外测为期一周——灵感靠大量原型和数据来验证。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：让「最高效」的打法成为「最有意思」的打法——奖励新尝试、不惩罚旧习惯，用情境与初次体验把玩家引向新玩法；先找到属于自己的「魔法」。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#三个目标把武士对决框起来" class data-astro-cid-fzx4jmue>三个目标，把武士对决框起来</a><a href="#规律与精准近身战斗的骨架" class data-astro-cid-fzx4jmue>「规律与精准」：近身战斗的骨架</a><a href="#玩家不是反应而是预测" class="h3" data-astro-cid-fzx4jmue>玩家不是反应，而是预测</a><a href="#格挡第一个让人满意的技术驱动设计" class="h3" data-astro-cid-fzx4jmue>格挡：第一个让人满意的技术驱动设计</a><a href="#奖励玩家做过的事不惩罚没做的事" class data-astro-cid-fzx4jmue>奖励玩家做过的事，不惩罚没做的事</a><a href="#强攻击把好处做出来给玩家看" class="h3" data-astro-cid-fzx4jmue>强攻击：把好处做出来给玩家看</a><a href="#暗器简化操作消除挫败感" class="h3" data-astro-cid-fzx4jmue>暗器：简化操作，消除挫败感</a><a href="#用新情境催生变化弓兵的例子" class data-astro-cid-fzx4jmue>用新情境催生变化：弓兵的例子</a><a href="#初次体验架势系统是半路加进来的" class data-astro-cid-fzx4jmue>初次体验：架势系统是半路加进来的</a><a href="#先找魔法单挑" class data-astro-cid-fzx4jmue>先找「魔法」：单挑</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

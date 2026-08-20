@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《游戏设计：风险与回报》：解读游戏趣味性的底层机制 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2004-sakurai-risk-reward" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2004 · <span class="title-hl">GDC</span> · 其他</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《游戏设计：风险与回报》：解读游戏趣味性的底层机制</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>⚖️ 风险与回报</span><span class="tag" data-astro-cid-6bfer2tv>🎯 游戏趣味性</span><span class="tag" data-astro-cid-6bfer2tv>🧗 难度设计</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>游戏趣味性的本质是风险与回报——玩家总在想办法用最小风险换取最大回报，这正是攻略的乐趣。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Game Design: Risk and Return</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=ugR8JbXciGY" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=ugR8JbXciGY</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>樱井政博</span>  ·  HAL 研究所出身，《星之卡比》《任天堂明星大乱斗》系列之父，2005 年创立 Sora 工作室。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://archive.org/details/2004_GDC_-_03-24-2004_Sakurai_1230-130p_2-Channel" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC 现场录音（Internet Archive）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gcores.com/articles/99889" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（机核，完整演讲译文）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.bilibili.com/video/BV1t9YkekEki/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中日双语字幕（B 站）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="游戏性--风险与回报">游戏性 = 风险与回报</h2>
+<p>游戏性（Game Playability）是衡量游戏趣味程度的词。樱井政博在 GDC 2004 上给了它一个更直白的解释：<strong>游戏性 = 风险与回报</strong>。</p>
+<ul>
+<li><strong>风险</strong>：游戏中让玩家感到威胁的要素——可怕、危险的东西。</li>
+<li><strong>回报</strong>：排除威胁的过程——打倒敌人、赢得战斗。</li>
+<li>画面漂亮、教程有趣，不等于游戏性高；「哪里有趣」可以用风险与回报逐条拆解。</li>
+</ul>
+<h2 id="从太空侵略者说起">从《太空侵略者》说起</h2>
+<p>26 年前的《太空侵略者》，是理解风险与回报最好的例子。</p>
+<h3 id="没有风险就没有回报">没有风险就没有回报</h3>
+<ul>
+<li>敌人离炮台远时，怎么开炮都打不中——<strong>没有风险，也没有回报</strong>，游戏就没有张力。</li>
+<li>炮台靠得越近，被击中的风险越高，但击破敌人的可能也越大——<strong>冒着风险换取回报，就是游戏的本质</strong>。</li>
+</ul>
+<h3 id="攻略用最小风险换最大回报">攻略：用最小风险换最大回报</h3>
+<ul>
+<li>玩家不会一味蛮干，而是想方设法<strong>用较小的风险取得最大的回报</strong>——这就是攻略（Strategy）。</li>
+<li>风险区域（敌人攻击能命中炮台的区域）在敌人移动方向的斜后方：追着敌人打会闯进风险区还打不中；反过来让敌人追着自己打，就能<strong>不进入风险区完成击破</strong>。</li>
+<li>炮台中心到边缘的距离是平衡的关键点——一款 26 年前的游戏，就把风险与回报的平衡想得如此周全。</li>
+</ul>
+<h3 id="名古屋打法风险与回报同时到顶">「名古屋打法」：风险与回报同时到顶</h3>
+<ul>
+<li>敌人压到最底线的瞬间，炮台会短暂进入<strong>无敌状态</strong>——风险最大化的同时，回报也最大化。</li>
+<li>这其实是个 BUG，不是制作者的本意；但风险与回报在同一刻抵达极值，<strong>「只能用艺术来形容它」</strong>。</li>
+</ul>
+<h2 id="动作游戏的两种路线">动作游戏的两种路线</h2>
+<p>用《超级马力欧兄弟》和《星之卡比》，樱井政博讲清了动作游戏风险设计的两端。</p>
+<h3 id="超级马力欧极限高风险换极限回报">《超级马力欧》：极限高风险，换极限回报</h3>
+<ul>
+<li>乌龟：离得远时低风险、无回报；越靠近风险越高；坐标几乎重合、只差一步时风险到顶，此时踩中乌龟就是<strong>最大回报 + 龟壳武器「特典」</strong>，稍有偏离就失败。</li>
+<li>马力欧把风险与回报的<strong>距离调得非常近</strong>——让玩家在极限的高风险状态下一口气取得回报。</li>
+</ul>
+<h3 id="星之卡比替初心者预先削风险">《星之卡比》：替初心者预先削风险</h3>
+<ul>
+<li>樱井年轻时觉得马力欧「稍微有点难」，于是做了《星之卡比》。</li>
+<li>卡比的「特典」是<strong>单方面攻击</strong>：张大嘴吸进敌人、再吐出去攻击，还能滞空躲避陷阱——一种预先降低风险的能力。</li>
+<li>对风险的感觉因人而异：老玩家觉得适中的难度，新手可能觉得极高；反复打不过，自然就无聊了——<strong>卡比系列就是为了避免这种情况而做的</strong>。</li>
+<li>开发时也吵过「这么简单真的好吗」，最后结论：<strong>给初心者的游戏，这样就好</strong>。</li>
+<li>这是价值观问题，没有唯一正确答案：风险变大，更刺激、回报更高、难度也更大——<strong>怎么取舍，取决于开发者</strong>。</li>
+</ul>
+<h2 id="格斗游戏别做成无脑连打">格斗游戏：别做成无脑连打</h2>
+<p>风险与回报能套进几乎所有类型——格斗、赛车、卡牌、策略，一针见血。</p>
+<ul>
+<li>格斗游戏的关键：<strong>战斗动作要设计成鼓励策略</strong>，而不是纯按键连打。</li>
+<li>掌握针对敌人攻击的<strong>应对手段，才是拿到回报的关键</strong>。</li>
+</ul>
+<h2 id="游戏性不是乐趣的全部">游戏性不是乐趣的全部</h2>
+<p>风险与回报解释得了「游戏性」，但游戏还有很多与游戏性无关的乐趣：</p>
+<ul>
+<li><strong>操作本身</strong>：方向盘、操纵杆这类特殊控制器，操作感本身就是乐趣——即使没有游戏性也能做出有魅力的游戏。</li>
+<li><strong>IP 与角色</strong>：粉丝向游戏里，还原原作世界观比游戏性更重要。</li>
+<li><strong>体育游戏</strong>：操作自己喜欢的队伍或选手，比操作不感兴趣的要有趣得多。</li>
+<li><strong>过场动画</strong>：播片可以填充大量细节；很多人就是为了看下一段剧情而继续玩。</li>
+<li><strong>模仿现实</strong>：真实车种、真实赛道带来的临场感，是另一种趣味。</li>
+<li><strong>音乐游戏</strong>：跟着音乐融入韵律，是人类还不懂语言时就存在的乐趣；听到熟悉的曲子本身就会快乐。</li>
+<li><strong>给开发者的提醒</strong>：视频游戏的可能性还远未穷尽；别只顾做自己想玩的游戏——<strong>把玩家放在首位，用风险与回报的理念去做</strong>。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：游戏趣味性的本质是风险与回报——用最小风险换最大回报是攻略，用高风险换高回报是刺激；同时记住，操作、IP、播片、音乐这些游戏性之外的乐趣同样重要。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#游戏性--风险与回报" class data-astro-cid-fzx4jmue>游戏性 = 风险与回报</a><a href="#从太空侵略者说起" class data-astro-cid-fzx4jmue>从《太空侵略者》说起</a><a href="#没有风险就没有回报" class="h3" data-astro-cid-fzx4jmue>没有风险就没有回报</a><a href="#攻略用最小风险换最大回报" class="h3" data-astro-cid-fzx4jmue>攻略：用最小风险换最大回报</a><a href="#名古屋打法风险与回报同时到顶" class="h3" data-astro-cid-fzx4jmue>「名古屋打法」：风险与回报同时到顶</a><a href="#动作游戏的两种路线" class data-astro-cid-fzx4jmue>动作游戏的两种路线</a><a href="#超级马力欧极限高风险换极限回报" class="h3" data-astro-cid-fzx4jmue>《超级马力欧》：极限高风险，换极限回报</a><a href="#星之卡比替初心者预先削风险" class="h3" data-astro-cid-fzx4jmue>《星之卡比》：替初心者预先削风险</a><a href="#格斗游戏别做成无脑连打" class data-astro-cid-fzx4jmue>格斗游戏：别做成无脑连打</a><a href="#游戏性不是乐趣的全部" class data-astro-cid-fzx4jmue>游戏性不是乐趣的全部</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

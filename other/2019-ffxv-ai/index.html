@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《最终幻想15》：用深度学习自动生成敌人 AI · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2019-ffxv-ai" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2019 · <span class="title-hl">CEDEC</span> · Luminous Productions</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《最终幻想15》：用深度学习自动生成敌人 AI</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🤖 AI 技术</span><span class="tag" data-astro-cid-6bfer2tv>🧠 强化学习</span><span class="tag" data-astro-cid-6bfer2tv>⚔️ 敌人设计</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「光会变强不够格当游戏对手」——深度学习量产敌人 AI，再用调整报酬与人工介入，把最优解拉回好玩的对手。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>It&#39;s Not Enough to Just Make Them Strong! I Tried Making Enemy AI for a 3D Action Game with Deep Learning</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://cedec.cesa.or.jp/2019/session/detail/s5c8f2a755dbc1.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://cedec.cesa.or.jp/2019/session/detail/s5c8f2a755dbc1.html</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>上段達弘</span>  ·  Luminous Productions 开发部程序员，参与《最终幻想15》同伴 AI 与照片 AI 的开发。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://cedec.cesa.or.jp/2019/session/detail/s5c8f2a755dbc1.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDEC 官方页面（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://esportstw.com/news/6748/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（台湾电竞新闻）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://gnn.gamer.com.tw/detail.php?sn=185701" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（巴哈姆特 GNN）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="让-ai-来制作敌人-ai">让 AI 来制作敌人 AI</h2>
+<p>传统敌人 AI 靠脚本语言或参数表制作；Luminous Studio 的「AI Graph」让非程序员也能参与，但依然免不了需要编程能力的作业，而且每加一种怪物就要重复一次制作流程，成本可观——所以想到「<strong>用 AI 来制作敌人 AI</strong>」。</p>
+<h3 id="三个目标">三个目标</h3>
+<ul>
+<li><strong>不靠人手自动制作 AI</strong>：用深度学习的模拟代替人工编写。</li>
+<li><strong>保持自然且聪明的水准</strong>：看起来够水准的 AI 才算合格。</li>
+<li><strong>让企划人员之后能调整 AI</strong>：学习结果并非终点。</li>
+</ul>
+<h3 id="为什么必须留人工调整的口子">为什么必须留人工调整的口子</h3>
+<p>学到怪物动作最佳解的 AI 会毫无破绽、机械性地击垮玩家——敌人确实「很强」，但站在玩家立场一点也不好玩。作为玩家的对手，AI 必须<strong>刻意露出破绽承受攻击</strong>、以方便玩家攻略的方式行动，并在此前提下表现出勇猛或胆小的个性。</p>
+<h2 id="强化学习与-dqn">强化学习与 DQN</h2>
+<ul>
+<li><strong>强化学习</strong>：正确行动给报酬（「造成伤害」「闪避攻击」），AI 在多次模拟中学会哪些行动被鼓励——像训练狗狗握手。</li>
+<li><strong>DQN（Deep Q Network）</strong>：除当下报酬外还会考虑 Q 值（将来可能获得的报酬），可能放弃眼前报酬、选择一段时间后收益更高的行动。</li>
+<li>从随机出招起步，逐渐学会在适当时机攻击、调整站位让招式命中，越来越像合格的敌人；学习过程全自动，不需要人监视。</li>
+</ul>
+<h2 id="用调整报酬来塑造个性">用调整报酬来塑造个性</h2>
+<p>只靠持续学习，会产出只会施展强力招式的无趣 AI——问题靠调整报酬解决：</p>
+<ul>
+<li><strong>只重复强力招式</strong> → 设定「采取相同行动不给报酬」。</li>
+<li><strong>想要接近战</strong> → 设定「缩短与对手距离时给予报酬」。</li>
+<li><strong>团体战攻势太猛</strong> → 设定「伙伴 AI 攻击时自己攻击无报酬」，让 AI 学会等待时机。</li>
+</ul>
+<p>这些调整不是写脚本也不是逻辑编程，劳动量远小于传统做法。</p>
+<h3 id="玩家角色-ai控制器操作的难点">玩家角色 AI：控制器操作的难点</h3>
+<ul>
+<li><strong>敌人 AI</strong>：先选行动、结束后再评价给报酬，DQN 每 2~3 秒执行一次即可。</li>
+<li><strong>玩家 AI</strong>：必须持续操作手柄，且按攻击键到出招有数毫秒空档，DQN 必须以 <strong>0.2 秒</strong>间隔不断执行。</li>
+<li>连续操作让 AI 难以判断哪一步获得报酬，评价时必须<strong>回溯几秒前的行动</strong>。</li>
+<li>现场演示 AI 操作角色与敌人战斗，双方动作自然，看不出是 AI 在操作。</li>
+</ul>
+<h2 id="学习之后的修正与局限">学习之后的修正与局限</h2>
+<ul>
+<li><strong>学习 5~7 小时</strong>即可得到出色结果；为缩短时间，把 12 层不同场地层层相叠、多组 AI 同时对战——像少年格斗漫画里的修炼场。</li>
+<li>加入「<strong>变更行动价值即可调整行为、无需重新学习</strong>」的系统，让企划能对应更多细节。</li>
+</ul>
+<h3 id="深度学习-ai-的固有局限">深度学习 AI 的固有局限</h3>
+<ul>
+<li><strong>行动带随机性</strong>：要制造「这个行动后必做那个动作」的演出时，仍必须使用脚本语言。</li>
+<li><strong>难以复现程序漏洞</strong>：调试时需要重现 bug 的场景，这正是 AI 做不到的。</li>
+<li><strong>只会应付学过的环境</strong>：把平地学成的 AI 丢进高低差激烈的地形就会束手束脚——目前只有让 AI 在各种环境学习这一条耗时的方法。</li>
+<li><strong>学习需要对手陪练</strong>：对手 AI 品质越高、学习结果越好，制作对手 AI 的劳动不能省略；双方从空白状态互相对战只会持续随机出招，完全派不上用场。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：用强化学习自动量产敌人 AI，再用「调整报酬 + 人工介入」把机械的最优解拉回好玩的对手——光会变强，不够格当游戏敌人。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#让-ai-来制作敌人-ai" class data-astro-cid-fzx4jmue>让 AI 来制作敌人 AI</a><a href="#三个目标" class="h3" data-astro-cid-fzx4jmue>三个目标</a><a href="#为什么必须留人工调整的口子" class="h3" data-astro-cid-fzx4jmue>为什么必须留人工调整的口子</a><a href="#强化学习与-dqn" class data-astro-cid-fzx4jmue>强化学习与 DQN</a><a href="#用调整报酬来塑造个性" class data-astro-cid-fzx4jmue>用调整报酬来塑造个性</a><a href="#玩家角色-ai控制器操作的难点" class="h3" data-astro-cid-fzx4jmue>玩家角色 AI：控制器操作的难点</a><a href="#学习之后的修正与局限" class data-astro-cid-fzx4jmue>学习之后的修正与局限</a><a href="#深度学习-ai-的固有局限" class="h3" data-astro-cid-fzx4jmue>深度学习 AI 的固有局限</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 

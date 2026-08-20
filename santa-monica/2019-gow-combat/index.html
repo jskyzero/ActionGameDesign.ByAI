@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《战神》：为新视角而进化的战斗系统 · 动作游戏设计知识库</title><meta name="description" content="从 GDC 演讲与开发者分享中，沉淀动作游戏设计的思考、方法与案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DmP__n0w.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.BOJDWneH.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-santa-monica-2019-gow-combat" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2019 · <span class="title-hl">GDC</span> · Santa Monica Studio</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《战神》：为新视角而进化的战斗系统</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>⚔️ 战斗系统</span><span class="tag" data-astro-cid-6bfer2tv>📷 过肩视角</span><span class="tag" data-astro-cid-6bfer2tv>🥊 一打多</span> </div>  </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>过肩特写镜头让「一打多」的高侵略性战斗失去视野，Santa Monica 围绕玩家的视线重建「追踪 → 锁定 → 攻击」整条战斗链路，才保住了系列的核心标识。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Evolving Combat in &#39;God of War&#39; for a New Perspective</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=hE5tWF-Ou2k" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=hE5tWF-Ou2k</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Mihir Sheth</span>  ·  Sony Santa Monica Studio 首席战斗设计师（Lead Combat Designer），负责《战神》(2018) 的战斗系统设计，后参与《战神：诸神黄昏》。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1026423/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.youtube.com/watch?v=hE5tWF-Ou2k" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>YouTube 官方视频（原）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://indienova.com/indie-game-development/evolving-combat-in-god-of-war-for-a-new-perspective/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（indienova，中英字幕视频）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameres.com/880877.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中译（GameRes 全文笔记）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="设计目标新视角下重做战斗">设计目标：新视角下重做战斗</h2>
+<p>革新由两个具体目标构成：<strong>以新视角为基础重新构思战斗系统</strong> + <strong>保留系列的核心标识（identity）</strong>。</p>
+<h3 id="系列的核心标识">系列的核心标识</h3>
+<ul>
+<li><strong>连击玩法</strong>：有趣的敌人受击反馈。</li>
+<li><strong>力量感</strong>：威力强大的攻击会向前位移。</li>
+<li><strong>一打多</strong>：同时面对多个敌人。</li>
+<li><strong>容易上手</strong>：低门槛、高侵略性的体验。</li>
+</ul>
+<h3 id="核心矛盾">核心矛盾</h3>
+<ul>
+<li>成熟的第三人称动作游戏大多建立在 <strong>1v1</strong> 上；《战神》要的是一打多 + 高侵略性，直接照搬只会让战场混乱。</li>
+<li>混乱的代价是：玩家最大的挑战变成「调视角」，而不是游戏内容本身。</li>
+<li>因此要让玩家建立明确的战斗行为顺序：<strong>追踪敌人 → 锁定敌人 → 攻击敌人</strong>。</li>
+</ul>
+<h2 id="追踪敌人tracking-enemies">追踪敌人（Tracking Enemies）</h2>
+<h3 id="威胁评分与站位">威胁评分与站位</h3>
+<ul>
+<li><strong>威胁评分（scoring）+ token 分配</strong>：给敌人排序威胁优先级，标记谁是 aggressive 的；token 有固定分配值，分完的敌人归为 non-aggressive，与玩家保持距离。</li>
+<li>第一版 <strong>weight-based position</strong> 系统：围绕奎托斯找最优站位，但越来越繁复、难 debug；敌人离开屏幕后玩家容易胆怯、失去进攻性——迭代一年后放弃。</li>
+<li>新方案 <strong>Prevent bad positions</strong>：aggressive 的敌人尽量站进玩家眼前的扇形区域（角度按摄像机视角宽度计算），non-aggressive 的留在外圈——系统更简单、更直观、更好 debug。</li>
+</ul>
+<h3 id="象限系统与屏幕外提示">象限系统与屏幕外提示</h3>
+<ul>
+<li><strong>象限系统（Quadrants）</strong>：屏幕外的敌人待在原象限，直到奎托斯面向它才转为 on-screen——保持标识稳定，让玩家建立 mental map（心理地图），重拾自信与进攻性。</li>
+<li><strong>空间箭头</strong>：不用雷达等 non-diegetic UI（避免信息过载），用环绕奎托斯的箭头指向敌人，红色提示近战、紫色提示远程。</li>
+<li><strong>Strafe Assist</strong>：为不常推右摇杆的玩家自动横向摆动摄像机对准 aggressive 敌人，可手动关闭。</li>
+</ul>
+<h2 id="锁定敌人targeting-enemies">锁定敌人（Targeting Enemies）</h2>
+<ul>
+<li><strong>目标选择</strong>：左摇杆闲置时优先选眼前敌人（屏幕外不被选中）；左摇杆象征攻击意图，按朝向推测目标——避免「向下攻击却打向摄像机」的旧问题。</li>
+<li><strong>Suck To Target（吸附）</strong>：过肩视角难判断距离，按攻击范围、攻击速度与暂停距离把奎托斯「吸」向目标；再用视线角度动态调整吸附距离（角度越大距离越短），减少刻意吸附的违和感。</li>
+<li><strong>远程辅助</strong>：Aim Friction（准星滑入判定区时加摩擦）+ Zoom Snapping（缩放键聚焦目标）。</li>
+<li><strong>锁定键是妥协</strong>：主流第三人称游戏经验让玩家依赖锁定，最终加入；进入瞄准模式时记住上一个锁定对象，松开后重新朝向它——支持同时处理两个敌人。</li>
+</ul>
+<h2 id="攻击敌人engaging-enemies">攻击敌人（Engaging Enemies）</h2>
+<h3 id="解决视角推进问题">解决视角推进问题</h3>
+<ul>
+<li>老《战神》靠击退 + 位移动画制造力量感；新视角下向前位移 = 摄像机推进 = 丢失可视范围，玩家会转向防御。</li>
+<li>三个解法：<strong>减少敌人受击后退距离</strong>、<strong>减少奎托斯前推距离</strong>（STT 已提供侵略性）、<strong>脚本迭代程序化缩放位移</strong>。</li>
+</ul>
+<h3 id="打击辅助strike-assists">打击辅助（Strike Assists）</h3>
+<ul>
+<li><strong>保持敌人在镜头内</strong>：受击时记录偏移值，按视角方向插值，让攻击中的敌人尽量留在摄像机朝向。</li>
+<li><strong>击飞方向对准摄像机</strong>：保证击飞后敌人仍在视野内，不打断追击。</li>
+<li><strong>Hit Reaction Collisions</strong>：受击生成碰撞体，连带命中邻近敌人——安全输出 + 放大威力的视觉反馈。</li>
+</ul>
+<h3 id="维持进攻节奏disrupting-enemy-aggression">维持进攻节奏（Disrupting Enemy Aggression）</h3>
+<ul>
+<li>敌人受击时<strong>不回收 aggressive token</strong>：玩家不会因为敌人被击飞而被迫切换目标。</li>
+<li>滞空击飞时延迟 token 回收；打断敌人攻击时延迟其他敌人的攻击。</li>
+<li>严格控制击飞高度：超过 float height 时额外加速率，把敌人弹回屏幕内。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：镜头从背视角换成过肩特写后，一打多的高侵略性战斗必须围绕玩家的视线重建——用威胁评分、象限站位、吸附与打击辅助，让玩家始终看得见敌人、打得准目标、保持进攻节奏。</p>
+</blockquote> </div> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#设计目标新视角下重做战斗" class data-astro-cid-fzx4jmue>设计目标：新视角下重做战斗</a><a href="#系列的核心标识" class="h3" data-astro-cid-fzx4jmue>系列的核心标识</a><a href="#核心矛盾" class="h3" data-astro-cid-fzx4jmue>核心矛盾</a><a href="#追踪敌人tracking-enemies" class data-astro-cid-fzx4jmue>追踪敌人（Tracking Enemies）</a><a href="#威胁评分与站位" class="h3" data-astro-cid-fzx4jmue>威胁评分与站位</a><a href="#象限系统与屏幕外提示" class="h3" data-astro-cid-fzx4jmue>象限系统与屏幕外提示</a><a href="#锁定敌人targeting-enemies" class data-astro-cid-fzx4jmue>锁定敌人（Targeting Enemies）</a><a href="#攻击敌人engaging-enemies" class data-astro-cid-fzx4jmue>攻击敌人（Engaging Enemies）</a><a href="#解决视角推进问题" class="h3" data-astro-cid-fzx4jmue>解决视角推进问题</a><a href="#打击辅助strike-assists" class="h3" data-astro-cid-fzx4jmue>打击辅助（Strike Assists）</a><a href="#维持进攻节奏disrupting-enemy-aggression" class="h3" data-astro-cid-fzx4jmue>维持进攻节奏（Disrupting Enemy Aggression）</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>August 20, 2026</a></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> </body></html> <script type="module">const o=Array.from(document.querySelectorAll(".toc nav a")),s=Array.from(document.querySelectorAll(".prose h2, .prose h3"));if(o.length&&s.length){const c=new IntersectionObserver(e=>{e.forEach(r=>{if(r.isIntersecting){const n="#"+r.target.id;o.forEach(t=>t.classList.toggle("active",t.getAttribute("href")===n))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0});s.forEach(e=>c.observe(e))}</script> 
