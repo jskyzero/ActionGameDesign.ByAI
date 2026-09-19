@@ -31,7 +31,7 @@
 | `status` | `done` \| `wip` | ✅ | `wip` = 待施工 |
 | `article.title` | string | ✅ | 中文标题（如 `街霸 5 的美术设计思路`） |
 | `article.insight` | string | 推荐 | **一级信息 Hook**：一句话结论 |
-| `article.tags` | object[] | 推荐 | `[{ label, icon? }]`，2~4 个标签；`icon` 为可选 emoji |
+| `article.tags` | object[] | 推荐 | `[{ label, icon? }]`，推荐 2~3 个，最多 3 个标签；`icon` 为可选 emoji |
 | `source.title` | string | | 原标题（演讲标题 / 文章标题） |
 | `source.author` | string | | 作者 / 分享人 |
 | `source.authorBio` | string | | 作者简介（如 `Capcom 美术总监，负责《街霸 4》《街霸 5》`） |

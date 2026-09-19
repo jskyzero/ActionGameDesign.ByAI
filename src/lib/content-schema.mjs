@@ -13,6 +13,7 @@ export const docsSchema = z.object({
           icon: z.string().optional(),
         })
       )
+      .max(3, 'article.tags 最多保留 3 个标签')
       .default([]),
   }),
   source: z

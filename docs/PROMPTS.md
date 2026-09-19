@@ -57,6 +57,6 @@ references:
    - Hook（`article.insight`）只提炼**一句**，能独立成立；材料没有金句就自己概括一句。
    - 正文 Details 挂在 `##` 小节下，简短分点，不写论文。
 2. `article.title` 用中文标题（如 `街霸 5 的美术设计思路`），分享人放 `source.author`。
-3. `article.tags` 用 2~4 个简短中文词（如 `格斗`、`战斗系统`、`AI`），可给每个标签配一个 emoji `icon`（可选）。
+3. `article.tags` 推荐使用 2~3 个简短中文词，最多 3 个（如 `格斗`、`战斗系统`、`AI`），可给每个标签配一个 emoji `icon`（可选）。
 4. 还没写详细笔记就 `status: wip`；已整理完整则 `done`。
 5. 只输出这一个 Markdown 文件的内容，不要加多余解释。
