@@ -54,7 +54,7 @@
 - **`base` 路径拼接**：`import.meta.env.BASE_URL` 无尾斜杠，拼接链接要 `replace(/\/$/, '')` 再加 `/`。
 - **markmap 踩坑**（已弃用，留档）：连线锚点在节点底边需后处理居中；`feDisplacementMap` 用 `objectBoundingBox` 会裁掉水平线（需 `userSpaceOnUse` + 固定大区域）。
 - **XMind 文件是 zip**（内含 `content.json`），可用脚本提取节点文字；用户的 `GDC.xmind` 在 WSL 挂载 iCloud 路径（`/mnt/c/Users/jskyzero/iCloudDrive/Moons-Project/GDC.xmind`）。
-- **当前模型无多模态能力**：图片内容（截图、含图的 drawio）需要外部视觉模型转写，脚本只能提取纯文本节点。
+- **图像核读取决于实际模型能力**：脚本只能提取文本节点，不能代替视觉核读。具备视觉能力的模型应查看截图、PDF 图表与 drawio 图片；不具备时记录缺口，不能以历史模型限制代表所有模型。
 - **hero/footer 对齐正文宽**：Base 布局用 `--content-width`（文章 880px / 主页 1080px），footer `max-width: var(--content-width)`。
 
 ## 6. 常用命令与脚本
