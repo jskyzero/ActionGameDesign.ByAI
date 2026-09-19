@@ -3,15 +3,8 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   source?: CollectionEntry<'docs'>['data']['source'];
   references?: CollectionEntry<'docs'>['data']['references'];
-  generation?: CollectionEntry<'docs'>['data']['generation'];
 }
-const { source, references = [], generation } = Astro.props;
-// 开发热更新期间可能仍收到旧内容数据；缺失记录时不推测模型或时间。
-const generatedTime = generation ? new Intl.DateTimeFormat('zh-CN', {
-  timeZone: 'Asia/Shanghai',
-  year: 'numeric', month: '2-digit', day: '2-digit',
-  hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
-}).format(new Date(generation.generatedAt)) : undefined;
+const { source, references = [] } = Astro.props;
 const sourceTitle = source?.title;
 const sourceUrl = source?.url;
 const sourceAuthor = source?.author;
@@ -19,18 +12,6 @@ const authorBio = source?.authorBio;
 ---
 
 <div class="info">
-  {generation && (
-    <>
-      <div class="row">
-        <span class="k">生成模型</span>
-        <span class="v"><a href={generation.modelUrl} target="_blank" rel="noopener">{generation.model}</a></span>
-      </div>
-      <div class="row">
-        <span class="k">生成时间</span>
-        <span class="v"><time datetime={generation.generatedAt}>{generatedTime}</time>（北京时间，按首次收录提交）</span>
-      </div>
-    </>
-  )}
   {sourceTitle && (
     <div class="row"><span class="k">原标题</span><span class="v">{sourceTitle}</span></div>
   )}

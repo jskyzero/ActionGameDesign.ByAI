@@ -15,6 +15,9 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings = [] } = await render(entry);
 const d = entry.data;
+const generatedDate = d.generation ? new Intl.DateTimeFormat('zh-CN', {
+  timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+}).format(new Date(d.generation.generatedAt)) : undefined;
 const title = d.article.title;
 const tags = d.article.tags ?? [];
 const tocItems = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
@@ -40,7 +43,9 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
         <div class="prose">
           <Content />
         </div>
-        {d.generation && <InfoCard generation={d.generation} />}
+        {d.generation && (
+          <p class="generation"><em>本文由 <a href={d.generation.modelUrl} target="_blank" rel="noopener">{d.generation.model}</a> 于 <time datetime={d.generation.generatedAt}>{generatedDate}</time> 生成</em></p>
+        )}
       </div>
     </article>
 
@@ -82,6 +87,19 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
 </script>
 
 <style>
+  .generation {
+    margin: 24px 0 0;
+    text-align: right;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .generation a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .page-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, var(--content-width)) minmax(0, 1fr);
