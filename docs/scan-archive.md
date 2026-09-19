@@ -2,7 +2,7 @@
 
 [返回收录待办](scan-todo.md)
 
-更新日期：2026-09-20。共 70 篇完成文章：原有 53 篇，本轮新增 17 篇；另有 3 项未成文主题仅留在[待办](scan-todo.md)，不计入本归档。历史正文没有在本轮重新核实，新增笔记在各文中说明资料范围。工作室分组仅用于查找，不变更 `source.company`；原 `other` 中的会议文章已按来源迁至 `gdc`、`cedec` 目录。
+更新日期：2026-09-20。共 70 篇完成文章：原有 53 篇，本轮新增 17 篇；另有 3 项未成文主题仅留在[待办](scan-todo.md)，不计入本归档。历史正文没有在本轮重新核实，新增笔记在各文中说明资料范围。工作室分组仅用于查找，同公司别名统一；达到 3 篇的公司归入专属目录，其余会议文章放在 `gdc`、`cedec` 目录。
 
 这里也保留早期较宽范围的历史文章，方便去重；是否继续扩展同类主题，仍以当前 [收录范围](EXTRACTION.md) 为准。本轮不删除这些正文。
 
@@ -39,10 +39,10 @@
 
 ## FromSoftware
 
-- [x] 2009 · [《恶魔之魂》：死亡如何变成继续挑战的理由](../src/content/docs/cedec/2009-demons-souls-design.mdx)
-- [x] 2019 · [《只狼：影逝二度》背景图形制作：可用性与美术的兼顾](../src/content/docs/cedec/2019-sekiro-background-graphics.mdx)
-- [x] 2022 · [《艾尔登法环》开放世界的「待客之道」](../src/content/docs/cedec/2022-elden-open-world.mdx)
-- [x] 2025 · [《艾尔登法环》的背景布局：在限制中强化世界的印象](../src/content/docs/cedec/2025-elden-background.mdx)
+- [x] 2009 · [《恶魔之魂》：死亡如何变成继续挑战的理由](../src/content/docs/fromsoftware/2009-demons-souls-design.mdx)
+- [x] 2019 · [《只狼：影逝二度》背景图形制作：可用性与美术的兼顾](../src/content/docs/fromsoftware/2019-sekiro-background-graphics.mdx)
+- [x] 2022 · [《艾尔登法环》开放世界的「待客之道」](../src/content/docs/fromsoftware/2022-elden-open-world.mdx)
+- [x] 2025 · [《艾尔登法环》的背景布局：在限制中强化世界的印象](../src/content/docs/fromsoftware/2025-elden-background.mdx)
 
 ## HAL Laboratory
 
@@ -50,11 +50,11 @@
 
 ## Insomniac Games
 
-- [x] 2019 · [《漫威蜘蛛侠》AI 复盘：失眠组如何重构战斗 AI，让「你就是蜘蛛侠」成为必然](../src/content/docs/gdc/2019-spiderman-ai.mdx)
-- [x] 2019 · [《漫威蜘蛛侠》技术复盘：把整个纽约城塞进一张蓝光碟](../src/content/docs/gdc/2019-spiderman-technical-postmortem.mdx)
-- [x] 2021 · [《漫威蜘蛛侠：迈尔斯·莫拉莱斯》的创作之旅：让迈尔斯成为他自己的蜘蛛侠](../src/content/docs/gdc/2021-spiderman-miles-creative-journey.mdx)
-- [x] 2021 · [《漫威蜘蛛侠：迈尔斯·莫拉莱斯》：开场 30 分钟的叙事与设计协作拆解](../src/content/docs/gdc/2021-miles-morales-opening.mdx)
-- [x] 2024 · [《漫威蜘蛛侠2》：十年程序化内容创作历程](../src/content/docs/gdc/2024-spiderman2-procedural-content.mdx)
+- [x] 2019 · [《漫威蜘蛛侠》AI 复盘：失眠组如何重构战斗 AI，让「你就是蜘蛛侠」成为必然](../src/content/docs/insomniac-games/2019-spiderman-ai.mdx)
+- [x] 2019 · [《漫威蜘蛛侠》技术复盘：把整个纽约城塞进一张蓝光碟](../src/content/docs/insomniac-games/2019-spiderman-technical-postmortem.mdx)
+- [x] 2021 · [《漫威蜘蛛侠：迈尔斯·莫拉莱斯》的创作之旅：让迈尔斯成为他自己的蜘蛛侠](../src/content/docs/insomniac-games/2021-spiderman-miles-creative-journey.mdx)
+- [x] 2021 · [《漫威蜘蛛侠：迈尔斯·莫拉莱斯》：开场 30 分钟的叙事与设计协作拆解](../src/content/docs/insomniac-games/2021-miles-morales-opening.mdx)
+- [x] 2024 · [《漫威蜘蛛侠2》：十年程序化内容创作历程](../src/content/docs/insomniac-games/2024-spiderman2-procedural-content.mdx)
 
 ## Lab Zero
 
@@ -96,10 +96,10 @@
 
 ## Sucker Punch Productions
 
-- [x] 2021 · [《对马岛之魂》的地标引导：让岛屿指引你](../src/content/docs/gdc/2021-got-weenies.mdx)
-- [x] 2021 · [《对马岛之魂》：一击必杀下的难度平衡](../src/content/docs/gdc/2021-got-lethality.mdx)
-- [x] 2021 · [大师之刃：《对马岛之魂》的近身战斗](../src/content/docs/gdc/2021-got-melee.mdx)
-- [x] 2026 · [《羊蹄山之魂》：近战战斗的打磨与进化](../src/content/docs/gdc/2026-got2-combat.mdx)
+- [x] 2021 · [《对马岛之魂》的地标引导：让岛屿指引你](../src/content/docs/sucker-punch/2021-got-weenies.mdx)
+- [x] 2021 · [《对马岛之魂》：一击必杀下的难度平衡](../src/content/docs/sucker-punch/2021-got-lethality.mdx)
+- [x] 2021 · [大师之刃：《对马岛之魂》的近身战斗](../src/content/docs/sucker-punch/2021-got-melee.mdx)
+- [x] 2026 · [《羊蹄山之魂》：近战战斗的打磨与进化](../src/content/docs/sucker-punch/2026-got2-combat.mdx)
 
 ## Tango Gameworks
 
