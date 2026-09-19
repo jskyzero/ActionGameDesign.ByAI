@@ -40,8 +40,8 @@ const years = [...new Set(entries.map((d) => d.y).filter((y) => typeof y === 'nu
 
     <div class="layout">
       <aside class="rail" aria-label="按年份浏览"><div class="line" id="rail">
-        {years.map((year) => <a class="tnode" data-year={year} href={`#year-${year}`}><span class="dot"></span>{year}年（{yearCounts[year]}篇）</a>)}
         <div class="tnode total">合计{entries.length}篇</div>
+        {years.map((year) => <a class="tnode" data-year={year} href={`#year-${year}`}><span class="dot"></span>{year}年（{yearCounts[year]}篇）</a>)}
       </div></aside>
       <main id="content"><div class="cards">
         {entries.map((d, i) => <a class="art" href={d.href} style={`view-transition-name:${d.n}`} data-year={d.y} id={typeof d.y === 'number' && (i === 0 || entries[i - 1].y !== d.y) ? `year-${d.y}` : undefined}>
@@ -158,9 +158,9 @@ const years = [...new Set(entries.map((d) => d.y).filter((y) => typeof y === 'nu
     transform: scale(1.35);
   }
   .tnode.total {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed var(--line);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--line);
     color: var(--muted);
     font-weight: 600;
     cursor: default;
