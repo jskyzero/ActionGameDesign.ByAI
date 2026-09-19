@@ -36,10 +36,11 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
           transitionName={transitionName}
         />
         <Hook insight={d.article.insight} />
-        <InfoCard source={d.source} references={d.references} generation={d.generation} />
+        <InfoCard source={d.source} references={d.references} />
         <div class="prose">
           <Content />
         </div>
+        {d.generation && <InfoCard generation={d.generation} />}
       </div>
     </article>
 
