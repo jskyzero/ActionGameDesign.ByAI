@@ -1,78 +1,117 @@
-# 扫描候选清单（待挑选）
+# 动作游戏设计分享：收录待办
 
-> 来源：2006–2026 GDC / CEDEC 动作游戏设计相关演讲（含战斗系统、关卡设计、动画、AI）。
-> 用法：把你想让我先做的条目**复制粘贴回给我**（可直接复制整行）。已标注「✅已有」的不在库里重复收录。
+更新：2026-09-20。按**工作室 → 游戏 → 设计问题**组织，不追求会议讲题全集。
 
-## 一、战斗系统 / 手感
+本轮已核对本地 53 篇文章（均为 `done`），统一移入[已收录归档](scan-archive.md)。归档只表示仓库已有内容，不代表本轮重新核实了正文与来源。下列候选不因来自知名动作游戏而自动收录，范围遵循 [EXTRACTION.md](EXTRACTION.md)。
 
-- [-] Game Feel: The Secret Ingredient（2007 GDC）· 无 · 手感三层理论（实时响应/模拟规则/美化修饰）· https://www.gamedeveloper.com/design/game-feel-the-secret-ingredient
-- [ ] Juice It or Lose It（2012 GDC Europe）· 无 · 反馈叠加（juice）让操作爽快 · https://www.gdcvault.com/play/1016487/
-- [ ] The Art of Screenshake（2013 GDC）· 无 · Vlambeer 讲屏幕震动等 juice 手法 · https://www.youtube.com/watch?v=AJdEqssNZ-U
-- [ ] Design in Detail: Halo 3 狙击枪射击间隔 0.5→0.7 秒（2010 GDC）· Halo 3 · 武器数值与手感精调真实案例 · https://www.gdcvault.com/play/1012211/
-- [ ] Design in Detail: HALO 等离子枪弹速调校（2011 GDC）· Halo · 弹速与传奇难度平衡 · https://www.gdcvault.com/play/1014704/
-- [ ] Evolving the Combat Design of DOOM Eternal（2020 GDC）· DOOM Eternal · 「push forward」资源循环与敌群压力 · https://www.gamedeveloper.com/design/q-a-evolving-the-combat-design-of-id-software-s-i-doom-eternal-i-
-- [ ] Dreamscaper: Killer Combat on an Indie Budget（2022 GDC）· Dreamscaper · 小团队打磨战斗手感 · https://gdcvault.com/play/1027585/contactUs
-- [-] Master of the Katana: Melee Combat in Ghost of Tsushima（2021 GDC）· 对马岛 · 架势系统与武士刀对决 · https://www.gdcvault.com/play/1027019/contactUs
-- [-] Honoring the Blade: Lethality and Combat Balance in Ghost of Tsushima（2021 GDC）· 对马岛 · 一击必杀下的难度平衡 · https://www.gdcvault.com/play/1027184/contactUs
-- [ ] How Naughty Dog Defined Melee Attacks in The Last of Us Part II（2021 GDC）· 最后生还者2 · 敌人对近战动态反应 · https://www.gamedeveloper.com/design/how-naughty-dog-defined-melee-attacks-and-behaviors-in-i-the-last-of-us-part-ii-i-
-- [-] Developing Hi-Fi RUSH Backwards（2024 GDC）· Hi-Fi RUSH · 节奏与战斗互相驱动的正向循环 · https://gdcvault.com/play/1034256/
-- [-] The Final Battle of God of War Ragnarok（2023 GDC）· 战神诸神黄昏 · 高压力终局战斗编排 · https://gdcvault.com/play/1029343/The-Final-Battle-of-God
-- [-] Breaking Barriers: Combat Accessibility in God of War Ragnarok（2023 GDC）· 战神诸神黄昏 · 降低门槛不损深度 · https://gdcvault.com/play/1028726/
-- [-] FF16 战斗设计讲座（2023 CEDEC）· 最终幻想16 · 正统动作战斗 + 扩大受众 · https://esportstw.com/news/336766/
-- [-] Honing the Blade: Evolving Combat for Ghost of Yōtei（2026 GDC）· 对马岛续作 · 近战迭代 · https://gdcvault.com/play/1035687/Honing-the-Blade-Evolving-Combat
-- [ ] Battlefield 6: Game Feel is the Message（2026 GDC）· 战地6 · 射击手感即表达 · https://schedule.gdconf.com/session/battlefield-6-game-feel-is-the-message/915257
-- [ ] SILENT HILL f: 纯近战恐怖（2026 GDC）· 寂静岭f · 有限武器的恐怖战斗 · https://schedule.gdconf.com/session/silent-hill-f-the-challenges-of-creating-a-melee-only-horror-game/914711
-- [-] 铁拳 中国武术动画（2026 CEDEC）· 铁拳 · 真实武术重构攻击动画 · https://game.zol.com.cn/1223/12239743.html
+## 如何使用
 
-## 二、关卡设计
+- **P1**：优先补齐战斗、操作、动画与伙伴 AI 的具体设计案例。
+- **P2**：有价值，但须先确认能提炼出动作设计问题，避免写成通用技术介绍。
+- **已核题**：本轮查到官方讲题页或开发者说明，确认讲题身份与相关性；不表示已看完视频、取得讲义或可以直接写正文。
+- **待核实**：旧清单留下的线索，年份、标题、讲者、材料可用性可能有误；不能直接沿用为文章 frontmatter。
+- 整理顺序：核题 → 获取原始视频／讲义 → 与已有正文查重 → 整理 → 校验与构建 → 移入归档。正文材料不足时保留待办；若建立 `wip`，须在此链接该文件，不标完成。
 
-- [ ] Everything I Learned About Level Design from Disneyland（2009 GDC）· 无 · 迪士尼乐园动线/节奏/主题化 · http://gdcvault.com/play/1305/
-- [ ] Player's Expression: Far Cry 2 关卡结构（2009 GDC）· Far Cry 2 · 开放世界为沙盒战斗留空间 · http://gdcvault.com/play/1304/
-- [ ] The Titans: God of War III 活体关卡（2012 GDC）· 战神3 · 泰坦「活体」动态关卡 · https://www.gdcvault.com/play/1015524/
-- [-] Level Design Workshop: Designing Celeste（2018 GDC）· 蔚蓝 · 一步一挑战的模块化关卡 · https://gdcvault.com/play/1024307/
-- [-] A Taxonomy of Weenies: Ghost of Tsushima（2021 GDC）· 对马岛 · 地标引导探索与战斗节奏 · https://www.gamedeveloper.com/design/a-taxonomy-of-weenies-the-landmarks-that-define-i-ghost-of-tsushima-i-
-- [ ] Never The Same Twice: Returnal 程序化关卡（2022 GDC）· Returnal · 程序化战斗空间 · https://gdcvault.com/play/1027651/
-- [-] 星之卡比 探索发现 地图制作（2022 CEDEC）· 卡比 · 趣味与美观取舍 · https://news.boxuu.com/c/370341.html
-- [ ] 艾尔登法环 关卡工具「至高工具」（2021 CEDEC）· 法环 · FromSoft 内部关卡工具 · https://www.gcores.com/articles/141069
-- [-] 艾尔登法环 开放世界「待客之道」（2022 CEDEC）· 法环 · 让玩家不厌倦地探索 · http://www.gamelook.com.cn/2022/12/504420/
-- [-] 艾尔登法环 背景配置手法（2025 CEDEC）· 法环 · 地标布局强化印象 · https://esportstw.com/news/566250/
-- [-] Astro Bot 3D 关卡设计（2025 CEDEC）· Astro Bot · 快节奏 3D 动作关卡 · https://esportstw.com/news/561062/
+建议先做 **Dreamscaper → 白金动作动画 → Atreus → Ellie → Kick-Flight**。先补小团队战斗手感、动作动画和操作镜头，再将两种伙伴 AI 与现有 Relink 笔记对照。优先级及“拟提取问题”是编辑判断，不是演讲原结论。
 
-## 三、动画
+## 已核题候选（8 项）
 
-- [ ] Uncharted 动画与操控（2010 GDC）· 神秘海域 · 部分/叠加动画支撑手感 · https://www.gdcvault.com/play/1012451/
-- [ ] UFC 2009 物理与动画（2010 GDC）· UFC · 格斗全物理受击反馈 · https://www.gdcvault.com/play/1012871/
-- [ ] Overwatch 第一人称动画（2017 GDC）· 守望先锋 · 射击手感与英雄表现 · https://gdcvault.com/play/1024319/
-- [ ] Cuphead 动画流程与哲学（2017 GDC）· 茶杯头 · 30年代手绘动画 · https://www.gamedeveloper.com/production/video-inside-the-process-and-philosophy-of-animating-i-cuphead-i-
-- [ ] Horizon Zero Dawn 机器动画（2018 GDC）· 地平线 · 大型敌人程序化动画 · https://gdcvault.com/play/1025040/
-- [ ] God of War 动画重塑（2019 GDC）· 战神 · 奎托斯动作库与表演 · https://gdcvault.com/play/1025836/
-- [ ] 铁拳 身体运动结构（2013 CEDEC）· 铁拳 · 真实人体运动拆解攻击动画 · https://www.bilibili.com/video/av10879305/
+以下官方页面核对日期均为 2026-09-20。获取正文材料时优先找官方 YouTube 视频；已有讲义则先按目录定位相关章节，不必同时读取整段视频与全套幻灯片。
 
-## 四、AI
+### Afterburner Studios / Dreamscaper
 
-- [ ] Three States and a Plan: F.E.A.R. GOAP（2006 GDC）· F.E.A.R. · 规划式敌人AI代表作 · https://gdcvault.com/play/1013459/
-- [ ] Building a Better Battle: Halo 3 AI（2008 GDC）· Halo 3 · 目标驱动战斗AI · https://web.cs.wpi.edu/~rich/courses/imgd4000-d09/lectures/halo3.pdf
-- [-] Left 4 Dead AI Director（2009 GDC）· L4D · 动态难度/情绪曲线 · http://gdcvault.com/play/1422/
-- [ ] 2008 AI Postmortems（2009 GDC）· 战争机器2 · 掩体战斗AI复盘 · https://aarmstrong.org/notes/game-developers-conference-2009-notes/2008-ai-postmortems-spore-gears-of-war-2-and-bioshock
-- [ ] Ellie: Buddy AI in The Last of Us（2014 GDC）· 最后生还者 · 同伴战斗AI经典 · https://gdcvault.com/play/1020364/
-- [ ] Beyond Killzone: Horizon Zero Dawn AI（2018 GDC）· 地平线 · 开放世界战斗AI · https://gdcvault.com/play/1024912/
-- [ ] Helping Players Hate Their Nemesis（2018 GDC）· 中土 · 记忆/晋升的涌现AI · https://gdcvault.com/play/1025150/
-- [ ] Raising Atreus for Battle（2019 GDC）· 战神 · AI队友不抢戏 · https://gdcvault.com/play/1026467/
-- [ ] CoD 巨型僵尸AI（2024 GDC）· 使命召唤 · 大规模战斗AI优化 · https://gdcvault.com/play/1034464/AI-Summit-Skyscraper-Zombies-Advancing
-- [-] FFXV 深度学习自动生成敌人AI（2019 CEDEC）· FF15 · 自动生成敌人AI · https://esportstw.com/news/6748/
-- [-] 街霸6 「虚拟劲敌」诞生历程（2025 CEDEC）· 街霸6 · 数据训练模仿玩家风格 · https://esportstw.com/news/565062/
+- [ ] **P1 · GDC 2022 · Ian Cofino** — [《Dreamscaper》：小团队如何打磨战斗](https://www.gdcvault.com/play/1027585/-Dreamscaper-Killer-Combat-on)（原题：'Dreamscaper': Killer Combat on an Indie Budget）。拟提取：有限资源下，设计、动画与特效如何共同形成操作反馈。下一步：找公开视频并记录具体战斗案例，不扩写为独立游戏创业经验。
 
-## 五、其他 / 待确认
+### PlatinumGames / Bayonetta 等动作游戏
 
-- [ ] 恶魔之魂 游戏设计（2009 CEDEC）· 恶魔之魂 · 高难度/死亡惩罚（宫崎英高）· https://cedec.cesa.or.jp/2009/ssn_archive/pdf/sep1st/PD45.pdf
-- [ ] Tunes of the Kingdom: 王国之泪物理与声音（2024 GDC）· 王国之泪 · 物理驱动玩法 · https://schedule.gdconf.com/session/tunes-of-the-kingdom-evolving-physics-and-sounds-for-the-legend-of-zelda-tears-of-the-kingdom/903317
-- [ ] Prince of Persia 3C 移动端（2026 GDC）· 波斯王子 · 手感适配 · https://schedule.gdconf.com/session/ux-mobile-porting-challenges-from-3cs-to-accessibility-prince-of-persia-the-lost-crown-case-study/915038
-- [ ] MH 系列 世界→荒野（2025 CEDEC）· 怪猎 · 动作/生态/关卡演进 · https://esportstw.com/news/564921/
-- [ ] 塞尔达 BOTW 引力与绕路（2017 CEDEC）· 塞尔达 · 开放世界引导 · https://www.gcores.com/articles/174191
+- [ ] **P1 · CEDEC 2017 · 山口孝明** — [动作游戏动画的要诀](https://cedec.cesa.or.jp/2017/session/VA/s58ddf9d78fa09/)（原题：アクションゲーム・アニメーションの極意！ －制作環境とこだわりについて－）。拟提取：动画师如何参与动作设计与调试，动作表现如何服务可玩性。下一步：沿 [开发者官方回顾](https://www.platinumgames.co.jp/official-blog/article/13070) 找讲义／完整报道；与已收录的白金品质概论、尼尔制作谈区分。
 
-## ✅ 已在知识库（不重复收录）
+### Santa Monica Studio / God of War
 
-- Devil May Cry 5（2019-dmc5）
-- God of War 战斗 / 关卡 / 重启 / AI（2019-gow-combat / level / reboot、2023-gow-ai）
-- NieR:Automata（2018-nier-automata）
-- 街霸5 / 鬼泣5 / 白金 / 河森 / 尼尔 / 术语 / 怪猎 / NIOH / SSS / 宫本茂 / 岩田聪 / 塞尔达 / 骷髅女孩×2 / 罪恶装备 / 血源 / tokuda / 樱井政博 / MDA / 动作本质 / DOTA2 / 12法则
+- [ ] **P1 · GDC 2019 · Hayato Yoshidome** — [让 Atreus 成为战斗伙伴](https://gdcvault.com/play/1026467/Raising-Atreus-for-Battle-in)（原题：Raising Atreus for Battle in 'God of War'）。拟提取：同伴如何重要而不抢走玩家的操作空间，不同伙伴原型如何取舍。下一步：获取完整演讲；与《诸神黄昏》的 AI 系统迁移文章查重，不能因都叫“战神 AI”就合并。
+
+### Naughty Dog / The Last of Us
+
+- [ ] **P1 · GDC 2014 · Max Dyckhoff** — [Ellie 的伙伴 AI](https://www.gdcvault.com/play/1021010/Ellie-Buddy-AI-in-The)（原题：Ellie: Buddy AI in The Last of Us）。拟提取：同伴行为的可信度、对玩家的帮助及系统妥协。下一步：获取视频或作者资料，聚焦战斗行为；与 Atreus、Relink 形成对照，避免泛写叙事关系。
+
+### Blizzard Entertainment / Overwatch
+
+- [ ] **P1 · GDC 2017 · Matthew Boehm** — [第一人称动画](https://www.gdcvault.com/play/1024319/Animation-Bootcamp-The-First-Person)（原题：Animation Bootcamp: The First Person Animation of 'Overwatch'）。拟提取：限定动作时长下，如何兼顾角色个性、武器反馈与玩法意图。下一步：记录换弹等实际片段的时间点，避免只总结角色美术。
+
+### Grenge / Kick-Flight
+
+- [ ] **P1 · CEDEC 2020 · 川辺兼嗣** — [单指操控的 360° 空中对战](https://cedec.cesa.or.jp/2020/session/detail/s5e838039bf2c5.html)（原题：指一本で空を飛ぶ！カジュアルな360°空中対戦アクションを支えるゲームデザインとシステム）。拟提取：操作辅助、免手动控制的动态镜头，以及空间方向提示如何配合。下一步：从讲题页进入 CEDiL 查讲义，补齐博客目前较少的操作与镜头案例。
+
+### Guerrilla Games / Horizon Zero Dawn
+
+- [ ] **P2 · GDC 2018 · Julian Berteling** — [从 Killzone 到 Horizon 的 AI 系统](https://www.gdcvault.com/play/1024912/Beyond-Killzone-Creating-New-AI)（原题：Beyond 'Killzone': Creating New AI Systems for 'Horizon Zero Dawn'）。拟提取：不同体型敌人的导航与动画如何影响实际行动。下一步：确认有可观察的敌人行为案例；纯架构或工作流章节不作为文章主体。
+
+### Capcom / Monster Hunter Wilds
+
+- [ ] **P2 · CEDEC 2025** — [《怪物猎人：荒野》的共用核心系统](https://cedec.cesa.or.jp/2025/timetable/detail/s67af234e0fa71/)（原题：『モンスターハンターワイルズ』のコアシステムを共通化！活躍を広げ続けるそのシステムとは）。官方页面涉及大量动作的行为转换问题。下一步：查讲义，判断能否落到动作状态转换及设计迭代；如只有框架复用，转入暂缓，不写成通用工程文章。
+
+## 待核实线索
+
+保留旧清单中仍有潜力的入口，**本轮没有逐项验证**。下表题名为检索用简写，会议与年份均沿用旧记录，待官方页面确认；不等于已核题队列。优先核实能补齐输入响应、敌人攻击组织、近战反应的条目。
+
+| 工作室 / 游戏或主题 | 旧记录与入口 | 下一步要核实的问题 |
+|---|---|---|
+| Bandai Namco / Tekken | [铁拳 身体运动结构（2013 CEDEC）](https://www.bilibili.com/video/av10879305/) | 核对 2013 CEDEC 出处，与已收录 2026 武术动画文章查重。 |
+| Battlefield / 工作室待核 | [Battlefield 6: Game Feel is the Message（2026 GDC）](https://schedule.gdconf.com/session/battlefield-6-game-feel-is-the-message/915257) | 核对 2026 议程、讲者归属和录像，确认武器手感的可复用案例。 |
+| Bungie / Halo | [Design in Detail: HALO 等离子枪弹速调校（2011 GDC）](https://www.gdcvault.com/play/1014704/) | 核对游戏版本、讲者、弹速调校的真实案例。 |
+| Bungie / Halo 3 | [Building a Better Battle: Halo 3 AI（2008 GDC）](https://web.cs.wpi.edu/~rich/courses/imgd4000-d09/lectures/halo3.pdf) | 核实讲义年份与原始演讲，提取敌群行为组织案例。 |
+| Bungie / Halo 3 | [Design in Detail: Halo 3 狙击枪射击间隔 0.5→0.7 秒（2010 GDC）](https://www.gdcvault.com/play/1012211/) | 核对讲题与数值上下文，不能直接沿用旧清单的 0.5→0.7 秒结论。 |
+| FromSoftware / Demon’s Souls | [恶魔之魂 游戏设计（2009 CEDEC）](https://cedec.cesa.or.jp/2009/ssn_archive/pdf/sep1st/PD45.pdf) | 核对旧 PDF 标题、作者与年份，聚焦风险、死亡及挑战设计。 |
+| Guerrilla / Horizon Zero Dawn | [Horizon Zero Dawn 机器动画（2018 GDC）](https://gdcvault.com/play/1025040/) | 核实动画讲题，并与上方 AI 候选区分；关注攻击和移动的读招性。 |
+| Monolith / F.E.A.R. | [Three States and a Plan: F.E.A.R. GOAP（2006 GDC）](https://gdcvault.com/play/1013459/) | 核实演讲年份和 GOAP 原始资料，重点找战术表现而非算法概论。 |
+| Monolith / Middle-earth | [Helping Players Hate Their Nemesis（2018 GDC）](https://gdcvault.com/play/1025150/) | 确认系统如何实际改变战斗对手；只涉及叙事记忆则暂缓。 |
+| Naughty Dog / The Last of Us Part II | [How Naughty Dog Defined Melee Attacks in The Last of Us Part II（2021 GDC）](https://www.gamedeveloper.com/design/how-naughty-dog-defined-melee-attacks-and-behaviors-in-i-the-last-of-us-part-ii-i-) | 现入口是媒体报道；找原演讲，核实近战命中与敌人反应规则。 |
+| Naughty Dog / Uncharted | [Uncharted 动画与操控（2010 GDC）](https://www.gdcvault.com/play/1012451/) | 核对讲题、年份及系列具体作品；聚焦动画与操控响应。 |
+| SILENT HILL f / 工作室待核 | [SILENT HILL f: 纯近战恐怖（2026 GDC）](https://schedule.gdconf.com/session/silent-hill-f-the-challenges-of-creating-a-melee-only-horror-game/914711) | 核对 2026 议程与录像，关注近战风险和恐怖感的关系。 |
+| Santa Monica / God of War | [God of War 动画重塑（2019 GDC）](https://gdcvault.com/play/1025836/) | 核实动画重塑的正式讲题，聚焦响应与动作衔接。 |
+| UFC 2009 / 工作室待核 | [UFC 2009 物理与动画（2010 GDC）](https://www.gdcvault.com/play/1012871/) | 核实动画与物理分别负责什么，不能沿用“全物理受击”的旧概括。 |
+| Ubisoft / The Lost Crown | [Prince of Persia 3C 移动端（2026 GDC）](https://schedule.gdconf.com/session/ux-mobile-porting-challenges-from-3cs-to-accessibility-prince-of-persia-the-lost-crown-case-study/915038) | 核实移动端讲题及讲者，重点是角色、镜头、控制适配而非泛 UX。 |
+| Vlambeer / 通用手感 | [The Art of Screenshake（2013 GDC）](https://www.youtube.com/watch?v=AJdEqssNZ-U) | 核实是否为 GDC，勿将其他会议视频误标；检查震动与信息可读性的取舍。 |
+| id Software / DOOM Eternal | [Evolving the Combat Design of DOOM Eternal（2020 GDC）](https://www.gamedeveloper.com/design/q-a-evolving-the-combat-design-of-id-software-s-i-doom-eternal-i-) | 现入口是采访；确认会议是否实际举办及是否存在完整演讲。 |
+| 独立开发 / 通用手感 | [Juice It or Lose It（2012 GDC Europe）](https://www.gdcvault.com/play/1016487/) | 核实会议归属和原始视频；只提取操作反馈，避免与 Game Feel 重复。 |
+
+## 暂缓池（不进入当前整理队列）
+
+这些旧入口保留用于避免重复检索，并非认定分享没有价值。只有找到明确的动作设计内容才重新提升优先级。
+
+| 工作室 / 游戏或主题 | 旧入口（未逐项复核） | 暂缓原因 / 重启条件 |
+|---|---|---|
+| Call of Duty / 工作室待核 | [CoD 巨型僵尸AI（2024 GDC）](https://gdcvault.com/play/1034464/AI-Summit-Skyscraper-Zombies-Advancing) | 大规模 AI 性能优化不直接等于战斗设计，需先核实行为设计内容。 |
+| Capcom / Monster Hunter | [MH 系列 世界→荒野（2025 CEDEC）](https://esportstw.com/news/564921/) | 系列史与全球化较泛，优先上方更具体的动作系统候选。 |
+| Epic 等 / 多游戏 AI 复盘 | [2008 AI Postmortems（2009 GDC）](https://aarmstrong.org/notes/game-developers-conference-2009-notes/2008-ai-postmortems-spore-gears-of-war-2-and-bioshock) | 跨游戏拼盘，先定位 Gears of War 2 的掩体战斗片段。 |
+| FromSoftware / 关卡工具 | [艾尔登法环 关卡工具「至高工具」（2021 CEDEC）](https://www.gcores.com/articles/141069) | 旧清单的“法环”归属也待核实；通用编辑器工具不优先。 |
+| Housemarque / Returnal | [Never The Same Twice: Returnal 程序化关卡（2022 GDC）](https://gdcvault.com/play/1027651/) | 已找到同名官方检索结果，但原入口正文未完整复核；先分辨战斗空间规则与世界生成工程。 |
+| Nintendo / Breath of the Wild | [塞尔达 BOTW 引力与绕路（2017 CEDEC）](https://www.gcores.com/articles/174191) | 开放世界引导与现有文章可能重叠，找到新动作挑战设计实例再补。 |
+| Nintendo / Tears of the Kingdom | [Tunes of the Kingdom: 王国之泪物理与声音（2024 GDC）](https://schedule.gdconf.com/session/tunes-of-the-kingdom-evolving-physics-and-sounds-for-the-legend-of-zelda-tears-of-the-kingdom/903317) | 物理与声音话题较宽，仅以可操作机制及反馈为切入点。 |
+| Santa Monica / God of War III | [The Titans: God of War III 活体关卡（2012 GDC）](https://www.gdcvault.com/play/1015524/) | 活体场景的视觉与技术制作不等于动作设计；需确认可玩交互案例。 |
+| Studio MDHR / Cuphead | [Cuphead 动画流程与哲学（2017 GDC）](https://www.gamedeveloper.com/production/video-inside-the-process-and-philosophy-of-animating-i-cuphead-i-) | 手绘动画流程本身不在新增重点，需发现攻击预兆或命中反馈案例。 |
+| Ubisoft / Far Cry 2 | [Player's Expression: Far Cry 2 关卡结构（2009 GDC）](http://gdcvault.com/play/1304/) | 先确认是否有具体战斗空间案例，沙盒结构概论不优先。 |
+| 跨游戏 / 通用关卡 | [Everything I Learned About Level Design from Disneyland（2009 GDC）](http://gdcvault.com/play/1305/) | 动线与主题化较泛；仅发现直接服务动作挑战的章节时重启。 |
+
+已按用户要求移除的 Relink **持续集成与质量保障、背景美术**不回填待办。新文章不因游戏或公司相同而自动纳入；现有历史收录也不构成扩大范围的先例。
+
+## 控制检索用量的维护方式
+
+1. **先本地去重**：默认只读本文件；用 `rg` 查游戏名、原题、来源 URL 和会话 ID，再按需读取命中文章的 frontmatter。归档只用于定位，不每轮整篇加载。
+2. **以问题检索**：每轮选 1 个工作室、1～2 款游戏、至多 5 条线索。先看短搜索摘要，只打开最相关的 3～5 个讲题详情页。不要抓 GDC / CEDEC 全年课程列表或整站导航。
+3. **限定来源**：GDC 优先 `gdcvault.com`、会议官方视频；CEDEC 优先 `cedec.cesa.or.jp`、`cedil.cesa.or.jp`，其次开发者公开讲义和工作室官网。CEDEC 九州等地区活动保留准确会议名称。中文报道用于发现线索，不替代原题与年份核验。
+4. **两段检索**：第一段只确定“是什么分享、值不值得收”；选定准备写作的条目后，第二段才获取完整视频／字幕／PDF。PDF 先看目录或搜索关键词，仅读相关页；页面可访问不代表讲义／录像可用。
+5. **保留短记录**：核实成功就写回正式标题、年份、官方 URL、核对日期、动作设计切入点和下一步。每项约 100～180 个中文字即可，避免把网页正文贴进待办。来源内容摘要与编辑推断分开写。
+6. **设停止条件**：同一线索两次定向检索仍没有可靠出处，记录卡点并留在待核实，不继续广撒网。已有 3～5 个材料可用候选时，先整理文章，再扩候选池。
+7. **确需批量时**：将指定年份的列表保存本地，用脚本只提取标题、讲者、年份、链接，按关键词过滤并以会话 ID 去重；给模型看过滤后的短表，而不是原始 HTML。默认不建全站爬虫、不下载完整视频。临时页面缓存放 `/tmp`，有复用价值的核实结论写回本文件。
+
+定向查询示例（挑一个使用，不一次跑完）：
+
+```text
+site:gdcvault.com/play/ "游戏英文名" "combat"
+site:gdcvault.com/play/ "工作室名" "animation"
+site:cedec.cesa.or.jp "ゲーム名" "バトル"
+site:cedil.cesa.or.jp "ゲーム名" "カメラ"
+```
+
+完成文章后，删除这里对应的活动行，将文章链接加入 [scan-archive.md](scan-archive.md) 的工作室分组。查重以“同一分享”为单位，不以“同一游戏”为单位；新讲题若只重复旧结论，优先补充旧文参考资料。
