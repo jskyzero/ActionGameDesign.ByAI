@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import SourceMeta from '../components/SourceMeta.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -11,8 +12,7 @@ const entries = (await getCollection('docs'))
     h: e.data.article.insight ?? '',
     g: e.data.article.tags ?? [],
     y: e.data.source?.year,
-    type: e.data.source?.type ?? '',
-    company: e.data.source?.company ?? '',
+    source: e.data.source,
     wip: e.data.status === 'wip',
     n: 'card-' + e.slug.replace(/[^a-zA-Z0-9_-]+/g, '-'),
     href: `${base}/${e.slug}/`,
@@ -23,36 +23,12 @@ const entries = (await getCollection('docs'))
     return bv - av;
   });
 
-function artHtml(d) {
-  const typeTxt = d.type === 'GDC' || d.type === 'CEDEC'
-    ? `<span class="title-hl">${d.type}</span>`
-    : d.type;
-  const top = [d.y ?? '年份不详', typeTxt, d.company].filter(Boolean).join(' · ');
-  const badge = d.wip ? '<span class="wip-badge">🚧 施工中</span>' : '';
-  return `<a class="art" href="${d.href}" style="view-transition-name:${d.n}" data-year="${d.y ?? ''}">
-    <div class="art-body">
-      ${top ? `<div class="meta-top">${top}</div>` : ''}
-      <div class="head">
-        <div class="title">${badge}<span class="title-text"><span class="title-hl">${d.t}</span></span></div>
-        <div class="hook">${d.h}</div>
-      </div>
-      <div class="chiprow">${d.g.map((g) => `<span class="chip">${g.icon ? `${g.icon} ` : ''}${g.label}</span>`).join('')}</div>
-    </div>
-  </a>`;
-}
-
-const contentHtml = `<div class="cards">${entries.map(artHtml).join('')}</div>`;
-
-// 年份 rail（仅作视觉时间轴 + 近似跳转，不保证精确对齐；只显示数字年份）
-const yearCounts = {};
+// 年份导航链接到该年份的第一张卡片；非数字年份不进入时间轴。
+const yearCounts: Record<number, number> = {};
 for (const d of entries) {
   if (typeof d.y === 'number') yearCounts[d.y] = (yearCounts[d.y] || 0) + 1;
 }
 const years = [...new Set(entries.map((d) => d.y).filter((y) => typeof y === 'number'))];
-const railHtml = years
-  .map((y) => `<div class="tnode" data-year="${y}"><span class="dot"></span>${y}年（${yearCounts[y]}篇）</div>`)
-  .join('');
-const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>`;
 ---
 
 <Base contentWidth="1080px">
@@ -63,39 +39,47 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     </header>
 
     <div class="layout">
-      <aside class="rail"><div class="line" id="rail" set:html={railHtml + railTotalHtml}></div></aside>
-      <main id="content" set:html={contentHtml}></main>
+      <aside class="rail" aria-label="按年份浏览"><div class="line" id="rail">
+        {years.map((year) => <a class="tnode" data-year={year} href={`#year-${year}`}><span class="dot"></span>{year}年（{yearCounts[year]}篇）</a>)}
+        <div class="tnode total">合计{entries.length}篇</div>
+      </div></aside>
+      <main id="content"><div class="cards">
+        {entries.map((d, i) => <a class="art" href={d.href} style={`view-transition-name:${d.n}`} data-year={d.y} id={typeof d.y === 'number' && (i === 0 || entries[i - 1].y !== d.y) ? `year-${d.y}` : undefined}>
+          <div class="art-body">
+            <div class="meta-top"><SourceMeta source={d.source} /></div>
+            <div class="head">
+              <div class="title">{d.wip && <span class="wip-badge">🚧 施工中</span>}<span class="title-text"><span class="title-hl">{d.t}</span></span></div>
+              <div class="hook">{d.h}</div>
+            </div>
+            <div class="chiprow">{d.g.map((g) => <span class="chip">{g.icon ? `${g.icon} ` : ''}{g.label}</span>)}</div>
+          </div>
+        </a>)}
+      </div></main>
     </div>
   </div>
 </Base>
 
 <script>
-  // 点击年份 → 近似跳转到该年份的第一张卡片
-  document.getElementById('rail').addEventListener('click', (e) => {
-    const n = e.target.closest('.tnode');
-    if (!n) return;
-    const card = document.querySelector(`.art[data-year="${n.dataset.year}"]`);
-    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
   // 滚动 → 按当前可见卡片高亮年份（近似）
-  let io;
+  let io: IntersectionObserver | undefined;
   function observe() {
     if (io) io.disconnect();
+    if (!document.getElementById('rail')) return;
     io = new IntersectionObserver(
       (es) => {
         es.forEach((en) => {
-          if (en.isIntersecting && en.target.dataset.year) {
-            const y = en.target.dataset.year;
-            document.querySelectorAll('.tnode').forEach((n) => n.classList.toggle('active', n.dataset.year === y));
+          if (en.isIntersecting && (en.target as HTMLElement).dataset.year) {
+            const y = (en.target as HTMLElement).dataset.year;
+            document.querySelectorAll<HTMLElement>('.tnode').forEach((n) => n.classList.toggle('active', n.dataset.year === y));
           }
         });
       },
       { rootMargin: '-25% 0px -65% 0px', threshold: 0 }
     );
-    document.querySelectorAll('.art').forEach((a) => io.observe(a));
+    document.querySelectorAll('.art').forEach((a) => io!.observe(a));
   }
-  observe();
+  document.addEventListener('astro:page-load', observe);
+  document.addEventListener('astro:before-swap', () => io?.disconnect());
 </script>
 
 <style is:global>
@@ -189,9 +173,12 @@ const railTotalHtml = `<div class="tnode total">合计${entries.length}篇</div>
     grid-column: 2;
     min-width: 0;
   }
+  @media (max-width: 860px) {
+    #content { grid-column: 1; }
+  }
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: 14px;
   }
   .art {

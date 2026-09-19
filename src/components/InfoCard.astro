@@ -1,7 +1,8 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 interface Props {
-  source?: { title?: string; author?: string; authorBio?: string; url?: string; year?: number; type?: string; company?: string };
-  references?: { label: string; url: string; type: string }[];
+  source?: CollectionEntry<'docs'>['data']['source'];
+  references?: CollectionEntry<'docs'>['data']['references'];
 }
 const { source, references = [] } = Astro.props;
 const sourceTitle = source?.title;

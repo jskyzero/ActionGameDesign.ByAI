@@ -2,49 +2,13 @@
 // 用法：npm run validate
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { z } from 'zod';
+import { fileURLToPath } from 'node:url';
+import { docsSchema } from '../src/lib/content-schema.mjs';
 import yaml from 'js-yaml';
 
-const ROOT = new URL('../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const DOCS = join(ROOT, 'src/content/docs');
 
-// 与 src/content.config.ts 的 schema 保持一致
-const schema = z.object({
-  status: z.enum(['done', 'wip']).default('done'),
-  article: z.object({
-    title: z.string().min(1),
-    insight: z.string().optional(),
-    tags: z
-      .array(
-        z.object({
-          label: z.string(),
-          icon: z.string().optional(),
-        })
-      )
-      .default([]),
-  }),
-  source: z
-    .object({
-      title: z.string().optional(),
-      author: z.string().optional(),
-      authorBio: z.string().optional(),
-      url: z.string().optional(),
-      year: z.union([z.number(), z.string()]).optional(),
-      type: z.string().optional(),
-      company: z.string().optional(),
-    })
-    .optional(),
-  references: z
-    .array(
-      z.object({
-        label: z.string(),
-        url: z.string(),
-        type: z.enum(['original', 'translation', 'other']).default('other'),
-      })
-    )
-    .default([]),
-  description: z.string().optional(),
-});
 
 function* walk(dir) {
   for (const name of readdirSync(dir)) {
@@ -79,7 +43,7 @@ for (const file of walk(DOCS)) {
     failed++;
     continue;
   }
-  const result = schema.safeParse(data);
+  const result = docsSchema.safeParse(data);
   checked++;
   if (!result.success) {
     for (const issue of result.error.issues) {

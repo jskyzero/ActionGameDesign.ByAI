@@ -43,37 +43,41 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
       </div>
     </article>
 
-    {tocItems.length > 0 && (
-      <aside class="toc">
+    <aside class="toc">
         <a class="back" href={`${base}/`}>← 返回首页</a>
-        <div class="toc-title">目录</div>
+        {tocItems.length > 0 && <div class="toc-title">目录</div>}
         <nav>
           {tocItems.map((h) => (
             <a href={`#${h.slug}`} class={h.depth === 3 ? 'h3' : ''}>{h.text}</a>
           ))}
         </nav>
-      </aside>
-    )}
+    </aside>
   </div>
 </Base>
 
 <script>
-  const links = Array.from(document.querySelectorAll('.toc nav a'));
-  const heads = Array.from(document.querySelectorAll('.prose h2, .prose h3'));
-  if (links.length && heads.length) {
-    const io = new IntersectionObserver(
-      (es) => {
-        es.forEach((en) => {
-          if (en.isIntersecting) {
-            const href = '#' + en.target.id;
-            links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === href));
-          }
-        });
-      },
-      { rootMargin: '-15% 0px -70% 0px', threshold: 0 }
-    );
-    heads.forEach((h) => io.observe(h));
+  let io: IntersectionObserver | undefined;
+  function observe() {
+    io?.disconnect();
+    const links = Array.from(document.querySelectorAll('.toc nav a'));
+    const heads = Array.from(document.querySelectorAll('.prose h2, .prose h3'));
+    if (links.length && heads.length) {
+      io = new IntersectionObserver(
+        (es) => {
+          es.forEach((en) => {
+            if (en.isIntersecting) {
+              const href = '#' + en.target.id;
+              links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === href));
+            }
+          });
+        },
+        { rootMargin: '-15% 0px -70% 0px', threshold: 0 }
+      );
+      heads.forEach((h) => io!.observe(h));
+    }
   }
+  document.addEventListener('astro:page-load', observe);
+  document.addEventListener('astro:before-swap', () => io?.disconnect());
 </script>
 
 <style>

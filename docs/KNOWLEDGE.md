@@ -16,7 +16,7 @@
 |---|---|---|
 | 技术栈 | **Astro + Tailwind CSS + @tailwindcss/typography + MDX**（纯自定义站点） | 需要「小红书式」内容排版，Starlight 文档站风格无法满足 |
 | 数据层 | Astro 内容集合 + zod schema（`.mdx` 一条目一文件） | AI 友好：纯文本、可校验、可批量生成 |
-| 主页 | 时间轴 + 来源 hash 渐变卡 + 来源筛选 + 搜索 | 探索式首页（参考 Google Arts & Culture），多种入口 |
+| 主页 | 时间轴 + 文章卡片 | 按年份浏览，卡片展示结论与标签 |
 | 文章页 | 封面卡 + 核心观点 + 信息卡 + point 卡片正文 + 右侧目录(TOC) | 对标 `prototype/article.html`，信息密度分层呈现 |
 | 思维导图 | **放弃** | markmap 交互难用、手绘质感无法还原，且易踩滤镜坑 |
 | 正文形态 | 文字卡片（point 卡）而非导图 | 用户确认「文字卡片可以，方向正确」 |
@@ -40,9 +40,9 @@
 - 圆角：`--r-card: 18px` / `--r-pill: 999px`
 - 字体：`--font-serif`（LXGW WenKai 手写体标题）`--font-sans`
 - 阴影：`--shadow-card` / `--shadow-card-hover`
-- 来源 hash 渐变：`gradientFor(来源名)` 纯 hash 色相（`src/pages/index.astro` 内）
+- 来源信息：`SourceMeta.astro` 共用模板，首页与文章封面保持一致。
 
-布局：正文阅读宽 760px（`--content-width` 变量，Base 布局注入）；主页整体 1160px；时间轴左栏 170px；文章页右侧目录 200px（窄屏隐藏）。
+布局：正文阅读宽 880px（`--content-width` 变量，Base 布局注入）；主页内容宽 1080px；文章页右侧目录 200px（窄屏隐藏）。
 
 ## 5. 技术经验与踩坑
 
@@ -54,7 +54,7 @@
 - **markmap 踩坑**（已弃用，留档）：连线锚点在节点底边需后处理居中；`feDisplacementMap` 用 `objectBoundingBox` 会裁掉水平线（需 `userSpaceOnUse` + 固定大区域）。
 - **XMind 文件是 zip**（内含 `content.json`），可用脚本提取节点文字；用户的 `GDC.xmind` 在 WSL 挂载 iCloud 路径（`/mnt/c/Users/jskyzero/iCloudDrive/Moons-Project/GDC.xmind`）。
 - **当前模型无多模态能力**：图片内容（截图、含图的 drawio）需要外部视觉模型转写，脚本只能提取纯文本节点。
-- **hero/footer 对齐正文宽**：Base 布局用 `--content-width`（文章 760px / 主页 1160px），footer `max-width: var(--content-width)`。
+- **hero/footer 对齐正文宽**：Base 布局用 `--content-width`（文章 880px / 主页 1080px），footer `max-width: var(--content-width)`。
 
 ## 6. 常用命令与脚本
 
@@ -68,6 +68,6 @@ node scripts/convert-drawio.mjs <file.drawio> [out.md]   # drawio 节点 → mar
 
 ## 7. 后续待办
 
-- 接入全文搜索（Pagefind，主页搜索目前是客户端筛选）
+- 接入全文搜索（可考虑 Pagefind，当前首页没有搜索）
 - 按 `GDC.xmind` 的 9 个详细归纳迁移其余条目（街霸 5 已完成样板）
 - 图片内容的多模态转写流程

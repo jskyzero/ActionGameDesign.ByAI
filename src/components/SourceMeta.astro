@@ -1,0 +1,6 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { source?: CollectionEntry<'docs'>['data']['source'] }
+const { source } = Astro.props;
+---
+{source?.year ?? '年份不详'}{source?.type && <> · <span class:list={{ 'title-hl': ['GDC', 'CEDEC'].includes(source.type) }}>{source.type}</span></>}{source?.company && <> · {source.company}</>}

@@ -10,9 +10,10 @@
 
 ```
 src/
-├── content.config.ts          # 内容 schema（zod 契约，见 docs/EXTRACTION.md）
+├── content.config.ts          # Astro 内容集合注册（复用 lib/content-schema.mjs）
 ├── content/docs/              # 唯一数据源（纯文本，一条目一 .mdx）
 │   └── <章节>/<slug>.mdx      #   所有内容（演讲 / 视频 / 文章 / 原创方法论）
+├── lib/content-schema.mjs    # 构建与独立校验共用的 zod 契约
 ├── layouts/
 │   └── Base.astro             # 站点外壳（头部 + 页脚）
 ├── pages/
@@ -60,7 +61,9 @@ npm run validate     # 校验所有条目的 frontmatter
 - 字体：`--font-serif`（手写体标题）`--font-sans`（正文）
 - 阴影：`--shadow-card` `--shadow-card-hover`
 
-主页的**来源 hash 渐变**在 `src/pages/index.astro` 的 `gradientFor()` 函数里（纯 hash 色相）。
+首页与文章封面的来源信息共用 `src/components/SourceMeta.astro`，通过 Astro 模板转义文本。时间轴与目录观察器在 `astro:page-load` 初始化，在 `astro:before-swap` 释放，适配站内页面切换。
+
+内容规则只在 `src/lib/content-schema.mjs` 修改；`src/content.config.ts` 和 `scripts/validate.mjs` 均复用它。`status` 必填，标题不可为空；年份兼容数字与「年份不详」等文字。
 
 ## 迁移旧知识
 

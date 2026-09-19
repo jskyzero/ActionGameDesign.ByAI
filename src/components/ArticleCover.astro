@@ -1,21 +1,19 @@
 ---
+import SourceMeta from './SourceMeta.astro';
+import type { CollectionEntry } from 'astro:content';
 interface Props {
   title: string;
   description?: string;
   wip?: boolean;
   tags?: { label: string; icon?: string }[];
-  source?: { title?: string; author?: string; url?: string; year?: number | string; type?: string; company?: string };
+  source?: CollectionEntry<'docs'>['data']['source'];
   transitionName?: string;
 }
 const { title, description, wip = false, tags = [], source, transitionName } = Astro.props;
-const typeTxt = source?.type === 'GDC' || source?.type === 'CEDEC'
-  ? `<span class="title-hl">${source.type}</span>`
-  : source?.type ?? '';
-const topHtml = [source?.year ?? '年份不详', typeTxt, source?.company].filter(Boolean).join(' · ');
 ---
 
 <header class="hero" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>
-  {topHtml && <div class="meta-top" set:html={topHtml} />}
+  <div class="meta-top"><SourceMeta source={source} /></div>
   <h1>
     {wip && <span class="wip-badge">🚧 施工中</span>}
     <span class="title-hl">{title}</span>
