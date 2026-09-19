@@ -57,6 +57,8 @@
 
 ## 4. 归类
 
+- 已有厂商专题目录继续使用；原 `other` 中来源为 GDC、CEDEC 的文章分别放入同级 `gdc`、`cedec`，其他来源留在 `other`。按 `source.type` 归类，不根据文件名或游戏名猜测；移动文章时更新归档链接并保留旧 URL 跳转。
+
 - `source.company`（厂商/来源方）：沿用现有分组（Capcom / PlatinumGames / Santa Monica Studio / Nintendo / FTG 相关 / 其他 / 非 GDC / 设计者笔记），新内容按「厂商 / 品类 / 来源 / 原创」归入，必要时可新增。
 - `article.tags`：推荐 2~3 个，最多 3 个，优先保留与文章核心动作设计主题直接相关的简短标签，避免卡片标签行过长。
 

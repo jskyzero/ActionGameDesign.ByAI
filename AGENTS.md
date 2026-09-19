@@ -22,6 +22,7 @@
 ## 内容目录
 
 - `src/content/docs/<章节>/<slug>.mdx` —— 所有内容（GDC 演讲、视频、文章、原创方法论）
+- 已有厂商专题目录继续使用；原 `other` 中来源为 GDC、CEDEC 的文章分别放入同级 `gdc`、`cedec`，其他来源留在 `other`。按 `source.type` 归类，不根据文件名或游戏名猜测；移动文章时更新归档链接并保留旧 URL 跳转。
 - `src/pages/index.astro` —— 首页（不要往内容目录里堆首页）
 
 ## Frontmatter 字段
