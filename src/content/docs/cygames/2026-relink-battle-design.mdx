@@ -1,0 +1,56 @@
+---
+status: done
+article:
+  title: 《碧蓝幻想 Relink》的战斗设计：让角色魅力成为操作体验
+  insight: 「角色魅力」要落实到不同的操作乐趣、可靠的伙伴与低门槛的辅助操作，才能让不同水平的玩家都打得漂亮。
+  tags:
+    - label: 战斗设计
+    - label: 伙伴AI
+    - label: 辅助操作
+    - label: 制作流程
+source:
+  title: '『GRANBLUE FANTASY: Relink - Endless Ragnarok』のバトル制作事例 ～最高のキャラゲーを目指して～'
+  author: 平手 聡、三木 達
+  authorBio: Cygames 高级工程师平手聡负责玩家角色工程团队；高级策划三木達统筹战斗，两人均参与《Relink》及《Endless Ragnarok》。
+  url: https://speakerdeck.com/cygames/cygames_202607_cedec2026_10
+  year: 2026
+  type: CEDEC
+  company: Cygames
+references:
+  - label: CEDEC 2026 官方讲题与讲者介绍
+    url: https://cedec.cesa.or.jp/2026/timetable/detail/s69f310269aac8/
+    type: original
+  - label: Cygames 官方讲义（100 页）
+    url: https://speakerdeck.com/cygames/cygames_202607_cedec2026_10
+    type: original
+  - label: CEDiL 资料入口（下载需登录）
+    url: https://cedil.cesa.or.jp/cedil_sessions/view/3363.html
+    type: original
+description: CEDEC 2026 战斗制作分享笔记，涵盖角色玩法迭代、连携演出、伙伴 AI 与辅助模式。
+---
+
+本文依据 Cygames 公开讲义整理，页码为 PDF 页序。演讲同时回顾《Relink》的基础设计和《Endless Ragnarok》的扩展，并非所有机制都是扩展版新增。
+
+## 把角色魅力落实到战斗规则
+
+### 用两条设计指引约束取舍
+
+- 团队希望玩家通过动作体验角色魅力，也希望不熟悉动作游戏的原作粉丝能享受战斗。因此基础方向偏重主动进攻的爽快感：普通攻击连按即可形成连段，闪避可优先打断当前动作，也允许同时输入防御和攻击。
+- 角色差异需要落实到手感。面对 28 名角色和各自三种战斗风格的制作量，团队让成员共同提出玩法，再用两三天的粗略实现试玩；动画只需看清姿势，特效可以暂缺，先验证乐趣再投入精修。
+- 共通基础行为采用统一数据格式，把制作时间留给各角色独有的玩法。参见讲义第 7—10、15、18—20、30、35 页。
+
+## 连携要有高潮，也要保护操作节奏
+
+### 按出现频率安排演出规模
+
+- 连携包括 Link Attack、奥义连锁、Link Time，以及扩展版加入的 Ascend Chain。不同规模的协作反馈分布在战斗过程里，让队伍配合有持续回报。
+- 镜头也要适应实战：巨大敌人的 Link Attack 曾出现镜头过近的问题，团队根据敌人体型混合镜头数据；奥义发动则优先保持敌人朝向，减少演出给其他队员带来的干扰。
+- 这些案例说明，评价连携演出时需要同时观察发动者与队友的体验。参见第 40、45、50 页；最后一点为本文归纳。
+
+## 伙伴和辅助模式共同降低门槛
+
+### 让自动控制服务于角色体验
+
+- 角色 AI 处理自身行动，共用非攻击行为、单独制作各角色的攻击；Meta AI 则协调队伍，例如检查队友奥义槽并引导连锁。伙伴既要有伤害贡献，也要让协作顺畅。
+- 辅助模式保留移动和攻击输入，由系统补充招式与闪避；全辅助模式进一步代替攻击输入，玩家主要负责移动。两档辅助为不同熟练度提供入口。
+- 辅助模式也被复用于 AutoPlay 的战斗测试，帮助自动运行发现问题。参见第 55、58、60、70、77、80、91 页。

@@ -44,6 +44,8 @@
 
 ## 约定
 
+- 修改完成并通过相关校验后，默认创建本地 Git 提交，无需再次确认；推送远端或发布仍按用户指示执行。
+
 1. 一个条目一个文件，文件名用 `kebab-case`，放在对应章节目录下。
 2. 遵循**信息密度分层**（[`docs/EXTRACTION.md`](docs/EXTRACTION.md)）：Hook 一句 → 正文 Details。
 3. `article.insight` 用中文引号「」，不要用英文引号。
