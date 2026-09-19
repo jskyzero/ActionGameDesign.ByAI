@@ -1,0 +1,47 @@
+---
+status: done
+article:
+  title: 《最后生还者》艾莉：让玩家愿意依赖伙伴
+  insight: 「伙伴 AI 先守住玩家的信任，再用看得见的帮助建立感情。」
+  tags:
+    - label: 伙伴AI
+      icon: 🤝
+    - label: 潜行战斗
+      icon: 👁️
+    - label: 战斗反馈
+      icon: ⚔️
+source:
+  title: "Ellie: Buddy AI in The Last of Us"
+  author: Max Dyckhoff
+  authorBio: Naughty Dog 工程师，负责《最后生还者》的伙伴 AI。
+  url: https://www.gdcvault.com/play/1021010/Ellie-Buddy-AI-in-The
+  year: 2014
+  type: GDC
+  company: Naughty Dog
+references:
+  - label: GDC 2014 官方讲题
+    url: https://www.gdcvault.com/play/1021010/Ellie-Buddy-AI-in-The
+    type: original
+  - label: 作者同题专章（Game AI Pro 2，第 35 章）
+    url: https://www.gameaipro.com/GameAIPro2/GameAIPro2_Chapter35_Ellie_Buddy_AI_in_The_Last_of_Us.pdf
+    type: original
+---
+
+依据作者《Game AI Pro 2》同题专章整理；会议年份为 2014。
+
+## 🤝 怎样让伙伴留在身边，却不挡住操作？
+
+- **跟随要有意图。** 选点考虑距离、遮挡与同侧关系，避免站在玩家面前；限制无意义的小幅移动。
+- **允许共享掩体。** 配套动作保留玩家射击、移动的自由，不必让伙伴反复退出掩体让位。
+
+## ⚔️ 怎样帮助玩家，又不代替玩家完成战斗？
+
+- **制造接续机会。** 砖块击晕来敌，逃跑、近战或抓取由玩家决定；长触发间隔让帮助保持分量。
+- **限制负担与输出。** 艾莉能自行挣脱多数抓取；视野外射击的有效伤害也受限制，避免暗中清空遭遇。
+
+## 👁️ 潜行失败应该由谁负责？
+
+- **默认不开枪。** 玩家开火、嘈杂近战或陷入紧急危险才许可射击；重新潜行后收回许可。
+- **保护玩家计划。** 潜行时敌人不因伙伴暴露而警觉，避免偶发 AI 失误破坏信任。
+
+书章定位：跟随 35.3–35.4，援助 35.5，射击和平衡 35.6。

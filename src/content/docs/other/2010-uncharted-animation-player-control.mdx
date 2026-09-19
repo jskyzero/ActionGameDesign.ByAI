@@ -1,0 +1,45 @@
+---
+status: done
+article:
+  title: 《神秘海域》：用动画分层兼顾操作与自然动作
+  insight: 把移动、持枪和细小姿态变化拆成「可组合的动画层」，角色才能随操作改变行为，同时保持身体表现的连续性。
+  tags:
+    - label: 动画分层
+      icon: 🧩
+    - label: 角色操作
+      icon: 🎮
+    - label: 动作衔接
+      icon: 🔗
+source:
+  title: "Animation and Player Control in Uncharted: Drake's Fortune and Uncharted II: Among Thieves"
+  author: Travis McIntosh
+  authorBio: Naughty Dog 首席程序员，分享《神秘海域》前两作的玩家角色动画与控制实现。
+  url: https://www.gdcvault.com/play/1012451/Animation-and-Player-Control-in
+  year: 2010
+  type: GDC
+  company: Naughty Dog
+references:
+  - label: GDC Vault 讲座与摘要
+    url: https://www.gdcvault.com/play/1012451/Animation-and-Player-Control-in
+    type: original
+  - label: GAME Watch GDC 2010 现场报道（前半为本讲座）
+    url: https://game.watch.impress.co.jp/docs/news/354802.html
+    type: other
+description: 从局部动画、叠加变化和地形适配理解《神秘海域》如何同时处理即时操作与自然的角色运动。
+---
+
+本文依据 [GAME Watch 现场报道的前半部分](https://game.watch.impress.co.jp/docs/news/354802.html)整理，讲题与讲者由 GDC Vault 核实。报道后半属于另一场角色制作管线分享，不混入本文。
+
+## 用局部动画组合行为
+
+**奔跑和持枪不必为每一种组合重做全身动画。** 德雷克将基础移动与局部的持枪、手指、表情组合起来，既能响应操作，也能表现同时发生的动作。官方摘要将局部动画、叠加与分层列为讲座重点。
+
+## 用叠加变化打破循环感
+
+**细小变化可以保留原有步态。** 报道的 Additive Animations 段落举例：在跑步上随机加入肩部运动，减弱长距离奔跑的机械重复感。可借鉴的拆分方式是先判断差异是否改变行为，再决定重做动作还是添加修饰。
+
+## 让脚回应实际地形
+
+**自然动作还需要可信的环境接触。** 《神秘海域 2》使用下肢 IK，根据地面调整站姿，改善瓦砾和高差上的脚部表现。
+
+对动作评审的启发：分别检查输入响应、当前姿态与地面接触，避免把不同问题都归结为动画数量不足。本文不展开尚未核读的重映射、镜像及内存实现细节。

@@ -1,0 +1,49 @@
+---
+status: done
+article:
+  title: 《地平线》机器 AI：让寻路与攻击服从身体能力
+  insight: 「AI 知道身体怎样移动，才不会让正确的决策变成不自然的动作。」
+  tags:
+    - label: 敌人AI
+      icon: 🤖
+    - label: 动作衔接
+      icon: 🦿
+    - label: 近战攻击
+      icon: ⚔️
+source:
+  title: "Beyond 'Killzone': Creating New AI Systems for 'Horizon Zero Dawn'"
+  author: Julian Berteling
+  authorBio: Guerrilla Games 开发者，分享《地平线：零之曙光》的 AI 导航与动画协作。
+  url: https://www.gdcvault.com/play/1024912/Beyond-Killzone-Creating-New-AI
+  year: 2018
+  type: GDC
+  company: Guerrilla Games
+references:
+  - label: GDC 官方讲题
+    url: https://www.gdcvault.com/play/1024912/Beyond-Killzone-Creating-New-AI
+    type: original
+  - label: Guerrilla 官方发布页与讲义下载
+    url: https://www.guerrilla-games.com/read/beyond-killzone-creating-new-ai-systems-for-horizon-zero-dawn
+    type: original
+  - label: 开发者原始 PPTX
+    url: https://d3d3g8mu99pzk9.cloudfront.net/JulianBerteling/GDC+Presentation+beyond+killzone.pptx
+    type: original
+---
+
+依据 Guerrilla 官方讲义，选取 AI 移动与近战内容。
+
+## 🦿 为什么给所有敌人同一种寻路能力会出问题？
+
+- **体型改变避障。** 长条形机器无法简单用圆形表示，避障需要支持矩形。
+- **转弯受尺寸约束。** 游戏用贝塞尔曲线平滑路径，并按角色尺寸调整转弯形状。讲义后续的回旋线方案未用于《零之曙光》，见第 39 页。
+
+## 📏 AI 怎样知道一段动画会把身体带到哪里？
+
+- **记录动作能力。** Motion Table 保存采样得到的根骨骼位移、时长与事件，让 AI 查询移动结果。
+- **据此预测停步。** 动作表帮助决定何时触发停止动画，减少到达终点才硬修正的需要。
+
+## ⚔️ 近战攻击怎样同时兼顾目标与完整动作？
+
+- **先参考能力，再修正偏差。** 攻击触发、起手和正式攻击都使用动作表；Animation Warping 再修改整段或部分动画的根骨骼变换，以减少必要调整。
+
+讲义定位：避障第 21–28 页，路径第 31–39 页，动作表与近战第 56–73 页。

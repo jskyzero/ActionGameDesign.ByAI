@@ -1,0 +1,52 @@
+---
+status: done
+article:
+  title: 《王国之泪》：物理交互与声音反馈
+  insight: 玩家可以任意组合物体，系统就要让「如何运动」与「听起来怎样」共同遵守可理解的规则。
+  tags:
+    - label: 物理交互
+      icon: 🧩
+    - label: 操作反馈
+      icon: 🔊
+source:
+  title: "Tunes of the Kingdom: Evolving Physics and Sounds for 'The Legend of Zelda: Tears of the Kingdom'"
+  author: Takuhiro Dohta、Junya Osada、Takahiro Takayama
+  authorBio: 任天堂技术总监、声音主程与物理主程。
+  url: https://gdcvault.com/play/1034667/Tunes-of-the-Kingdom-Evolving
+  year: 2024
+  type: GDC
+  company: Nintendo
+references:
+  - label: GDC Vault 原演讲
+    url: https://gdcvault.com/play/1034667/Tunes-of-the-Kingdom-Evolving
+    type: original
+  - label: Game Developer 现场报道与讲者采访（含任天堂原幻灯片）
+    url: https://www.gamedeveloper.com/programming/how-nintendo-did-the-impossible-with-tears-of-the-kingdom-s-physics-system
+    type: other
+  - label: Famitsu 声音部分现场报道（含原幻灯片）
+    url: https://www.famitsu.com/news/202403/22337814.html
+    type: other
+  - label: 任天堂开发者补充：让声音符合实际运动
+    url: https://www.nintendo.co.jp/jobs/keyword/124.html
+    type: original
+  - label: 中文视频与章节时间点
+    url: https://www.bilibili.com/video/BV1hM4m197DE/
+    type: translation
+description: 根据 GDC 2024 现场材料、原幻灯片和讲者采访，整理部件组合、操控预期与声音反馈；附任天堂开发者补充。
+---
+
+本文依据演讲现场材料与讲者采访整理，并核对了公开的轮子迭代、质量与材质幻灯片；末节明确区分任天堂另文补充的案例。
+
+## 组合能力来自部件
+
+**把能力放进零件。** 车轮、连接结构与接地行为共同产生载具运动；便携锅为适应斜坡加入的关节，又被玩家用于其他装置。物品原本的用途没有限定它在组合里的职责。见[讲者采访与演讲案例](https://www.gamedeveloper.com/programming/how-nintendo-did-the-impossible-with-tears-of-the-kingdom-s-physics-system)。
+
+## 物理一致还要操作可信
+
+**参数服务于玩家的预期。** 木板为便于看清和操控而做厚，按外形直接计算却会过重，需要修正质量；车轮则通过迭代改善接地。讲者在会后采访中还说明，会拿起现实中的板材比对感觉。见[原幻灯片与采访](https://www.gamedeveloper.com/programming/how-nintendo-did-the-impossible-with-tears-of-the-kingdom-s-physics-system)。
+
+## 让声音解释运动结果
+
+**声音也要适应未预制的组合。** 演讲的马车案例把轮子、链条与车体运动的声音组合起来，不为整辆车套一个固定音效。见[Famitsu 声音部分的现场记录](https://www.famitsu.com/news/202403/22337814.html)。
+
+任天堂另文给出更具体的反馈例子：爬坡车辆停住时，轮胎打滑声能解释为什么无法前进。程序员通过接触点运动区分滑动与滚动，避免轮子原地空转却响起正常滚动声。此例是[官方开发者补充](https://www.nintendo.co.jp/jobs/keyword/124.html)，不是冒充本场演讲的逐字内容。
