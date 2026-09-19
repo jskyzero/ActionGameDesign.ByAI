@@ -46,6 +46,7 @@
 
 ## 5. 技术经验与踩坑
 
+- **外置 schema 与开发缓存**：修改 `src/lib/content-schema.mjs` 的字段契约时，同步更新 `src/content.config.ts` 中的契约说明。Astro 5 的内容配置摘要按配置文件本身计算，外置 schema 改动可能未使旧内容缓存失效，导致新增字段在开发页面缺失；仅重启服务不一定解决。应验证运行中的文章页面，不能只检查构建产物。
 - **去 Starlight 后 `.mdx` 支持丢失**：必须补装 `@astrojs/mdx`（Astro 5 配 `@astrojs/mdx@4`，最新版 7.x 需要 Astro 7）。
 - **`[...slug]` 动态路由参数是字符串**（整段路径），不是数组；`getStaticPaths` 里 `params.slug = entry.slug`。
 - **Tailwind typography 的 `.prose` 默认 `max-width: 65ch`**：会把正文限制在 ~500px，point 卡片无法占满宽度 → 覆盖 `.prose { max-width: none }`。
