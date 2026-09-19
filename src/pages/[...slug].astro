@@ -120,7 +120,8 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
   /* 右侧目录 */
   .toc {
     grid-area: toc;
-    width: 200px;
+    /* 保持左侧锚点，向右利用空白；宽度包含 28px 内边距。 */
+    width: min(320px, 100%);
     position: sticky;
     top: 40px;
     align-self: start;
@@ -145,6 +146,8 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
     color: var(--muted);
     padding: 4px 0;
     line-height: 1.5;
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
   }
   .toc nav a:hover {
     color: var(--primary);
@@ -168,7 +171,8 @@ const transitionName = 'card-' + entry.slug.replace(/[^a-zA-Z0-9_-]+/g, '-');
     padding-left: 12px;
     font-size: 12px;
   }
-  @media (max-width: 1080px) {
+  /* 正文 880px + 两侧各 200px + 页面内边距 48px。 */
+  @media (max-width: 1328px) {
     .toc {
       display: none;
     }
