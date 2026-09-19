@@ -3,6 +3,11 @@ import { z } from 'zod';
 // Astro 构建与独立校验共用的内容契约。
 export const docsSchema = z.object({
   status: z.enum(['done', 'wip']),
+  generation: z.object({
+    model: z.string().trim().min(1),
+    modelUrl: z.string().url().refine((url) => /^https?:\/\//.test(url), '模型链接必须为 HTTP(S) URL'),
+    generatedAt: z.string().datetime({ offset: true }),
+  }),
   article: z.object({
     title: z.string().trim().min(1),
     insight: z.string().optional(),
@@ -38,4 +43,3 @@ export const docsSchema = z.object({
     .default([]),
   description: z.string().optional(),
 });
-

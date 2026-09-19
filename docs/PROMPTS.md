@@ -24,7 +24,7 @@
 
 ```markdown
 ---
-status: wip
+status: done
 article:
   title: <中文标题>
   insight: <一句话结论/Hook，用中文引号「」>
@@ -38,6 +38,10 @@ source:
   year: <年份数字>
   type: <会议/平台，如 GDC>
   company: <厂商/来源方，如 Capcom>
+generation:
+  model: <实际生成正文的模型名称>
+  modelUrl: <模型官方 HTTP(S) 链接>
+  generatedAt: "<首次入库提交时间，ISO 8601，含时区>"
 references:
   - label: <参考名>
     url: <链接>
@@ -58,5 +62,6 @@ references:
    - 正文 Details 挂在 `##` 小节下，简短分点，不写论文。
 2. `article.title` 用中文标题（如 `街霸 5 的美术设计思路`），分享人放 `source.author`。
 3. `article.tags` 推荐使用 2~3 个简短中文词，最多 3 个（如 `格斗`、`战斗系统`、`AI`），可给每个标签配一个 emoji `icon`（可选）。
-4. 还没写详细笔记就 `status: wip`；已整理完整则 `done`。
-5. 只输出这一个 Markdown 文件的内容，不要加多余解释。
+4. 还没写详细笔记就 `status: done`；已整理完整则 `done`。
+5. `generation` 记录实际正文模型，不能照抄默认模型名称。时间按 Git 首次入库提交记录填写；新文章首次提交时间的约定见 `AGENTS.md`。不得使用演讲年份或最新修改时间代替。
+6. 材料充分时，只输出这一个 Markdown 文件的内容，不要加多余解释。

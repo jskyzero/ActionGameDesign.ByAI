@@ -28,7 +28,7 @@
   - 一级 Hook（`article.insight`）：1 句结论，大字号
   - 二级 Details（正文）：具体解释，point 卡片呈现
 - **通用信息卡片**（兼容 GDC 演讲 / 普通文章 / 书籍）：
-  `article`（`title`·`insight`·`tags`）· `source`（`title`=原标题 · `author`·`url` · `year` · `type`=会议/平台 · `company`=厂商）· `references`（翻译/延伸）
+  `article`（`title`·`insight`·`tags`）· `source`（`title`=原标题 · `author`·`url` · `year` · `type`=会议/平台 · `company`=厂商）· `references`（翻译/延伸）· `generation`（实际生成模型、官方链接、首次入库提交时间）
 - **归类**：`source.company`（顶层分组）· `article.tags`（推荐 2~3 个，最多 3 个）· `source.year`
 - **精简原则**：`article.title` = 中文标题；分享人放 `source.author`；删冗余字段（`description`/`image` 可选保留）。
 

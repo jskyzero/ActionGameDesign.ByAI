@@ -39,6 +39,9 @@
 | `source.type` | 会议 / 平台 | GDC | 知乎 / CEDEC |
 | `source.company` | 厂商 / 来源方 | Capcom | —（可空） |
 | `source.title` | 原标题 | The Art Direction of... | 文章标题 |
+| `generation.model` | 生成正文的实际 AI 模型 | GPT-6 Astra | DeepSeek-V4-Pro |
+| `generation.modelUrl` | 模型官方链接 | https://openai.com/ | https://www.deepseek.com/ |
+| `generation.generatedAt` | 首次入库提交时间（含时区） | ISO 8601 字符串 | ISO 8601 字符串 |
 | `references` | 参考（翻译/延伸） | 中译链接 | 延伸阅读 |
 
 卡片只展示**有值的字段**；留空的字段会自动省略。
@@ -56,3 +59,11 @@
 
 - `source.company`（厂商/来源方）：沿用现有分组（Capcom / PlatinumGames / Santa Monica Studio / Nintendo / FTG 相关 / 其他 / 非 GDC / 设计者笔记），新内容按「厂商 / 品类 / 来源 / 原创」归入，必要时可新增。
 - `article.tags`：推荐 2~3 个，最多 3 个，优先保留与文章核心动作设计主题直接相关的简短标签，避免卡片标签行过长。
+
+## 5. 发布状态与生成记录
+
+资料不足时，只在 [scan-todo.md](scan-todo.md) 保留讲题、来源与资料缺口，不发布 `wip` 占位文章。完成正文后以 `done` 收录并更新归档。
+
+每篇文章必填 `generation`，记录实际生成正文的模型、官方链接与时间；检索所用模型不替代正文模型。既有文章的 `generatedAt` 从 `git log --follow --diff-filter=A --format=%cI -- <文章路径>` 最早的首次收录提交回填，保留时区。页面按北京时间显示，明确时间依据为首次收录提交，并非精确的模型执行时间。新增文章可预定首次提交时间，并设置相同的 `GIT_COMMITTER_DATE`；日常修改不重置生成记录。
+
+2026-09-20 的迁移中，19 篇由 GPT-6 Astra 生成的文章按实际模型标注，其余 51 篇历史文章按用户指定统一标注 [DeepSeek-V4-Pro](https://www.deepseek.com/)。这不是未来文章的默认署名。

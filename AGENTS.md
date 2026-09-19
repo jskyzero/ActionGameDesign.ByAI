@@ -28,7 +28,7 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `status` | `done` \| `wip` | ✅ | `wip` = 待施工 |
+| `status` | `done` \| `wip` | ✅ | 兼容 `wip`；新收录仅发布 `done` |
 | `article.title` | string | ✅ | 中文标题（如 `街霸 5 的美术设计思路`） |
 | `article.insight` | string | 推荐 | **一级信息 Hook**：一句话结论 |
 | `article.tags` | object[] | 推荐 | `[{ label, icon? }]`，推荐 2~3 个，最多 3 个标签；`icon` 为可选 emoji |
@@ -40,6 +40,9 @@
 | `source.type` | string | | 来源类型（会议 / 平台，如 `GDC`、`CEDEC`、`Youtube`） |
 | `source.company` | string | | 厂商 / 来源方（如 `Capcom`、`Nintendo`；顶层分组沿用此字段） |
 | `references` | array | | `[{ label, url, type }]`，`type` ∈ `original`/`translation`/`other` |
+| `generation.model` | string | ✅ | 实际生成正文的 AI 模型名称 |
+| `generation.modelUrl` | string | ✅ | 模型官方 HTTP(S) 链接 |
+| `generation.generatedAt` | string | ✅ | 首次入库 Git 提交时间，ISO 8601，含时区 |
 | `description` | string | | 摘要 |
 
 ## 约定
@@ -49,6 +52,8 @@
 1. 一个条目一个文件，文件名用 `kebab-case`，放在对应章节目录下。
 2. 遵循**信息密度分层**（[`docs/EXTRACTION.md`](docs/EXTRACTION.md)）：Hook 一句 → 正文 Details。
 3. `article.insight` 用中文引号「」，不要用英文引号。
-4. `wip` 条目正文放 `> 🚧 待施工：内容待整理，先记录分享与参考链接。`；`done` 条目正文放完整笔记。
+4. 仅发布正文已完成的 `done` 文章；资料不足的主题、来源链接和缺口保留在 `docs/scan-todo.md`，不建立施工中的文章。
 5. 正文必须是纯文本（AI 可读）。
 6. 新增条目后跑 `npm run validate` 校验，再 `npm run build` 确认能构建。
+
+7. `generation` 如实标注生成正文的模型，不按默认分工猜测。时间从 `git log --follow --diff-filter=A --format=%cI -- <文章路径>` 的最早首次收录记录获取；后续排版、标签等修改不覆盖该时间。首次提交的新文可预先确定提交时间，并用同一 `GIT_COMMITTER_DATE` 提交，保持字段与记录一致。历史时间是入库时间依据，不声称精确还原模型执行时间。
