@@ -91,7 +91,28 @@ a {
   flex-shrink: 0;
 }
 
-/* 点子标题 + 列表 = .point 卡片（h3 是卡片上半、紧邻的 ul 是卡片下半） */
+/* H3 与其正文在构建时组成完整卡片，兼容段落、列表、表格与图片。 */
+.prose .article-point {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 14px 18px;
+  margin: 0 0 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  overflow-wrap: anywhere;
+}
+.prose .article-point > :last-child {
+  margin-bottom: 0;
+}
+.prose .article-point > p {
+  font-size: 14.5px;
+  margin: 10px 0;
+}
+.prose .article-point > ul,
+.prose .article-point > ol {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
 .prose h3 {
   display: flex;
   align-items: center;
@@ -99,11 +120,7 @@ a {
   font-size: 16px;
   color: var(--primary);
   font-weight: 600;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-bottom: 0;
-  border-radius: var(--r-card) var(--r-card) 0 0;
-  padding: 14px 18px 8px;
+  padding: 0;
   margin: 0;
 }
 .prose h3::before {
@@ -113,15 +130,6 @@ a {
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
-}
-.prose h3 + ul {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-top: 0;
-  border-radius: 0 0 var(--r-card) var(--r-card);
-  padding: 6px 18px 14px 40px;
-  margin: 0 0 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 .prose li::marker {
   color: var(--ink); /* 对标 prototype：圆点用墨色，不用 accent 红 */
@@ -143,6 +151,71 @@ a {
 }
 .prose blockquote p {
   margin: 0;
+}
+
+/* 与一句话总结共用暖色收尾；问题逐项排布，方框仅作阅读标记。 */
+.prose .design-checklist {
+  margin: 24px 0;
+  padding: 18px 20px;
+  border: 1px solid #f2d8d2;
+  border-radius: var(--r-card);
+  background: #fff0ed;
+  font-size: 14.5px;
+  overflow-wrap: anywhere;
+}
+.prose .design-checklist-title {
+  margin: 0 0 8px;
+  color: #a33a30;
+  font-weight: 600;
+}
+.prose .design-checklist > p:not(.design-checklist-title) {
+  margin: 8px 0;
+}
+.prose .design-checklist > ul,
+.prose .design-checklist > ol {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+.prose .design-checklist > :is(ul, ol) > li {
+  position: relative;
+  padding: 10px 0 10px 26px;
+  margin: 0;
+  border-top: 1px solid #f2d8d2;
+}
+.prose .design-checklist > :is(ul, ol) > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1em;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #a33a30;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+/* 有序自查保留序号：把数字放进方框，表示检查顺序而非可勾选状态 */
+.prose .design-checklist > ol {
+  counter-reset: design-checklist;
+}
+.prose .design-checklist > ol > li {
+  counter-increment: design-checklist;
+}
+.prose .design-checklist > ol > li::before {
+  content: counter(design-checklist);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a33a30;
+  line-height: 1;
+}
+.prose .design-checklist li > p {
+  margin: 0;
+}
+.prose .design-checklist > :last-child {
+  margin-bottom: 0;
 }
 
 /* —— hero 标题高亮下划线（index 卡片与 article 封面共用，对标 prototype .hl） —— */

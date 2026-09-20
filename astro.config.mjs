@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
+import rehypeArticleCards from './src/lib/rehype-article-cards.mjs';
 
 export default defineConfig({
   site: 'https://jskyzero.github.io',
@@ -56,6 +57,9 @@ export default defineConfig({
     '/other/tokuda-mhw-design/': '/ActionGameDesign.ByAI/cedec/tokuda-mhw-design/',
   },
   integrations: [mdx()],
+  markdown: {
+    rehypePlugins: [rehypeArticleCards],
+  },
   vite: {
     plugins: [tailwindcss()],
   },
