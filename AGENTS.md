@@ -41,9 +41,7 @@
 | `source.type` | string | | 来源类型（会议 / 平台，如 `GDC`、`CEDEC`、`Youtube`） |
 | `source.company` | string | | 厂商 / 来源方（如 `Capcom`、`Nintendo`；顶层分组沿用此字段） |
 | `references` | array | | `[{ label, url, type }]`，`type` ∈ `original`/`translation`/`other` |
-| `generation.model` | string | ✅ | 实际生成正文的 AI 模型名称 |
-| `generation.modelUrl` | string | ✅ | 模型官方 HTTP(S) 链接 |
-| `generation.generatedAt` | string | ✅ | 首次入库 Git 提交时间，ISO 8601，含时区 |
+| `generation` | string | | 生成与修改说明，如 `本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4 Pro 后续修改` |
 | `description` | string | | 摘要 |
 
 ## 约定
