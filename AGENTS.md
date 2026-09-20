@@ -6,12 +6,15 @@
 
 ## 模型分工约定
 
-| 阶段 | 模型 | 说明 |
-|---|---|---|
-| 检索 / 扫描（找 talk、找链接、翻资料） | `deepseek-v4-flash` | 量大但不需要深度推理，用 Flash 省 token |
-| 正文写作（精修中文、去 AI 味、信息密度分层） | `deepseek-v4-pro` | 需要文字质量，用 Pro |
+按**角色**分工，不写死具体模型名——模型会下线、改名或被重定向，规则只约定「什么任务用什么档次的模型」，具体 ID 随时更换。
 
-- 主对话负责判断、规划、汇总；派出去的**子代理 / 工作流**默认按「检索用 Flash、写作用 Pro」分工，可在 `agent()` / workflow phase 里显式指定 `model`。
+| 阶段 | 模型档位 | 说明 |
+|---|---|---|
+| 检索 / 扫描（找 talk、找链接、翻资料） | 快而省 | 量大但不需要深度推理，用便宜/快的模型 |
+| 正文写作（精修中文、去 AI 味、信息密度分层） | 强而准 | 需要文字质量，用质量最高的可用模型 |
+
+- 当前实践（可随时替换，无需改本文件）：两档先都落到 DeepSeek V4.1 Flash（`deepseek-flash`）；待更强的写作模型发布后再切写作档。
+- 主对话负责判断、规划、汇总；派出去的**子代理 / 工作流**按上述角色分工，在 `agent()` / workflow phase 里用**当下可用的模型 ID** 显式指定 `model`，不要沿用已下线或被重定向的旧 ID。
 
 ## 文档索引
 
@@ -41,7 +44,7 @@
 | `source.type` | string | | 来源类型（会议 / 平台，如 `GDC`、`CEDEC`、`Youtube`） |
 | `source.company` | string | | 厂商 / 来源方（如 `Capcom`、`Nintendo`；顶层分组沿用此字段） |
 | `references` | array | | `[{ label, url, type }]`，`type` ∈ `original`/`translation`/`other` |
-| `generation` | string | | 生成与修改说明，如 `本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4 Pro 后续修改` |
+| `generation` | string | | 生成与修改说明，如 `本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改` |
 | `description` | string | | 摘要 |
 
 ## 约定
@@ -55,7 +58,7 @@
 5. 正文必须是纯文本（AI 可读）。
 6. 新增条目后跑 `npm run validate` 校验，再 `npm run build` 确认能构建。
 
-7. `generation` 如实标注生成正文的模型，不按默认分工猜测。时间从 `git log --follow --diff-filter=A --format=%cI -- <文章路径>` 的最早首次收录记录获取；后续排版、标签等修改不覆盖该时间。首次提交的新文可预先确定提交时间，并用同一 `GIT_COMMITTER_DATE` 提交，保持字段与记录一致。历史时间是入库时间依据，不声称精确还原模型执行时间。
+7. `generation` 用一句话说明生成与修改历史：`本文由 <模型> 于 <YYYY/MM/DD> 生成`，有实质内容改动再追加 `，由 <模型> 后续修改`。模型名写**实际**生成/修改的模型，不按角色猜测；日期取首次入库的真实 git 时间（`git log --follow --diff-filter=A --format=%cI -- <路径>`），后续排版、标签等修改不覆盖该日期。
 
 ## 换模型防错（新模型接入前必读）
 
