@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《守望先锋》第一人称动画：有限时间里的角色表现 · 动作游戏设计知识库</title><meta name="description" content="依据 Inven Global 的 GDC 2017 现场记录整理，并以官方视频和讲题核对来源；角色案例对应当时版本，第一人称展示用的变形不应理解为第三人称模型或命中判定也做了相同变化。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-gdc-2017-overwatch-first-person-animation" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2017 · <span class="title-hl">GDC</span> · Blizzard Entertainment</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《守望先锋》第一人称动画：有限时间里的角色表现</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>👁️ 第一人称</span><span class="tag" data-astro-cid-6bfer2tv>🦿 动作动画</span><span class="tag" data-astro-cid-6bfer2tv>🎯 武器反馈</span> </div> <p class="sub" data-astro-cid-6bfer2tv>依据 Inven Global 的 GDC 2017 现场记录整理，并以官方视频和讲题核对来源；角色案例对应当时版本，第一人称展示用的变形不应理解为第三人称模型或命中判定也做了相同变化。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「第一人称动画要让玩家感到自己是谁，也要让玩家始终看清正在打谁。」</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Animation Bootcamp: The First Person Animation of &#39;Overwatch&#39;</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=7t0hLZd_8Z4" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=7t0hLZd_8Z4</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Matthew Boehm</span>  ·  Blizzard Entertainment 动画师，参与《守望先锋》第一人称动画制作。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://www.invenglobal.com/articles/1187/how-overwatchs-first-person-animation-breathed-life-into-heroes" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Inven Global 现场报道与动作案例</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.youtube.com/watch?v=7t0hLZd_8Z4" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC 官方公开视频</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gdcvault.com/play/1024319/Animation-Bootcamp-The-First-Person" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault 讲题与摘要</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="第一人称动画同时承担信息与性格">第一人称动画同时承担信息与性格</h2>
+<ul>
+<li><strong>看不见脸，却不断看到局部</strong>: 玩家大部分时间看不到自己的脸，却不断看到手、武器以及走路和换弹的节奏。</li>
+<li><strong>局部动作承担双重任务</strong>: 这些局部动作要让人感到自己正在操作哪位英雄，同时不能遮住战场。</li>
+<li><strong>时间窗口由玩法先定</strong>: 官方摘要用“怎样在 45 帧内表现麦克雷换弹”说明制作约束——玩法先给出了时间窗口，表演要在其中成立。</li>
+<li><strong>个性不能无限占用画面</strong>: 角色个性不能无限占用玩家观察与操作的空间。</li>
+</ul>
+<h2 id="换弹首先要保住视线">换弹首先要保住视线</h2>
+<div class="article-point"><h3 id="士兵-76换一只手改变画面遮挡">士兵 76：换一只手，改变画面遮挡</h3>
+<ul>
+<li><strong>从右手换到左手</strong>: 原型中士兵 76 用右手换弹，动作经过玩家需要观察的区域，后来改为左手完成。</li>
+<li><strong>功能与人设不变，只改进入路线</strong>: 相同功能与人物仍然保留，改变的是手臂进入画面的路线。</li>
+<li><strong>黑百合步枪遮住右侧视野</strong>: 黑百合的步枪也曾因尺寸较大遮住右侧视野而调整。</li>
+<li><strong>要在实际画面里看武器占屏</strong>: 两例说明需要在实际第一人称画面里看武器占屏，而不是仅从模型尺寸或旁观视角评审。</li>
+</ul>
+</div><div class="article-point"><h3 id="准星附近尤其不能被表演吞掉">准星附近尤其不能被表演吞掉</h3>
+<ul>
+<li><strong>交战画面信息已密集</strong>: 交战中的世界已经充满信息。</li>
+<li><strong>最近的武器不能成为最持续的障碍</strong>: 武器和手臂虽然离镜头最近，却不能因此成为画面里最持续的障碍。</li>
+<li><strong>换弹要兼顾跟踪敌人</strong>: 换弹过程仍需要让玩家跟踪敌人、观察威胁，动作安排必须考虑这种并行需求。</li>
+<li><strong>小结</strong>：评审时可以把换弹放进真实交战片段，观察角色动作经过准星的时刻是否正好遮住敌人；空场景里漂亮的换弹，未必能通过这个检查。</li>
+</ul>
+</div><h2 id="为最终视角制作局部变形才有意义">为最终视角制作，局部变形才有意义</h2>
+<ul>
+<li><strong>旁观视角揭示平时不可见的处理</strong>: 讲者把第一人称动画从旁观视角展示，揭示了许多平时不可见的处理。</li>
+<li><strong>莱因哈特手臂相互穿过</strong>: 莱因哈特某次挥击中的手臂会相互穿过。</li>
+<li><strong>温斯顿左臂并未真正触地</strong>: 温斯顿第一人称动作里的左臂也并未真正触地。</li>
+<li><strong>都是特定观看角度下的取舍</strong>: 这些是特定观看角度下的表现取舍。</li>
+<li><strong>同样的原则用于增强打击感</strong>: 把这类局部变形用在打击动作上，形成下列效果。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>案例</th><th>展示用的变化</th><th>在第一人称里形成的效果</th></tr></thead><tbody><tr><td>源氏挥刀</td><td>拉长刀身</td><td>扩大挥动幅度与速度印象</td></tr><tr><td>禅雅塔近战</td><td>腿部夸张伸长</td><td>让踢击更明确地进入玩家视野</td></tr><tr><td>麦克雷开枪</td><td>手臂向前延伸，再向上收回</td><td>加强大口径左轮的后坐力感</td></tr></tbody></table>
+<ul>
+<li><strong>不能归纳为越拉长越好</strong>: 这些例子不能归纳为“模型越拉长越好”。</li>
+<li><strong>成立条件</strong>: 它们成立的条件是最终画面更清楚、更有力，而且没有破坏玩家对攻击的理解。</li>
+</ul>
+<h2 id="移动循环也能表现训练程度与身体特征">移动循环也能表现训练程度与身体特征</h2>
+<ul>
+<li><strong>源氏：快步伐、稳上半身</strong>: 源氏的步伐较快，上半身却保持稳定，表现训练有素的忍者能在快速移动中维持瞄准。</li>
+<li><strong>狂鼠：义肢带来不同节奏</strong>: 狂鼠则因义肢形成不同的步行节奏。</li>
+<li><strong>性格藏在重复移动中</strong>: 性格并不只存在于特殊表情动作，也藏在玩家不断重复的移动中。</li>
+<li><strong>区分动画节奏与游戏数值</strong>: 这里需要区分动画节奏与游戏数值。</li>
+<li><strong>步伐快不等于移动更快</strong>: 步伐看起来快，不足以证明角色实际移动速度更高；报道讨论的是表演特征。</li>
+</ul>
+<h2 id="同一个换弹功能可以形成不同人物印象">同一个换弹功能，可以形成不同人物印象</h2>
+<ul>
+<li><strong>士兵 76：借鉴 M1 Garand 弹匣弹出</strong>: 士兵 76 弹匣弹出的表现借鉴 M1 Garand 的印象，强调其军人背景。</li>
+<li><strong>D.Va：转枪甩弹匣显张扬</strong>: D.Va 转动手枪、甩掉弹匣，表现张扬。</li>
+<li><strong>路霸：粗暴塞入废料</strong>: 路霸把废料粗暴塞入武器，与其身体和战斗方式一致。</li>
+<li><strong>价值来自功能与性格一起被读到</strong>: 这些动作的价值来自功能与性格一起被读到。</li>
+<li><strong>玩家同时读到两件事</strong>: 玩家既知道“武器正在重新装填”，也能感觉“这个人会这样处理自己的武器”。</li>
+<li><strong>细节过度就会伤害玩法</strong>: 如果额外细节挤占准星、使阶段难辨，个性表达就开始伤害玩法。</li>
+</ul>
+<h2 id="设计启发按三个尺度评审同一动作">设计启发：按三个尺度评审同一动作</h2>
+<blockquote>
+<p>✦ 一句话总结：先看战场信息是否完整，再看攻击或换弹的功能是否明确，最后看动作是否属于这个角色。前两项守住可玩性，第三项让重复操作积累人物印象。三者需要在同一个实际视角里同时成立。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#第一人称动画同时承担信息与性格" class data-astro-cid-fzx4jmue>第一人称动画同时承担信息与性格</a><a href="#换弹首先要保住视线" class data-astro-cid-fzx4jmue>换弹首先要保住视线</a><a href="#士兵-76换一只手改变画面遮挡" class="h3" data-astro-cid-fzx4jmue>士兵 76：换一只手，改变画面遮挡</a><a href="#准星附近尤其不能被表演吞掉" class="h3" data-astro-cid-fzx4jmue>准星附近尤其不能被表演吞掉</a><a href="#为最终视角制作局部变形才有意义" class data-astro-cid-fzx4jmue>为最终视角制作，局部变形才有意义</a><a href="#移动循环也能表现训练程度与身体特征" class data-astro-cid-fzx4jmue>移动循环也能表现训练程度与身体特征</a><a href="#同一个换弹功能可以形成不同人物印象" class data-astro-cid-fzx4jmue>同一个换弹功能，可以形成不同人物印象</a><a href="#设计启发按三个尺度评审同一动作" class data-astro-cid-fzx4jmue>设计启发：按三个尺度评审同一动作</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 

@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《最后生还者》艾莉：让玩家愿意依赖伙伴 · 动作游戏设计知识库</title><meta name="description" content="依据 Max Dyckhoff 的《Game AI Pro 2》第 35 章同题专章整理《最后生还者》初代伙伴系统；2014 为 GDC 演讲年份，书章是补充技术来源。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-gdc-2014-last-of-us-ellie-buddy-ai" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2014 · <span class="title-hl">GDC</span> · Naughty Dog</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《最后生还者》艾莉：让玩家愿意依赖伙伴</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🤝 伙伴AI</span><span class="tag" data-astro-cid-6bfer2tv>👁️ 潜行战斗</span><span class="tag" data-astro-cid-6bfer2tv>⚔️ 战斗反馈</span> </div> <p class="sub" data-astro-cid-6bfer2tv>依据 Max Dyckhoff 的《Game AI Pro 2》第 35 章同题专章整理《最后生还者》初代伙伴系统；2014 为 GDC 演讲年份，书章是补充技术来源。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「伙伴 AI 先守住玩家的信任，再用看得见的帮助建立感情。」</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Ellie: Buddy AI in The Last of Us</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.gdcvault.com/play/1021010/Ellie-Buddy-AI-in-The" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.gdcvault.com/play/1021010/Ellie-Buddy-AI-in-The</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Max Dyckhoff</span>  ·  Naughty Dog 工程师，负责《最后生还者》的伙伴 AI。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://www.gdcvault.com/play/1021010/Ellie-Buddy-AI-in-The" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC 2014 官方讲题</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gameaipro.com/GameAIPro2/GameAIPro2_Chapter35_Ellie_Buddy_AI_in_The_Last_of_Us.pdf" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>作者同题专章（Game AI Pro 2，第 35 章）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="先让她可靠地待在身边再让她有用">先让她可靠地待在身边，再让她有用</h2>
+<ul>
+<li>
+<p><strong>一次媒体演示暴露老问题</strong>：发售前几个月的一次媒体演示，暴露出伙伴的老问题——站位尴尬、错误开火、挡路。</p>
+</li>
+<li>
+<p><strong>脚本化规避的代价</strong>：把泰丝和艾莉脚本化地留在后面虽能避开故障，却也把她们移出了玩家注意力。</p>
+</li>
+<li>
+<p><strong>结论</strong>：团队随后重做伙伴系统。（35.2）</p>
+</li>
+<li>
+<p><strong>工作顺序</strong>：先解决跟随，再加入战斗帮助，最后补人物表现。</p>
+</li>
+<li>
+<p><strong>顺序的因果关系</strong>：玩家先要相信伙伴不会添乱，才会欣赏她提供的帮助；有用之后，台词和动作才能进一步形成情感。</p>
+</li>
+</ul>
+<h2 id="跟随选点同一个房间比直线距离更重要">跟随选点：同一个房间，比直线距离更重要</h2>
+<ul>
+<li><strong>候选点生成</strong>：系统在领队周围的环形区域内生成候选点，经过三组导航射线检查。</li>
+<li><strong>评分条件</strong>：再按与玩家距离、是否维持同侧、敌方可见性、是否挡住玩家前方、与其他伙伴距离等条件评分。（35.3.1）</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>检查</th><th>排除的问题</th></tr></thead><tbody><tr><td>从领队向环形区域发射导航射线</td><td>看似近、实际没有直接可行路线的点</td></tr><tr><td>从候选点继续向前检查</td><td>艾莉走过去却面朝墙壁</td></tr><tr><td>从玩家检查候选点的前方位置</td><td>两人隔着门框、围栏等障碍，看似靠近却不在同一空间</td></tr></tbody></table>
+<ul>
+<li><strong>第三项来自实测</strong>：一个数学上合理的点，可能让艾莉站到隔壁。</li>
+<li><strong>好跟随的标准</strong>：不仅是缩短距离，还要让两人像在共同探索。</li>
+</ul>
+<div class="article-point"><h3 id="每帧算最优点不等于每帧都要换位置">每帧算最优点，不等于每帧都要换位置</h3>
+<ul>
+<li>
+<p><strong>限制无意义的小移动</strong>：团队限制无意义的小距离移动，除非当前位置被敌人暴露；也尽量避免为了换侧而从领队面前跑过。</p>
+</li>
+<li>
+<p><strong>足够近即可</strong>：走到“足够近”就可以停下，不必机械地贴合最优坐标。（35.3.2）</p>
+</li>
+<li>
+<p><strong>速度切换问题</strong>：步行、跑步和冲刺原本各有固定速度，伙伴追近后会在走与跑之间反复切换。</p>
+</li>
+<li>
+<p><strong>速度缩放的解法</strong>：系统允许动画速度缩放最多约 25%，让她在接近切换阈值时先减速，延长当前运动状态，减少忽快忽慢。</p>
+</li>
+<li>
+<p><strong>原则上不用瞬移</strong>：普通跟随原则上不用瞬移；除了画面连续性，脚步声突然换位置也会暴露问题。</p>
+</li>
+<li>
+<p><strong>明确的例外</strong>：抓取救援时玩家失去镜头控制，团队可以确保传送不被看见。（35.3.4、35.5.2）</p>
+</li>
+</ul>
+</div><h2 id="共享掩体用身体关系代替反复让路">共享掩体：用身体关系代替反复让路</h2>
+<ul>
+<li>
+<p><strong>掩体点的不对称</strong>：敌人可使用稀疏的预制掩体点，但玩家能贴近很多任意表面；伙伴如果只用敌人的点集，就难以一直待在身边。</p>
+</li>
+<li>
+<p><strong>系统的解法</strong>：结合预处理的掩体边缘与运行时碰撞射线，合并法线相近的命中点，并缓存得到的边缘。（35.4.1）</p>
+</li>
+<li>
+<p><strong>视线考量</strong>：选点还考虑敌人当前和预计未来的视线。</p>
+</li>
+<li>
+<p><strong>成本边界</strong>：由于运行时生成成本高，这套更精细的方案只给伙伴使用，不能据此推断所有 NPC 都使用同一算法。</p>
+</li>
+<li>
+<p><strong>早期问题</strong>：早期艾莉看到玩家靠近就离开掩体，动作显得没有主见。</p>
+</li>
+<li>
+<p><strong>共享掩体动画</strong>：乔尔在她身旁扶墙、用身体护住她，同时仍可正常开枪和移动。</p>
+</li>
+<li>
+<p><strong>问题变机会</strong>：由“抢同一个点”产生的问题，最终成为表达保护关系的机会。（35.4.2）</p>
+</li>
+</ul>
+<h2 id="支援要给玩家机会也要有次数上的分量">支援要给玩家机会，也要有次数上的分量</h2>
+<div class="article-point"><h3 id="砖块创造空当结果交给玩家">砖块创造空当，结果交给玩家</h3>
+<ul>
+<li><strong>投掷逻辑</strong>：结合敌人的感知与移动，判断敌人是否即将看到玩家，避免过早暴露潜行位置。</li>
+<li><strong>结果交给玩家</strong>：砖块击晕后，玩家可以逃走、近战或抓取，而不是只能观看伙伴完成击杀。</li>
+<li><strong>长间隔的意图</strong>：长间隔让一次救场更值得记住。（35.5.1）</li>
+</ul>
+</div><div class="article-point"><h3 id="能自己挣脱才不会变成护送任务">能自己挣脱，才不会变成护送任务</h3>
+<ul>
+<li><strong>早期规则的失败</strong>：“每次被抓都必须救援”的早期规则很快令人厌烦。</li>
+<li><strong>自行脱身</strong>：艾莉后来能自行脱身，随后一段时间不再被选作目标；专章给出的保护间隔为 15—30 秒。</li>
+<li><strong>仍需要救援的条件</strong>：少数需要玩家救援的情况，必须确保她可见、可接近，而且玩家自己没有同时被抓。（35.5.2）</li>
+</ul>
+</div><div class="article-point"><h3 id="送补给接入已有掉落系统">送补给接入已有掉落系统</h3>
+<ul>
+<li><strong>沿用已有补给计算</strong>：艾莉送弹药和医疗包时沿用游戏已有的补给计算，让帮助与整体资源平衡一致；制造材料仍需玩家搜集。</li>
+<li><strong>早期测试的教训</strong>：她每分钟送一次弹药，既暴露关卡卡点，也让赠送失去分量，因此同样需要长间隔。（35.5.3）</li>
+</ul>
+</div><h2 id="开枪许可默认克制识别玩家何时结束潜行">开枪许可：默认克制，识别玩家何时结束潜行</h2>
+<ul>
+<li>
+<p><strong>默认克制</strong>：艾莉默认不射击。</p>
+</li>
+<li>
+<p><strong>发放许可的时机</strong>：玩家开枪、进行嘈杂近战，或即将遭受迫近威胁时，系统才发放开火许可。</p>
+</li>
+<li>
+<p><strong>收回许可的判断</strong>：判断玩家重新潜行时，比较玩家真实位置与敌人所知位置；两者明显分离后，收回许可。（35.6.1）</p>
+</li>
+<li>
+<p><strong>不能只把枪变弱</strong>：若玩家三枪能击倒敌人，伙伴打许多枪却无效，会显得坏掉。</p>
+</li>
+<li>
+<p><strong>可信表现 + 限制有效伤害</strong>：团队保留可信的射击表现，但当玩家看不到命中时限制有效伤害；遇险或很久没见她出手时，再安排可见的帮助。</p>
+</li>
+<li>
+<p><strong>待机动作支撑性格</strong>：射击间隙用紧张、迟疑的待机动作支撑角色性格。（35.6.2）</p>
+</li>
+</ul>
+<div class="article-point"><h3 id="潜行作弊是一项有代价的取舍">潜行作弊是一项有代价的取舍</h3>
+<ul>
+<li><strong>现实的限制</strong>：开发中伙伴潜行已能在大多数情况下正常工作，仍无法消除偶发暴露。</li>
+<li><strong>最终取舍</strong>：玩家潜行时，敌人不会因伙伴而警觉。</li>
+<li><strong>代价与理由</strong>：代价是偶尔出现艾莉明明经过敌人眼前却没被发现的场面；选择它是为了避免 AI 的一次失误摧毁玩家计划，并不意味着团队放弃了潜行选点。（35.6.3）</li>
+</ul>
+</div><h2 id="提示必须能被玩家当场验证">提示必须能被玩家当场验证</h2>
+<ul>
+<li><strong>提示的可验证性</strong>：报出危险时，敌人必须还在玩家能确认的位置。</li>
+<li><strong>早期系统的反例</strong>：早期系统会报告刚露头又藏起来的敌人，艾莉“知道得更多”反而让玩家觉得她不可靠。</li>
+<li><strong>后来的调节</strong>：提示与玩家视野、敌人持续可见性一起调节。（35.7.2）</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：伙伴的可信度来自一连串细小承诺——站位能解释、开火符合意图、提示能验证、救援有用而不过量。人物关系并非全靠剧情建立，也藏在每一次系统没有让玩家失望的时刻。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#先让她可靠地待在身边再让她有用" class data-astro-cid-fzx4jmue>先让她可靠地待在身边，再让她有用</a><a href="#跟随选点同一个房间比直线距离更重要" class data-astro-cid-fzx4jmue>跟随选点：同一个房间，比直线距离更重要</a><a href="#每帧算最优点不等于每帧都要换位置" class="h3" data-astro-cid-fzx4jmue>每帧算最优点，不等于每帧都要换位置</a><a href="#共享掩体用身体关系代替反复让路" class data-astro-cid-fzx4jmue>共享掩体：用身体关系代替反复让路</a><a href="#支援要给玩家机会也要有次数上的分量" class data-astro-cid-fzx4jmue>支援要给玩家机会，也要有次数上的分量</a><a href="#砖块创造空当结果交给玩家" class="h3" data-astro-cid-fzx4jmue>砖块创造空当，结果交给玩家</a><a href="#能自己挣脱才不会变成护送任务" class="h3" data-astro-cid-fzx4jmue>能自己挣脱，才不会变成护送任务</a><a href="#送补给接入已有掉落系统" class="h3" data-astro-cid-fzx4jmue>送补给接入已有掉落系统</a><a href="#开枪许可默认克制识别玩家何时结束潜行" class data-astro-cid-fzx4jmue>开枪许可：默认克制，识别玩家何时结束潜行</a><a href="#潜行作弊是一项有代价的取舍" class="h3" data-astro-cid-fzx4jmue>潜行作弊是一项有代价的取舍</a><a href="#提示必须能被玩家当场验证" class data-astro-cid-fzx4jmue>提示必须能被玩家当场验证</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 

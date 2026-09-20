@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《碧蓝幻想 Relink》的战斗设计：让角色魅力成为操作体验 · 动作游戏设计知识库</title><meta name="description" content="依据 Cygames 的 100 页公开讲义整理（核读其中流程图与调整前后画面，页码按 PDF 页序），同时涵盖《Relink》的基础设计与《Endless Ragnarok》的扩展（后者新增部分单独指出）：角色玩法迭代、连携演出、伙伴 AI 与辅助模式。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-cygames-2026-relink-battle-design" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2026 · <span class="title-hl">CEDEC</span> · Cygames</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《碧蓝幻想 Relink》的战斗设计：让角色魅力成为操作体验</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>⚔️ 战斗设计</span><span class="tag" data-astro-cid-6bfer2tv>🤖 伙伴AI</span><span class="tag" data-astro-cid-6bfer2tv>🎮 辅助操作</span> </div> <p class="sub" data-astro-cid-6bfer2tv>依据 Cygames 的 100 页公开讲义整理（核读其中流程图与调整前后画面，页码按 PDF 页序），同时涵盖《Relink》的基础设计与《Endless Ragnarok》的扩展（后者新增部分单独指出）：角色玩法迭代、连携演出、伙伴 AI 与辅助模式。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>「角色魅力」要落实到不同的操作乐趣、可靠的伙伴与低门槛的辅助操作，才能让不同水平的玩家都打得漂亮。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>『GRANBLUE FANTASY: Relink - Endless Ragnarok』のバトル制作事例 ～最高のキャラゲーを目指して～</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://speakerdeck.com/cygames/cygames_202607_cedec2026_10" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://speakerdeck.com/cygames/cygames_202607_cedec2026_10</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>平手 聡、三木 達</span>  ·  Cygames 高级工程师平手聡负责玩家角色工程团队；高级策划三木達统筹战斗，两人均参与《Relink》及《Endless Ragnarok》。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://cedec.cesa.or.jp/2026/timetable/detail/s69f310269aac8/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDEC 2026 官方讲题与讲者介绍</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://speakerdeck.com/cygames/cygames_202607_cedec2026_10" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Cygames 官方讲义（100 页）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://cedil.cesa.or.jp/cedil_sessions/view/3363.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDiL 资料入口（下载需登录）</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="把喜欢角色变成喜欢操作这个角色">把“喜欢角色”变成“喜欢操作这个角色”</h2>
+<ul>
+<li><strong>两条设计支柱</strong>：通过动作体验角色魅力，以及让不熟悉动作游戏的玩家也能享受。</li>
+<li><strong>主动进攻的爽快感</strong>：连按普通攻击即可形成华丽连段，闪避插入优先级很高，也允许防御与攻击同时输入，降低尝试进攻的操作风险。（第 7—10 页）</li>
+<li><strong>统一门槛不等于统一手感</strong>：讲义给出的制作规模是 28 个角色、各三种风格，共 84 种玩法；设计工作需要既保证角色个性，又避免每个基础行为都从头制作。（第 15 页）</li>
+</ul>
+<h2 id="两三天的粗原型先验证操作中的乐趣">两三天的粗原型，先验证操作中的乐趣</h2>
+<ul>
+<li><strong>跨职能构思</strong>：构思不只由策划提出，相关成员跨职能参与；会议要形成对“想要什么乐趣”的共同理解，而不只是交付功能清单。</li>
+<li><strong>降低队伍组合成本</strong>：团队希望任何角色都能以伤害贡献参与战斗，降低队伍组合的考虑成本。（第 19 页）</li>
+<li><strong>两三天完成临时实现</strong>：临时实现直接依据讨论记录，约两三天完成；动画能辨认姿势即可，特效保持最低限度甚至没有。</li>
+<li><strong>尽快得到可玩版本</strong>：目标是尽快得到可玩的低完成度版本，在构思与试玩之间反复修改；得到总监认可后才整理正式规格、替换正式资源。（第 20—22 页）</li>
+</ul>
+<div class="article-point"><h3 id="大师风格改变玩法而不只增加数值">大师风格改变玩法，而不只增加数值</h3>
+<ul>
+<li><strong>成长改变操作方式</strong>：《Endless Ragnarok》的大师风格希望让成长改变角色的操作方式，拉卡姆的三个方向提供了具体例子：（第 24—27 页）</li>
+<li><strong>蓄力射击特化</strong>：强化既有主轴，提高攻击技能与蓄力攻击的周转，形成更积极的手感。</li>
+<li><strong>连续射击特化</strong>：集中于 Coffinmaker，持续命中时可延续射击，考验维持火力的条件。</li>
+<li><strong>自爆技能特化</strong>：围绕 Collateral Damage 的风险与大伤害设计，让同一角色出现不同收益结构。</li>
+<li><strong>战斗与循环共同参与</strong>：这些改动同时牵涉战斗规则与成长平衡，因此负责战斗和游戏循环的人员从构思阶段就共同参与，而不是招式做完后才交给数值组修补。</li>
+</ul>
+</div><div class="article-point"><h3 id="把共通部分省下来的时间留给独有操作">把共通部分省下来的时间留给独有操作</h3>
+<ul>
+<li><strong>共通格式</strong>：基本行为、Link Attack 和奥义纳入共通格式；攻击与技能作为角色独有部分，再按控制方式分类。</li>
+<li><strong>共通化针对实现成本</strong>：共通化针对的是实现成本，独特的输入节奏与技能组织仍需要专门设计。（第 29—35 页）</li>
+</ul>
+</div><h2 id="连携的规模要与出现频率一起设计">连携的规模，要与出现频率一起设计</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>连携</th><th>战斗中的职责</th></tr></thead><tbody><tr><td>Link Attack</td><td>高频的一齐攻击，带来瞬间攻守逆转</td></tr><tr><td>奥义连锁</td><td>依次叠加奥义，形成更强攻击</td></tr><tr><td>Link Time</td><td>敌人变慢、玩家性能提高的奖励时段</td></tr><tr><td>Ascend Chain</td><td>扩展版新增，在奥义连锁上加入特殊召唤，形成更低频的大高潮</td></tr></tbody></table>
+<ul>
+<li><strong>按高频到低频排列</strong>：讲义第 40 页按高频到低频排列这些行为，协作反馈因此分布在不同时间尺度上，不能只靠一段长演出承担全部团队感。</li>
+</ul>
+<div class="article-point"><h3 id="巨大敌人的镜头不能照搬普通敌人">巨大敌人的镜头不能照搬普通敌人</h3>
+<ul>
+<li><strong>镜头按体型混合</strong>：Link Attack 原来的镜头在大型敌人战中靠得过近，影响操作；团队根据敌人体型混合镜头数据，让同一种连携能适应不同战斗对象。（第 45 页）</li>
+<li><strong>奥义保持敌人朝向</strong>：奥义还有多人视角下的干扰问题——若每次发动都让敌人转身，其他队员原本的攻击位置就被改写；团队优先保持敌人朝向，允许发动者移动到敌人正面，接受角色位置变化来减轻对队友的影响。（第 50 页）</li>
+</ul>
+</div><h2 id="角色-ai-管自身操作meta-ai-管队伍协作">角色 AI 管自身操作，Meta AI 管队伍协作</h2>
+<ul>
+<li><strong>伙伴职责</strong>：伙伴需要有可靠的伤害贡献，也要正确使用支援技能、跟上连携。</li>
+<li><strong>分离自身行动与队伍协调</strong>：实现上把自身行动和队伍协调分开，避免每个角色重复处理所有全局关系。（第 55—70 页）</li>
+</ul>
+<div class="article-point"><h3 id="行为树决定做什么状态机决定怎样按键">行为树决定做什么，状态机决定怎样按键</h3>
+<ul>
+<li><strong>Behavior Tree 定方向</strong>：角色共用 Behavior Tree（行为树）处理大方向，按优先级选择回避、Link Attack、攻击等行为；各个 FSM（有限状态机）负责具体按钮类型和输入时机。</li>
+<li><strong>非攻击共用、攻击按角色制作</strong>：非攻击行为尽量共用，攻击行为按角色制作。（第 60—63 页）</li>
+<li><strong>留出参与空间</strong>：早期 AI 过于积极，玩家还没发挥就被伙伴抢走表现；团队在行动后加入一定概率的持武器走位，让 AI 前后左右调整姿态，为玩家留出参与空间。强大与可靠不能简单等同于无间断输出。（第 64 页）</li>
+</ul>
+</div><div class="article-point"><h3 id="meta-ai-负责队伍协调">Meta AI 负责队伍协调</h3>
+<ul>
+<li><strong>监视并下达协调命令</strong>：Meta AI 监视玩家与敌方信息，向角色下达协调命令——玩家换位后重新分配跟随位置；检查各人的奥义槽并带头触发连锁；有人低血量时，选择距离合适且支援技能可用的队友施放回复。（第 68—70 页）</li>
+</ul>
+</div><h2 id="辅助模式保留输入意图再替玩家完成执行">辅助模式保留输入意图，再替玩家完成执行</h2>
+<ul>
+<li><strong>普通辅助模式</strong>：保留移动和任意攻击键，由系统把简单输入转换成合适的招式、奥义或 Link Attack，并自动回避。</li>
+<li><strong>全辅助模式</strong>：进一步代按攻击，玩家主要负责移动；部分能力、跳跃与防御也仍可手动输入。（第 77—80 页）</li>
+<li><strong>不直接换成伙伴 AI</strong>：实现上没有直接把玩家换成完整伙伴 AI，而是复用底层的各类输入 FSM，把上层行为树改成以“等待输入”为中心的决策 FSM；玩家直接输入、系统代理输入和 Meta AI 命令共同触发对应行动。（第 81—82 页）</li>
+<li><strong>保留操作因果</strong>：这一区别保留了辅助模式的操作因果——玩家仍能知道是自己的行动引发了角色表现。</li>
+<li><strong>复用 AutoPlay 测试</strong>：辅助功能还被复用于 AutoPlay 战斗测试，自动运行帮助发现问题；测试用途是同一套能力的开发收益。（第 91 页）</li>
+</ul>
+<h2 id="设计启发分别保护三种体验">设计启发：分别保护三种体验</h2>
+<blockquote>
+<p>✦ 一句话总结：多人角色动作游戏需要同时保护“我喜欢这个角色”“我能让他打得漂亮”“别人行动时我仍能正常玩”。角色差异、辅助输入与多人镜头分别解决不同问题，不能只靠提高演出强度实现三者。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#把喜欢角色变成喜欢操作这个角色" class data-astro-cid-fzx4jmue>把“喜欢角色”变成“喜欢操作这个角色”</a><a href="#两三天的粗原型先验证操作中的乐趣" class data-astro-cid-fzx4jmue>两三天的粗原型，先验证操作中的乐趣</a><a href="#大师风格改变玩法而不只增加数值" class="h3" data-astro-cid-fzx4jmue>大师风格改变玩法，而不只增加数值</a><a href="#把共通部分省下来的时间留给独有操作" class="h3" data-astro-cid-fzx4jmue>把共通部分省下来的时间留给独有操作</a><a href="#连携的规模要与出现频率一起设计" class data-astro-cid-fzx4jmue>连携的规模，要与出现频率一起设计</a><a href="#巨大敌人的镜头不能照搬普通敌人" class="h3" data-astro-cid-fzx4jmue>巨大敌人的镜头不能照搬普通敌人</a><a href="#角色-ai-管自身操作meta-ai-管队伍协作" class data-astro-cid-fzx4jmue>角色 AI 管自身操作，Meta AI 管队伍协作</a><a href="#行为树决定做什么状态机决定怎样按键" class="h3" data-astro-cid-fzx4jmue>行为树决定做什么，状态机决定怎样按键</a><a href="#meta-ai-负责队伍协调" class="h3" data-astro-cid-fzx4jmue>Meta AI 负责队伍协调</a><a href="#辅助模式保留输入意图再替玩家完成执行" class data-astro-cid-fzx4jmue>辅助模式保留输入意图，再替玩家完成执行</a><a href="#设计启发分别保护三种体验" class data-astro-cid-fzx4jmue>设计启发：分别保护三种体验</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 

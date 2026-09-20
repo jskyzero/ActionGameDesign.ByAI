@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>战斗动画的身体原理：让一拳从脚下发力 · 动作游戏设计知识库</title><meta name="description" content="本文依据 Famitsu 的 CEDEC 2013 现场记录整理（讲题与讲者履历由 CEDEC 官方页面核实），从预备动作、身体支撑与运动连锁理解攻击动画的力量感。元梅幸司讨论的是通用战斗动画的身体原理，《铁拳》等作品是其经验来源，而非讲题的限定范围。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-cedec-2013-fighting-animation-body-mechanics" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2013 · <span class="title-hl">CEDEC</span> · Bandai Namco</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>战斗动画的身体原理：让一拳从脚下发力</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🥊 攻击动画</span><span class="tag" data-astro-cid-6bfer2tv>🦴 身体力学</span><span class="tag" data-astro-cid-6bfer2tv>💥 力量感</span> </div> <p class="sub" data-astro-cid-6bfer2tv>本文依据 Famitsu 的 CEDEC 2013 现场记录整理（讲题与讲者履历由 CEDEC 官方页面核实），从预备动作、身体支撑与运动连锁理解攻击动画的力量感。元梅幸司讨论的是通用战斗动画的身体原理，《铁拳》等作品是其经验来源，而非讲题的限定范围。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>攻击的力量感来自「支撑、预备动作与运动传递」的连贯关系，不能只把拳脚的速度调快。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>身体の動きと原理から知る、闘うインゲームアニメーションの中身</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://cedec.cesa.or.jp/2013/program/VA/6430.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://cedec.cesa.or.jp/2013/program/VA/6430.html</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>元梅幸司</span>  ·  Bandai Namco Studios 首席动画师，参与《铁拳》《死或生》《灵魂能力》等系列的动作制作。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://cedec.cesa.or.jp/2013/program/VA/6430.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDEC 2013 官方讲题与讲者履历</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://cedil.cesa.or.jp/cedil_sessions/view/1040" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>CEDiL 讲座存档与录像入口</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.famitsu.com/news/201308/26038928.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Famitsu 现场报道</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gamer.ne.jp/news/201309070005/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Gamer 现场报道</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="动骨骼时要想清楚身体为什么能动">动骨骼时，要想清楚身体为什么能动</h2>
+<ul>
+<li><strong>从关节与骨骼肌出发</strong>：骨架给出可以旋转的位置，肌肉的配合才让姿势表现出发力、支撑和松弛。</li>
+<li><strong>不能只摆末端位置</strong>：对动画师而言，不能只把末端摆到目标位置，还要判断哪些部位主动发力、哪些部位随之运动。</li>
+<li><strong>C 形与 S 形的姿态印象</strong>：元梅用 C 形与 S 形的组合说明姿态印象，前者容易表现强硬、敌意，后者容易表现柔软、灵活。</li>
+<li><strong>造型检查的线索</strong>：当一个本应有力的姿势显得软弱时，可以检查局部曲线是否破坏了整体意图。</li>
+</ul>
+<h2 id="支撑决定拳脚的速度是否可信">支撑决定拳脚的速度是否可信</h2>
+<div class="article-point"><h3 id="看攻击手也看另一只手">看攻击手，也看另一只手</h3>
+<ul>
+<li><strong>右直拳示例</strong>：左手的回收与右手出拳相配合。</li>
+<li><strong>前踢示例</strong>：前踢也需要手臂参与平衡。</li>
+<li><strong>以作用与反作用组织例子</strong>：讲者以作用与反作用组织这些例子，重点是让观众看出身体各部分不是独立运动。</li>
+<li><strong>只拉快拳头会失真</strong>：若只把拳头向前拉快，身体既没有提前调整，也没有承受随后的变化，动作会像在空中滑过。</li>
+<li><strong>相反方向动作与支撑部位构成可信发力</strong>：相反方向的动作与支撑部位一起构成可信的发力关系。</li>
+</ul>
+</div><div class="article-point"><h3 id="全身挥击必须从地面建立稳定性">全身挥击必须从地面建立稳定性</h3>
+<ul>
+<li><strong>旋转挥击需稳定支撑</strong>：旋转身体挥动武器时，下肢与躯干需要表现出稳定的支撑。</li>
+<li><strong>膝盖、腰部不能松散</strong>：膝盖、腰部若松散，地面的支撑就无法在视觉上贯穿到上半身。</li>
+<li><strong>检查下半身与身体中心</strong>：讲者因此要求检查下半身与身体中心，而不只看武器轨迹。</li>
+<li><strong>诚实的边界</strong>：这里整理的是动画制作中的观察方法；报道对生理和力学的解释经过简化，不应把某个姿势口诀当作所有真实格斗动作的完整计算模型。</li>
+</ul>
+</div><h2 id="预备动作要贴近发力时刻">预备动作要贴近发力时刻</h2>
+<ul>
+<li><strong>预备动作建立准备</strong>：起跳前的下蹲、出拳前的反向扭身，都能为随后的爆发建立准备。</li>
+<li><strong>关键在准备与释放的时间关系</strong>：关键不仅是反向幅度，还包括准备与释放的时间关系。</li>
+<li><strong>蓄力更久不等于更大力量</strong>：讲者特别提醒，把“蓄力姿势”维持更久，并不自然等于现实中能打出更大力量。</li>
+<li><strong>双向约束</strong>：若已决定攻击方向，可以据此检查前一姿势是否合理；若已确定预备姿势，也应让后续发力接得上。</li>
+<li><strong>前摇不是无关的等待动画</strong>：前摇并非与攻击无关的等待动画。</li>
+<li><strong>连续步法是反向预备的反复发生</strong>：讲座还把连续步法作为反向预备反复发生的例子。</li>
+<li><strong>迅速转入依赖身体组织状态</strong>：角色能够迅速转入移动或打击，依赖的是当前身体已经处于能继续行动的组织状态。</li>
+</ul>
+<h2 id="回旋踢的快慢由姿态变化支撑">回旋踢的快慢，由姿态变化支撑</h2>
+<ul>
+<li><strong>靠近或远离旋转轴改变转动特性</strong>：转动时，身体部位靠近或远离旋转轴，会改变转动特性。</li>
+<li><strong>滑冰者收拢手臂加速作类比</strong>：讲者以滑冰者收拢手臂加速作类比，再解释回旋踢。</li>
+<li><strong>回旋踢的过程</strong>：脚离地后先屈膝、把脚跟收近身体，随后在打击前伸展开。</li>
+<li><strong>速度变化不应只靠整段倍速</strong>：动画里的速度变化不应只靠整段倍速，先收拢再展开，观众才能看到快速转动与打击距离怎样同时成立。</li>
+<li><strong>全程伸直却突然加速会失真</strong>：若从头到尾把腿完全伸直，却照样突然加速，身体依据就不同了。</li>
+<li><strong>空中旋转另有约束</strong>：失去地面支撑后，上下身的相对运动需要配合。</li>
+<li><strong>用下肢伸展表现身体稳定</strong>：讲座用下肢伸展说明如何表现身体稳定。</li>
+<li><strong>不能照搬地面支撑关系</strong>：这类例子提醒制作人员，不能把地面动作的支撑关系直接搬到空中。</li>
+</ul>
+<h2 id="运动连锁根部的制动参与末端加速">运动连锁：根部的制动参与末端加速</h2>
+<ul>
+<li><strong>踏步出拳的先后过程</strong>：前脚落地形成支撑，随后膝、腰、胸肩与拳头依次参与。</li>
+<li><strong>前一部位减速、固定</strong>：前一部位减速、固定，为后一部位继续加速创造条件。</li>
+<li><strong>「全身一起猛动」会抹掉顺序</strong>：“全身一起猛动”很容易抹掉这个顺序。</li>
+<li><strong>两项检查</strong>：中心是否足够稳定，以及各关节是否在合适的时机固定。</li>
+<li><strong>各段无需同步</strong>：身体各段并不需要同时启动、同时达到最快、同时结束。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>看到的问题</th><th>本文归纳的检查方向</th></tr></thead><tbody><tr><td>手很快，拳却轻</td><td>下肢与躯干有没有建立支撑</td></tr><tr><td>起手和命中像两段拼接</td><td>反向预备是否接近发力时刻</td></tr><tr><td>旋转速度突兀</td><td>收拢、展开与转速是否对应</td></tr><tr><td>全身很忙，末端没有爆发</td><td>是否保留分段传递与制动的先后关系</td></tr></tbody></table>
+<h2 id="合理动作是诊断工具不是角色风格的终点">合理动作是诊断工具，不是角色风格的终点</h2>
+<ul>
+<li><strong>保留「不合理动作」的价值</strong>：讲座最后明确保留“不合理动作”的价值：多余动作、失衡和不易连续出招的姿态，都可能用来产生变化与戏剧性。</li>
+<li><strong>训练动作不等于真实对抗</strong>：训练动作也不等于真实对抗中的动作，眼前的敌人会改变选择。</li>
+</ul>
+<blockquote>
+<p>✦ 一句话总结：先知道力量感在哪个环节断开，再决定这是需要修正的错误，还是角色个性需要的偏离。身体原理帮助动画师有意识地夸张，而不是要求每个人都使用同一套标准拳法。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#动骨骼时要想清楚身体为什么能动" class data-astro-cid-fzx4jmue>动骨骼时，要想清楚身体为什么能动</a><a href="#支撑决定拳脚的速度是否可信" class data-astro-cid-fzx4jmue>支撑决定拳脚的速度是否可信</a><a href="#看攻击手也看另一只手" class="h3" data-astro-cid-fzx4jmue>看攻击手，也看另一只手</a><a href="#全身挥击必须从地面建立稳定性" class="h3" data-astro-cid-fzx4jmue>全身挥击必须从地面建立稳定性</a><a href="#预备动作要贴近发力时刻" class data-astro-cid-fzx4jmue>预备动作要贴近发力时刻</a><a href="#回旋踢的快慢由姿态变化支撑" class data-astro-cid-fzx4jmue>回旋踢的快慢，由姿态变化支撑</a><a href="#运动连锁根部的制动参与末端加速" class data-astro-cid-fzx4jmue>运动连锁：根部的制动参与末端加速</a><a href="#合理动作是诊断工具不是角色风格的终点" class data-astro-cid-fzx4jmue>合理动作是诊断工具，不是角色风格的终点</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 

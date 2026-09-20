@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《寂静岭 f》：没有枪械，怎样保留恐怖战斗的紧张感 · 动作游戏设计知识库</title><meta name="description" content="依据 Al Yang 在 PlayStation Blog 发布的 GDC 演讲节选整理，聚焦纯近战如何承接生存恐怖的资源与节奏职责；内容来自节选，不作为完整录像笔记。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-gdc-2026-silent-hill-f-melee" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2026 · <span class="title-hl">GDC</span> · NeoBards Entertainment</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《寂静岭 f》：没有枪械，怎样保留恐怖战斗的紧张感</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>⚔️ 近战设计</span><span class="tag" data-astro-cid-6bfer2tv>🧰 资源管理</span><span class="tag" data-astro-cid-6bfer2tv>⏱️ 战斗节奏</span> </div> <p class="sub" data-astro-cid-6bfer2tv>依据 Al Yang 在 PlayStation Blog 发布的 GDC 演讲节选整理，聚焦纯近战如何承接生存恐怖的资源与节奏职责；内容来自节选，不作为完整录像笔记。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>纯近战需要重新承接枪械原有的「节奏调节」作用：让资源消耗、等待时机与压力释放共同维持紧张感。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>&#39;SILENT HILL f&#39;: The Challenges of Creating a Melee-Only Horror Game</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://schedule.gdconf.com/session/silent-hill-f-the-challenges-of-creating-a-melee-only-horror-game/914711" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://schedule.gdconf.com/session/silent-hill-f-the-challenges-of-creating-a-melee-only-horror-game/914711</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Al Yang</span>  ·  NeoBards 工作室创意总监、《SILENT HILL f》游戏总监。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://blog.playstation.com/2026/03/11/how-silent-hill-f-developers-crafted-tense-melee-only-combat/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>主讲人在 PlayStation Blog 发布的演讲节选</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="先确定要保留的恐怖体验">先确定要保留的恐怖体验</h2>
+<ul>
+<li><strong>背景与原型选择</strong>：《寂静岭 f》把背景放在昭和年代的日本乡镇，团队在考虑武器、制作原型时选择探索纯近战的战斗形式。</li>
+<li><strong>随之而来的问题</strong>：去掉枪械后，瞄准、装填和弹药原本制造的等待与压力，由什么承担？</li>
+<li><strong>核心重点是期待与压力累积</strong>：持续用突然惊吓刺激玩家会逐渐麻木，战斗也需要在危险真正发生前让玩家对接下来的行动有所顾虑。</li>
+</ul>
+<h2 id="武器耐久接替弹药保留资源压力">武器耐久接替弹药，保留资源压力</h2>
+<ul>
+<li><strong>武器损坏承接弹药职责</strong>：面对同一只怪物，只剩少量子弹与拥有充足弹药会产生不同的行动判断；纯近战没有弹匣，因此用武器损坏承接这一职责——攻击不断消耗耐久，玩家能够看到资源减少。</li>
+<li><strong>不展示精确生命与伤害</strong>：敌人的精确生命和伤害数值不展示，玩家知道自己花掉了多少，却不能精确算出还有几次命中结束战斗；这种不完整信息保留了对结果的犹豫。</li>
+<li><strong>小结</strong>：重要的是同时提供可感知的消耗与尚未确定的结果。若只隐藏信息而没有有效反馈，玩家可能感到随机；若所有结果都能立即算清，压力又可能变成纯粹的资源算术。</li>
+</ul>
+<h2 id="专注系统把瞄准弱点转成近战时机">专注系统把瞄准弱点转成近战时机</h2>
+<ul>
+<li><strong>用时机替代瞄准弱点</strong>：枪械可以通过瞄准弱点产生更有效的攻击；纯近战中，专注系统要求耐心与正确时机，以反击或专注攻击获得更明显的效果。</li>
+<li><strong>受击反应只做局部确认</strong>：敌人的受击反应负责确认这一击有效，但不直接揭示剩余生命——它把“有没有打好”与“还要多久打完”分开，让玩家获得局部确认，同时继续面对整体未知。</li>
+<li><strong>边界说明</strong>：这段节选没有披露专注、反击的完整窗口与内部参数，因此不能从设计方向推导出固定帧数，也不能把它扩写成逐招攻略。</li>
+</ul>
+<h2 id="万能钥匙给玩家主动结束压力的机会">“万能钥匙”给玩家主动结束压力的机会</h2>
+<ul>
+<li><strong>主动结束压力的手段</strong>：持续紧张同样需要释放；Al Yang 用“万能钥匙”描述能暂时打破常规应对关系的强力手段——通常需要考虑武器与敌人的关系，这时却能直接清除眼前障碍。</li>
+<li><strong>以手榴弹/火箭筒作类比</strong>：他以枪械恐怖游戏中的手榴弹或火箭筒作类比，《寂静岭 f》中由狐狸手臂承担相近职责，专注重击也提供较轻量的同类体验。</li>
+<li><strong>类比强调节奏而非无消耗</strong>：这个类比强调节奏用途，不意味着该能力完全没有消耗或任何限制。</li>
+<li><strong>让玩家决定释放时机</strong>：玩家遇到困难的情境不同，让他们决定何时突破压力，有助于调节自己的体验；释放不是恐怖战斗之外的奖励，它也是维持长期紧张感的一部分。</li>
+</ul>
+<h2 id="把改换战斗形式拆成职责迁移">把改换战斗形式拆成职责迁移</h2>
+<ul>
+<li><strong>说明</strong>：下表是依据节选所做的整理，用来整理设计关系，不是开发者公布的系统结构图。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>原先承担的职责</th><th>纯近战中的对应方向</th><th>需要保留的判断</th></tr></thead><tbody><tr><td>弹药消耗</td><td>武器耐久</td><td>这场遭遇值得花多少资源</td></tr><tr><td>瞄准弱点</td><td>专注与反击时机</td><td>何时出手更有效</td></tr><tr><td>命中反馈</td><td>敌人身体反应</td><td>自己是否做出了有效行动</td></tr><tr><td>强力武器释放压力</td><td>狐狸手臂等手段</td><td>何时主动打破当前节奏</td></tr></tbody></table>
+<blockquote>
+<p>✦ 一句话总结：改变战斗形式时，先列出旧机制承担的体验职责，再逐项寻找新载体。只删除枪械、增加近战招式数量，未必能保留原来由等待、资源和不确定性共同构成的恐怖感。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#先确定要保留的恐怖体验" class data-astro-cid-fzx4jmue>先确定要保留的恐怖体验</a><a href="#武器耐久接替弹药保留资源压力" class data-astro-cid-fzx4jmue>武器耐久接替弹药，保留资源压力</a><a href="#专注系统把瞄准弱点转成近战时机" class data-astro-cid-fzx4jmue>专注系统把瞄准弱点转成近战时机</a><a href="#万能钥匙给玩家主动结束压力的机会" class data-astro-cid-fzx4jmue>“万能钥匙”给玩家主动结束压力的机会</a><a href="#把改换战斗形式拆成职责迁移" class data-astro-cid-fzx4jmue>把改换战斗形式拆成职责迁移</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 

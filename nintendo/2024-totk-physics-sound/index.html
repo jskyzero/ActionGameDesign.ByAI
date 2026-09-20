@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《王国之泪》：物理交互与声音反馈 · 动作游戏设计知识库</title><meta name="description" content="依据 GDC 2024 开发者采访与现场报道、声音部分记录及原幻灯片整理，聚焦可组合物体、移动预期与声音反馈；末节另附任天堂开发者文章的补充案例。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-nintendo-2024-totk-physics-sound" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2024 · <span class="title-hl">GDC</span> · Nintendo</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《王国之泪》：物理交互与声音反馈</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🧩 物理交互</span><span class="tag" data-astro-cid-6bfer2tv>🔊 操作反馈</span> </div> <p class="sub" data-astro-cid-6bfer2tv>依据 GDC 2024 开发者采访与现场报道、声音部分记录及原幻灯片整理，聚焦可组合物体、移动预期与声音反馈；末节另附任天堂开发者文章的补充案例。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>玩家可以任意组合物体，系统就要让「如何运动」与「听起来怎样」共同遵守可理解的规则。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>Tunes of the Kingdom: Evolving Physics and Sounds for &#39;The Legend of Zelda: Tears of the Kingdom&#39;</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://gdcvault.com/play/1034667/Tunes-of-the-Kingdom-Evolving" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://gdcvault.com/play/1034667/Tunes-of-the-Kingdom-Evolving</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Takuhiro Dohta、Junya Osada、Takahiro Takayama</span>  ·  任天堂技术总监、声音主程与物理主程。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gdcvault.com/play/1034667/Tunes-of-the-Kingdom-Evolving" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>GDC Vault 原演讲</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gamedeveloper.com/programming/how-nintendo-did-the-impossible-with-tears-of-the-kingdom-s-physics-system" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Game Developer 现场报道与讲者采访（含任天堂原幻灯片）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.famitsu.com/news/202403/22337814.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Famitsu 声音部分现场报道（含原幻灯片）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.nintendo.co.jp/jobs/keyword/124.html" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>任天堂开发者补充：让声音符合实际运动</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.bilibili.com/video/BV1hM4m197DE/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>中文视频与章节时间点</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="任意组合物体意味着不能逐个预写结果">任意组合物体，意味着不能逐个预写结果</h2>
+<ul>
+<li><strong>组合结果不由设计师逐个预写</strong>：「究极手」允许玩家把不同部件组成装置；若每一种组合都需要设计师预先判断它是什么、再指定怎样运动，可组合范围很快就会超过制作能力。团队因此把运动能力放到部件与连接关系中，让组合后的行为由这些规则产生。</li>
+<li><strong>早期混合动画与物理的方案会出问题</strong>：动画驱动的物体按预设速度强行移动，在交互中近似无法被推动的无限质量物体，齿轮、门等组合容易出错。</li>
+<li><strong>让这类运动也进入物理系统</strong>：团队转而让动画驱动的运动进入物理系统，使它们能够相互施加影响。</li>
+<li><strong>刚体仍是基础</strong>：这不意味着场景里所有东西都不是刚体，恰恰相反，物理刚体仍是基础；变化在于它们如何被驱动，以及能否响应别的物体。</li>
+</ul>
+<h2 id="一个车轮先要真正把动力传到地面">一个车轮，先要真正把动力传到地面</h2>
+<div class="article-point"><h3 id="轮子马达轴各自承担职责">轮子、马达、轴各自承担职责</h3>
+<ul>
+<li><strong>车轮拆成三个刚体</strong>：轮子、马达与轴各自承担职责。</li>
+<li><strong>动力经轴与摩擦传到地面</strong>：马达的转矩经由轴传到轮子，再由轮地摩擦产生推进；载具运动来自这些部件的相互作用，而不是检测到「四个轮子加木板」后播放统一行驶行为。</li>
+<li><strong>加入悬挂保证持续接地</strong>：让车辆在不平地面上可靠前进，需要足够持续的接地；团队加入悬挂，让部件间存在受约束的相对运动，改善轮子贴地时间。</li>
+<li><strong>限制移动范围</strong>：避免连接无限摆动。</li>
+<li><strong>突破来自物理程序与美术共同讨论</strong>：相关方案由物理程序与负责外观的美术一起得出。</li>
+</ul>
+</div><div class="article-point"><h3 id="便携锅的关节为什么能变成机器部件">便携锅的关节，为什么能变成机器部件</h3>
+<ul>
+<li><strong>关节因「能放在斜坡上」而加入</strong>：便携锅需要能放在斜坡上使用，因此底部加入适应地面的关节；玩家后来把这个关节用于悬挂、机械臂等装置，功能超出了烹饪物品最初的用途。</li>
+<li><strong>稳定物理性质让玩家重新分配职责</strong>：这个例子说明，当部件拥有稳定的物理性质，玩家可以重新分配它的职责；开发者不必先为每一种用法命名，但底层属性需要在新组合里仍然成立。</li>
+</ul>
+</div><h2 id="物理规则一致参数仍要符合玩家的感受">物理规则一致，参数仍要符合玩家的感受</h2>
+<div class="article-point"><h3 id="看得清的木板不能因此重得不合理">看得清的木板，不能因此重得不合理</h3>
+<ul>
+<li><strong>外观比现实厚会带偏质量</strong>：游戏中的木板、石板等会为了可见性与操控做得比现实厚；若直接按外形体积与材质计算质量，它们可能过重，破坏玩家对这种物体的预期。</li>
+<li><strong>同时调整外观与参数</strong>：团队因此一并修正外形与数值。</li>
+<li><strong>判断标准是操作预期而非公式</strong>：高山在会后采访中还谈到拿起现实板材、对照游戏手感的做法；判断标准不是「公式已经正确」，而是玩家能否由外观形成可验证的操作预期。</li>
+</ul>
+</div><div class="article-point"><h3 id="水阻力也要体现运动方向">水阻力也要体现运动方向</h3>
+<ul>
+<li>
+<p><strong>统一衰减无法表现入水差异</strong>：简单地向所有方向统一衰减速度，难以表现物体进入水中的差异。</p>
+</li>
+<li>
+<p><strong>按运动方向的投影面积计算水阻力</strong>：报道记录了团队依据运动方向的投影面积计算水阻力的处理，让不同姿态的物体与水发生更合理的作用。</p>
+</li>
+<li>
+<p><strong>小结</strong>：自由组合的乐趣依赖规则可预测，但可预测不要求所有数值照搬现实；需要保留的是玩家反复试验后能学会的关系。</p>
+</li>
+</ul>
+</div><h2 id="声音也从部件生成而不是识别整台机器">声音也从部件生成，而不是识别整台机器</h2>
+<ul>
+<li><strong>马车声音由部件组成，而非整套录音</strong>：声音部分给出的马车案例由轮子滚动、车体细小振动与吱嘎、连接链条等声音共同组成，没有直接套用一段完整马车录音。</li>
+<li><strong>桨船同样组合部件声音</strong>：桨船由轮胎、木材与出入水面的声音共同组成。</li>
+<li><strong>系统读取刚体运动选择声音</strong>：系统依据刚体的尺寸、形状、材质选择声音，这样玩家造出开发者没有预制过的装置，仍能听到与部件运动相符的反馈。</li>
+<li><strong>物理决定发生什么，声音解释结果</strong>：物理决定发生什么，声音把发生的结果解释给玩家。</li>
+</ul>
+<div class="article-point"><h3 id="传播方式要与周围空间一致">传播方式要与周围空间一致</h3>
+<ul>
+<li><strong>声音要体现距离与遮挡</strong>：声音不能只在物体上正确触发，进入耳朵时还应体现距离与遮挡。</li>
+<li><strong>用体素信息寻路传播</strong>：现场记录说明声音传播使用世界中的体素信息寻路，可以响应门开关等引起的路径变化。</li>
+<li><strong>路径查询朝向林克，监听位置按镜头计算</strong>：路径查询朝向林克，声音监听位置则按镜头计算。</li>
+<li><strong>同一种机械声在不同处有不同听感</strong>：这些处理让同一种机械声在墙后、门口和开阔处具有不同听感，为观察世界提供线索；不必给每个装置与房间单独编写一套播放逻辑。</li>
+</ul>
+</div><h2 id="官方补充车轮在转为什么不该播放滚动声">官方补充：车轮在转，为什么不该播放滚动声</h2>
+<ul>
+<li><strong>初版用角速度判断滚动会误判</strong>：任天堂另一篇开发者文章给出了完整的失败与修正过程；初版用角速度大于零判断滚动，但轮胎原地空转时也满足条件，结果画面是打滑，声音却像正常前进。</li>
+<li><strong>先检查接触点是否滑动</strong>：程序员改为先检查接触点是否滑动；若物体移动却没有滑动，再归为滚动。</li>
+<li><strong>同一方法覆盖多种物体</strong>：相同方法可以覆盖轮胎、车轮、圆木和苹果等不同物体，不需要逐种特殊处理。</li>
+<li><strong>打滑声帮助诊断装置</strong>：车辆上坡停住时，这个区别尤其重要；仅看画面，玩家可能不知道是装置损坏还是动力不足，听到轮胎打滑，就能理解轮子仍在工作，只是没有有效向前推进。声音由装饰变成了诊断自己装置的反馈。</li>
+</ul>
+<h2 id="设计启发检查未知组合是否仍能解释自己">设计启发：检查未知组合是否仍能解释自己</h2>
+<blockquote>
+<p>✦ 一句话总结：评审组合系统时，应同时检查运动与反馈。当装置不按预期工作，玩家是否能从连接、接触和声音推断原因？只有成功时壮观、失败时不知所措的系统，很难支持持续实验。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#任意组合物体意味着不能逐个预写结果" class data-astro-cid-fzx4jmue>任意组合物体，意味着不能逐个预写结果</a><a href="#一个车轮先要真正把动力传到地面" class data-astro-cid-fzx4jmue>一个车轮，先要真正把动力传到地面</a><a href="#轮子马达轴各自承担职责" class="h3" data-astro-cid-fzx4jmue>轮子、马达、轴各自承担职责</a><a href="#便携锅的关节为什么能变成机器部件" class="h3" data-astro-cid-fzx4jmue>便携锅的关节，为什么能变成机器部件</a><a href="#物理规则一致参数仍要符合玩家的感受" class data-astro-cid-fzx4jmue>物理规则一致，参数仍要符合玩家的感受</a><a href="#看得清的木板不能因此重得不合理" class="h3" data-astro-cid-fzx4jmue>看得清的木板，不能因此重得不合理</a><a href="#水阻力也要体现运动方向" class="h3" data-astro-cid-fzx4jmue>水阻力也要体现运动方向</a><a href="#声音也从部件生成而不是识别整台机器" class data-astro-cid-fzx4jmue>声音也从部件生成，而不是识别整台机器</a><a href="#传播方式要与周围空间一致" class="h3" data-astro-cid-fzx4jmue>传播方式要与周围空间一致</a><a href="#官方补充车轮在转为什么不该播放滚动声" class data-astro-cid-fzx4jmue>官方补充：车轮在转，为什么不该播放滚动声</a><a href="#设计启发检查未知组合是否仍能解释自己" class data-astro-cid-fzx4jmue>设计启发：检查未知组合是否仍能解释自己</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 

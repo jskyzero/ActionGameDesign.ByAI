@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《怪物猎人》从世界到荒野：让动作更流畅，也更容易理解 · 动作游戏设计知识库</title><meta name="description" content="依据 Game Makers 的 CEDEC 2025 现场报道整理（官方议程核实讲题与讲者辻本良三），摘取与回复动作、伤害反馈及移动辅助直接相关的设计变化；本文不把该系列回顾当作《荒野》的完整战斗技术分享。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-capcom-2025-monster-hunter-action-evolution" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2025 · <span class="title-hl">CEDEC</span> · Capcom</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《怪物猎人》从世界到荒野：让动作更流畅，也更容易理解</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🔧 动作迭代</span><span class="tag" data-astro-cid-6bfer2tv>🎮 操作反馈</span><span class="tag" data-astro-cid-6bfer2tv>🤝 协作狩猎</span> </div> <p class="sub" data-astro-cid-6bfer2tv>依据 Game Makers 的 CEDEC 2025 现场报道整理（官方议程核实讲题与讲者辻本良三），摘取与回复动作、伤害反馈及移动辅助直接相关的设计变化；本文不把该系列回顾当作《荒野》的完整战斗技术分享。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>扩展动作受众，需要分清「必须保留的判断」与「可以去掉的阻碍」：让玩家看懂攻击效果，同时保留观察怪物的空间。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>「モンスターハンターシリーズ」21年の継続と仕掛け</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://cedec.cesa.or.jp/2025/timetable/detail/s6832d0d4c4d4d/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://cedec.cesa.or.jp/2025/timetable/detail/s6832d0d4c4d4d/</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>辻本良三</span>  ·  Capcom《怪物猎人》系列制作人，CEDEC 2025 基调演讲主讲人。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://gamemakers.jp/article/2025_08_04_113876/" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Game Makers 现场报道：含展示资料与开发者发言</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="从测试反馈区分挑战与阻碍">从测试反馈区分挑战与阻碍</h2>
+<ul>
+<li><strong>面向更广泛的玩家</strong>：《世界》面向更广泛的玩家，团队重新审视旧有规则。</li>
+<li><strong>试玩反馈的集中问题</strong>：试玩反馈集中提到节奏慢、动作容易被停住。</li>
+<li><strong>不能只用「新玩家不熟悉」解释</strong>：也需要检查操作与游戏空间是否已经变化。</li>
+<li><strong>不便原本承担玩法职责</strong>：系列迭代的困难在于，某些不便原本承担了玩法职责。</li>
+<li><strong>删除的两面性</strong>：删除它们可能改善流畅感，也可能改变风险——需要先理解旧规则为什么存在，再决定在新目标下保留什么。</li>
+</ul>
+<h2 id="边走边回复改变的是暴露方式">边走边回复：改变的是暴露方式</h2>
+<ul>
+<li><strong>旧作的回复限制</strong>：使用回复药后有固定姿势和硬直，它迫使玩家判断何时能够安全回复。</li>
+<li><strong>《世界》的调整</strong>：进入《世界》后，团队允许移动中回复，配合无缝地图，朝持续行动的方向调整。</li>
+<li><strong>不能只写成「去掉烦人的动画」</strong>：旧动作限制位置，新动作允许边回复边移动，玩家管理危险的方式随之改变。</li>
+<li><strong>旧硬直曾服务于时机选择</strong>：报道明确说明这一点，而新作重新安排了这一取舍。</li>
+<li><strong>小结</strong>：检验类似改动时，应同时比较回复过程中可移动的范围、对敌人位置的判断，以及是否仍需选择使用时机；流畅化的对象是多余的阻碍，不能只用动画时长衡量。</li>
+</ul>
+<h2 id="显示伤害数字仍然不显示怪物血条">显示伤害数字，仍然不显示怪物血条</h2>
+<div class="article-point"><h3 id="原意是观察怪物结果却可能看不懂攻击成效">原意是观察怪物，结果却可能看不懂攻击成效</h3>
+<ul>
+<li><strong>此前的隐藏设计</strong>：系列不直接显示伤害与怪物体力，希望玩家通过疲劳、动作、部位破坏等状态判断狩猎进展。</li>
+<li><strong>焦点测试的发现</strong>：新玩家可能连自己的攻击是否有效都难以确认。</li>
+<li><strong>两种不同信息</strong>：一次行动的效果，以及整场狩猎还剩多少进度；把它们一起隐藏，会增加理解基本操作的难度。</li>
+</ul>
+</div><div class="article-point"><h3 id="两层信息分开处理">两层信息分开处理</h3>
+<ul>
+<li><strong>加入单次伤害显示</strong>：《世界》加入单次伤害显示，同时继续隐藏怪物血条。</li>
+<li><strong>两种判断的分工</strong>：玩家能更明确地确认攻击效果，整体狩猎状态仍需从怪物表现中判断。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>信息层次</th><th>提供方式</th><th>保留的体验</th></tr></thead><tbody><tr><td>本次攻击有没有成效</td><td>显示伤害数值</td><td>更直接理解行动结果</td></tr><tr><td>怪物整体处于什么状态</td><td>继续观察身体与行为</td><td>保留狩猎中的判断</td></tr></tbody></table>
+<ul>
+<li><strong>小结</strong>：改善反馈不必把所有未知都揭开；先找出玩家在哪个层次失去理解，再选择补足哪一条信息。</li>
+</ul>
+</div><h2 id="崛起移动能力与地图结构一起改变">《崛起》：移动能力与地图结构一起改变</h2>
+<ul>
+<li><strong>立体快速的动作方向</strong>：《崛起》强调立体、快速的动作，翔虫与牙猎犬服务于这个方向。</li>
+<li><strong>地图结构的变化</strong>：原先仍有区域间加载，在《世界》之后改为无缝地图。</li>
+<li><strong>切换的代价与收益</strong>：这个切换带来了额外工作、也舍弃部分已做内容；同时催生沿途搜集环境生物、获得强化的玩法。</li>
+<li><strong>路线的双重作用</strong>：路线因此不仅连接战斗地点，也能提供准备与收益。</li>
+<li><strong>边界说明</strong>：报道没有给出翔虫动作的判定帧或完整平衡参数，不能据此展开这些实现；能确认的是，空间连续性与移动玩法在同一次迭代里相互影响。</li>
+</ul>
+<h2 id="荒野相似的骑乘形式可以承担不同职责">《荒野》：相似的骑乘形式，可以承担不同职责</h2>
+<ul>
+<li><strong>场地继续扩大</strong>：《荒野》的场地继续扩大，鹭鹰龙提供半自动移动支持。</li>
+<li><strong>与牙猎犬的区别</strong>：辻本将其与《崛起》的牙猎犬区别开来——牙猎犬也参与狩猎支持，鹭鹰龙更侧重移动。</li>
+<li><strong>骑乘不代表任务相同</strong>：两者都能骑乘，不代表设计任务相同。</li>
+<li><strong>先明确操作精力花在哪</strong>：每一作应先明确玩家在哪里花费操作精力，再决定辅助系统替玩家承担哪一部分。</li>
+</ul>
+<h2 id="设计启发连续体验由多项小取舍组成">设计启发：连续体验由多项小取舍组成</h2>
+<blockquote>
+<p>✦ 一句话总结：这组案例可以组成三项检查：哪些停顿仍产生有意义的风险，哪些反馈缺失阻止玩家学习，以及哪些移动操作可以由辅助承担。它们共同决定新玩家能否理解动作，同时继续保留系列的观察与判断。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#从测试反馈区分挑战与阻碍" class data-astro-cid-fzx4jmue>从测试反馈区分挑战与阻碍</a><a href="#边走边回复改变的是暴露方式" class data-astro-cid-fzx4jmue>边走边回复：改变的是暴露方式</a><a href="#显示伤害数字仍然不显示怪物血条" class data-astro-cid-fzx4jmue>显示伤害数字，仍然不显示怪物血条</a><a href="#原意是观察怪物结果却可能看不懂攻击成效" class="h3" data-astro-cid-fzx4jmue>原意是观察怪物，结果却可能看不懂攻击成效</a><a href="#两层信息分开处理" class="h3" data-astro-cid-fzx4jmue>两层信息分开处理</a><a href="#崛起移动能力与地图结构一起改变" class data-astro-cid-fzx4jmue>《崛起》：移动能力与地图结构一起改变</a><a href="#荒野相似的骑乘形式可以承担不同职责" class data-astro-cid-fzx4jmue>《荒野》：相似的骑乘形式，可以承担不同职责</a><a href="#设计启发连续体验由多项小取舍组成" class data-astro-cid-fzx4jmue>设计启发：连续体验由多项小取舍组成</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 

@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-5hce7sga> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>《屏幕震动的艺术》：逐项验证动作反馈，而非只加震屏 · 动作游戏设计知识库</title><meta name="description" content="依据讲座报道与公开演示项目镜像整理，拆解射击节奏、命中反馈、镜头、短暂停顿与战场痕迹；仅核读镜像步骤表与 GameMaker 脚本（未执行），代码细节只称「镜像实现」，不逐字对应 2013 年台上版本。"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/ActionGameDesign.ByAI/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.D9gdsE-y.css">
+<link rel="stylesheet" href="/ActionGameDesign.ByAI/_astro/_slug_.DESKW7PG.css"></head> <body style="--content-width: 880px" data-astro-cid-5hce7sga> <div class="page" data-astro-cid-5hce7sga>  <div class="page-grid" data-astro-cid-fzx4jmue> <article class="article" data-astro-cid-fzx4jmue> <div class="main" data-astro-cid-fzx4jmue> <a class="back-mobile" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <header class="hero" style="view-transition-name: card-other-2013-art-of-screenshake" data-astro-cid-6bfer2tv> <div class="meta-top" data-astro-cid-6bfer2tv>2013 · <span>INDIGO Classes</span> · Vlambeer</div> <h1 data-astro-cid-6bfer2tv>  <span class="title-hl" data-astro-cid-6bfer2tv>《屏幕震动的艺术》：逐项验证动作反馈，而非只加震屏</span> </h1> <div class="tags" data-astro-cid-6bfer2tv> <span class="tag" data-astro-cid-6bfer2tv>🎮 操作反馈</span><span class="tag" data-astro-cid-6bfer2tv>💥 打击感</span><span class="tag" data-astro-cid-6bfer2tv>🎥 镜头震动</span> </div> <p class="sub" data-astro-cid-6bfer2tv>依据讲座报道与公开演示项目镜像整理，拆解射击节奏、命中反馈、镜头、短暂停顿与战场痕迹；仅核读镜像步骤表与 GameMaker 脚本（未执行），代码细节只称「镜像实现」，不逐字对应 2013 年台上版本。</p> </header>  <div class="hook" data-astro-cid-etzyvapb><span class="label" data-astro-cid-etzyvapb>核心观点</span><p data-astro-cid-etzyvapb>手感可以从「逐项可比较的反馈」入手打磨：用同一个可玩原型观察微小改动如何改变射击体验。</p></div> <div class="info" data-astro-cid-jk4h5f6k> <div class="row" data-astro-cid-jk4h5f6k><span class="k" data-astro-cid-jk4h5f6k>原标题</span><span class="v" data-astro-cid-jk4h5f6k>The Art of Screenshake</span></div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>原链接</span> <span class="v" data-astro-cid-jk4h5f6k><a href="https://www.youtube.com/watch?v=AJdEqssNZ-U" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>https://www.youtube.com/watch?v=AJdEqssNZ-U</a></span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>作者简介</span> <span class="v" data-astro-cid-jk4h5f6k> <span class="name" data-astro-cid-jk4h5f6k>Jan Willem Nijman</span>  ·  Vlambeer 联合创始人，参与《Super Crate Box》《Nuclear Throne》等动作游戏设计。 </span> </div> <div class="row" data-astro-cid-jk4h5f6k> <span class="k" data-astro-cid-jk4h5f6k>其他参考</span> <span class="v" data-astro-cid-jk4h5f6k> <span data-astro-cid-jk4h5f6k>  <a href="https://colinbellino.com/public/stuff/screenshake-controlconf.zip" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>演示项目公开镜像（含后续转换的 GameMaker 项目）</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://github.com/colinbellino/screenshake" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>镜像提供者与复刻项目说明</a> </span><span data-astro-cid-jk4h5f6k>  ·  <a href="https://www.gamedeveloper.com/design/vlambeer-co-founder-shares-advice-on-building-better-action-games" target="_blank" rel="noopener" data-astro-cid-jk4h5f6k>Game Developer：讲座报道与原视频入口</a> </span> </span> </div> </div>  <div class="prose" data-astro-cid-fzx4jmue> <h2 id="先建立可比较的原型再逐项改变手感">先建立可比较的原型，再逐项改变手感</h2>
+<ul>
+<li><strong>可比较原型</strong>: 演示从平淡的横版射击开始，逐项增加或修改反馈，便于观察每项改动各自贡献了什么。</li>
+<li><strong>30 个步骤</strong>: 镜像中的 <code>scrSteps.gml</code> 保存了 30 个步骤；控制器可以前后切换阶段，其他对象依据当前步骤启用相应行为。</li>
+<li><strong>可回退的结构</strong>: 玩法对象基本相同、变化可以回退，观众才容易辨认某一次调整到底贡献了什么。</li>
+<li><strong>并非单一参数</strong>: 最终效果并不是一个「震屏强度」参数产生的，而是命中频率、表现和压力共同变化的结果。</li>
+</ul>
+<h2 id="先调发生了什么再调发生时看见什么">先调发生了什么，再调发生时看见什么</h2>
+<ul>
+<li><strong>早期步骤</strong>: 除了基础动画和声音，还降低敌人生命、提高射速、增加敌人、放大子弹并提高弹速。</li>
+<li><strong>不是同一种润色</strong>: 生命与射速改变击杀节奏，弹速改变从开火到命中的时间，子弹外观则改变可见性。</li>
+<li><strong>镜像数值</strong>: 敌人生命从早期的 20 改为 3，基础子弹水平速度从 3 改为 12。</li>
+<li><strong>数值边界</strong>: 这些数值只属于这个演示，用来说明「更爽」有时来自规则与时间关系的变化，不能全部归因于粒子或音效。</li>
+<li><strong>后期加压</strong>: 随后加入一定散布，后期还有多发子弹和更多、更快的敌人；玩家输出与战场压力一起上升。</li>
+<li><strong>不是单向调强</strong>: 演示并非把所有参数单向调强，而是在新的反馈密度下继续组织挑战。</li>
+</ul>
+<h2 id="命中反馈由多个对象共同完成">命中反馈由多个对象共同完成</h2>
+<ul>
+<li><strong>多个对象分工</strong>: 步骤表把命中特效、受击动画、敌人击退分别列出。</li>
+<li><strong>镜像实现</strong>: 子弹命中后生成碰撞效果，伤害脚本切换受击姿态；允许击退时还检查后方位置是否可用，再改变敌人位置。</li>
+</ul>
+<p>这些反馈分别回答不同问题：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>反馈</th><th>玩家获得的信息</th></tr></thead><tbody><tr><td>子弹与枪口表现</td><td>已经开火、射击朝向</td></tr><tr><td>命中特效与受击姿势</td><td>攻击接触到了目标</td></tr><tr><td>敌人位移</td><td>冲击改变了对方身体</td></tr><tr><td>尸体、弹壳等残留</td><td>刚才的行动在场景里留下痕迹</td></tr></tbody></table>
+<ul>
+<li><strong>残留易被忽略</strong>: 后两项尤其容易被忽略；目标立即消失会结束反馈，而尸体和弹壳把动作结果保留在空间里，让战斗的变化可以积累。</li>
+</ul>
+<h2 id="镜头跟随预留视野与震动是三件事">镜头跟随、预留视野与震动是三件事</h2>
+<ul>
+<li><strong>三件事分开</strong>: 镜像先加入平滑跟随，再按角色朝向和垂直运动调整镜头目标位置，之后才开启随机震动。</li>
+<li><strong>前两项管观察</strong>: 前两项决定平时怎样观察战场，震动则叠加在其上。</li>
+<li><strong>衰减规则</strong>: 震动强度会随时间下降，大幅震动还会额外衰减。</li>
+<li><strong>方向性后坐力</strong>: 后期开火时另给镜头一个与朝向相反的位移。</li>
+<li><strong>两种位移共存</strong>: 方向性的后坐力与随机晃动可以同时存在，但功能不同——前者连接射击方向，后者突出冲击。</li>
+<li><strong>小结</strong>：若基础跟随与视野分配不合适，继续增加震动只会放大问题；应先保证目标仍可追踪，再判断冲击反馈是否有帮助。</li>
+</ul>
+<h2 id="短暂停顿与武器延迟让身体不再同步滑动">短暂停顿与武器延迟，让身体不再同步滑动</h2>
+<ul>
+<li><strong>20 毫秒停顿</strong>: 镜像的伤害脚本在某一步加入 20 毫秒停顿，尸体生成还有不同停顿处理，把命中从连续运动中突出出来。</li>
+<li><strong>实现边界</strong>: 这里使用的是旧演示中的阻塞式实现，数值与方法不能直接当作现代项目的通用方案。</li>
+<li><strong>武器与身体分离</strong>: 武器表现逐渐与身体分开——一处使用上一帧的垂直位置造成跟随延迟，另一处在射击时设置武器后移量并逐步恢复。</li>
+<li><strong>重量印象</strong>: 它们让枪与身体存在短暂相对运动，增加武器的重量印象。</li>
+<li><strong>打击感是复合结果</strong>: 「打击感」不是一个瞬间效果，而是命中前后的时间分配、武器回弹与目标反应共同产生的。</li>
+</ul>
+<h2 id="爆炸之后演示仍回到行为的意义">爆炸之后，演示仍回到行为的意义</h2>
+<ul>
+<li><strong>概率爆炸</strong>: 报道特别提到死亡时约三分之一概率出现额外爆炸，作为强化击杀体验的例子。</li>
+<li><strong>镜像对应</strong>: 镜像也有对应概率门槛，并在后续步骤放大爆炸、增加残留烟雾；不同保存版本的伤害细节不据此混同。</li>
+<li><strong>回到行为意义</strong>: 步骤表最后转向行动的意义，结尾重新解释玩家在场景中的角色。</li>
+<li><strong>反馈不回答动机</strong>: 大量反馈能让操作更有冲击，却不能独自回答玩家为什么做这些事。</li>
+</ul>
+<h2 id="设计启发每一项改动都要能说清职责">设计启发：每一项改动都要能说清职责</h2>
+<blockquote>
+<p>✦ 一句话总结：复用这个方法时，可把修改分成节奏、命中确认、空间反应、镜头与结果残留，逐项开关比较。既检查是否更满足，也检查是否遮挡目标、改变难度或延迟控制。可迁移的是可比较的实验方式，不是把演示里的 30 项全部加到自己的游戏中。</p>
+</blockquote> </div> <p class="generation" data-astro-cid-fzx4jmue><em data-astro-cid-fzx4jmue>本文由 GPT-6 Astra 于 2026/09/20 生成，由 DeepSeek V4.1 Flash 后续修改</em></p> </div> </article> <aside class="toc" data-astro-cid-fzx4jmue> <a class="back" href="/ActionGameDesign.ByAI/" data-astro-cid-fzx4jmue>← 返回首页</a> <div class="toc-title" data-astro-cid-fzx4jmue>目录</div> <nav data-astro-cid-fzx4jmue> <a href="#先建立可比较的原型再逐项改变手感" class data-astro-cid-fzx4jmue>先建立可比较的原型，再逐项改变手感</a><a href="#先调发生了什么再调发生时看见什么" class data-astro-cid-fzx4jmue>先调发生了什么，再调发生时看见什么</a><a href="#命中反馈由多个对象共同完成" class data-astro-cid-fzx4jmue>命中反馈由多个对象共同完成</a><a href="#镜头跟随预留视野与震动是三件事" class data-astro-cid-fzx4jmue>镜头跟随、预留视野与震动是三件事</a><a href="#短暂停顿与武器延迟让身体不再同步滑动" class data-astro-cid-fzx4jmue>短暂停顿与武器延迟，让身体不再同步滑动</a><a href="#爆炸之后演示仍回到行为的意义" class data-astro-cid-fzx4jmue>爆炸之后，演示仍回到行为的意义</a><a href="#设计启发每一项改动都要能说清职责" class data-astro-cid-fzx4jmue>设计启发：每一项改动都要能说清职责</a> </nav> </aside> </div>  <footer class="site-footer" data-astro-cid-5hce7sga> <div class="inner" data-astro-cid-5hce7sga> <p data-astro-cid-5hce7sga>喜欢本项目？<a href="https://github.com/jskyzero/ActionGameDesign.ByAI" target="_blank" rel="noopener" data-astro-cid-5hce7sga>点个Star </a>吧！</p> <p data-astro-cid-5hce7sga>Last updated: <a href="https://github.com/jskyzero/ActionGameDesign.ByAI/commits/master" target="_blank" rel="noopener" data-astro-cid-5hce7sga>September 20, 2026</a><span id="visit-count" hidden data-astro-cid-5hce7sga> | Hits <span id="busuanzi_value_site_pv" data-astro-cid-5hce7sga></span></span></p> <p data-astro-cid-5hce7sga>Compiled by <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>DeepSeek-V4-Pro</a> | Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Astro</a> + <a href="https://tailwindcss.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>Tailwind CSS</a> | Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener" data-astro-cid-5hce7sga>GitHub Pages</a></p> <p data-astro-cid-5hce7sga>Copyright © 2017-2026 设计者笔记. All rights reserved.</p> </div> </footer> </div> <script type="module">(()=>{const e=document.getElementById("visit-count"),t=document.getElementById("busuanzi_value_site_pv");if(!e||!t)return;const n=setInterval(()=>{t.textContent.trim()&&(e.hidden=!1,clearInterval(n))},400);setTimeout(()=>clearInterval(n),1e4)})();</script> </body> </html>  <script type="module">let e;function a(){e?.disconnect();const r=Array.from(document.querySelectorAll(".toc nav a")),o=Array.from(document.querySelectorAll(".prose h2, .prose h3"));r.length&&o.length&&(e=new IntersectionObserver(t=>{t.forEach(n=>{if(n.isIntersecting){const c="#"+n.target.id;r.forEach(s=>s.classList.toggle("active",s.getAttribute("href")===c))}})},{rootMargin:"-15% 0px -70% 0px",threshold:0}),o.forEach(t=>e.observe(t)))}document.addEventListener("astro:page-load",a);document.addEventListener("astro:before-swap",()=>e?.disconnect());</script> 
